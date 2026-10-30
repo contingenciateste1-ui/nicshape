@@ -1,0 +1,357 @@
+{% render 'nic-button-styles' %}
+
+{%- liquid
+  assign collection = section.settings.collection
+  assign limit = section.settings.products_to_show
+  assign button_url = section.settings.button_link
+  if button_url == blank
+    if collection != blank
+      assign button_url = collection.url
+    else
+      assign button_url = routes.all_products_collection_url
+    endif
+  endif
+-%}
+
+<section
+  class="nic-showcase"
+  style="
+    --show-bg: {{ section.settings.bg_color }};
+    --show-fg: {{ section.settings.text_color }};
+    --show-cols-d: {{ section.settings.columns_desktop }};
+    --show-cols-m: {{ section.settings.columns_mobile }};
+    --show-accent: {{ section.settings.accent_color }};
+  "
+>
+  {%- if section.settings.heading != blank -%}
+    <h2 class="nic-heading">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+  {%- if section.settings.subheading != blank -%}
+    <p class="nic-subheading">{{ section.settings.subheading }}</p>
+  {%- endif -%}
+
+  <ul class="nic-showcase__grid">
+    {%- if collection != blank and collection.products_count > 0 -%}
+      {%- for product in collection.products limit: limit -%}
+        {%- liquid
+          assign badge_label = ''
+          assign badge_key = ''
+          for tag in product.tags
+            assign tag_lc = tag | downcase
+            if tag_lc contains 'badge:' and badge_label == ''
+              assign badge_key = tag_lc | remove: 'badge:' | strip
+              assign badge_label = badge_key | replace: '-', ' ' | upcase
+            endif
+          endfor
+
+          assign on_sale = false
+          assign discount = 0
+          if product.compare_at_price > product.price
+            assign on_sale = true
+            assign discount = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price
+          endif
+
+          assign rating = product.metafields.reviews.rating.value
+          assign rating_count = product.metafields.reviews.rating_count.value
+          assign rating_pct = 0
+          if rating != blank
+            assign rating_pct = rating.rating | times: 100.0 | divided_by: rating.scale_max
+          endif
+        -%}
+        <li class="nic-card">
+          <a class="nic-card__link" href="{{ product.url }}">
+            <span class="nic-card__media">
+              {%- if product.featured_image != blank -%}
+                {{
+                  product.featured_image
+                  | image_url: width: 720
+                  | image_tag:
+                    class: 'nic-card__img',
+                    loading: 'lazy',
+                    widths: '240, 360, 540, 720',
+                    sizes: '(min-width: 750px) 25vw, 50vw',
+                    alt: product.title
+                }}
+                {%- if section.settings.hover_image and product.images[1] != blank -%}
+                  {{
+                    product.images[1]
+                    | image_url: width: 720
+                    | image_tag:
+                      class: 'nic-card__img nic-card__img--hover',
+                      loading: 'lazy',
+                      widths: '240, 360, 540, 720',
+                      sizes: '(min-width: 750px) 25vw, 50vw',
+                      alt: ''
+                  }}
+                {%- endif -%}
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'nic-placeholder' }}
+              {%- endif -%}
+
+              {%- if section.settings.show_badges -%}
+                <span class="nic-card__badges">
+                  {%- if badge_label != blank -%}
+                    <span class="nic-badge nic-badge--{{ badge_key }}">{{ badge_label }}</span>
+                  {%- endif -%}
+                  {%- if on_sale and section.settings.show_discount and discount > 0 -%}
+                    <span class="nic-badge nic-badge--sale">-{{ discount }}%</span>
+                  {%- endif -%}
+                  {%- unless product.available -%}
+                    <span class="nic-badge nic-badge--soldout">{{ 'content.product_badge_sold_out' | t }}</span>
+                  {%- endunless -%}
+                </span>
+              {%- endif -%}
+            </span>
+
+            <span class="nic-card__title">{{ product.title }}</span>
+
+            <span class="nic-card__price">
+              {%- if on_sale -%}
+                <s class="nic-card__compare">{{ product.compare_at_price | money }}</s>
+              {%- endif -%}
+              <span class="nic-card__now{% if on_sale %} nic-card__now--sale{% endif %}">{{ product.price | money }}</span>
+            </span>
+
+            {%- if section.settings.show_rating and rating != blank -%}
+              <span class="nic-card__rating" aria-label="{{ rating.rating }} / {{ rating.scale_max }}">
+                <span class="nic-stars" style="--pct: {{ rating_pct }}%;" aria-hidden="true">★★★★★</span>
+                {%- if rating_count != blank -%}
+                  <span class="nic-card__count">({{ rating_count }})</span>
+                {%- endif -%}
+              </span>
+            {%- endif -%}
+          </a>
+        </li>
+      {%- endfor -%}
+    {%- else -%}
+      {%- for i in (1..limit) -%}
+        {%- assign ph = forloop.index | modulo: 6 | plus: 1 -%}
+        <li class="nic-card">
+          <span class="nic-card__link">
+            <span class="nic-card__media">{{ 'product-' | append: ph | placeholder_svg_tag: 'nic-placeholder' }}</span>
+            <span class="nic-card__title">Example product</span>
+            <span class="nic-card__price"><span class="nic-card__now">{{ 3900 | money }}</span></span>
+          </span>
+        </li>
+      {%- endfor -%}
+    {%- endif -%}
+  </ul>
+
+  {%- if section.settings.button_label != blank -%}
+    <div class="nic-showcase__cta">
+      <a
+        class="nic-btn"
+        style="--nic-btn-bg: {{ section.settings.button_bg }}; --nic-btn-fg: {{ section.settings.button_fg }};"
+        href="{{ button_url }}"
+      >
+        {{- section.settings.button_label -}}
+      </a>
+    </div>
+  {%- endif -%}
+</section>
+
+{% stylesheet %}
+  .nic-showcase {
+    padding: 36px 12px 40px;
+    background: var(--show-bg);
+    color: var(--show-fg);
+    font-family: var(--font-body--family);
+  }
+
+  .nic-showcase__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--show-cols-m), minmax(0, 1fr));
+    gap: 24px 12px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .nic-card__link {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .nic-card__media {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #f3e7e2;
+  }
+
+  .nic-card__img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.35s ease;
+  }
+
+  .nic-card__img--hover {
+    opacity: 0;
+  }
+
+  @media (hover: hover) {
+    .nic-card__link:hover .nic-card__img--hover {
+      opacity: 1;
+    }
+  }
+
+  .nic-card__badges {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .nic-badge {
+    padding: 4px 8px 4px 7px;
+    border-radius: 0 5px 5px 0;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .nic-badge--new {
+    background: #4a6741;
+  }
+
+  .nic-badge--selling-fast {
+    background: #f5d36b;
+    color: #2b2224;
+  }
+
+  .nic-badge--sale {
+    background: var(--show-accent);
+    color: #2b2224;
+  }
+
+  .nic-badge--soldout {
+    background: #eef1ea;
+    color: #2b2224;
+  }
+
+  .nic-card__title {
+    margin-top: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .nic-card__price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .nic-card__compare {
+    color: #888;
+    font-size: 0.75rem;
+  }
+
+  .nic-card__now {
+    font-size: 1.0625rem;
+    font-weight: 800;
+  }
+
+  .nic-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: #777;
+  }
+
+  .nic-stars {
+    position: relative;
+    display: inline-block;
+    color: #ddd0ca;
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+
+  .nic-stars::before {
+    content: '★★★★★';
+    position: absolute;
+    inset: 0;
+    width: var(--pct);
+    overflow: hidden;
+    color: #e2a23b;
+    white-space: nowrap;
+  }
+
+  .nic-showcase__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .nic-showcase {
+      padding: 56px 32px 64px;
+    }
+
+    .nic-showcase__grid {
+      grid-template-columns: repeat(var(--show-cols-d), minmax(0, 1fr));
+      gap: 36px 20px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape product grid",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Our best sellers" },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "products_to_show", "label": "Products to show", "min": 2, "max": 12, "step": 1, "default": 4 },
+    { "type": "range", "id": "columns_desktop", "label": "Columns (desktop)", "min": 2, "max": 5, "step": 1, "default": 4 },
+    { "type": "range", "id": "columns_mobile", "label": "Columns (mobile)", "min": 1, "max": 2, "step": 1, "default": 2 },
+    { "type": "header", "content": "Cards" },
+    {
+      "type": "checkbox",
+      "id": "show_badges",
+      "label": "Show badges",
+      "info": "Add a product tag like badge:best-seller, badge:new or badge:selling-fast. The text after “badge:” becomes the label.",
+      "default": true
+    },
+    { "type": "checkbox", "id": "show_discount", "label": "Show discount % badge when on sale", "default": false },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show star rating",
+      "info": "Needs a reviews app that fills the standard reviews.rating metafield (Shopify Product Reviews, Judge.me, Loox, etc.). Nothing shows if there is no rating.",
+      "default": true
+    },
+    { "type": "checkbox", "id": "hover_image", "label": "Show second image on hover", "default": true },
+    { "type": "header", "content": "Button" },
+    { "type": "text", "id": "button_label", "label": "Label", "default": "Shop all" },
+    { "type": "url", "id": "button_link", "label": "Link", "info": "Defaults to the collection." },
+    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#2b2224" },
+    { "type": "color", "id": "button_fg", "label": "Button text", "default": "#ffffff" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#2b2224" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#e3a89f" }
+  ],
+  "presets": [{ "name": "Nicshape product grid" }]
+}
+{% endschema %}

@@ -1,0 +1,264 @@
+{% render 'nic-button-styles' %}
+
+<section
+  class="nic-feature nic-feature--{{ section.settings.image_side }}"
+  style="
+    --feat-bg: {{ section.settings.bg_color }};
+    --feat-fg: {{ section.settings.text_color }};
+    --feat-accent: {{ section.settings.accent_color }};
+  "
+>
+  <div class="nic-feature__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1600
+        | image_tag:
+          class: 'nic-feature__img',
+          loading: 'lazy',
+          widths: '600, 900, 1200, 1600',
+          sizes: '(min-width: 750px) 50vw, 100vw'
+      }}
+    {%- else -%}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'nic-feature__img nic-placeholder' }}
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      <span class="nic-chip nic-chip--{{ block.settings.position }}" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 80, height: 80, crop: 'center' | image_tag: width: 40, height: 40, loading: 'lazy', alt: '' }}
+        {%- endif -%}
+        {{ block.settings.text }}
+      </span>
+    {%- endfor -%}
+
+    {%- if section.settings.badge_text != blank -%}
+      <span class="nic-feature__badge">{{ section.settings.badge_text }}</span>
+    {%- endif -%}
+  </div>
+
+  <div class="nic-feature__content">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="nic-feature__eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="nic-feature__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <p class="nic-feature__text">{{ section.settings.text }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a
+        class="nic-btn"
+        style="--nic-btn-bg: {{ section.settings.button_bg }}; --nic-btn-fg: {{ section.settings.button_fg }};"
+        href="{{ section.settings.button_link | default: routes.all_products_collection_url }}"
+      >
+        {{- section.settings.button_label -}}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .nic-feature {
+    display: grid;
+    background: var(--feat-bg);
+    color: var(--feat-fg);
+    font-family: var(--font-body--family);
+  }
+
+  .nic-feature__media {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+  }
+
+  .nic-feature__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nic-chip {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px 6px 6px;
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+    color: #2b2224;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  .nic-chip:not(:has(img)) {
+    padding-left: 14px;
+  }
+
+  .nic-chip img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .nic-chip--top-left {
+    top: 16px;
+    left: 16px;
+  }
+
+  .nic-chip--top-right {
+    top: 16px;
+    right: 16px;
+  }
+
+  .nic-chip--bottom-left {
+    bottom: 16px;
+    left: 16px;
+  }
+
+  .nic-chip--bottom-right {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .nic-feature__badge {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    padding: 8px;
+    border: 2px solid var(--feat-accent);
+    border-radius: 50%;
+    background: #fff;
+    color: #2b2224;
+    font-size: 0.8125rem;
+    font-weight: 800;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .nic-feature__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 36px 20px 44px;
+    text-align: center;
+  }
+
+  .nic-feature__eyebrow {
+    padding: 6px 16px;
+    border: 1px solid var(--feat-accent);
+    border-radius: 999px;
+    color: var(--feat-accent);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .nic-feature__heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  .nic-feature__text {
+    max-width: 46ch;
+    margin: 0 0 6px;
+    line-height: 1.55;
+    opacity: 0.85;
+  }
+
+  @media screen and (min-width: 750px) {
+    .nic-feature {
+      grid-template-columns: 1fr 1fr;
+      min-height: 620px;
+    }
+
+    .nic-feature--right .nic-feature__media {
+      order: 2;
+    }
+
+    .nic-feature__media {
+      aspect-ratio: auto;
+    }
+
+    .nic-feature__content {
+      justify-content: center;
+      padding: 56px clamp(32px, 6vw, 110px);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape feature banner",
+  "tag": "section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    {
+      "type": "select",
+      "id": "image_side",
+      "label": "Image position (desktop)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    { "type": "text", "id": "badge_text", "label": "Round badge on image (optional)", "info": "e.g. “1 pair free”" },
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow pill", "default": "Trending now" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Feature product name" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "One or two lines about why customers love it." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#f9eeea" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#2b2224" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#c98e86" },
+    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#c98e86" },
+    { "type": "color", "id": "button_fg", "label": "Button text", "default": "#ffffff" }
+  ],
+  "blocks": [
+    {
+      "type": "chip",
+      "name": "Floating pill",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Small image (optional)" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Stays up all day" },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Position",
+          "options": [
+            { "value": "top-left", "label": "Top left" },
+            { "value": "top-right", "label": "Top right" },
+            { "value": "bottom-left", "label": "Bottom left" },
+            { "value": "bottom-right", "label": "Bottom right" }
+          ],
+          "default": "top-left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nicshape feature banner",
+      "blocks": [{ "type": "chip" }]
+    }
+  ]
+}
+{% endschema %}

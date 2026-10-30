@@ -1,0 +1,210 @@
+{% render 'nic-button-styles' %}
+
+<section
+  class="nic-reviews"
+  style="--rev-bg: {{ section.settings.bg_color }}; --rev-fg: {{ section.settings.text_color }}; --rev-star: {{ section.settings.star_color }};"
+>
+  {%- if section.settings.summary != blank -%}
+    <p class="nic-reviews__summary">{{ section.settings.summary }}</p>
+  {%- endif -%}
+  {%- if section.settings.heading != blank -%}
+    <h2 class="nic-heading">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  {%- if section.blocks.size == 0 -%}
+    <p class="nic-reviews__empty">Add “Review” blocks with real customer reviews.</p>
+  {%- endif -%}
+
+  <div class="nic-reviews__track">
+    {%- for block in section.blocks -%}
+      {%- assign stars = block.settings.rating | plus: 0 -%}
+      <article class="nic-review" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <div class="nic-review__photo">
+            {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.name, widths: '300, 450, 600', sizes: '280px' }}
+          </div>
+        {%- endif -%}
+        <div class="nic-review__body">
+          <div class="nic-review__head">
+            <span class="nic-review__name">{{ block.settings.name }}</span>
+            {%- if block.settings.verified -%}
+              <span class="nic-review__verified">Verified buyer</span>
+            {%- endif -%}
+          </div>
+          <div class="nic-review__stars" role="img" aria-label="{{ stars }} / 5">
+            {%- for i in (1..5) -%}<span class="{% if i > stars %}is-off{% endif %}">★</span>{%- endfor -%}
+          </div>
+          <p class="nic-review__text">{{ block.settings.text }}</p>
+          {%- if block.settings.product != blank -%}
+            <a class="nic-review__product" href="{{ block.settings.product.url }}">{{ block.settings.product.title }}</a>
+          {%- endif -%}
+        </div>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .nic-reviews {
+    padding: 40px 0 44px;
+    background: var(--rev-bg);
+    color: var(--rev-fg);
+    font-family: var(--font-body--family);
+  }
+
+  .nic-reviews__summary {
+    margin: 0 0 8px;
+    padding-inline: 16px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .nic-reviews .nic-heading {
+    padding-inline: 16px;
+    margin-bottom: 20px;
+  }
+
+  .nic-reviews__empty {
+    padding: 24px;
+    text-align: center;
+    opacity: 0.6;
+  }
+
+  .nic-reviews__track {
+    display: flex;
+    gap: 12px;
+    padding: 4px 16px 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .nic-reviews__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nic-review {
+    display: flex;
+    flex: 0 0 min(82vw, 320px);
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #ebe1dc;
+    border-radius: 14px;
+    background: #fff;
+    scroll-snap-align: start;
+  }
+
+  .nic-review__photo {
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+
+  .nic-review__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nic-review__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .nic-review__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+  }
+
+  .nic-review__name {
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .nic-review__verified {
+    color: #4a6741;
+    font-size: 0.6875rem;
+    font-weight: 700;
+  }
+
+  .nic-review__stars {
+    color: var(--rev-star);
+    letter-spacing: 2px;
+  }
+
+  .nic-review__stars .is-off {
+    color: #ddd0ca;
+  }
+
+  .nic-review__text {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+
+  .nic-review__product {
+    margin-top: auto;
+    color: inherit;
+    font-size: 0.75rem;
+    opacity: 0.65;
+  }
+
+  @media screen and (min-width: 750px) {
+    .nic-reviews__track {
+      padding-inline: max(32px, calc((100% - 1400px) / 2));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape reviews",
+  "tag": "section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "summary",
+      "label": "Summary line (optional)",
+      "info": "Only write numbers that match your real review data."
+    },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Loved by customers" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#fbf6f3" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#2b2224" },
+    { "type": "color", "id": "star_color", "label": "Star color", "default": "#e2a23b" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Customer name", "default": "Customer name" },
+        { "type": "textarea", "id": "text", "label": "Review", "info": "Use real reviews from your customers only." },
+        {
+          "type": "select",
+          "id": "rating",
+          "label": "Rating",
+          "options": [
+            { "value": "5", "label": "5 stars" },
+            { "value": "4", "label": "4 stars" },
+            { "value": "3", "label": "3 stars" }
+          ],
+          "default": "5"
+        },
+        { "type": "checkbox", "id": "verified", "label": "Show “Verified buyer”", "default": false },
+        { "type": "image_picker", "id": "image", "label": "Customer photo (optional)" },
+        { "type": "product", "id": "product", "label": "Product reviewed (optional)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Nicshape reviews" }]
+}
+{% endschema %}
