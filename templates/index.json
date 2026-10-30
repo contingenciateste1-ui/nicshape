@@ -98,6 +98,66 @@
         "button_label": "Shop all"
       }
     },
+    "nic_trending": {
+      "type": "nic-feature-banner",
+      "blocks": {
+        "chip1": {
+          "type": "chip",
+          "settings": {
+            "text": "Stays up all day",
+            "position": "top-left"
+          }
+        }
+      },
+      "block_order": [
+        "chip1"
+      ],
+      "settings": {
+        "eyebrow": "Trending now",
+        "heading": "Feature product name",
+        "text": "One or two lines about why customers love it.",
+        "button_label": "Shop now",
+        "image_side": "left",
+        "badge_text": ""
+      }
+    },
+    "nic_looks": {
+      "type": "nic-shop-the-looks",
+      "blocks": {
+        "l1": {
+          "type": "look",
+          "settings": {}
+        },
+        "l2": {
+          "type": "look",
+          "settings": {}
+        },
+        "l3": {
+          "type": "look",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "l1",
+        "l2",
+        "l3"
+      ],
+      "settings": {
+        "heading": "Shop the looks",
+        "subheading": "Tap the video, shop the look."
+      }
+    },
+    "nic_deals": {
+      "type": "nic-product-showcase",
+      "settings": {
+        "heading": "Great deals of the week",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "button_label": "Shop all",
+        "bg_color": "#fbf6f3"
+      }
+    },
     "nic_reviews": {
       "type": "nic-reviews",
       "settings": {
@@ -149,6 +209,9 @@
     "nic_hero",
     "nic_collection_strip",
     "nic_best_sellers",
+    "nic_trending",
+    "nic_looks",
+    "nic_deals",
     "nic_reviews",
     "nic_benefits"
   ]
