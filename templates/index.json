@@ -88,6 +88,16 @@
         "heading": "Shop Shapewear, Bras & Everyday Essentials"
       }
     },
+    "nic_best_sellers": {
+      "type": "nic-product-showcase",
+      "settings": {
+        "heading": "Our best sellers",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "button_label": "Shop all"
+      }
+    },
     "nic_reviews": {
       "type": "nic-reviews",
       "settings": {
@@ -138,6 +148,7 @@
   "order": [
     "nic_hero",
     "nic_collection_strip",
+    "nic_best_sellers",
     "nic_reviews",
     "nic_benefits"
   ]
