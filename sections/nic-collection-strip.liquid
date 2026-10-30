@@ -2,6 +2,8 @@
   assign heading = section.settings.heading
 -%}
 
+{%- comment -%}nic-hide-empty{%- endcomment -%}
+{%- if section.blocks.size > 0 or request.design_mode -%}
 <section
   class="nic-strip"
   style="
@@ -22,7 +24,7 @@
   {%- endif -%}
 
   {%- if section.blocks.size == 0 -%}
-    <p class="nic-strip__empty">Add “Collection card” blocks.</p>
+    {%- if request.design_mode -%}<p class="nic-strip__empty">Add “Collection card” blocks.</p>{%- endif -%}
   {%- endif -%}
 
   <ul class="nic-strip__row" tabindex="0" aria-label="{{ heading | escape }}">
@@ -52,6 +54,7 @@
     {%- endfor -%}
   </ul>
 </section>
+{%- endif -%}
 
 {% stylesheet %}
   .nic-strip {

@@ -1,5 +1,7 @@
 {% render 'nic-button-styles' %}
 
+{%- comment -%}nic-hide-empty{%- endcomment -%}
+{%- if section.blocks.size > 0 or request.design_mode -%}
 <section
   class="nic-reviews"
   style="--rev-bg: {{ section.settings.bg_color }}; --rev-fg: {{ section.settings.text_color }}; --rev-star: {{ section.settings.star_color }};"
@@ -12,7 +14,7 @@
   {%- endif -%}
 
   {%- if section.blocks.size == 0 -%}
-    <p class="nic-reviews__empty">Add “Review” blocks with real customer reviews.</p>
+    {%- if request.design_mode -%}<p class="nic-reviews__empty">Add “Review” blocks with real customer reviews.</p>{%- endif -%}
   {%- endif -%}
 
   <div class="nic-reviews__track">
@@ -43,6 +45,7 @@
     {%- endfor -%}
   </div>
 </section>
+{%- endif -%}
 
 {% stylesheet %}
   .nic-reviews {

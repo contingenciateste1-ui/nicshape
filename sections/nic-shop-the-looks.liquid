@@ -1,5 +1,7 @@
 {% render 'nic-button-styles' %}
 
+{%- comment -%}nic-hide-empty{%- endcomment -%}
+{%- if section.blocks.size > 0 or request.design_mode -%}
 <section
   class="nic-looks"
   id="nic-looks-{{ section.id }}"
@@ -13,7 +15,7 @@
   {%- endif -%}
 
   {%- if section.blocks.size == 0 -%}
-    <p class="nic-looks__empty">Add “Look” blocks with a video and a product.</p>
+    {%- if request.design_mode -%}<p class="nic-looks__empty">Add “Look” blocks with a video and a product.</p>{%- endif -%}
   {%- endif -%}
 
   <div class="nic-looks__track">
@@ -67,6 +69,7 @@
     {%- endfor -%}
   </div>
 </section>
+{%- endif -%}
 
 <script>
   (function () {
