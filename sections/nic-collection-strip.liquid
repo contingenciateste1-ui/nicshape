@@ -191,23 +191,30 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "Shop Shapewear, Bras & Everyday Essentials" },
     { "type": "header", "content": "Cards" },
     {
-      "type": "range",
+      "type": "select",
       "id": "cards_desktop",
       "label": "Cards visible (desktop)",
-      "info": "A decimal like 7.4 shows 7 cards and part of the next one, so it is clear the row scrolls.",
-      "min": 3,
-      "max": 8,
-      "step": 0.1,
-      "default": 7.4
+      "info": "A value ending in .4 shows part of the next card, so it is clear the row scrolls.",
+      "options": [
+        { "value": "4.4", "label": "4 + a peek" },
+        { "value": "5.4", "label": "5 + a peek" },
+        { "value": "6.4", "label": "6 + a peek" },
+        { "value": "7.4", "label": "7 + a peek" },
+        { "value": "8.4", "label": "8 + a peek" }
+      ],
+      "default": "7.4"
     },
     {
-      "type": "range",
+      "type": "select",
       "id": "cards_mobile",
       "label": "Cards visible (mobile)",
-      "min": 1.5,
-      "max": 3.5,
-      "step": 0.1,
-      "default": 2.3
+      "options": [
+        { "value": "1.5", "label": "1.5" },
+        { "value": "2.3", "label": "2.3" },
+        { "value": "2.5", "label": "2.5" },
+        { "value": "3.3", "label": "3.3" }
+      ],
+      "default": "2.3"
     },
     { "type": "range", "id": "gap_desktop", "label": "Gap (desktop)", "min": 12, "max": 64, "step": 4, "unit": "px", "default": 48 },
     { "type": "header", "content": "Spacing" },
