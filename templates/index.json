@@ -117,7 +117,7 @@
         "heading": "Feature product name",
         "text": "One or two lines about why customers love it.",
         "button_label": "Shop now",
-        "image_side": "left",
+        "image_side": "right",
         "badge_text": ""
       }
     },
@@ -203,6 +203,29 @@
         "b4"
       ],
       "settings": {}
+    },
+    "nic_new_arrival": {
+      "type": "nic-feature-banner",
+      "blocks": {
+        "chip1": {
+          "type": "chip",
+          "settings": {
+            "text": "Stays up all day",
+            "position": "top-left"
+          }
+        }
+      },
+      "block_order": [
+        "chip1"
+      ],
+      "settings": {
+        "eyebrow": "New arrival",
+        "heading": "New product name",
+        "text": "One or two lines about why customers love it.",
+        "button_label": "Shop now",
+        "image_side": "right",
+        "badge_text": "1 pair free"
+      }
     }
   },
   "order": [
@@ -211,6 +234,7 @@
     "nic_best_sellers",
     "nic_trending",
     "nic_looks",
+    "nic_new_arrival",
     "nic_deals",
     "nic_reviews",
     "nic_benefits"
