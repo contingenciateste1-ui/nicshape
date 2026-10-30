@@ -16,11 +16,11 @@
           "name": "t:names.title",
           "settings": {
             "text": "<h1>{{ closest.collection.title }}</h1>",
-            "width": "fit-content",
+            "width": "100%",
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "h2",
-            "font": "var(--font-body--family)",
+            "font": "var(--font-heading--family)",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
@@ -31,7 +31,8 @@
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-inline-end": 0,
+            "text_color": "#E3A89F"
           },
           "blocks": {}
         },
@@ -40,7 +41,7 @@
           "name": "t:names.description",
           "settings": {
             "text": "{{ closest.collection.description }}",
-            "width": "fit-content",
+            "width": "100%",
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "rte",
@@ -55,7 +56,9 @@
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-inline-end": 0,
+            "text_color": "#FFFFFF",
+            "font_size": "0.875rem"
           },
           "blocks": {}
         }
@@ -73,11 +76,11 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
+        "gap": 8,
         "section_width": "page-width",
         "section_height_custom": 50,
         "background_media": "none",
-        "background_color": "{{ settings.color_palette.background }}",
+        "background_color": "#1E1819",
         "video_position": "cover",
         "background_image_position": "cover",
         "border": "none",
@@ -88,8 +91,8 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 44,
+        "padding-block-end": 44
       }
     },
     "main": {
@@ -203,20 +206,79 @@
         "layout_type": "grid",
         "product_card_size": "medium",
         "mobile_product_card_size": "small",
-        "product_grid_width": "centered",
+        "product_grid_width": "full-width",
         "full_width_on_mobile": true,
-        "columns_gap_horizontal": 16,
-        "columns_gap_vertical": 24,
-        "padding-inline-start": 0,
-        "padding-inline-end": 0,
+        "columns_gap_horizontal": 12,
+        "columns_gap_vertical": 28,
+        "padding-inline-start": 16,
+        "padding-inline-end": 16,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 0,
+        "padding-block-start": 16,
         "padding-block-end": 32
+      }
+    },
+    "nic_collection_strip": {
+      "type": "nic-collection-strip",
+      "blocks": {
+        "c1": {
+          "type": "collection_card",
+          "settings": {
+            "title": "All"
+          }
+        },
+        "c2": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Bras"
+          }
+        },
+        "c3": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Shapewear"
+          }
+        },
+        "c4": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Swimwear"
+          }
+        },
+        "c5": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Leggings"
+          }
+        },
+        "c6": {
+          "type": "collection_card",
+          "settings": {
+            "title": "New"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "heading": "",
+        "cards_desktop": "8.4",
+        "cards_mobile": "3.3",
+        "padding_top_desktop": 32,
+        "padding_bottom_desktop": 8,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 8
       }
     }
   },
   "order": [
     "section",
+    "nic_collection_strip",
     "main"
   ]
 }
