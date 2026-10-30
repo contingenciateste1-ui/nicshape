@@ -22,6 +22,72 @@
         "accent_color": "#e3a89f"
       }
     },
+    "nic_collection_strip": {
+      "type": "nic-collection-strip",
+      "blocks": {
+        "c1": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Shop Sale"
+          }
+        },
+        "c2": {
+          "type": "collection_card",
+          "settings": {
+            "title": "New"
+          }
+        },
+        "c3": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Best Sellers"
+          }
+        },
+        "c4": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Bras"
+          }
+        },
+        "c5": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Bodysuits"
+          }
+        },
+        "c6": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Shapers"
+          }
+        },
+        "c7": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Swimwear"
+          }
+        },
+        "c8": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Leggings"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8"
+      ],
+      "settings": {
+        "heading": "Shop Shapewear, Bras & Everyday Essentials"
+      }
+    },
     "nic_reviews": {
       "type": "nic-reviews",
       "settings": {
@@ -71,6 +137,7 @@
   },
   "order": [
     "nic_hero",
+    "nic_collection_strip",
     "nic_reviews",
     "nic_benefits"
   ]
