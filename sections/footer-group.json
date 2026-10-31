@@ -10,6 +10,10 @@
   "type": "footer",
   "name": "t:names.footer",
   "sections": {
+    "nic_scroll_top": {
+      "type": "nic-scroll-top",
+      "settings": {}
+    },
     "footer_m9NzUG": {
       "type": "footer",
       "blocks": {
@@ -241,6 +245,7 @@
     }
   },
   "order": [
+    "nic_scroll_top",
     "footer_m9NzUG",
     "footer_utilities_jLGE8U"
   ]

@@ -1,0 +1,102 @@
+<div
+  class="nic-totop"
+  style="
+    --tt-bg: {{ section.settings.bg_color }};
+    --tt-text: {{ section.settings.text_color }};
+    --tt-btn: {{ section.settings.button_color }};
+    --tt-icon: {{ section.settings.icon_color }};
+    --tt-size: {{ section.settings.text_size }}px;
+    --tt-btn-size: {{ section.settings.button_size }}px;
+    --tt-pt: {{ section.settings.padding_top }}px;
+    --tt-pb: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <button class="nic-totop__btn" type="button" data-nic-totop>
+    {%- if section.settings.label != blank -%}
+      <span class="nic-totop__label">{{ section.settings.label }}</span>
+    {%- endif -%}
+    <span class="nic-totop__circle" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="55%" height="55%" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>
+    </span>
+    {%- if section.settings.label == blank -%}
+      <span class="visually-hidden">Back to top</span>
+    {%- endif -%}
+  </button>
+</div>
+
+<script>
+  (function () {
+    var btn = document.currentScript.previousElementSibling.querySelector('[data-nic-totop]');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  })();
+</script>
+
+{% stylesheet %}
+  .nic-totop {
+    display: flex;
+    justify-content: center;
+    padding: var(--tt-pt) 16px var(--tt-pb);
+    background: var(--tt-bg);
+  }
+
+  .nic-totop__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--tt-text);
+    font-family: var(--font-body--family);
+    font-size: var(--tt-size);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .nic-totop__circle {
+    display: grid;
+    place-items: center;
+    width: var(--tt-btn-size);
+    height: var(--tt-btn-size);
+    border-radius: 50%;
+    background: var(--tt-btn);
+    color: var(--tt-icon);
+    transition: transform 0.2s ease;
+  }
+
+  @media (hover: hover) {
+    .nic-totop__btn:hover .nic-totop__circle {
+      transform: translateY(-3px);
+    }
+  }
+
+  .nic-totop__btn:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 6px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape back to top",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Text", "default": "Scroll to top" },
+    { "type": "range", "id": "text_size", "label": "Text size", "min": 11, "max": 28, "step": 1, "unit": "px", "default": 18 },
+    { "type": "range", "id": "button_size", "label": "Button size", "min": 28, "max": 72, "step": 2, "unit": "px", "default": 40 },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#2b2224" },
+    { "type": "color", "id": "button_color", "label": "Button color", "default": "#5a4a42" },
+    { "type": "color", "id": "icon_color", "label": "Arrow color", "default": "#ffffff" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "label": "Space above", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "label": "Space below", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 }
+  ],
+  "presets": [{ "name": "Nicshape back to top" }]
+}
+{% endschema %}
