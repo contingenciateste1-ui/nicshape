@@ -289,9 +289,7 @@
         "heading": "Loved by customers",
         "bg_color": "#ffffff",
         "text_color": "#2b2224",
-        "star_color": "#c9a26d",
-        "card_color": "#f6f6f6",
-        "tab_active_color": "#111111"
+        "star_color": "#c9a26d"
       }
     },
     "nic_benefits": {
