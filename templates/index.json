@@ -163,6 +163,7 @@
         "chip1": {
           "type": "chip",
           "settings": {
+            "image": "shopify://shop_images/Bras.avif",
             "text": "Stays up all day",
             "position": "top-left"
           }
