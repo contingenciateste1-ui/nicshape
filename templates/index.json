@@ -407,7 +407,7 @@
         "b1": {
           "type": "benefit",
           "settings": {
-            "icon": "truck",
+            "icon": "box",
             "title": "Free shipping",
             "text": ""
           }
@@ -415,23 +415,23 @@
         "b2": {
           "type": "benefit",
           "settings": {
-            "icon": "return",
-            "title": "Easy returns",
+            "icon": "refresh",
+            "title": "Hassle-free return",
             "text": ""
           }
         },
         "b3": {
           "type": "benefit",
           "settings": {
-            "icon": "swap",
-            "title": "Free size exchange",
+            "icon": "resize",
+            "title": "Free size change",
             "text": ""
           }
         },
         "b4": {
           "type": "benefit",
           "settings": {
-            "icon": "lock",
+            "icon": "card",
             "title": "Secure payments",
             "text": ""
           }

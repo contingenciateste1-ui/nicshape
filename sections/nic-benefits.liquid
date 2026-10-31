@@ -1,28 +1,53 @@
-{% render 'nic-button-styles' %}
-
 <section
   class="nic-benefits"
-  style="--ben-bg: {{ section.settings.bg_color }}; --ben-fg: {{ section.settings.text_color }}; --ben-accent: {{ section.settings.accent_color }};"
+  style="
+    --ben-bg: {{ section.settings.bg_color }};
+    --ben-card: {{ section.settings.card_bg }};
+    --ben-fg: {{ section.settings.text_color }};
+    --ben-accent: {{ section.settings.accent_color }};
+    --ben-radius: {{ section.settings.card_radius }}px;
+    --ben-gap: {{ section.settings.gap }}px;
+    --ben-h-d: {{ section.settings.card_height_desktop }}px;
+    --ben-h-m: {{ section.settings.card_height_mobile }}px;
+    --ben-icon: {{ section.settings.icon_size }}px;
+    --ben-title: {{ section.settings.title_size }}px;
+    --ben-weight: {{ section.settings.title_weight }};
+    --ben-cols-m: {{ section.settings.columns_mobile }};
+    --ben-pt-d: {{ section.settings.padding_top_desktop }}px;
+    --ben-pb-d: {{ section.settings.padding_bottom_desktop }}px;
+    --ben-pt-m: {{ section.settings.padding_top_mobile }}px;
+    --ben-pb-m: {{ section.settings.padding_bottom_mobile }}px;
+  "
 >
   <ul class="nic-benefits__list">
     {%- for block in section.blocks -%}
       <li class="nic-benefit" {{ block.shopify_attributes }}>
-        <svg class="nic-benefit__icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          {%- case block.settings.icon -%}
-            {%- when 'truck' -%}
-              <path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>
-            {%- when 'return' -%}
-              <path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v4h4"/>
-            {%- when 'swap' -%}
-              <path d="M5 8h13l-3-3"/><path d="M19 16H6l3 3"/>
-            {%- when 'lock' -%}
-              <rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>
-            {%- when 'heart' -%}
-              <path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>
-            {%- when 'star' -%}
-              <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>
-          {%- endcase -%}
-        </svg>
+        {%- if block.settings.icon != 'none' -%}
+          <svg class="nic-benefit__icon" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            {%- case block.settings.icon -%}
+              {%- when 'box' -%}
+                <path d="M12 2.8l8 4.2v10l-8 4.2-8-4.2V7z"/><path d="M4 7l8 4.2L20 7"/><path d="M12 11.2v10"/><path d="M8 4.9l8 4.2v3"/>
+              {%- when 'refresh' -%}
+                <path d="M20 11a8 8 0 0 0-14.3-4.2L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.3 4.2L20 15"/><path d="M20 20v-5h-5"/>
+              {%- when 'resize' -%}
+                <path d="M14 4h6v6"/><path d="M20 4l-7 7"/><path d="M10 20H4v-6"/><path d="M4 20l7-7"/>
+              {%- when 'card' -%}
+                <rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18"/><path d="M7 15h3"/>
+              {%- when 'truck' -%}
+                <path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>
+              {%- when 'return' -%}
+                <path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v4h4"/>
+              {%- when 'swap' -%}
+                <path d="M5 8h13l-3-3"/><path d="M19 16H6l3 3"/>
+              {%- when 'lock' -%}
+                <rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+              {%- when 'heart' -%}
+                <path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>
+              {%- when 'star' -%}
+                <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>
+            {%- endcase -%}
+          </svg>
+        {%- endif -%}
         <span class="nic-benefit__title">{{ block.settings.title }}</span>
         {%- if block.settings.text != blank -%}
           <span class="nic-benefit__text">{{ block.settings.text }}</span>
@@ -34,7 +59,7 @@
 
 {% stylesheet %}
   .nic-benefits {
-    padding: 28px 16px;
+    padding: var(--ben-pt-m) 16px var(--ben-pb-m);
     background: var(--ben-bg);
     color: var(--ben-fg);
     font-family: var(--font-body--family);
@@ -42,9 +67,9 @@
 
   .nic-benefits__list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px 12px;
-    max-width: 1100px;
+    grid-template-columns: repeat(var(--ben-cols-m), minmax(0, 1fr));
+    gap: calc(var(--ben-gap) / 2);
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0;
     list-style: none;
@@ -54,27 +79,44 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 12px;
+    min-height: var(--ben-h-m);
+    padding: 16px 12px;
+    border-radius: var(--ben-radius);
+    background: var(--ben-card);
     text-align: center;
   }
 
   .nic-benefit__icon {
+    width: var(--ben-icon);
+    height: var(--ben-icon);
     color: var(--ben-accent);
   }
 
   .nic-benefit__title {
-    font-size: 0.875rem;
-    font-weight: 700;
+    font-size: var(--ben-title);
+    font-weight: var(--ben-weight);
+    line-height: 1.3;
   }
 
   .nic-benefit__text {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     opacity: 0.7;
   }
 
   @media screen and (min-width: 750px) {
+    .nic-benefits {
+      padding: var(--ben-pt-d) 32px var(--ben-pb-d);
+    }
+
     .nic-benefits__list {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--ben-gap);
+    }
+
+    .nic-benefit {
+      min-height: var(--ben-h-d);
     }
   }
 {% endstylesheet %}
@@ -83,11 +125,46 @@
 {
   "name": "Nicshape benefits",
   "tag": "section",
-  "max_blocks": 6,
+  "max_blocks": 8,
   "settings": [
+    { "type": "header", "content": "Cards" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#f6f6f6" },
+    { "type": "range", "id": "card_radius", "label": "Corner roundness", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_height_desktop", "label": "Card height (desktop)", "min": 80, "max": 320, "step": 10, "unit": "px", "default": 160 },
+    { "type": "range", "id": "card_height_mobile", "label": "Card height (mobile)", "min": 80, "max": 240, "step": 10, "unit": "px", "default": 130 },
+    { "type": "range", "id": "gap", "label": "Gap between cards", "min": 8, "max": 60, "step": 2, "unit": "px", "default": 34 },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns (mobile)",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "2"
+    },
+    { "type": "header", "content": "Icon and text" },
+    { "type": "range", "id": "icon_size", "label": "Icon size", "min": 20, "max": 72, "step": 2, "unit": "px", "default": 36 },
+    { "type": "color", "id": "accent_color", "label": "Icon color", "default": "#111111" },
+    { "type": "range", "id": "title_size", "label": "Title size", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 17 },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "500"
+    },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#111111" },
+    { "type": "header", "content": "Section" },
     { "type": "color", "id": "bg_color", "label": "Background", "default": "#ffffff" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#2b2224" },
-    { "type": "color", "id": "accent_color", "label": "Icon color", "default": "#c98e86" }
+    { "type": "range", "id": "padding_top_desktop", "label": "Space above (desktop)", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 32 },
+    { "type": "range", "id": "padding_bottom_desktop", "label": "Space below (desktop)", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 32 },
+    { "type": "range", "id": "padding_top_mobile", "label": "Space above (mobile)", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 24 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Space below (mobile)", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 24 }
   ],
   "blocks": [
     {
@@ -99,14 +176,19 @@
           "id": "icon",
           "label": "Icon",
           "options": [
-            { "value": "truck", "label": "Delivery" },
-            { "value": "return", "label": "Returns" },
+            { "value": "box", "label": "Package" },
+            { "value": "refresh", "label": "Return (arrows)" },
+            { "value": "resize", "label": "Size change" },
+            { "value": "card", "label": "Payment card" },
+            { "value": "truck", "label": "Delivery truck" },
+            { "value": "return", "label": "Return (circle)" },
             { "value": "swap", "label": "Exchange" },
-            { "value": "lock", "label": "Secure payment" },
+            { "value": "lock", "label": "Secure lock" },
             { "value": "heart", "label": "Heart" },
-            { "value": "star", "label": "Star" }
+            { "value": "star", "label": "Star" },
+            { "value": "none", "label": "No icon" }
           ],
-          "default": "truck"
+          "default": "box"
         },
         { "type": "text", "id": "title", "label": "Title", "default": "Free shipping" },
         { "type": "text", "id": "text", "label": "Text (optional)" }
@@ -117,10 +199,10 @@
     {
       "name": "Nicshape benefits",
       "blocks": [
-        { "type": "benefit", "settings": { "icon": "truck", "title": "Free shipping" } },
-        { "type": "benefit", "settings": { "icon": "return", "title": "Easy returns" } },
-        { "type": "benefit", "settings": { "icon": "swap", "title": "Free size exchange" } },
-        { "type": "benefit", "settings": { "icon": "lock", "title": "Secure payments" } }
+        { "type": "benefit", "settings": { "icon": "box", "title": "Free shipping" } },
+        { "type": "benefit", "settings": { "icon": "refresh", "title": "Hassle-free return" } },
+        { "type": "benefit", "settings": { "icon": "resize", "title": "Free size change" } },
+        { "type": "benefit", "settings": { "icon": "card", "title": "Secure payments" } }
       ]
     }
   ]
