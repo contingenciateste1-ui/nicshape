@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "type": "header",
   "name": "t:names.header",
   "sections": {
@@ -33,7 +34,12 @@
       "settings": {
         "headline": "Autumn Sale",
         "subline": "Buy 2 · Get 1 free",
+        "link": "",
         "countdown_end": "",
+        "label_days": "Days",
+        "label_hours": "Hrs",
+        "label_minutes": "Min",
+        "label_seconds": "Sec",
         "bg_color": "#1e1819",
         "text_color": "#ffffff",
         "accent_color": "#e3a89f"
@@ -57,7 +63,9 @@
           "static": true,
           "settings": {
             "menu": "main-menu",
-            "type_font_primary_size": "0.75rem",
+            "background_color": "{{ settings.color_palette.background }}",
+            "text_color": "",
+            "type_font_primary_size": "1rem",
             "menu_font_style": "inverse",
             "type_font_primary_link": "subheading",
             "type_case_primary_link": "uppercase",
@@ -66,6 +74,8 @@
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
             "navigation_bar": false,
+            "background_color_navigation_bar": "{{ settings.color_palette.background }}",
+            "text_color_navigation_bar": "",
             "drawer_accordion": false,
             "drawer_accordion_expand_first": false,
             "drawer_dividers": false
@@ -77,6 +87,7 @@
         "logo_position": "center",
         "menu_position": "center",
         "menu_row": "bottom",
+        "customer_account_menu": "customer-account-main-menu",
         "show_search": false,
         "search_position": "right",
         "search_row": "top",
@@ -92,12 +103,29 @@
         "enable_sticky_header": "always",
         "divider_width": 0,
         "divider_size": "page-width",
+        "divider_color": "",
         "border_width": 0,
+        "bottom_border_color": "",
+        "actions_display_style": "icon",
+        "actions_font_size": "0.875rem",
+        "actions_font": "body",
+        "actions_text_case": "none",
         "background_color_top": "{{ settings.color_palette.background }}",
+        "text_color_top": "",
+        "background_color_bottom": "",
+        "text_color_bottom": "",
+        "bubble_style": "default",
+        "bubble_background_color": "",
+        "bubble_text_color": "",
         "enable_transparent_header_home": false,
+        "home_inverse_logo": false,
+        "text_color_transparent_home": "",
         "enable_transparent_header_product": false,
+        "product_inverse_logo": false,
+        "text_color_transparent_product": "",
         "enable_transparent_header_collection": false,
-        "actions_display_style": "icon"
+        "collection_inverse_logo": false,
+        "text_color_transparent_collection": ""
       }
     }
   },
