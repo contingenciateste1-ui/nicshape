@@ -1,12 +1,25 @@
 {% render 'nic-button-styles' %}
 
+{%- liquid
+  assign alt_text = section.settings.heading | strip_html | strip
+  assign overlay_alpha = section.settings.overlay_opacity | divided_by: 100.0
+-%}
+
 <section
-  class="nic-hero nic-hero--{{ section.settings.image_side }}"
+  class="nic-hero nic-hero--{{ section.settings.content_side }}"
   style="
     --hero-bg: {{ section.settings.bg_color }};
     --hero-fg: {{ section.settings.text_color }};
     --hero-accent: {{ section.settings.accent_color }};
     --hero-min-h: {{ section.settings.min_height }}px;
+    --hero-content-w: {{ section.settings.content_width }}%;
+    --hero-eyebrow-d: {{ section.settings.desktop_eyebrow_color }};
+    --hero-heading-d: {{ section.settings.desktop_heading_color }};
+    --hero-highlight-d: {{ section.settings.desktop_highlight_color }};
+    --hero-text-d: {{ section.settings.desktop_text_color }};
+    --hero-btn-bg-d: {{ section.settings.desktop_button_bg }};
+    --hero-btn-fg-d: {{ section.settings.desktop_button_fg }};
+    --hero-shade: {{ overlay_alpha }};
   "
 >
   <div class="nic-hero__media">
@@ -17,17 +30,21 @@
         {%- endif -%}
         {{
           section.settings.image
-          | image_url: width: 1800
+          | image_url: width: 2400
           | image_tag:
             class: 'nic-hero__img',
             loading: 'eager',
             fetchpriority: 'high',
-            widths: '600, 900, 1200, 1800',
-            sizes: '(min-width: 750px) 55vw, 100vw'
+            widths: '750, 1100, 1500, 2000, 2400',
+            sizes: '(min-width: 750px) 100vw, 100vw',
+            alt: alt_text
         }}
       </picture>
     {%- else -%}
       {{ 'lifestyle-1' | placeholder_svg_tag: 'nic-hero__img nic-placeholder' }}
+    {%- endif -%}
+    {%- if section.settings.overlay -%}
+      <span class="nic-hero__shade" aria-hidden="true"></span>
     {%- endif -%}
   </div>
 
@@ -43,18 +60,28 @@
     {%- endif -%}
     {%- if section.settings.button_label != blank -%}
       <a
-        class="nic-btn"
-        style="--nic-btn-bg: {{ section.settings.accent_color }}; --nic-btn-fg: {{ section.settings.bg_color }};"
+        class="nic-btn nic-hero__btn"
         href="{{ section.settings.button_link | default: routes.all_products_collection_url }}"
       >
         {{- section.settings.button_label -}}
       </a>
     {%- endif -%}
+    {%- if section.settings.show_rating and section.settings.rating_text != blank -%}
+      <div class="nic-hero__rating">
+        <span class="nic-hero__rating-stars" aria-hidden="true">★★★★★</span>
+        <span class="nic-hero__rating-text">{{ section.settings.rating_text }}</span>
+      </div>
+    {%- endif -%}
   </div>
+
+  {%- if section.settings.badge_text != blank -%}
+    <span class="nic-hero__badge">{{ section.settings.badge_text }}</span>
+  {%- endif -%}
 </section>
 
 {% stylesheet %}
   .nic-hero {
+    position: relative;
     display: grid;
     background: var(--hero-bg);
     color: var(--hero-fg);
@@ -72,6 +99,12 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .nic-hero__shade {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / calc(var(--hero-shade) * 1));
   }
 
   .nic-hero__content {
@@ -115,23 +148,125 @@
     opacity: 0.9;
   }
 
+  .nic-hero__btn {
+    --nic-btn-bg: var(--hero-accent);
+    --nic-btn-fg: var(--hero-bg);
+  }
+
+  .nic-hero__rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8125rem;
+    opacity: 0.9;
+  }
+
+  .nic-hero__rating-stars {
+    font-size: 1.125rem;
+    letter-spacing: 3px;
+  }
+
+  .nic-hero__badge {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    padding: 8px;
+    border-radius: 50%;
+    background: #fff;
+    color: #2b2224;
+    font-size: 0.8125rem;
+    font-weight: 800;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  /* Desktop: image fills the whole section, text sits on top of the photo */
   @media screen and (min-width: 750px) {
     .nic-hero {
-      grid-template-columns: 1.15fr 1fr;
+      display: flex;
+      align-items: center;
       min-height: var(--hero-min-h);
+      background: transparent;
     }
 
-    .nic-hero--right .nic-hero__media {
-      order: 2;
+    .nic-hero--right {
+      justify-content: flex-end;
+    }
+
+    .nic-hero--left {
+      justify-content: flex-start;
+    }
+
+    .nic-hero--center {
+      justify-content: center;
     }
 
     .nic-hero__media {
+      position: absolute;
+      inset: 0;
       aspect-ratio: auto;
     }
 
     .nic-hero__content {
-      justify-content: center;
-      padding: 64px clamp(32px, 5vw, 88px);
+      position: relative;
+      z-index: 2;
+      align-items: flex-start;
+      width: var(--hero-content-w);
+      min-width: 360px;
+      padding: 56px clamp(32px, 5vw, 96px);
+      text-align: left;
+    }
+
+    .nic-hero--center .nic-hero__content {
+      align-items: center;
+      text-align: center;
+    }
+
+    .nic-hero__eyebrow {
+      color: var(--hero-eyebrow-d);
+    }
+
+    .nic-hero__heading {
+      color: var(--hero-heading-d);
+    }
+
+    .nic-hero__heading strong,
+    .nic-hero__heading b {
+      color: var(--hero-highlight-d);
+    }
+
+    .nic-hero__text {
+      color: var(--hero-text-d);
+      opacity: 1;
+    }
+
+    .nic-hero__btn {
+      --nic-btn-bg: var(--hero-btn-bg-d);
+      --nic-btn-fg: var(--hero-btn-fg-d);
+    }
+
+    .nic-hero__rating {
+      align-items: flex-start;
+      color: var(--hero-text-d);
+      opacity: 1;
+    }
+
+    .nic-hero--center .nic-hero__rating {
+      align-items: center;
+    }
+
+    .nic-hero__badge {
+      bottom: 24px;
+      left: 24px;
+      width: 96px;
+      height: 96px;
     }
   }
 {% endstylesheet %}
@@ -142,38 +277,58 @@
   "tag": "section",
   "settings": [
     { "type": "header", "content": "Images" },
-    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Fills the whole banner on desktop. Keep the area behind the text empty. Recommended 2400 × 1000 px." },
     {
       "type": "image_picker",
       "id": "image_mobile",
       "label": "Mobile image (optional)",
-      "info": "Recommended 4:5 ratio."
+      "info": "Shown above the text panel on phones. Recommended 4:5 ratio."
     },
+    { "type": "range", "id": "min_height", "label": "Height (desktop)", "min": 420, "max": 900, "step": 20, "unit": "px", "default": 680 },
+    { "type": "checkbox", "id": "overlay", "label": "Darken the image (desktop)", "default": false },
+    { "type": "range", "id": "overlay_opacity", "label": "Darkening amount", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 25 },
+    { "type": "header", "content": "Text position (desktop)" },
     {
       "type": "select",
-      "id": "image_side",
-      "label": "Image position (desktop)",
+      "id": "content_side",
+      "label": "Text side",
       "options": [
         { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
         { "value": "right", "label": "Right" }
       ],
-      "default": "left"
+      "default": "right"
     },
-    { "type": "range", "id": "min_height", "label": "Min height (desktop)", "min": 420, "max": 900, "step": 20, "unit": "px", "default": 680 },
+    { "type": "range", "id": "content_width", "label": "Text column width", "min": 30, "max": 60, "step": 5, "unit": "%", "default": 40 },
     { "type": "header", "content": "Content" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "New season" },
     {
       "type": "inline_richtext",
       "id": "heading",
       "label": "Heading",
-      "info": "Use bold to highlight words with the accent color.",
+      "info": "Use bold to highlight words with the highlight color.",
       "default": "Buy <strong>2</strong> get <strong>1</strong> free"
     },
     { "type": "text", "id": "text", "label": "Text", "default": "Shapewear and bras that hold you in but feel like nothing." },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop the sale" },
     { "type": "url", "id": "button_link", "label": "Button link" },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "bg_color", "label": "Background", "default": "#1e1819" },
+    { "type": "text", "id": "badge_text", "label": "Round badge on the image (optional)", "info": "Example: 1 pair free" },
+    { "type": "checkbox", "id": "show_rating", "label": "Show stars and rating line", "default": false },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating line",
+      "info": "Only write numbers that match your real review data."
+    },
+    { "type": "header", "content": "Colors on desktop (text over the image)" },
+    { "type": "color", "id": "desktop_eyebrow_color", "label": "Eyebrow", "default": "#141414" },
+    { "type": "color", "id": "desktop_heading_color", "label": "Heading", "default": "#fff6ee" },
+    { "type": "color", "id": "desktop_highlight_color", "label": "Highlighted words", "default": "#141414" },
+    { "type": "color", "id": "desktop_text_color", "label": "Text", "default": "#141414" },
+    { "type": "color", "id": "desktop_button_bg", "label": "Button background", "default": "#141414" },
+    { "type": "color", "id": "desktop_button_fg", "label": "Button text", "default": "#ffffff" },
+    { "type": "header", "content": "Colors on mobile (panel under the image)" },
+    { "type": "color", "id": "bg_color", "label": "Panel background", "default": "#1e1819" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#fff6ee" },
     { "type": "color", "id": "accent_color", "label": "Accent", "default": "#e3a89f" }
   ],

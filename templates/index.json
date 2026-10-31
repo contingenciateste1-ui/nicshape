@@ -15,11 +15,9 @@
         "heading": "Buy <strong>2</strong> get <strong>1</strong> free",
         "text": "Shapewear and bras that hold you in but feel like nothing.",
         "button_label": "Shop the sale",
-        "image_side": "left",
         "min_height": 680,
-        "bg_color": "#1e1819",
-        "text_color": "#fff6ee",
-        "accent_color": "#e3a89f"
+        "content_side": "right",
+        "content_width": 40
       }
     },
     "nic_collection_strip": {
