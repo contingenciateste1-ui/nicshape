@@ -1,5 +1,3 @@
-{% render 'nic-button-styles' %}
-
 {%- liquid
   assign tab_list = ''
   for block in section.blocks
@@ -13,23 +11,64 @@
   endfor
   assign tabs = tab_list | split: '||'
   assign first_tab = tabs | first | handleize
+  assign use_tabs = false
+  if tabs.size > 0 and section.settings.show_tabs
+    assign use_tabs = true
+  endif
   assign has_summary = false
-  if section.settings.rating_label != blank or section.settings.count_label != blank
-    assign has_summary = true
+  if section.settings.show_summary
+    if section.settings.rating_label != blank or section.settings.count_label != blank or section.settings.show_stars
+      assign has_summary = true
+    endif
   endif
 -%}
 
 {%- comment -%}nic-hide-empty{%- endcomment -%}
 {%- if section.blocks.size > 0 or request.design_mode -%}
   <section
-    class="nic-reviews"
+    class="nic-reviews nic-reviews--{{ section.settings.card_align }}{% if section.settings.card_shadow %} nic-reviews--shadow{% endif %}"
     id="nic-reviews-{{ section.id }}"
     style="
       --rev-bg: {{ section.settings.bg_color }};
-      --rev-fg: {{ section.settings.text_color }};
+      --rev-pt-d: {{ section.settings.padding_top_desktop }}px;
+      --rev-pb-d: {{ section.settings.padding_bottom_desktop }}px;
+      --rev-pt-m: {{ section.settings.padding_top_mobile }}px;
+      --rev-pb-m: {{ section.settings.padding_bottom_mobile }}px;
+      --rev-sum-size: {{ section.settings.summary_size }}px;
+      --rev-sum-color: {{ section.settings.summary_color }};
+      --rev-h-size: {{ section.settings.heading_size }}px;
+      --rev-h-weight: {{ section.settings.heading_weight }};
+      --rev-h-color: {{ section.settings.heading_color }};
+      --rev-h-align: {{ section.settings.heading_align }};
+      --rev-tab-size: {{ section.settings.tab_font_size }}px;
+      --rev-tab-radius: {{ section.settings.tab_radius }}px;
+      --rev-tab-border: {{ section.settings.tab_border_color }};
+      --rev-tab-text: {{ section.settings.tab_text_color }};
+      --rev-tab-active-bg: {{ section.settings.tab_active_bg }};
+      --rev-tab-active-text: {{ section.settings.tab_active_text }};
+      --rev-tab-justify: {{ section.settings.tab_align }};
+      --rev-cols: {{ section.settings.cards_desktop }};
+      --rev-card-w-m: {{ section.settings.card_width_mobile }}vw;
+      --rev-card-bg: {{ section.settings.card_bg }};
+      --rev-card-radius: {{ section.settings.card_radius }}px;
+      --rev-card-pad: {{ section.settings.card_padding }}px;
+      --rev-card-gap: {{ section.settings.card_gap }}px;
+      --rev-card-min-h: {{ section.settings.card_min_height }}px;
+      --rev-card-bw: {{ section.settings.card_border_width }}px;
+      --rev-card-bc: {{ section.settings.card_border_color }};
+      --rev-name-size: {{ section.settings.name_size }}px;
+      --rev-name-weight: {{ section.settings.name_weight }};
+      --rev-name-color: {{ section.settings.name_color }};
+      --rev-badge-bg: {{ section.settings.badge_bg }};
+      --rev-badge-text: {{ section.settings.badge_text }};
+      --rev-badge-size: {{ section.settings.badge_size }}px;
       --rev-star: {{ section.settings.star_color }};
-      --rev-card: {{ section.settings.card_color }};
-      --rev-tab-active: {{ section.settings.tab_active_color }};
+      --rev-star-off: {{ section.settings.star_empty_color }};
+      --rev-star-size: {{ section.settings.star_size }}px;
+      --rev-text-size: {{ section.settings.text_size }}px;
+      --rev-text-color: {{ section.settings.text_color }};
+      --rev-text-lh: {{ section.settings.text_line_height }};
+      --rev-meta-color: {{ section.settings.meta_color }};
     "
   >
     {%- if has_summary -%}
@@ -38,7 +77,7 @@
           <span>{{ section.settings.rating_label }}</span>
         {%- endif -%}
         {%- if section.settings.show_stars -%}
-          <span class="nic-reviews__stars" aria-hidden="true">★★★★★</span>
+          <span class="nic-reviews__summary-stars" aria-hidden="true">★★★★★</span>
         {%- endif -%}
         {%- if section.settings.count_label != blank -%}
           <span>{{ section.settings.count_label }}</span>
@@ -51,10 +90,10 @@
     {%- endif -%}
 
     {%- if request.design_mode and section.blocks.size == 0 -%}
-      <p class="nic-reviews__empty">Add “Review” blocks with real customer reviews. Use the same “Tab” text to group reviews by product.</p>
+      <p class="nic-reviews__empty">Add “Review” blocks with real customer reviews. Use the same “Tab” text on reviews to group them under one tab (for example, a product name).</p>
     {%- endif -%}
 
-    {%- if tabs.size > 0 -%}
+    {%- if use_tabs -%}
       <div class="nic-reviews__tabs" role="tablist">
         {%- for tab in tabs -%}
           {%- assign tab_handle = tab | handleize -%}
@@ -71,41 +110,102 @@
       </div>
     {%- endif -%}
 
-    <div class="nic-reviews__track">
+    <div class="nic-reviews__track" data-nic-track>
       {%- for block in section.blocks -%}
         {%- assign stars = block.settings.rating | plus: 0 -%}
         {%- assign card_tab = block.settings.tab | strip | handleize -%}
+        {%- assign badge_label = block.settings.verified_label | default: section.settings.verified_label -%}
         <article
-          class="nic-review{% if tabs.size > 0 and card_tab != first_tab %} is-hidden{% endif %}"
+          class="nic-review{% if use_tabs and card_tab != first_tab %} is-hidden{% endif %}"
           data-tab="{{ card_tab }}"
+          {% if block.settings.card_bg != blank or block.settings.card_text != blank %}
+            style="
+              {% if block.settings.card_bg != blank %}--rev-card-bg: {{ block.settings.card_bg }};{% endif %}
+              {% if block.settings.card_text != blank %}--rev-text-color: {{ block.settings.card_text }}; --rev-name-color: {{ block.settings.card_text }};{% endif %}
+            "
+          {% endif %}
           {{ block.shopify_attributes }}
         >
+          {%- if block.settings.image != blank -%}
+            <div class="nic-review__photo">
+              {{
+                block.settings.image
+                | image_url: width: 700
+                | image_tag: loading: 'lazy', widths: '300, 450, 700', sizes: '(min-width: 750px) 30vw, 84vw', alt: block.settings.name
+              }}
+            </div>
+          {%- endif -%}
+
           <div class="nic-review__head">
-            <span class="nic-review__name">{{ block.settings.name }}</span>
-            {%- if block.settings.verified -%}
+            {%- if block.settings.name != blank -%}
+              <span class="nic-review__name">{{ block.settings.name }}</span>
+            {%- endif -%}
+            {%- if block.settings.show_verified and badge_label != blank -%}
               <span class="nic-review__verified">
-                <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M5.5 10.4l3 3 6-6.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Verified Buyer
+                {%- if section.settings.badge_icon -%}
+                  <svg viewBox="0 0 20 20" width="1.1em" height="1.1em" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M5.5 10.4l3 3 6-6.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {%- endif -%}
+                {{ badge_label }}
               </span>
             {%- endif -%}
           </div>
-          <div class="nic-review__stars" role="img" aria-label="{{ stars }} / 5">
-            {%- for i in (1..5) -%}<span class="{% if i > stars %}is-off{% endif %}">★</span>{%- endfor -%}
-          </div>
-          <p class="nic-review__text">{{ block.settings.text }}</p>
+
+          {%- if section.settings.show_stars_on_cards -%}
+            <div class="nic-review__stars" role="img" aria-label="{{ stars }} / 5">
+              {%- for i in (1..5) -%}<span class="{% if i > stars %}is-off{% endif %}">★</span>{%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.title != blank -%}
+            <p class="nic-review__title">{{ block.settings.title }}</p>
+          {%- endif -%}
+
+          {%- if block.settings.text != blank -%}
+            <p class="nic-review__text">{{ block.settings.text }}</p>
+          {%- endif -%}
+
+          {%- if block.settings.date != blank or block.settings.product_name != blank -%}
+            <p class="nic-review__meta">
+              {%- if block.settings.date != blank -%}<span>{{ block.settings.date }}</span>{%- endif -%}
+              {%- if block.settings.product_name != blank -%}
+                {%- if block.settings.product_link != blank -%}
+                  <a href="{{ block.settings.product_link }}">{{ block.settings.product_name }}</a>
+                {%- else -%}
+                  <span>{{ block.settings.product_name }}</span>
+                {%- endif -%}
+              {%- endif -%}
+            </p>
+          {%- endif -%}
         </article>
       {%- endfor -%}
     </div>
+
+    {%- if section.settings.show_arrows -%}
+      <div class="nic-reviews__arrows" data-nic-arrows hidden>
+        <button class="nic-reviews__arrow" type="button" data-nic-prev aria-label="Previous">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <button class="nic-reviews__arrow" type="button" data-nic-next aria-label="Next">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    {%- endif -%}
   </section>
 
   <script>
     (function () {
       var root = document.getElementById('nic-reviews-{{ section.id }}');
       if (!root) return;
+      var track = root.querySelector('[data-nic-track]');
       var tabs = root.querySelectorAll('.nic-reviews__tab');
-      if (!tabs.length) return;
       var cards = root.querySelectorAll('.nic-review');
-      var track = root.querySelector('.nic-reviews__track');
+      var arrows = root.querySelector('[data-nic-arrows]');
+
+      function updateArrows() {
+        if (!arrows || !track) return;
+        arrows.hidden = !(track.scrollWidth > track.clientWidth + 4);
+      }
+
       tabs.forEach(function (tab) {
         tab.addEventListener('click', function () {
           var key = tab.getAttribute('data-tab');
@@ -118,17 +218,32 @@
             c.classList.toggle('is-hidden', c.getAttribute('data-tab') !== key);
           });
           if (track) track.scrollLeft = 0;
+          updateArrows();
         });
       });
+
+      if (arrows && track) {
+        var prev = arrows.querySelector('[data-nic-prev]');
+        var next = arrows.querySelector('[data-nic-next]');
+        prev.addEventListener('click', function () {
+          track.scrollBy({ left: -track.clientWidth * 0.9, behavior: 'smooth' });
+        });
+        next.addEventListener('click', function () {
+          track.scrollBy({ left: track.clientWidth * 0.9, behavior: 'smooth' });
+        });
+        window.addEventListener('resize', updateArrows);
+        updateArrows();
+      }
     })();
   </script>
 {%- endif -%}
 
 {% stylesheet %}
   .nic-reviews {
-    padding: 48px 0 56px;
+    padding-top: var(--rev-pt-m);
+    padding-bottom: var(--rev-pb-m);
     background: var(--rev-bg);
-    color: var(--rev-fg);
+    color: var(--rev-text-color);
     font-family: var(--font-body--family);
   }
 
@@ -138,26 +253,27 @@
     align-items: center;
     justify-content: center;
     gap: 6px 10px;
-    margin: 0 0 12px;
+    margin: 0 0 14px;
     padding-inline: 16px;
-    color: #666;
-    font-size: 0.9375rem;
+    color: var(--rev-sum-color);
+    font-size: var(--rev-sum-size);
     text-align: center;
   }
 
-  .nic-reviews__stars {
+  .nic-reviews__summary-stars {
     color: var(--rev-star);
     letter-spacing: 2px;
   }
 
   .nic-reviews__heading {
-    margin: 0 0 28px;
+    margin: 0 0 32px;
     padding-inline: 16px;
+    color: var(--rev-h-color);
     font-family: var(--font-heading--family);
-    font-size: clamp(1.625rem, 1.2rem + 1.8vw, 2.75rem);
-    font-weight: 700;
+    font-size: min(var(--rev-h-size), 7.5vw);
+    font-weight: var(--rev-h-weight);
     line-height: 1.15;
-    text-align: center;
+    text-align: var(--rev-h-align);
   }
 
   .nic-reviews__empty {
@@ -170,7 +286,8 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 10px;
-    margin: 0 auto 32px;
+    justify-content: flex-start;
+    margin: 0 0 28px;
     padding: 0 16px 4px;
     overflow-x: auto;
     scrollbar-width: none;
@@ -182,35 +299,37 @@
 
   .nic-reviews__tab {
     flex: 0 0 auto;
-    padding: 12px 24px;
-    border: 1px solid #e3e0de;
-    border-radius: 999px;
+    padding: 0.85em 1.7em;
+    border: 1px solid var(--rev-tab-border);
+    border-radius: var(--rev-tab-radius);
     background: transparent;
-    color: inherit;
+    color: var(--rev-tab-text);
     font-family: inherit;
-    font-size: 0.9375rem;
+    font-size: var(--rev-tab-size);
     font-weight: 700;
     line-height: 1.1;
     cursor: pointer;
     transition:
       background-color 0.2s ease,
-      color 0.2s ease;
+      color 0.2s ease,
+      border-color 0.2s ease;
   }
 
   .nic-reviews__tab.is-active {
-    border-color: var(--rev-tab-active);
-    background: var(--rev-tab-active);
-    color: #fff;
+    border-color: var(--rev-tab-active-bg);
+    background: var(--rev-tab-active-bg);
+    color: var(--rev-tab-active-text);
   }
 
-  .nic-reviews__tab:focus-visible {
+  .nic-reviews__tab:focus-visible,
+  .nic-reviews__arrow:focus-visible {
     outline: 2px solid currentcolor;
     outline-offset: 3px;
   }
 
   .nic-reviews__track {
     display: flex;
-    gap: 14px;
+    gap: var(--rev-card-gap);
     padding: 4px 16px 8px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -223,20 +342,46 @@
 
   .nic-review {
     display: flex;
-    flex: 0 0 min(84vw, 340px);
+    flex: 0 0 var(--rev-card-w-m);
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    min-height: 260px;
-    padding: 28px 22px;
-    border-radius: 22px;
-    background: var(--rev-card);
+    min-height: var(--rev-card-min-h);
+    padding: var(--rev-card-pad);
+    overflow: hidden;
+    border: var(--rev-card-bw) solid var(--rev-card-bc);
+    border-radius: var(--rev-card-radius);
+    background: var(--rev-card-bg);
+    color: var(--rev-text-color);
     text-align: center;
     scroll-snap-align: start;
   }
 
+  .nic-reviews--left .nic-review {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .nic-reviews--shadow .nic-review {
+    box-shadow: 0 6px 24px rgb(0 0 0 / 8%);
+  }
+
   .nic-review.is-hidden {
     display: none;
+  }
+
+  .nic-review__photo {
+    width: calc(100% + var(--rev-card-pad) * 2);
+    margin: calc(var(--rev-card-pad) * -1) calc(var(--rev-card-pad) * -1) 4px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .nic-review__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .nic-review__head {
@@ -247,65 +392,128 @@
     gap: 8px 10px;
   }
 
+  .nic-reviews--left .nic-review__head {
+    justify-content: flex-start;
+  }
+
   .nic-review__name {
-    font-size: 1.0625rem;
-    font-weight: 700;
+    color: var(--rev-name-color);
+    font-size: var(--rev-name-size);
+    font-weight: var(--rev-name-weight);
   }
 
   .nic-review__verified {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 4px 12px 4px 8px;
+    gap: 0.35em;
+    padding: 0.3em 0.9em 0.3em 0.6em;
     border-radius: 999px;
-    background: #e6f1e2;
-    color: #2e7a3d;
-    font-size: 0.8125rem;
+    background: var(--rev-badge-bg);
+    color: var(--rev-badge-text);
+    font-size: var(--rev-badge-size);
     font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .nic-review__verified:not(:has(svg)) {
+    padding-left: 0.9em;
   }
 
   .nic-review__stars {
     color: var(--rev-star);
-    font-size: 1.125rem;
-    letter-spacing: 3px;
+    font-size: var(--rev-star-size);
+    letter-spacing: 0.15em;
+    line-height: 1;
   }
 
   .nic-review__stars .is-off {
-    color: #ddd0ca;
+    color: var(--rev-star-off);
+  }
+
+  .nic-review__title {
+    margin: 0;
+    color: var(--rev-name-color);
+    font-size: var(--rev-text-size);
+    font-weight: 700;
+    line-height: 1.35;
   }
 
   .nic-review__text {
     margin: 0;
-    font-size: 1rem;
-    line-height: 1.6;
+    color: var(--rev-text-color);
+    font-size: var(--rev-text-size);
+    line-height: var(--rev-text-lh);
+  }
+
+  .nic-review__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    justify-content: center;
+    margin: auto 0 0;
+    color: var(--rev-meta-color);
+    font-size: 0.8125rem;
+  }
+
+  .nic-reviews--left .nic-review__meta {
+    justify-content: flex-start;
+  }
+
+  .nic-review__meta a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .nic-reviews__arrows {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .nic-reviews__arrows[hidden] {
+    display: none;
+  }
+
+  .nic-reviews__arrow {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid var(--rev-tab-border);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--rev-tab-text);
+    cursor: pointer;
   }
 
   @media screen and (min-width: 750px) {
     .nic-reviews {
-      padding: 64px 0 72px;
+      padding-top: var(--rev-pt-d);
+      padding-bottom: var(--rev-pb-d);
+    }
+
+    .nic-reviews__heading {
+      font-size: var(--rev-h-size);
     }
 
     .nic-reviews__tabs {
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: var(--rev-tab-justify);
+      margin-bottom: 40px;
+      padding-inline: 32px;
       overflow: visible;
     }
 
-    .nic-reviews__tab {
-      padding: 14px 32px;
-      font-size: 1rem;
-    }
-
     .nic-reviews__track {
-      gap: 24px;
-      max-width: 1500px;
+      max-width: 1600px;
       margin-inline: auto;
       padding-inline: 32px;
     }
 
     .nic-review {
-      flex: 0 0 calc((100% - 48px) / 3);
-      padding: 36px 28px;
+      flex: 0 0 calc((100% - var(--rev-card-gap) * (var(--rev-cols) - 1)) / var(--rev-cols));
     }
   }
 {% endstylesheet %}
@@ -314,30 +522,173 @@
 {
   "name": "Nicshape reviews",
   "tag": "div",
-  "max_blocks": 30,
+  "max_blocks": 40,
   "settings": [
     { "type": "header", "content": "Summary line" },
+    { "type": "checkbox", "id": "show_summary", "label": "Show summary line", "default": true },
     {
       "type": "text",
       "id": "rating_label",
       "label": "Rating text",
-      "info": "Example: 4.9/5. Only write numbers that match your real review data. Leave empty to hide."
+      "info": "Example: 4.9/5. Only write numbers that match your real review data."
     },
     { "type": "checkbox", "id": "show_stars", "label": "Show stars in the summary", "default": true },
     {
       "type": "text",
       "id": "count_label",
       "label": "Count text",
-      "info": "Example: 1,200 verified reviews. Leave empty to hide."
+      "info": "Example: 1,200 verified reviews."
     },
+    { "type": "range", "id": "summary_size", "label": "Text size", "min": 11, "max": 22, "step": 1, "unit": "px", "default": 14 },
+    { "type": "color", "id": "summary_color", "label": "Text color", "default": "#666666" },
+
     { "type": "header", "content": "Heading" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Loved by our customers" },
-    { "type": "header", "content": "Colors" },
+    { "type": "range", "id": "heading_size", "label": "Size (desktop)", "min": 22, "max": 72, "step": 2, "unit": "px", "default": 40 },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Weight",
+      "options": [
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    { "type": "color", "id": "heading_color", "label": "Color", "default": "#2b2224" },
+
+    { "type": "header", "content": "Tabs" },
+    {
+      "type": "checkbox",
+      "id": "show_tabs",
+      "label": "Show tabs",
+      "info": "Tabs come from the “Tab” text of each review. Reviews with the same text share one tab.",
+      "default": true
+    },
+    { "type": "range", "id": "tab_font_size", "label": "Text size", "min": 11, "max": 22, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "tab_radius", "label": "Corner roundness", "min": 0, "max": 50, "step": 2, "unit": "px", "default": 50 },
+    {
+      "type": "select",
+      "id": "tab_align",
+      "label": "Alignment (desktop)",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    { "type": "color", "id": "tab_text_color", "label": "Text", "default": "#2b2224" },
+    { "type": "color", "id": "tab_border_color", "label": "Border", "default": "#e3e0de" },
+    { "type": "color", "id": "tab_active_bg", "label": "Active tab background", "default": "#111111" },
+    { "type": "color", "id": "tab_active_text", "label": "Active tab text", "default": "#ffffff" },
+
+    { "type": "header", "content": "Review cards" },
+    {
+      "type": "select",
+      "id": "cards_desktop",
+      "label": "Cards per row (desktop)",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" },
+        { "value": "5", "label": "5" }
+      ],
+      "default": "3"
+    },
+    { "type": "range", "id": "card_width_mobile", "label": "Card width (mobile)", "info": "Percent of the screen width. Less than 100% shows a peek of the next card.", "min": 60, "max": 100, "step": 2, "unit": "%", "default": 84 },
+    {
+      "type": "select",
+      "id": "card_align",
+      "label": "Content alignment",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "left", "label": "Left" }
+      ],
+      "default": "center"
+    },
+    { "type": "color", "id": "card_bg", "label": "Background", "default": "#f6f6f6" },
+    { "type": "range", "id": "card_radius", "label": "Corner roundness", "min": 0, "max": 48, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_padding", "label": "Inner padding", "min": 12, "max": 60, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "card_gap", "label": "Gap between cards", "min": 6, "max": 48, "step": 2, "unit": "px", "default": 22 },
+    { "type": "range", "id": "card_min_height", "label": "Minimum height", "min": 0, "max": 520, "step": 20, "unit": "px", "default": 260 },
+    { "type": "range", "id": "card_border_width", "label": "Border width", "min": 0, "max": 4, "step": 1, "unit": "px", "default": 0 },
+    { "type": "color", "id": "card_border_color", "label": "Border color", "default": "#e3e0de" },
+    { "type": "checkbox", "id": "card_shadow", "label": "Soft shadow", "default": false },
+    { "type": "checkbox", "id": "show_arrows", "label": "Show arrows when there are more cards than fit", "default": true },
+
+    { "type": "header", "content": "Customer name" },
+    { "type": "range", "id": "name_size", "label": "Size", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 16 },
+    {
+      "type": "select",
+      "id": "name_weight",
+      "label": "Weight",
+      "options": [
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra bold" }
+      ],
+      "default": "700"
+    },
+    { "type": "color", "id": "name_color", "label": "Color", "default": "#2b2224" },
+
+    { "type": "header", "content": "Verified badge" },
+    {
+      "type": "text",
+      "id": "verified_label",
+      "label": "Badge text",
+      "info": "Each review can override this text. The badge appears only on reviews where it is turned on.",
+      "default": "Verified Buyer"
+    },
+    { "type": "checkbox", "id": "badge_icon", "label": "Show check icon", "default": true },
+    { "type": "range", "id": "badge_size", "label": "Text size", "min": 10, "max": 20, "step": 1, "unit": "px", "default": 13 },
+    { "type": "color", "id": "badge_bg", "label": "Background", "default": "#e6f1e2" },
+    { "type": "color", "id": "badge_text", "label": "Text and icon", "default": "#2e7a3d" },
+
+    { "type": "header", "content": "Stars on the cards" },
+    { "type": "checkbox", "id": "show_stars_on_cards", "label": "Show stars", "default": true },
+    { "type": "range", "id": "star_size", "label": "Size", "min": 12, "max": 36, "step": 1, "unit": "px", "default": 19 },
+    { "type": "color", "id": "star_color", "label": "Color", "default": "#c9a26d" },
+    { "type": "color", "id": "star_empty_color", "label": "Empty star color", "default": "#e4dcd6" },
+
+    { "type": "header", "content": "Review text" },
+    { "type": "range", "id": "text_size", "label": "Size", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 16 },
+    {
+      "type": "select",
+      "id": "text_line_height",
+      "label": "Line height",
+      "options": [
+        { "value": "1.4", "label": "Tight" },
+        { "value": "1.5", "label": "Normal" },
+        { "value": "1.6", "label": "Relaxed" },
+        { "value": "1.8", "label": "Loose" }
+      ],
+      "default": "1.6"
+    },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#2b2224" },
+    { "type": "color", "id": "meta_color", "label": "Date and product color", "default": "#777777" },
+
+    { "type": "header", "content": "Section" },
     { "type": "color", "id": "bg_color", "label": "Background", "default": "#ffffff" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#2b2224" },
-    { "type": "color", "id": "star_color", "label": "Stars", "default": "#c9a26d" },
-    { "type": "color", "id": "card_color", "label": "Review card", "default": "#f6f6f6" },
-    { "type": "color", "id": "tab_active_color", "label": "Active tab", "default": "#111111" }
+    { "type": "range", "id": "padding_top_desktop", "label": "Space above (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding_bottom_desktop", "label": "Space below (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_top_mobile", "label": "Space above (mobile)", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Space below (mobile)", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 }
   ],
   "blocks": [
     {
@@ -348,10 +699,9 @@
           "type": "text",
           "id": "tab",
           "label": "Tab",
-          "info": "Reviews with the same tab text are grouped under one tab pill (for example, a product name). Leave empty on all reviews to hide the tabs."
+          "info": "Reviews with the same text are grouped under one tab pill (for example, a product name). Leave empty to hide tabs."
         },
         { "type": "text", "id": "name", "label": "Customer name" },
-        { "type": "textarea", "id": "text", "label": "Review", "info": "Use real reviews from your customers only." },
         {
           "type": "select",
           "id": "rating",
@@ -359,17 +709,29 @@
           "options": [
             { "value": "5", "label": "5 stars" },
             { "value": "4", "label": "4 stars" },
-            { "value": "3", "label": "3 stars" }
+            { "value": "3", "label": "3 stars" },
+            { "value": "2", "label": "2 stars" },
+            { "value": "1", "label": "1 star" }
           ],
           "default": "5"
         },
+        { "type": "text", "id": "title", "label": "Review title (optional)" },
+        { "type": "textarea", "id": "text", "label": "Review", "info": "Use real reviews from your customers only." },
+        { "type": "text", "id": "date", "label": "Date (optional)", "info": "Example: October 2026" },
+        { "type": "text", "id": "product_name", "label": "Product name (optional)" },
+        { "type": "url", "id": "product_link", "label": "Product link (optional)" },
+        { "type": "image_picker", "id": "image", "label": "Customer photo (optional)" },
         {
           "type": "checkbox",
-          "id": "verified",
-          "label": "Show “Verified Buyer”",
+          "id": "show_verified",
+          "label": "Show verified badge",
           "info": "Turn on only when the person really bought the product.",
           "default": false
-        }
+        },
+        { "type": "text", "id": "verified_label", "label": "Badge text for this review (optional)", "info": "Empty uses the text from the section settings." },
+        { "type": "header", "content": "Colors for this review only" },
+        { "type": "color", "id": "card_bg", "label": "Card background" },
+        { "type": "color", "id": "card_text", "label": "Name and text color" }
       ]
     }
   ],
