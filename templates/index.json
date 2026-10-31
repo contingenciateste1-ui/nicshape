@@ -173,11 +173,12 @@
         "chip1"
       ],
       "settings": {
+        "image": "shopify://shop_images/baresculpt.webp",
         "image_side": "right",
         "badge_text": "",
         "eyebrow": "Trending now",
-        "heading": "Feature product name",
-        "text": "One or two lines about why customers love it.",
+        "heading": "BareSculpt™ Strapless Invisible Bra",
+        "text": "Feel confident all season in the stay-put bandeau that smooths & supports up to an F cup.",
         "button_label": "Shop now",
         "button_link": "",
         "bg_color": "#f9eeea",
@@ -242,10 +243,11 @@
         "chip1"
       ],
       "settings": {
+        "image": "shopify://shop_images/Megan.webp",
         "image_side": "right",
         "badge_text": "1 pair free",
         "eyebrow": "New arrival",
-        "heading": "New product name",
+        "heading": "Jelly-Sculpt™ Full Cover Bra",
         "text": "One or two lines about why customers love it.",
         "button_label": "Shop now",
         "button_link": "",
