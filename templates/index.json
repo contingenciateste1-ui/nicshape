@@ -191,6 +191,15 @@
     "nic_looks": {
       "type": "nic-shop-the-looks",
       "blocks": {
+        "look_UbEykd": {
+          "type": "look",
+          "settings": {
+            "video": "shopify://files/videos/vid1.mp4",
+            "product": "jelly-sculpt-bra",
+            "label": "",
+            "badge": ""
+          }
+        },
         "l1": {
           "type": "look",
           "settings": {
@@ -217,6 +226,7 @@
         }
       },
       "block_order": [
+        "look_UbEykd",
         "l1",
         "l2",
         "l3"
