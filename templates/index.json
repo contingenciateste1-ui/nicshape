@@ -49,6 +49,7 @@
         "c1": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/Autum_sale.webp",
             "title": "Shop Sale",
             "link": ""
           }
@@ -56,6 +57,7 @@
         "c2": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/New.webp",
             "title": "New",
             "link": ""
           }
@@ -63,6 +65,7 @@
         "c3": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/Best_sellers.webp",
             "title": "Best Sellers",
             "link": ""
           }
@@ -70,6 +73,7 @@
         "c4": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/Bras.avif",
             "title": "Bras",
             "link": ""
           }
@@ -77,6 +81,7 @@
         "c5": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/Bodysuits.webp",
             "title": "Bodysuits",
             "link": ""
           }
@@ -84,6 +89,7 @@
         "c6": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/Shapers.webp",
             "title": "Shapers",
             "link": ""
           }
@@ -91,6 +97,7 @@
         "c7": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/Swimwears.webp",
             "title": "Swimwear",
             "link": ""
           }
@@ -98,6 +105,7 @@
         "c8": {
           "type": "collection_card",
           "settings": {
+            "image": "shopify://shop_images/Leggings.webp",
             "title": "Leggings",
             "link": ""
           }
