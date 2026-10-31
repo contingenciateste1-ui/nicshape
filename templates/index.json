@@ -203,6 +203,7 @@
         "l1": {
           "type": "look",
           "settings": {
+            "video": "shopify://files/videos/vid2.mp4",
             "product": "",
             "label": "",
             "badge": ""
@@ -211,6 +212,7 @@
         "l2": {
           "type": "look",
           "settings": {
+            "video": "shopify://files/videos/vid3.mp4",
             "product": "",
             "label": "",
             "badge": ""
@@ -219,6 +221,43 @@
         "l3": {
           "type": "look",
           "settings": {
+            "video": "shopify://files/videos/vid4.mp4",
+            "product": "",
+            "label": "",
+            "badge": ""
+          }
+        },
+        "look_AMAdXJ": {
+          "type": "look",
+          "settings": {
+            "video": "shopify://files/videos/vid5.mp4",
+            "product": "",
+            "label": "",
+            "badge": ""
+          }
+        },
+        "look_QDVcME": {
+          "type": "look",
+          "settings": {
+            "video": "shopify://files/videos/vid6.mp4",
+            "product": "",
+            "label": "",
+            "badge": ""
+          }
+        },
+        "look_tWccjw": {
+          "type": "look",
+          "settings": {
+            "video": "shopify://files/videos/vid7.mp4",
+            "product": "",
+            "label": "",
+            "badge": ""
+          }
+        },
+        "look_bAeVcr": {
+          "type": "look",
+          "settings": {
+            "video": "shopify://files/videos/vid8.mp4",
             "product": "",
             "label": "",
             "badge": ""
@@ -229,7 +268,11 @@
         "look_UbEykd",
         "l1",
         "l2",
-        "l3"
+        "l3",
+        "look_AMAdXJ",
+        "look_QDVcME",
+        "look_tWccjw",
+        "look_bAeVcr"
       ],
       "settings": {
         "heading": "Shop the looks",
