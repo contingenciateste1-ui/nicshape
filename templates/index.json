@@ -40,7 +40,7 @@
         "desktop_button_fg": "#ffffff",
         "bg_color": "#000000",
         "text_color": "#fff6ee",
-        "accent_color": "#E8580B"
+        "accent_color": "#e8580b"
       }
     },
     "nic_collection_strip": {
@@ -282,14 +282,117 @@
     },
     "nic_reviews": {
       "type": "nic-reviews",
+      "blocks": {
+        "review_dTBmmL": {
+          "type": "review",
+          "settings": {
+            "tab": "",
+            "name": "Leonor G.",
+            "rating": "5",
+            "title": "",
+            "text": "Simply perfect. I would never do the breast reduction if this existed. Beautiful and comfortable.",
+            "date": "",
+            "product_name": "",
+            "product_link": "",
+            "show_verified": true,
+            "verified_label": "",
+            "card_bg": "",
+            "card_text": ""
+          }
+        },
+        "review_diJ7Dd": {
+          "type": "review",
+          "settings": {
+            "tab": "",
+            "name": "Maria P.",
+            "rating": "5",
+            "title": "",
+            "text": "Amazing bra!! Super comfortable and yet so sexy!!! Best purchase ever!!",
+            "date": "",
+            "product_name": "",
+            "product_link": "",
+            "show_verified": true,
+            "verified_label": "",
+            "card_bg": "",
+            "card_text": ""
+          }
+        },
+        "review_WYam7b": {
+          "type": "review",
+          "settings": {
+            "tab": "",
+            "name": "Anne S.",
+            "rating": "5",
+            "title": "",
+            "text": "I really love it! It fits my body perfectly and looks good under a white t-shirt. Wear it every day :)",
+            "date": "",
+            "product_name": "",
+            "product_link": "",
+            "show_verified": true,
+            "verified_label": "",
+            "card_bg": "",
+            "card_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_dTBmmL",
+        "review_diJ7Dd",
+        "review_WYam7b"
+      ],
       "settings": {
+        "show_summary": true,
         "rating_label": "",
         "show_stars": true,
         "count_label": "",
+        "summary_size": 14,
+        "summary_color": "#666666",
         "heading": "Loved by customers",
-        "bg_color": "#ffffff",
+        "heading_size": 40,
+        "heading_weight": "700",
+        "heading_align": "center",
+        "heading_color": "#2b2224",
+        "show_tabs": true,
+        "tab_font_size": 15,
+        "tab_radius": 50,
+        "tab_align": "center",
+        "tab_text_color": "#2b2224",
+        "tab_border_color": "#e3e0de",
+        "tab_active_bg": "#111111",
+        "tab_active_text": "#ffffff",
+        "cards_desktop": "3",
+        "card_width_mobile": 84,
+        "card_align": "center",
+        "card_bg": "#f6f6f6",
+        "card_radius": 24,
+        "card_padding": 32,
+        "card_gap": 22,
+        "card_min_height": 260,
+        "card_border_width": 0,
+        "card_border_color": "#e3e0de",
+        "card_shadow": false,
+        "show_arrows": true,
+        "name_size": 16,
+        "name_weight": "700",
+        "name_color": "#2b2224",
+        "verified_label": "Verified Buyer",
+        "badge_icon": true,
+        "badge_size": 13,
+        "badge_bg": "#e6f1e2",
+        "badge_text": "#2e7a3d",
+        "show_stars_on_cards": true,
+        "star_size": 19,
+        "star_color": "#c9a26d",
+        "star_empty_color": "#e4dcd6",
+        "text_size": 16,
+        "text_line_height": "1.6",
         "text_color": "#2b2224",
-        "star_color": "#c9a26d"
+        "meta_color": "#777777",
+        "bg_color": "#ffffff",
+        "padding_top_desktop": 64,
+        "padding_bottom_desktop": 72,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 56
       }
     },
     "nic_benefits": {
