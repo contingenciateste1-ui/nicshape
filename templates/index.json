@@ -444,9 +444,22 @@
         "b4"
       ],
       "settings": {
-        "bg_color": "#ffffff",
+        "card_bg": "#f6f6f6",
+        "card_radius": 24,
+        "card_height_desktop": 100,
+        "card_height_mobile": 110,
+        "gap": 34,
+        "columns_mobile": "2",
+        "icon_size": 32,
+        "accent_color": "#c98e86",
+        "title_size": 14,
+        "title_weight": "500",
         "text_color": "#2b2224",
-        "accent_color": "#c98e86"
+        "bg_color": "#ffffff",
+        "padding_top_desktop": 32,
+        "padding_bottom_desktop": 32,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
       }
     }
   },
