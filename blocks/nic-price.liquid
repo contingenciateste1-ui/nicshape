@@ -1,0 +1,128 @@
+{%- liquid
+  assign product = closest.product
+  assign v = product.selected_or_first_available_variant
+-%}
+{%- if product != blank -%}
+<nic-price
+  class="nic-price"
+  style="--np-size: {{ block.settings.price_size }}px; --np-color: {{ block.settings.price_color }}; --np-old-size: {{ block.settings.old_size }}px; --np-old: {{ block.settings.old_color }}; --np-pill-bg: {{ block.settings.pill_bg }}; --np-pill-text: {{ block.settings.pill_text }};"
+  data-currency="{{ cart.currency.iso_code }}"
+  data-locale="{{ request.locale.iso_code }}"
+  data-pill="{{ block.settings.pill_label | escape }}"
+  data-show-pill="{{ block.settings.show_pill }}"
+  {{ block.shopify_attributes }}
+>
+  <script type="application/json" data-np-variants>
+    [
+      {%- for x in product.variants -%}
+        {"id":{{ x.id }},"price":{{ x.price }},"compare":{{ x.compare_at_price | default: 0 }}}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  </script>
+  <s class="nic-price__old" data-np-old></s>
+  <span class="nic-price__now" data-np-now>{{ v.price | money }}</span>
+  <span class="nic-price__pill" data-np-pill hidden></span>
+</nic-price>
+
+<script>
+  (function () {
+    if (customElements.get('nic-price')) return;
+    customElements.define(
+      'nic-price',
+      class extends HTMLElement {
+        connectedCallback() {
+          this.variants = JSON.parse(this.querySelector('[data-np-variants]').textContent);
+          this.fmt = new Intl.NumberFormat(this.dataset.locale || undefined, {
+            style: 'currency',
+            currency: this.dataset.currency,
+          });
+          var self = this;
+          this.last = null;
+          this.tick = function () {
+            var input = document.querySelector('form[data-type="add-to-cart-form"] input[name="id"]');
+            var id = input ? String(input.value) : String(self.variants[0].id);
+            if (id === self.last) return;
+            self.last = id;
+            var v = self.variants.find(function (x) { return String(x.id) === id; }) || self.variants[0];
+            self.querySelector('[data-np-now]').textContent = self.fmt.format(v.price / 100);
+            var old = self.querySelector('[data-np-old]');
+            var pill = self.querySelector('[data-np-pill]');
+            if (v.compare > v.price) {
+              old.textContent = self.fmt.format(v.compare / 100);
+              old.hidden = false;
+              if (self.dataset.showPill === 'true') {
+                pill.textContent = self.dataset.pill.replace('{percent}', Math.round((1 - v.price / v.compare) * 100));
+                pill.hidden = false;
+              }
+            } else {
+              old.hidden = true;
+              pill.hidden = true;
+            }
+          };
+          this.tick();
+          this.timer = setInterval(this.tick, 350);
+        }
+        disconnectedCallback() {
+          clearInterval(this.timer);
+        }
+      }
+    );
+  })();
+</script>
+
+{%- endif -%}
+
+{% stylesheet %}
+  .nic-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-body--family);
+  }
+
+  .nic-price__old {
+    color: var(--np-old);
+    font-size: var(--np-old-size);
+    font-weight: 500;
+  }
+
+  .nic-price__now {
+    color: var(--np-color);
+    font-size: var(--np-size);
+    font-weight: 700;
+  }
+
+  .nic-price__pill {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--np-pill-bg);
+    color: var(--np-pill-text);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .nic-price [hidden] {
+    display: none;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape price",
+  "tag": null,
+  "settings": [
+    { "type": "range", "id": "price_size", "label": "Price size", "min": 16, "max": 40, "step": 1, "unit": "px", "default": 22 },
+    { "type": "color", "id": "price_color", "label": "Price color", "default": "#111111" },
+    { "type": "range", "id": "old_size", "label": "Old price size", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 18 },
+    { "type": "color", "id": "old_color", "label": "Old price color", "default": "#b23a32" },
+    { "type": "checkbox", "id": "show_pill", "label": "Show discount pill", "default": true },
+    { "type": "text", "id": "pill_label", "label": "Pill text", "info": "Use {percent} for the calculated discount.", "default": "{percent}% OFF" },
+    { "type": "color", "id": "pill_bg", "label": "Pill background", "default": "#c98e72" },
+    { "type": "color", "id": "pill_text", "label": "Pill text color", "default": "#ffffff" }
+  ],
+  "presets": [{ "name": "Nicshape price" }]
+}
+{% endschema %}

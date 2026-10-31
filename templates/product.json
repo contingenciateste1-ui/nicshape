@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -41,12 +42,12 @@
             "slideshow_controls_style": "thumbnails",
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "bottom",
-            "thumbnail_width": 56,
-            "thumbnail_radius": 6,
+            "thumbnail_width": "56",
+            "thumbnail_radius": "8",
             "aspect_ratio": "1/1.25",
             "constrain_to_viewport": true,
             "media_fit": "cover",
-            "media_radius": 6,
+            "media_radius": "18",
             "extend_media": false,
             "zoom": true,
             "video_loop": false,
@@ -130,50 +131,8 @@
                 "alignment": "left",
                 "type_preset": "h3",
                 "font": "var(--font-heading--family)",
-                "font_size": "1.25rem",
+                "font_size": "1.75rem",
                 "line_height": "tight",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1.25rem",
-                "width": "fit-content",
-                "alignment": "left"
-              },
-              "blocks": {}
-            },
-            "off_pill": {
-              "type": "custom-liquid",
-              "settings": {
-                "custom_liquid": "{% if product.compare_at_price > product.price %}{% assign off = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}<span style=\"display:inline-block;padding:3px 10px;border-radius:4px;background:#c98e86;color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase\">{{ off }}% off</span>{% endif %}"
-              },
-              "blocks": {}
-            },
-            "benefits": {
-              "type": "text",
-              "settings": {
-                "text": "<ul><li>Benefit one</li><li>Benefit two</li><li>Benefit three</li><li>Benefit four</li></ul>",
-                "width": "100%",
-                "max_width": "none",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "0.875rem",
-                "line_height": "loose",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
@@ -210,11 +169,6 @@
                 "border_radius": 50
               },
               "blocks": {
-                "quantity": {
-                  "type": "quantity",
-                  "settings": {},
-                  "blocks": {}
-                },
                 "add-to-cart": {
                   "type": "add-to-cart",
                   "settings": {
@@ -224,32 +178,8 @@
                 }
               },
               "block_order": [
-                "quantity",
                 "add-to-cart"
               ]
-            },
-            "trust": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Free shipping and returns</p><p>Easy size exchange</p><p>Secure payments</p>",
-                "width": "100%",
-                "max_width": "none",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "0.75rem",
-                "line_height": "loose",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
             },
             "divider": {
               "type": "_divider",
@@ -371,18 +301,41 @@
                 "row_ship",
                 "row_care"
               ]
+            },
+            "nprice": {
+              "type": "nic-price",
+              "settings": {}
+            },
+            "checklist": {
+              "type": "nic-checklist",
+              "settings": {
+                "items": "10+ hours comfort, can sleep in it\nWireless natural lift, push-up effect\nInvisible under any outfit, white shirts too\nNo back rolls, 4cm wide straps"
+              }
+            },
+            "size_chart": {
+              "type": "nic-size-chart",
+              "settings": {}
+            },
+            "bundles": {
+              "type": "nic-bundles",
+              "settings": {}
+            },
+            "payments": {
+              "type": "payment-icons",
+              "settings": {}
             }
           },
           "block_order": [
             "rating",
             "vendor",
             "title",
-            "price",
-            "off_pill",
-            "benefits",
+            "nprice",
+            "checklist",
             "variants",
+            "size_chart",
+            "bundles",
             "buy",
-            "trust",
+            "payments",
             "divider",
             "accordion"
           ]

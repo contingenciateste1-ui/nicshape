@@ -1,0 +1,57 @@
+{%- assign items = block.settings.items | newline_to_br | split: '<br />' -%}
+<ul
+  class="nic-checklist"
+  style="--cl-size: {{ block.settings.text_size }}px; --cl-icon: {{ block.settings.icon_color }}; --cl-check: {{ block.settings.check_color }}; --cl-text: {{ block.settings.text_color }}; --cl-gap: {{ block.settings.gap }}px;"
+  {{ block.shopify_attributes }}
+>
+  {%- for item in items -%}
+    {%- assign line = item | strip -%}
+    {%- if line != blank -%}
+      <li>
+        <svg viewBox="0 0 20 20" width="1.3em" height="1.3em" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M5.5 10.4l3 3 6-6.4" fill="none" stroke="var(--cl-check)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>{{ line }}</span>
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>
+
+{% stylesheet %}
+  .nic-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cl-gap);
+    margin: 0;
+    padding: 0;
+    color: var(--cl-text);
+    font-family: var(--font-body--family);
+    font-size: var(--cl-size);
+    list-style: none;
+  }
+
+  .nic-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nic-checklist svg {
+    flex: 0 0 auto;
+    color: var(--cl-icon);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape checklist",
+  "tag": null,
+  "settings": [
+    { "type": "textarea", "id": "items", "label": "Items", "info": "One benefit per line.", "default": "Benefit one\nBenefit two\nBenefit three" },
+    { "type": "range", "id": "text_size", "label": "Text size", "min": 12, "max": 22, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "gap", "label": "Space between lines", "min": 2, "max": 20, "step": 1, "unit": "px", "default": 6 },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#111111" },
+    { "type": "color", "id": "icon_color", "label": "Icon circle color", "default": "#111111" },
+    { "type": "color", "id": "check_color", "label": "Check mark color", "default": "#ffffff" }
+  ],
+  "presets": [{ "name": "Nicshape checklist" }]
+}
+{% endschema %}
