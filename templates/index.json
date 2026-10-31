@@ -13,6 +13,12 @@
       "type": "nic-hero",
       "settings": {
         "image": "shopify://shop_images/mobile.webp",
+        "mobile_ratio": "1 / 1",
+        "mobile_focus_x": 10,
+        "mobile_focus_y": 50,
+        "mobile_zoom": 100,
+        "desktop_focus_x": 50,
+        "desktop_focus_y": 50,
         "min_height": 460,
         "overlay": false,
         "overlay_opacity": 25,
