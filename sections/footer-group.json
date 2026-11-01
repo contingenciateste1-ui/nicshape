@@ -28,6 +28,26 @@
     "footer_m9NzUG": {
       "type": "footer",
       "blocks": {
+        "logo_6mndR8": {
+          "type": "logo",
+          "settings": {
+            "inverse": false,
+            "font": "heading",
+            "text_color": "",
+            "unit": "pixel",
+            "percent_width": 100,
+            "pixel_height": 40,
+            "custom_mobile_size": true,
+            "unit_mobile": "percent",
+            "percent_width_mobile": 41,
+            "pixel_height_mobile": 120,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 100,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "top_row": {
           "type": "group",
           "settings": {
@@ -191,26 +211,6 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "logo_footer": {
-                  "type": "logo",
-                  "settings": {
-                    "inverse": false,
-                    "font": "heading",
-                    "text_color": "",
-                    "unit": "pixel",
-                    "percent_width": 100,
-                    "pixel_height": 40,
-                    "custom_mobile_size": false,
-                    "unit_mobile": "percent",
-                    "percent_width_mobile": 100,
-                    "pixel_height_mobile": 120,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
                 "social_footer": {
                   "type": "social-links",
                   "settings": {
@@ -233,7 +233,6 @@
                 }
               },
               "block_order": [
-                "logo_footer",
                 "social_footer"
               ]
             }
@@ -320,6 +319,7 @@
         }
       },
       "block_order": [
+        "logo_6mndR8",
         "top_row",
         "bottom_row"
       ],
