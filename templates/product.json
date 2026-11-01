@@ -140,6 +140,42 @@
           },
           "blocks": {}
         },
+        "ai_gen_block_41479e3_yyzcqt": {
+          "type": "ai_gen_block_41479e3",
+          "settings": {
+            "heading": "Customer reviews",
+            "heading_size": 28,
+            "desktop_cards": "5",
+            "mobile_cards": "1.2",
+            "card_background": "#ffffff",
+            "border_color": "#ececec",
+            "corner_radius": 14,
+            "star_color": "#c9a26d",
+            "show_arrows": true,
+            "desktop_width_percent": 100,
+            "review_1_name": "Customer name",
+            "review_1_rating": "5",
+            "review_1_title": "Review title",
+            "review_1_text": "Write a real customer review here.",
+            "review_2_name": "Customer name",
+            "review_2_rating": "5",
+            "review_2_title": "Review title",
+            "review_2_text": "Write a real customer review here.",
+            "review_3_name": "Customer name",
+            "review_3_rating": "5",
+            "review_3_title": "Review title",
+            "review_3_text": "Write a real customer review here.",
+            "review_4_name": "Customer name",
+            "review_4_rating": "5",
+            "review_4_title": "Review title",
+            "review_4_text": "Write a real customer review here.",
+            "review_5_name": "Customer name",
+            "review_5_rating": "5",
+            "review_5_title": "Review title",
+            "review_5_text": "Write a real customer review here."
+          },
+          "blocks": {}
+        },
         "disclosures_g9mWze": {
           "type": "disclosures",
           "name": "t:names.disclosures",
@@ -593,6 +629,7 @@
         "ai_gen_block_285f89b_8ryqmh",
         "ai_gen_block_285f89b_NU9mWC",
         "ai_gen_block_52d99c7_bHAcX4",
+        "ai_gen_block_41479e3_yyzcqt",
         "disclosures_g9mWze"
       ],
       "settings": {
