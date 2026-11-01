@@ -1,0 +1,164 @@
+{% doc %}
+  @prompt
+    Create a theme block called "Checklist" for the product page.
+    
+    Layout: a vertical list. Each line has a round black icon on the left and a text on the right, vertically centered. The icon is a filled black circle with a white check mark inside. Gap between the icon and the text is 10px. Gap between lines is 6px.
+    
+    Style:
+    - Text color #111111, size 15px, regular weight.
+    - Icon size is 1.3em of the text size.
+    - Left aligned.
+    
+    Editable settings:
+    1. Items (multi-line text, one benefit per line). Default:
+    Swimsuit and cover-up in one piece.
+    Fully lined. High waist that stays put.
+    Forget about it. Wet looks the same as dry.
+    For real women, not for models.
+    2. Text size (range 12 to 22, default 15)
+    3. Text color (color)
+    4. Icon color (color, default #111111)
+    5. Check mark color (color, default #ffffff)
+    6. Space between lines (range 2 to 20, default 6)
+    
+    Each line of the Items setting becomes one list row. Ignore empty lines.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign checklist_items = block.settings.items | newline_to_br | split: '<br />' %}
+
+{% style %}
+  .ai-checklist-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    font-weight: 400;
+    text-align: left;
+  }
+
+  .ai-checklist-{{ ai_gen_id }}__list {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.line_spacing }}px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ai-checklist-{{ ai_gen_id }}__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.4;
+  }
+
+  .ai-checklist-{{ ai_gen_id }}__icon {
+    display: inline-flex;
+    flex: 0 0 1.3em;
+    width: 1.3em;
+    height: 1.3em;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: {{ block.settings.icon_color }};
+    color: {{ block.settings.check_color }};
+  }
+
+  .ai-checklist-{{ ai_gen_id }}__icon svg {
+    display: block;
+    width: 0.68em;
+    height: 0.68em;
+  }
+
+  .ai-checklist-{{ ai_gen_id }}__text {
+    min-width: 0;
+  }
+{% endstyle %}
+
+<div class="ai-checklist-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <ul class="ai-checklist-{{ ai_gen_id }}__list">
+    {% for item in checklist_items %}
+      {% assign clean_item = item | strip_html | strip %}
+      {% if clean_item != blank %}
+        <li class="ai-checklist-{{ ai_gen_id }}__item">
+          <span class="ai-checklist-{{ ai_gen_id }}__icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.25 8.25L6.5 11.25L12.75 4.75" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="ai-checklist-{{ ai_gen_id }}__text">{{ clean_item | escape }}</span>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Checklist",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "items",
+      "label": "Items",
+      "default": "Swimsuit and cover-up in one piece.\nFully lined. High waist that stays put.\nForget about it. Wet looks the same as dry.\nFor real women, not for models."
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "check_color",
+      "label": "Check mark color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "line_spacing",
+      "label": "Space between lines",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Checklist"
+    }
+  ],
+  "tag": null,
+  "class": "checklist-block"
+}
+{% endschema %}
