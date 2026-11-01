@@ -1,6 +1,249 @@
+{% doc %}
+  @prompt
+    Create a theme block called "Feature split" for the product page or any page.
+    
+    Layout: a two-column section. On the left, a content column. On the right, a media column with a vertical (9:16) image or video with rounded corners 20px. On mobile, stack them: content first, media below.
+    
+    Left column, top to bottom:
+    1. A heading in italic, large (size 36px, line height 1.15, color #2b2224).
+    2. Under it, a subheading in bold (size 20px, line height 1.35, color #2b2224).
+    3. A list of up to 4 feature rows, with 24px gap between them. Each row is a horizontal layout: a small square icon image on the left (64px), and on the right a bold title (size 18px) and a short description below it (size 15px, color #5f5557, line height 1.6). Gap between icon and text 16px.
+    
+    Right column: a media area with aspect ratio 9 / 16 (max height 640px). It shows the video if one is set, otherwise the image. The video should play muted, looped, inline, with no controls, and should load lazily (preload none, start when visible). Use object-fit cover.
+    
+    Editable settings:
+    1. Heading (text)
+    2. Subheading (text)
+    3. Heading size (range 20 to 64, default 36)
+    4. Image (image picker, for the right media and as the video poster)
+    5. Video (video picker, optional)
+    6. Media position: right or left
+    7. Feature rows: use 4 groups of fields. For each group: Icon image (image picker, 64px), Title (text), Description (textarea). Empty rows are hidden.
+    8. Background color (color, default #ffffff)
+    9. Text color (color, default #2b2224)
+    10. Description color (color, default #5f5557)
+    11. Vertical padding desktop (range 0 to 120, default 32)
+    12. Horizontal padding desktop (range 0 to 120, default 80)
+    13. Vertical padding mobile (range 0 to 60, default 8)
+    14. Horizontal padding mobile (range 0 to 40, default 16)
+    15. Corner radius of the media (range 0 to 40, default 20)
+    
+    Do not add default marketing claims; leave the texts empty or with neutral placeholder text.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-feature-split-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    box-sizing: border-box;
+    background: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding_vertical_desktop }}px {{ block.settings.padding_horizontal_desktop }}px;
+  }
+  .ai-feature-split-{{ ai_gen_id }} *,
+  .ai-feature-split-{{ ai_gen_id }} *::before,
+  .ai-feature-split-{{ ai_gen_id }} *::after { box-sizing: border-box; }
+  .ai-feature-split-{{ ai_gen_id }}__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+    align-items: center;
+    gap: clamp(32px, 6vw, 88px);
+    width: 100%;
+  }
+  .ai-feature-split-{{ ai_gen_id }}--media-left .ai-feature-split-{{ ai_gen_id }}__media { order: -1; }
+  .ai-feature-split-{{ ai_gen_id }}__content { min-width: 0; }
+  .ai-feature-split-{{ ai_gen_id }}__heading {
+    margin: 0 0 14px;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.15;
+    font-style: italic;
+    font-weight: 700;
+  }
+  .ai-feature-split-{{ ai_gen_id }}__subheading {
+    margin: 0 0 30px;
+    color: {{ block.settings.text_color }};
+    font-size: 20px;
+    line-height: 1.35;
+    font-weight: 700;
+  }
+  .ai-feature-split-{{ ai_gen_id }}__rows { display: grid; gap: 24px; }
+  .ai-feature-split-{{ ai_gen_id }}__row { display: flex; align-items: flex-start; gap: 16px; }
+  .ai-feature-split-{{ ai_gen_id }}__icon,
+  .ai-feature-split-{{ ai_gen_id }}__icon-placeholder {
+    display: block;
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+  }
+  .ai-feature-split-{{ ai_gen_id }}__row-copy { min-width: 0; }
+  .ai-feature-split-{{ ai_gen_id }}__row-title {
+    margin: 0 0 4px;
+    color: {{ block.settings.text_color }};
+    font-size: 18px;
+    line-height: 1.35;
+    font-weight: 700;
+  }
+  .ai-feature-split-{{ ai_gen_id }}__description {
+    margin: 0;
+    color: {{ block.settings.description_color }};
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .ai-feature-split-{{ ai_gen_id }}__media {
+    position: relative;
+    width: 100%;
+    max-height: 640px;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    border-radius: {{ block.settings.media_radius }}px;
+    background: rgba(43, 34, 36, 0.06);
+  }
+  .ai-feature-split-{{ ai_gen_id }}__media img,
+  .ai-feature-split-{{ ai_gen_id }}__media video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 640px;
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+  }
+  .ai-feature-split-{{ ai_gen_id }}__placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+  }
+  .ai-feature-split-{{ ai_gen_id }}__placeholder svg { width: 100%; height: 100%; object-fit: cover; }
+  .ai-feature-split-{{ ai_gen_id }}__empty-note {
+    position: absolute;
+    bottom: 16px;
+    left: 12px;
+    right: 12px;
+    margin: 0;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.description_color }};
+    text-align: center;
+    font-size: 13px;
+  }
+  @media screen and (max-width: 749px) {
+    .ai-feature-split-{{ ai_gen_id }} { padding: {{ block.settings.padding_vertical_mobile }}px {{ block.settings.padding_horizontal_mobile }}px; }
+    .ai-feature-split-{{ ai_gen_id }}__layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+    .ai-feature-split-{{ ai_gen_id }}--media-left .ai-feature-split-{{ ai_gen_id }}__media { order: initial; }
+    .ai-feature-split-{{ ai_gen_id }}__heading { font-size: min({{ block.settings.heading_size }}px, 36px); }
+    .ai-feature-split-{{ ai_gen_id }}__subheading { margin-bottom: 24px; }
+    .ai-feature-split-{{ ai_gen_id }}__media { width: min(100%, 420px); margin-inline: auto; }
+  }
+{% endstyle %}
+
+<div class="ai-feature-split-{{ ai_gen_id }}{% if block.settings.media_position == 'left' %} ai-feature-split-{{ ai_gen_id }}--media-left{% endif %}" {{ block.shopify_attributes }}>
+  <div class="ai-feature-split-{{ ai_gen_id }}__layout">
+    <div class="ai-feature-split-{{ ai_gen_id }}__content">
+      {% if block.settings.heading != blank %}<h2 class="ai-feature-split-{{ ai_gen_id }}__heading">{{ block.settings.heading | escape }}</h2>{% endif %}
+      {% if block.settings.subheading != blank %}<p class="ai-feature-split-{{ ai_gen_id }}__subheading">{{ block.settings.subheading | escape }}</p>{% endif %}
+      <div class="ai-feature-split-{{ ai_gen_id }}__rows">
+        {% for i in (1..4) %}
+          {% liquid
+            assign icon_key = 'feature_' | append: i | append: '_icon'
+            assign title_key = 'feature_' | append: i | append: '_title'
+            assign description_key = 'feature_' | append: i | append: '_description'
+            assign feature_icon = block.settings[icon_key]
+            assign feature_title = block.settings[title_key]
+            assign feature_description = block.settings[description_key]
+          %}
+          {% if feature_icon != blank or feature_title != blank or feature_description != blank %}
+            <div class="ai-feature-split-{{ ai_gen_id }}__row">
+              {% if feature_icon != blank %}
+                <img class="ai-feature-split-{{ ai_gen_id }}__icon" src="{{ feature_icon | image_url: width: 128 }}" alt="{{ feature_icon.alt | escape }}" width="64" height="64" loading="lazy">
+              {% endif %}
+              <div class="ai-feature-split-{{ ai_gen_id }}__row-copy">
+                {% if feature_title != blank %}<h3 class="ai-feature-split-{{ ai_gen_id }}__row-title">{{ feature_title | escape }}</h3>{% endif %}
+                {% if feature_description != blank %}<p class="ai-feature-split-{{ ai_gen_id }}__description">{{ feature_description | escape | newline_to_br }}</p>{% endif %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="ai-feature-split-{{ ai_gen_id }}__media" data-lazy-video>
+      {% if block.settings.video != blank %}
+        {{ block.settings.video | video_tag: image_size: '900x', autoplay: false, loop: true, muted: true, controls: false, playsinline: true, preload: 'none' }}
+      {% elsif block.settings.image != blank %}
+        <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.image.alt | escape }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" loading="lazy">
+      {% else %}
+        <div class="ai-feature-split-{{ ai_gen_id }}__placeholder">
+          {{ 'image' | placeholder_svg_tag }}
+          <p class="ai-feature-split-{{ ai_gen_id }}__empty-note">Add an image or video for this feature.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const selector = '.ai-feature-split-{{ ai_gen_id }}__media video';
+    const media = document.querySelectorAll(selector);
+    if (!media.length || !('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const video = entry.target;
+          video.play().catch(() => {});
+          observer.unobserve(video);
+        }
+      });
+    }, { rootMargin: '100px' });
+    media.forEach((video) => observer.observe(video));
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Feature split",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 20, "max": 64, "step": 2, "unit": "px", "default": 36 },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "header", "content": "Media" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "video", "id": "video", "label": "Video" },
+    { "type": "select", "id": "media_position", "label": "Media position", "options": [{ "value": "right", "label": "Right" }, { "value": "left", "label": "Left" }], "default": "right" },
+    { "type": "range", "id": "media_radius", "label": "Corner radius", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 20 },
+    { "type": "header", "content": "Feature 1" },
+    { "type": "image_picker", "id": "feature_1_icon", "label": "Icon image" },
+    { "type": "text", "id": "feature_1_title", "label": "Title" },
+    { "type": "textarea", "id": "feature_1_description", "label": "Description" },
+    { "type": "header", "content": "Feature 2" },
+    { "type": "image_picker", "id": "feature_2_icon", "label": "Icon image" },
+    { "type": "text", "id": "feature_2_title", "label": "Title" },
+    { "type": "textarea", "id": "feature_2_description", "label": "Description" },
+    { "type": "header", "content": "Feature 3" },
+    { "type": "image_picker", "id": "feature_3_icon", "label": "Icon image" },
+    { "type": "text", "id": "feature_3_title", "label": "Title" },
+    { "type": "textarea", "id": "feature_3_description", "label": "Description" },
+    { "type": "header", "content": "Feature 4" },
+    { "type": "image_picker", "id": "feature_4_icon", "label": "Icon image" },
+    { "type": "text", "id": "feature_4_title", "label": "Title" },
+    { "type": "textarea", "id": "feature_4_description", "label": "Description" },
+    { "type": "header", "content": "Colors and spacing" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#2b2224" },
+    { "type": "color", "id": "description_color", "label": "Description", "default": "#5f5557" },
+    { "type": "range", "id": "padding_vertical_desktop", "label": "Vertical padding desktop", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 32 },
+    { "type": "range", "id": "padding_horizontal_desktop", "label": "Horizontal padding desktop", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_vertical_mobile", "label": "Vertical padding mobile", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 8 },
+    { "type": "range", "id": "padding_horizontal_mobile", "label": "Horizontal padding mobile", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 16 }
+  ],
+  "presets": [{ "name": "Feature split" }],
+  "tag": null,
+  "class": "feature-split-block"
+}
 {% endschema %}
