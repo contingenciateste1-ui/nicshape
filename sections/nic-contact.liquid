@@ -1,0 +1,334 @@
+<section
+  class="nic-contact"
+  style="
+    --ct-bg: {{ section.settings.bg_color }};
+    --ct-text: {{ section.settings.text_color }};
+    --ct-muted: {{ section.settings.muted_color }};
+    --ct-line: {{ section.settings.line_color }};
+    --ct-title: {{ section.settings.title_size }}px;
+    --ct-w: {{ section.settings.width }}px;
+    --ct-radius: {{ section.settings.card_radius }}px;
+    --ct-c1-bg: {{ section.settings.card1_bg }};
+    --ct-c1-border: {{ section.settings.card1_border }};
+    --ct-c1-tag-bg: {{ section.settings.card1_tag_bg }};
+    --ct-c1-tag: {{ section.settings.card1_tag_text }};
+    --ct-c1-btn: {{ section.settings.card1_btn_bg }};
+    --ct-c1-btn-text: {{ section.settings.card1_btn_text }};
+    --ct-c2-bg: {{ section.settings.card2_bg }};
+    --ct-c2-border: {{ section.settings.card2_border }};
+    --ct-c2-tag-bg: {{ section.settings.card2_tag_bg }};
+    --ct-c2-tag: {{ section.settings.card2_tag_text }};
+    --ct-c2-btn: {{ section.settings.card2_btn_bg }};
+    --ct-c2-btn-text: {{ section.settings.card2_btn_text }};
+    --ct-pt: {{ section.settings.padding_top }}px;
+    --ct-pb: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="nic-contact__inner">
+    {%- if section.settings.title != blank -%}
+      <h1 class="nic-contact__title">{{ section.settings.title }}</h1>
+    {%- endif -%}
+    {%- if section.settings.intro != blank -%}
+      <p class="nic-contact__intro">{{ section.settings.intro }}</p>
+    {%- endif -%}
+
+    {%- assign show1 = false -%}
+    {%- if section.settings.card1_show and section.settings.card1_title != blank -%}{%- assign show1 = true -%}{%- endif -%}
+    {%- assign show2 = false -%}
+    {%- if section.settings.card2_show and section.settings.card2_title != blank -%}{%- assign show2 = true -%}{%- endif -%}
+
+    {%- if show1 or show2 -%}
+      <div class="nic-contact__cards">
+        {%- if show1 -%}
+          <div class="nic-contact__card nic-contact__card--1">
+            {%- if section.settings.card1_tag != blank -%}<span class="nic-contact__tag">{{ section.settings.card1_tag }}</span>{%- endif -%}
+            <h2>{{ section.settings.card1_title }}</h2>
+            {%- if section.settings.card1_text != blank -%}<p>{{ section.settings.card1_text }}</p>{%- endif -%}
+            {%- if section.settings.card1_btn_label != blank and section.settings.card1_btn_link != blank -%}
+              <a class="nic-contact__btn" href="{{ section.settings.card1_btn_link }}" target="_blank" rel="noopener">
+                {%- if section.settings.card1_icon -%}
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-4.86A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 10c0 3 2.5 5 5.5 5l1-1.5-2-1-1 .8c-.9-.4-1.6-1.2-2-2l.8-1-1-2z"/></svg>
+                {%- endif -%}
+                {{ section.settings.card1_btn_label }}
+              </a>
+            {%- endif -%}
+            {%- if section.settings.card1_note != blank -%}<small>{{ section.settings.card1_note }}</small>{%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- if show2 -%}
+          <div class="nic-contact__card nic-contact__card--2">
+            {%- if section.settings.card2_tag != blank -%}<span class="nic-contact__tag">{{ section.settings.card2_tag }}</span>{%- endif -%}
+            <h2>{{ section.settings.card2_title }}</h2>
+            {%- if section.settings.card2_text != blank -%}<p>{{ section.settings.card2_text }}</p>{%- endif -%}
+            {%- if section.settings.card2_btn_label != blank -%}
+              <a class="nic-contact__btn" href="mailto:{{ section.settings.card2_btn_label }}">{{ section.settings.card2_btn_label }}</a>
+            {%- endif -%}
+            {%- if section.settings.card2_note != blank -%}<small>{{ section.settings.card2_note }}</small>{%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <nav class="nic-contact__links" aria-label="Help">
+        {%- for block in section.blocks -%}
+          <a href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+        {%- endfor -%}
+      </nav>
+    {%- endif -%}
+
+    {%- if section.settings.return_note != blank -%}
+      <div class="nic-contact__note">{{ section.settings.return_note }}</div>
+    {%- endif -%}
+
+    {%- if section.settings.company_details != blank -%}
+      <details class="nic-contact__company">
+        <summary>{{ section.settings.company_label | default: 'Company details' }} <span aria-hidden="true">+</span></summary>
+        <div class="nic-contact__company-body">{{ section.settings.company_details }}</div>
+      </details>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .nic-contact {
+    padding: var(--ct-pt) 20px var(--ct-pb);
+    background: var(--ct-bg);
+    color: var(--ct-text);
+    font-family: var(--font-body--family);
+  }
+
+  .nic-contact__inner {
+    max-width: var(--ct-w);
+    margin: 0 auto;
+  }
+
+  .nic-contact__title {
+    margin: 0 0 16px;
+    font-family: var(--font-heading--family);
+    font-size: min(var(--ct-title), 10vw);
+    font-weight: 400;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .nic-contact__intro {
+    max-width: 640px;
+    margin: 0 auto 28px;
+    color: var(--ct-muted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .nic-contact__cards {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  .nic-contact__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 24px;
+    border: 1px solid var(--ct-line);
+    border-radius: var(--ct-radius);
+  }
+
+  .nic-contact__card h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .nic-contact__card p {
+    margin: 0;
+    color: var(--ct-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .nic-contact__card small {
+    color: var(--ct-muted);
+    font-size: 0.8125rem;
+  }
+
+  .nic-contact__tag {
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nic-contact__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    padding: 0.95em 1.7em;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .nic-contact__card--1 {
+    border-color: var(--ct-c1-border);
+    background: var(--ct-c1-bg);
+  }
+
+  .nic-contact__card--1 .nic-contact__tag {
+    background: var(--ct-c1-tag-bg);
+    color: var(--ct-c1-tag);
+  }
+
+  .nic-contact__card--1 .nic-contact__btn {
+    background: var(--ct-c1-btn);
+    color: var(--ct-c1-btn-text);
+  }
+
+  .nic-contact__card--2 {
+    border-color: var(--ct-c2-border);
+    background: var(--ct-c2-bg);
+  }
+
+  .nic-contact__card--2 .nic-contact__tag {
+    background: var(--ct-c2-tag-bg);
+    color: var(--ct-c2-tag);
+  }
+
+  .nic-contact__card--2 .nic-contact__btn {
+    background: var(--ct-c2-btn);
+    color: var(--ct-c2-btn-text);
+  }
+
+  .nic-contact__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    justify-content: center;
+    margin: 28px 0 14px;
+  }
+
+  .nic-contact__links a {
+    color: inherit;
+    font-size: 0.9375rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .nic-contact__note {
+    color: var(--ct-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .nic-contact__note p {
+    margin: 0;
+  }
+
+  .nic-contact__company {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--ct-line);
+    color: var(--ct-muted);
+    font-size: 0.875rem;
+  }
+
+  .nic-contact__company summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .nic-contact__company summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nic-contact__company[open] summary span {
+    display: none;
+  }
+
+  .nic-contact__company-body {
+    padding-top: 12px;
+    line-height: 1.7;
+  }
+
+  @media screen and (min-width: 750px) {
+    .nic-contact__cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape contact",
+  "tag": "div",
+  "settings": [
+    { "type": "header", "content": "Heading" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Contact us" },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Questions about size, delivery or a return? Pick the way that suits you." },
+    { "type": "range", "id": "title_size", "label": "Title size", "min": 28, "max": 72, "step": 2, "unit": "px", "default": 48 },
+
+    { "type": "header", "content": "Card 1 (for example WhatsApp)" },
+    { "type": "checkbox", "id": "card1_show", "label": "Show", "default": true },
+    { "type": "text", "id": "card1_tag", "label": "Tag", "default": "Fastest" },
+    { "type": "text", "id": "card1_title", "label": "Title", "default": "WhatsApp" },
+    { "type": "textarea", "id": "card1_text", "label": "Text", "default": "Size help before you buy, where your parcel is, a change to an order that has not shipped yet." },
+    { "type": "text", "id": "card1_btn_label", "label": "Button text", "default": "Message us on WhatsApp" },
+    { "type": "url", "id": "card1_btn_link", "label": "Button link", "info": "For WhatsApp use https://wa.me/ followed by your number with country code, no + or spaces. Empty hides the button." },
+    { "type": "checkbox", "id": "card1_icon", "label": "Show chat icon on the button", "default": true },
+    { "type": "text", "id": "card1_note", "label": "Small text", "default": "We reply from 9am to 9pm" },
+    { "type": "color", "id": "card1_bg", "label": "Card background", "default": "#f4faf5" },
+    { "type": "color", "id": "card1_border", "label": "Card border", "default": "#cfe9d6" },
+    { "type": "color", "id": "card1_tag_bg", "label": "Tag background", "default": "#e1f1e6" },
+    { "type": "color", "id": "card1_tag_text", "label": "Tag text", "default": "#2e7a3d" },
+    { "type": "color", "id": "card1_btn_bg", "label": "Button background", "default": "#5fd069" },
+    { "type": "color", "id": "card1_btn_text", "label": "Button text color", "default": "#ffffff" },
+
+    { "type": "header", "content": "Card 2 (for example Email)" },
+    { "type": "checkbox", "id": "card2_show", "label": "Show", "default": true },
+    { "type": "text", "id": "card2_tag", "label": "Tag", "default": "For anything with a file" },
+    { "type": "text", "id": "card2_title", "label": "Title", "default": "Email" },
+    { "type": "textarea", "id": "card2_text", "label": "Text", "default": "Returns, refunds, invoices, or when you need to send us a photo." },
+    { "type": "text", "id": "card2_btn_label", "label": "Email address", "info": "Shown on the button and used as the link.", "default": "info@nicshape.com" },
+    { "type": "text", "id": "card2_note", "label": "Small text", "default": "We reply within 24 hours" },
+    { "type": "color", "id": "card2_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "card2_border", "label": "Card border", "default": "#e3e0de" },
+    { "type": "color", "id": "card2_tag_bg", "label": "Tag background", "default": "#f1f1f1" },
+    { "type": "color", "id": "card2_tag_text", "label": "Tag text", "default": "#555555" },
+    { "type": "color", "id": "card2_btn_bg", "label": "Button background", "default": "#111111" },
+    { "type": "color", "id": "card2_btn_text", "label": "Button text color", "default": "#ffffff" },
+
+    { "type": "header", "content": "Notes below the cards" },
+    { "type": "richtext", "id": "return_note", "label": "Return note", "default": "<p>To start a return, email <strong>info@nicshape.com</strong> with your order number, your name and the reason. Return instructions and the address arrive within 24 to 48 hours.</p>" },
+    { "type": "text", "id": "company_label", "label": "Company details label", "default": "Company details" },
+    { "type": "richtext", "id": "company_details", "label": "Company details", "info": "Company name, registration, address. Empty hides the toggle." },
+
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "card_radius", "label": "Card roundness", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 20 },
+    { "type": "range", "id": "width", "label": "Content width", "min": 520, "max": 1000, "step": 20, "unit": "px", "default": 680 },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#2b2224" },
+    { "type": "color", "id": "muted_color", "label": "Secondary text", "default": "#5f5557" },
+    { "type": "color", "id": "line_color", "label": "Lines", "default": "#e3e0de" },
+    { "type": "range", "id": "padding_top", "label": "Space above", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Space below", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 16 }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Help link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Track your order" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Nicshape contact" }]
+}
+{% endschema %}
