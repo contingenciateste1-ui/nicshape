@@ -1,0 +1,222 @@
+{% doc %}
+  @prompt
+    Create a theme block called "Trust list" for the product page.
+    
+    Layout: an outer container with a very light gray background (#f6f6f6), rounded corners 20px, padding 12px. Inside, 3 stacked white cards (background #ffffff, rounded 14px, padding 16px 18px), separated by a 12px gap. Each card is one row, vertically centered: an icon on the left (24px) and a text on the right, with a 14px gap between them. Text: color #111111, size 17px, regular weight. Left aligned.
+    
+    The three rows use these EXACT inline SVG icons (viewBox 0 0 256 256, width 24, height 24, fill #0b0b0b, no stroke). Keep the paths exactly as given:
+    
+    Row 1, text "Free 30-day returns":
+    <svg viewBox="0 0 256 256" width="24" height="24" fill="#0b0b0b" xmlns="http://www.w3.org/2000/svg"><path d="M230.33,141.06a24.43,24.43,0,0,0-21.24-4.23l-41.84,9.62A28,28,0,0,0,140,112H89.94a31.82,31.82,0,0,0-22.63,9.37L44.69,144H16A16,16,0,0,0,0,160v40a16,16,0,0,0,16,16H120a7.93,7.93,0,0,0,1.94-.24l64-16a6.94,6.94,0,0,0,1.19-.4L226,182.82l.44-.2a24.6,24.6,0,0,0,3.93-41.56ZM16,160H40v40H16Zm203.43,8.21-38,16.18L119,200H56V155.31l22.63-22.62A15.86,15.86,0,0,1,89.94,128H140a12,12,0,0,1,0,24H112a8,8,0,0,0,0,16h32a8.32,8.32,0,0,0,1.79-.2l67-15.41.31-.08a8.6,8.6,0,0,1,6.3,15.9ZM164,96a36,36,0,0,0,5.9-.48,36,36,0,1,0,28.22-47A36,36,0,1,0,164,96Zm60-12a20,20,0,1,1-20-20A20,20,0,0,1,224,84ZM164,40a20,20,0,0,1,19.25,14.61,36,36,0,0,0-15,24.93A20.42,20.42,0,0,1,164,80a20,20,0,0,1,0-40Z"></path></svg>
+    
+    Row 2, text "Tracked shipping 5-7 days":
+    <svg viewBox="0 0 256 256" width="24" height="24" fill="#0b0b0b" xmlns="http://www.w3.org/2000/svg"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z"></path></svg>
+    
+    Row 3, text "Lifetime Shape Warranty":
+    <svg viewBox="0 0 256 256" width="24" height="24" fill="#0b0b0b" xmlns="http://www.w3.org/2000/svg"><path d="M208,40H48A16,16,0,0,0,32,56v58.78c0,89.61,75.82,119.34,91,124.39a15.53,15.53,0,0,0,10,0c15.2-5.05,91-34.78,91-124.39V56A16,16,0,0,0,208,40Zm0,74.79c0,78.42-66.35,104.62-80,109.18-13.53-4.51-80-30.69-80-109.18V56H208ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.68l50.34-50.34a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"></path></svg>
+    
+    Editable settings:
+    1. Text for row 1, row 2 and row 3 (three text fields, with the defaults above)
+    2. Show row 1, show row 2, show row 3 (three checkboxes, default on)
+    3. Text size (range 12 to 24, default 17)
+    4. Text color (color, default #111111)
+    5. Icon color (color, default #0b0b0b) - apply it to the SVG fill
+    6. Card background (color, default #ffffff)
+    7. Container background (color, default #f6f6f6)
+    8. Corner radius (range 0 to 32, default 14)
+    9. Gap between cards (range 4 to 24, default 12)
+    
+    Do not change the SVG paths.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-trust-list-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: {{ block.settings.container_background }};
+  }
+
+  .ai-trust-list-{{ ai_gen_id }}__items {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.card_gap }}px;
+  }
+
+  .ai-trust-list-{{ ai_gen_id }}__row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: {{ block.settings.corner_radius }}px;
+    background-color: {{ block.settings.card_background }};
+    box-sizing: border-box;
+  }
+
+  .ai-trust-list-{{ ai_gen_id }}__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    fill: {{ block.settings.icon_color }};
+  }
+
+  .ai-trust-list-{{ ai_gen_id }}__text {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    font-weight: 400;
+    line-height: 1.35;
+    text-align: left;
+  }
+{% endstyle %}
+
+<div class="ai-trust-list-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-trust-list-{{ ai_gen_id }}__items">
+    {% if block.settings.show_row_1 %}
+      <div class="ai-trust-list-{{ ai_gen_id }}__row">
+        <svg class="ai-trust-list-{{ ai_gen_id }}__icon" viewBox="0 0 256 256" width="24" height="24" fill="{{ block.settings.icon_color }}" xmlns="http://www.w3.org/2000/svg"><path d="M230.33,141.06a24.43,24.43,0,0,0-21.24-4.23l-41.84,9.62A28,28,0,0,0,140,112H89.94a31.82,31.82,0,0,0-22.63,9.37L44.69,144H16A16,16,0,0,0,0,160v40a16,16,0,0,0,16,16H120a7.93,7.93,0,0,0,1.94-.24l64-16a6.94,6.94,0,0,0,1.19-.4L226,182.82l.44-.2a24.6,24.6,0,0,0,3.93-41.56ZM16,160H40v40H16Zm203.43,8.21-38,16.18L119,200H56V155.31l22.63-22.62A15.86,15.86,0,0,1,89.94,128H140a12,12,0,0,1,0,24H112a8,8,0,0,0,0,16h32a8.32,8.32,0,0,0,1.79-.2l67-15.41.31-.08a8.6,8.6,0,0,1,6.3,15.9ZM164,96a36,36,0,0,0,5.9-.48,36,36,0,1,0,28.22-47A36,36,0,1,0,164,96Zm60-12a20,20,0,1,1-20-20A20,20,0,0,1,224,84ZM164,40a20,20,0,0,1,19.25,14.61,36,36,0,0,0-15,24.93A20.42,20.42,0,0,1,164,80a20,20,0,0,1,0-40Z"></path></svg>
+        <p class="ai-trust-list-{{ ai_gen_id }}__text">{{ block.settings.row_1_text | escape }}</p>
+      </div>
+    {% endif %}
+    {% if block.settings.show_row_2 %}
+      <div class="ai-trust-list-{{ ai_gen_id }}__row">
+        <svg class="ai-trust-list-{{ ai_gen_id }}__icon" viewBox="0 0 256 256" width="24" height="24" fill="{{ block.settings.icon_color }}" xmlns="http://www.w3.org/2000/svg"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z"></path></svg>
+        <p class="ai-trust-list-{{ ai_gen_id }}__text">{{ block.settings.row_2_text | escape }}</p>
+      </div>
+    {% endif %}
+    {% if block.settings.show_row_3 %}
+      <div class="ai-trust-list-{{ ai_gen_id }}__row">
+        <svg class="ai-trust-list-{{ ai_gen_id }}__icon" viewBox="0 0 256 256" width="24" height="24" fill="{{ block.settings.icon_color }}" xmlns="http://www.w3.org/2000/svg"><path d="M208,40H48A16,16,0,0,0,32,56v58.78c0,89.61,75.82,119.34,91,124.39a15.53,15.53,0,0,0,10,0c15.2-5.05,91-34.78,91-124.39V56A16,16,0,0,0,208,40Zm0,74.79c0,78.42-66.35,104.62-80,109.18-13.53-4.51-80-30.69-80-109.18V56H208ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.68l50.34-50.34a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"></path></svg>
+        <p class="ai-trust-list-{{ ai_gen_id }}__text">{{ block.settings.row_3_text | escape }}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trust list",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Rows"
+    },
+    {
+      "type": "text",
+      "id": "row_1_text",
+      "label": "Row 1 text",
+      "default": "Free 30-day returns"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_row_1",
+      "label": "Show row 1",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "row_2_text",
+      "label": "Row 2 text",
+      "default": "Tracked shipping 5-7 days"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_row_2",
+      "label": "Show row 2",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "row_3_text",
+      "label": "Row 3 text",
+      "default": "Lifetime Shape Warranty"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_row_3",
+      "label": "Show row 3",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#0b0b0b"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "container_background",
+      "label": "Container background",
+      "default": "#f6f6f6"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap between cards",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust list"
+    }
+  ],
+  "tag": null,
+  "class": "trust-list-block"
+}
+{% endschema %}

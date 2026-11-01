@@ -399,6 +399,26 @@
               },
               "blocks": {}
             },
+            "ai_gen_block_9a0f6cd_DpDGtR": {
+              "type": "ai_gen_block_9a0f6cd",
+              "settings": {
+                "row_1_text": "Free 30-day returns",
+                "show_row_1": true,
+                "row_2_text": "Tracked shipping 5-7 days",
+                "show_row_2": true,
+                "row_3_text": "Lifetime Shape Warranty",
+                "show_row_3": true,
+                "desktop_width_percent": 100,
+                "text_size": 17,
+                "text_color": "#111111",
+                "icon_color": "#0b0b0b",
+                "card_background": "#ffffff",
+                "container_background": "#f6f6f6",
+                "corner_radius": 14,
+                "card_gap": 12
+              },
+              "blocks": {}
+            },
             "text_aEtTtq": {
               "type": "text",
               "name": "t:names.product_description",
@@ -435,6 +455,7 @@
             "ai_gen_block_5277fbd_TU4A3L",
             "ai_gen_block_2b22373_BDkXiy",
             "nic_promo_card_MWiFRa",
+            "ai_gen_block_9a0f6cd_DpDGtR",
             "text_aEtTtq"
           ]
         }
