@@ -1,6 +1,67 @@
+{% doc %}
+  @prompt
+    Create a theme block called "Comparison table". Use the texts below as the DEFAULT values of the settings, so the block comes already filled.
+    
+    Desktop layout: two areas side by side. Left (35%): centered text, vertically centered: a bold heading (32px, line height 1.15, #111111) and a paragraph below (16px, line height 1.5, #111111). Right (65%): a grid with 4 columns and up to 7 rows.
+    
+    Grid:
+    - Column 0: row labels. Light gray cards (#f6f6f6), bold 15px text, left aligned, padding 10px 12px, 1px separators (#ececec). Round the outer corners of the first and last label (12px).
+    - Column 1 (highlighted): a tall dark column, rounded 14px. The header shows the brand name (white, centered, uppercase, letter-spaced) or a logo image. Cells go from very dark brown (#2b211d) at the top to light taupe (#ac9d8c) at the bottom, one shade lighter per row. Each cell shows a white circle with a small check (22px).
+    - Columns 2 and 3: light gray (#e0e0e0 header, cells fading from #e8e8e8 at the top to #fafafa at the bottom). Header: competitor name, bold 13px, centered. Each cell shows a black circle with a white X ("no") or a brown (#8c7a62) circle with a white check ("yes").
+    
+    All columns share the same row height (64px), header 96px, 8px gap between columns. Mobile: stack the text above the grid, row height 56px, text 13px, label column 36% wide, icons 18px.
+    
+    DEFAULT CONTENT:
+    Heading: Everything you need to step out of the water. In one piece.
+    Paragraph: A swim dress that works as a swimsuit and a cover-up. Lighter to pack, easy to wear.
+    Brand name: Nicshape
+    Competitor 1 name: Regular swimsuit
+    Competitor 2 name: Swimsuit + sarong
+    Rows (label | Nicshape | Competitor 1 | Competitor 2):
+    1. Smooth, flattering fit | Yes | Yes | No
+    2. Built-in bust support | Yes | Yes | No
+    3. Lined, not see-through | Yes | No | No
+    4. High waist that stays put | Yes | No | No
+    5. No changing after swimming | Yes | No | No
+    6. One piece, no second thoughts | Yes | No | No
+    7. (empty, hidden)
+    
+    Settings: heading, paragraph, brand name, brand logo (image), competitor 1 and 2 names, and for each of the 7 rows: label (text), brand (checkbox), competitor 1 (Yes/No), competitor 2 (Yes/No). Hide a row if its label is empty. Also colors: brand column top and bottom, competitor header, competitor cells top and bottom, competitor yes icon, text, label background. Also row height and corner radius.
+    
+    Use CSS grid and inline SVG icons. Keep the code short.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% style %}
+.ai-compare-{{ ai_gen_id }}{display:block;width:{{ block.settings.desktop_width_percent }}%;max-width:100%;color:{{ block.settings.text_color }}}
+.ai-compare-{{ ai_gen_id }}__layout{display:grid;grid-template-columns:35% 65%;gap:24px;align-items:stretch}
+.ai-compare-{{ ai_gen_id }}__intro{display:flex;flex-direction:column;justify-content:center;text-align:center;padding:16px}
+.ai-compare-{{ ai_gen_id }}__title{font-size:32px;line-height:1.15;margin:0 0 14px;font-weight:700;color:{{ block.settings.text_color }}}
+.ai-compare-{{ ai_gen_id }}__copy{font-size:16px;line-height:1.5;margin:0}
+.ai-compare-{{ ai_gen_id }}__table{display:grid;grid-template-columns:36% repeat(3,minmax(0,1fr));column-gap:8px;row-gap:8px;align-content:start}
+.ai-compare-{{ ai_gen_id }}__head{height:96px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;font-size:13px;font-weight:700;background:{{ block.settings.competitor_header_color }};border-radius:{{ block.settings.corner_radius }}px}
+.ai-compare-{{ ai_gen_id }}__head--empty{background:transparent}
+.ai-compare-{{ ai_gen_id }}__head--brand{background:{{ block.settings.brand_top_color }};color:#fff;border-radius:14px 14px 0 0;letter-spacing:.12em;text-transform:uppercase;flex-direction:column}
+.ai-compare-{{ ai_gen_id }}__head--brand img{max-width:85%;max-height:70px;object-fit:contain}
+.ai-compare-{{ ai_gen_id }}__cell{height:{{ block.settings.row_height }}px;display:flex;align-items:center;justify-content:center;padding:8px;background:linear-gradient(180deg,{{ block.settings.competitor_top_color }},{{ block.settings.competitor_bottom_color }});font-size:15px;text-align:center;border:1px solid #ececec}
+.ai-compare-{{ ai_gen_id }}__label{justify-content:flex-start;text-align:left;font-weight:700;background:{{ block.settings.label_background }};padding:10px 12px}
+.ai-compare-{{ ai_gen_id }}__brand-cell{background:linear-gradient(180deg,{{ block.settings.brand_top_color }},{{ block.settings.brand_bottom_color }});border:0}
+.ai-compare-{{ ai_gen_id }}__icon{width:22px;height:22px;display:block;flex:none}
+.ai-compare-{{ ai_gen_id }}__brand-cell .ai-compare-{{ ai_gen_id }}__icon{width:22px;height:22px}
+.ai-compare-{{ ai_gen_id }}__label--first{border-radius:{{ block.settings.corner_radius }}px {{ block.settings.corner_radius }}px 0 0}
+.ai-compare-{{ ai_gen_id }}__label--last{border-radius:0 0 {{ block.settings.corner_radius }}px {{ block.settings.corner_radius }}px}
+.ai-compare-{{ ai_gen_id }}__brand-cell--last{border-radius:0 0 14px 14px}
+@media(max-width:749px){.ai-compare-{{ ai_gen_id }}{width:100%}.ai-compare-{{ ai_gen_id }}__layout{grid-template-columns:1fr;gap:18px}.ai-compare-{{ ai_gen_id }}__intro{padding:0 4px}.ai-compare-{{ ai_gen_id }}__title{font-size:26px}.ai-compare-{{ ai_gen_id }}__copy{font-size:14px}.ai-compare-{{ ai_gen_id }}__table{grid-template-columns:36% repeat(3,minmax(0,1fr));gap:5px}.ai-compare-{{ ai_gen_id }}__head{height:76px;font-size:11px;padding:4px}.ai-compare-{{ ai_gen_id }}__cell{height:56px;font-size:13px;padding:4px}.ai-compare-{{ ai_gen_id }}__label{padding:6px;font-size:13px}.ai-compare-{{ ai_gen_id }}__icon{width:18px;height:18px}}
+{% endstyle %}
+<div class="ai-compare-{{ ai_gen_id }}" {{ block.shopify_attributes }}><div class="ai-compare-{{ ai_gen_id }}__layout"><div class="ai-compare-{{ ai_gen_id }}__intro"><h2 class="ai-compare-{{ ai_gen_id }}__title">{{ block.settings.heading | escape }}</h2><p class="ai-compare-{{ ai_gen_id }}__copy">{{ block.settings.paragraph | escape }}</p></div><div class="ai-compare-{{ ai_gen_id }}__table"><div class="ai-compare-{{ ai_gen_id }}__head ai-compare-{{ ai_gen_id }}__head--empty"></div><div class="ai-compare-{{ ai_gen_id }}__head ai-compare-{{ ai_gen_id }}__head--brand">{% if block.settings.brand_logo != blank %}<img src="{{ block.settings.brand_logo | image_url: width: 400 }}" alt="{{ block.settings.brand_name | escape }}">{% else %}{{ block.settings.brand_name | escape }}{% endif %}</div><div class="ai-compare-{{ ai_gen_id }}__head">{{ block.settings.competitor_1_name | escape }}</div><div class="ai-compare-{{ ai_gen_id }}__head">{{ block.settings.competitor_2_name | escape }}</div>{% for i in (1..7) %}{% liquid
+assign label_key = 'row_' | append: i | append: '_label'
+assign brand_key = 'row_' | append: i | append: '_brand'
+assign comp1_key = 'row_' | append: i | append: '_comp1'
+assign comp2_key = 'row_' | append: i | append: '_comp2'
+assign row_label = block.settings[label_key]
+assign row_brand = block.settings[brand_key]
+assign row_comp1 = block.settings[comp1_key]
+assign row_comp2 = block.settings[comp2_key]
+%}{% if row_label != blank %}<div class="ai-compare-{{ ai_gen_id }}__cell ai-compare-{{ ai_gen_id }}__label{% if forloop.first %} ai-compare-{{ ai_gen_id }}__label--first{% endif %}{% if forloop.last %} ai-compare-{{ ai_gen_id }}__label--last{% endif %}">{{ row_label | escape }}</div><div class="ai-compare-{{ ai_gen_id }}__cell ai-compare-{{ ai_gen_id }}__brand-cell{% if forloop.last %} ai-compare-{{ ai_gen_id }}__brand-cell--last{% endif %}"><svg class="ai-compare-{{ ai_gen_id }}__icon" viewBox="0 0 22 22" role="img" aria-label="Yes"><circle cx="11" cy="11" r="11" fill="#fff"/><path d="m6 11 3.2 3.2L16.5 7" fill="none" stroke="#2b211d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>{% for value in (1..2) %}{% assign value_to_show = row_comp1 %}{% if value == 2 %}{% assign value_to_show = row_comp2 %}{% endif %}<div class="ai-compare-{{ ai_gen_id }}__cell"><svg class="ai-compare-{{ ai_gen_id }}__icon" viewBox="0 0 22 22" role="img" aria-label="{% if value_to_show %}Yes{% else %}No{% endif %}">{% if value_to_show %}<circle cx="11" cy="11" r="11" fill="{{ block.settings.competitor_yes_color }}"/><path d="m6 11 3.2 3.2L16.5 7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>{% else %}<circle cx="11" cy="11" r="11" fill="#111"/><path d="m7 7 8 8m0-8-8 8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>{% endif %}{% endfor %}{% endif %}{% endfor %}</div></div></div>
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{"name":"Comparison table","tag":null,"class":"comparison-table-block","settings":[{"type":"range","id":"desktop_width_percent","label":"Desktop width","min":50,"max":100,"step":5,"unit":"%","default":100},{"type":"header","content":"Content"},{"type":"text","id":"heading","label":"Heading","default":"Everything you need to step out of the water. In one piece."},{"type":"textarea","id":"paragraph","label":"Paragraph","default":"A swim dress that works as a swimsuit and a cover-up. Lighter to pack, easy to wear."},{"type":"text","id":"brand_name","label":"Brand name","default":"Nicshape"},{"type":"image_picker","id":"brand_logo","label":"Brand logo"},{"type":"text","id":"competitor_1_name","label":"Competitor 1 name","default":"Regular swimsuit"},{"type":"text","id":"competitor_2_name","label":"Competitor 2 name","default":"Swimsuit + sarong"},{"type":"header","content":"Comparison rows"},{"type":"text","id":"row_1_label","label":"Row 1 label","default":"Smooth, flattering fit"},{"type":"checkbox","id":"row_1_brand","label":"Brand has feature","default":true},{"type":"checkbox","id":"row_1_comp1","label":"Competitor 1 has feature","default":true},{"type":"checkbox","id":"row_1_comp2","label":"Competitor 2 has feature","default":false},{"type":"text","id":"row_2_label","label":"Row 2 label","default":"Built-in bust support"},{"type":"checkbox","id":"row_2_brand","label":"Brand has feature","default":true},{"type":"checkbox","id":"row_2_comp1","label":"Competitor 1 has feature","default":true},{"type":"checkbox","id":"row_2_comp2","label":"Competitor 2 has feature","default":false},{"type":"text","id":"row_3_label","label":"Row 3 label","default":"Lined, not see-through"},{"type":"checkbox","id":"row_3_brand","label":"Brand has feature","default":true},{"type":"checkbox","id":"row_3_comp1","label":"Competitor 1 has feature","default":false},{"type":"checkbox","id":"row_3_comp2","label":"Competitor 2 has feature","default":false},{"type":"text","id":"row_4_label","label":"Row 4 label","default":"High waist that stays put"},{"type":"checkbox","id":"row_4_brand","label":"Brand has feature","default":true},{"type":"checkbox","id":"row_4_comp1","label":"Competitor 1 has feature","default":false},{"type":"checkbox","id":"row_4_comp2","label":"Competitor 2 has feature","default":false},{"type":"text","id":"row_5_label","label":"Row 5 label","default":"No changing after swimming"},{"type":"checkbox","id":"row_5_brand","label":"Brand has feature","default":true},{"type":"checkbox","id":"row_5_comp1","label":"Competitor 1 has feature","default":false},{"type":"checkbox","id":"row_5_comp2","label":"Competitor 2 has feature","default":false},{"type":"text","id":"row_6_label","label":"Row 6 label","default":"One piece, no second thoughts"},{"type":"checkbox","id":"row_6_brand","label":"Brand has feature","default":true},{"type":"checkbox","id":"row_6_comp1","label":"Competitor 1 has feature","default":false},{"type":"checkbox","id":"row_6_comp2","label":"Competitor 2 has feature","default":false},{"type":"text","id":"row_7_label","label":"Row 7 label"},{"type":"checkbox","id":"row_7_brand","label":"Brand has feature","default":true},{"type":"checkbox","id":"row_7_comp1","label":"Competitor 1 has feature","default":false},{"type":"checkbox","id":"row_7_comp2","label":"Competitor 2 has feature","default":false},{"type":"header","content":"Colors and sizing"},{"type":"color","id":"brand_top_color","label":"Brand top","default":"#2B211D"},{"type":"color","id":"brand_bottom_color","label":"Brand bottom","default":"#AC9D8C"},{"type":"color","id":"competitor_header_color","label":"Competitor header","default":"#E0E0E0"},{"type":"color","id":"competitor_top_color","label":"Competitor cells top","default":"#E8E8E8"},{"type":"color","id":"competitor_bottom_color","label":"Competitor cells bottom","default":"#FAFAFA"},{"type":"color","id":"competitor_yes_color","label":"Competitor yes icon","default":"#8C7A62"},{"type":"color","id":"text_color","label":"Text","default":"#111111"},{"type":"color","id":"label_background","label":"Label background","default":"#F6F6F6"},{"type":"range","id":"row_height","label":"Row height","min":48,"max":80,"step":4,"unit":"px","default":64},{"type":"range","id":"corner_radius","label":"Corner radius","min":4,"max":24,"step":2,"unit":"px","default":12}],"presets":[{"name":"Comparison table"}]}
 {% endschema %}
