@@ -636,6 +636,19 @@
               },
               "block_order": []
             },
+            "payment_icons_MBtjrw": {
+              "type": "payment-icons",
+              "name": "t:names.payment_icons",
+              "settings": {
+                "horizontal_alignment": "center",
+                "gap": 10,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "ai_gen_block_5277fbd_TU4A3L": {
               "type": "ai_gen_block_5277fbd",
               "settings": {
@@ -755,6 +768,7 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "payment_icons_MBtjrw",
             "ai_gen_block_5277fbd_TU4A3L",
             "ai_gen_block_2b22373_BDkXiy",
             "nic_promo_card_MWiFRa",
