@@ -12,6 +12,34 @@
     "main": {
       "type": "product-information",
       "blocks": {
+        "ai_gen_block_61cc85d_FciFCK": {
+          "type": "ai_gen_block_61cc85d",
+          "settings": {
+            "heading": "The problem isn't you. It's the swimsuit.",
+            "subheading": "Belly covered, bust up, nothing to change into. All in one piece.",
+            "heading_size": 36,
+            "desktop_width_percent": 100,
+            "video": "shopify://files/videos/vidlp1.mp4",
+            "media_position": "right",
+            "media_radius": 20,
+            "feature_1_title": "",
+            "feature_1_description": "",
+            "feature_2_title": "",
+            "feature_2_description": "",
+            "feature_3_title": "",
+            "feature_3_description": "",
+            "feature_4_title": "",
+            "feature_4_description": "",
+            "background_color": "#ffffff",
+            "text_color": "#2b2224",
+            "description_color": "#5f5557",
+            "padding_vertical_desktop": 32,
+            "padding_horizontal_desktop": 80,
+            "padding_vertical_mobile": 8,
+            "padding_horizontal_mobile": 16
+          },
+          "blocks": {}
+        },
         "disclosures_g9mWze": {
           "type": "disclosures",
           "name": "t:names.disclosures",
@@ -461,6 +489,7 @@
         }
       },
       "block_order": [
+        "ai_gen_block_61cc85d_FciFCK",
         "disclosures_g9mWze"
       ],
       "settings": {
