@@ -91,15 +91,15 @@
               "type": "ai_gen_block_9bd7ced",
               "settings": {
                 "rating_value": "4.8",
-                "review_count": "(4705)...",
+                "review_count": "(4705)",
                 "show_review_count": true,
                 "alignment": "left",
                 "desktop_width_percent": 100,
                 "star_size": 18,
-                "star_color": "#C9A26D",
-                "empty_star_color": "#E4DCD6",
+                "star_color": "#c9a26d",
+                "empty_star_color": "#e4dcd6",
                 "text_size": 15,
-                "text_color": "#2B2224"
+                "text_color": "#2b2224"
               },
               "blocks": {}
             },
