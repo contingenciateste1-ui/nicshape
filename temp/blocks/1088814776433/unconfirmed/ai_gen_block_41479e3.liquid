@@ -1,6 +1,274 @@
+{% doc %}
+  @prompt
+    Create a theme block called "Review photo carousel".
+    
+    Layout: a section with a centered bold heading on top (size 28px, color #111111), and below it a horizontal carousel of review cards, 5 cards visible on desktop and 1.2 cards visible on mobile (so the next card peeks), with horizontal scroll and scroll-snap. Gap between cards 14px. Optional small arrow buttons to scroll.
+    
+    Each card (white background, 1px border #ececec, rounded corners 14px, overflow hidden):
+    1. A large photo on top, vertical ratio 4 / 5, object-fit cover, full width of the card.
+    2. Below the photo, padding 14px 16px:
+       - A row with a small round gray avatar icon (28px) and the customer name in bold (size 13px).
+       - Below it, 5 small stars in gold (#c9a26d, size 14px), the number of filled stars follows the rating.
+       - A bold review title (size 14px, line height 1.35).
+       - The review text (size 13px, line height 1.5, color #333333).
+    
+    Editable settings (section level): heading (text), heading size, cards visible on desktop (select 3 / 4 / 5), cards visible on mobile (select 1.2 / 1.5), card background, border color, corner radius, star color, show arrows (checkbox).
+    
+    Add a repeatable "Review card" block (up to 20 cards, the merchant can add, remove and reorder them) with these fields: Photo (image picker), Customer name (text), Rating (select 1 to 5, default 5), Review title (text), Review text (textarea).
+    
+    Create 5 starter cards with neutral placeholders only: name "Customer name", rating 5, title "Review title", text "Write a real customer review here.", no photo. Do not invent names, quotes or product claims.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-review-carousel-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    color: #111111;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__heading {
+    margin: 0 0 22px;
+    color: #111111;
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 0 0 12px;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__arrow {
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: 50%;
+    background: {{ block.settings.card_background }};
+    color: #111111;
+    cursor: pointer;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__arrow:focus-visible {
+    outline: 2px solid #111111;
+    outline-offset: 3px;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__track {
+    display: flex;
+    gap: 14px;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    padding: 0 0 8px;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__card {
+    flex: 0 0 calc((100% - ({{ block.settings.desktop_cards }} - 1) * 14px) / {{ block.settings.desktop_cards }});
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.corner_radius }}px;
+    background: {{ block.settings.card_background }};
+    scroll-snap-align: start;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__placeholder {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    align-items: center;
+    justify-content: center;
+    background: #f4f4f4;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__placeholder svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__placeholder-text {
+    position: absolute;
+    padding: 10px;
+    color: #333333;
+    font-size: 12px;
+    text-align: center;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__body {
+    padding: 14px 16px;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__customer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 6px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__avatar {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e5e5e5;
+    color: #333333;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__avatar svg {
+    width: 16px;
+    height: 16px;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__stars {
+    display: flex;
+    gap: 1px;
+    margin-bottom: 8px;
+    color: {{ block.settings.star_color }};
+    font-size: 14px;
+    line-height: 1;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__title {
+    margin: 0 0 5px;
+    color: #111111;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .ai-review-carousel-{{ ai_gen_id }}__text {
+    margin: 0;
+    color: #333333;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  @media screen and (max-width: 749px) {
+    .ai-review-carousel-{{ ai_gen_id }}__card {
+      flex-basis: calc((100% - 14px * ({{ block.settings.mobile_cards }} - 1)) / {{ block.settings.mobile_cards }});
+    }
+    .ai-review-carousel-{{ ai_gen_id }}__heading {
+      margin-bottom: 18px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ai-review-carousel-{{ ai_gen_id }}__track { scroll-behavior: auto; }
+  }
+{% endstyle %}
+
+<review-photo-carousel-{{ ai_gen_id }} class="ai-review-carousel-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.heading != blank %}<h2 class="ai-review-carousel-{{ ai_gen_id }}__heading">{{ block.settings.heading | escape }}</h2>{% endif %}
+  {% if block.settings.show_arrows %}
+    <div class="ai-review-carousel-{{ ai_gen_id }}__controls">
+      <button class="ai-review-carousel-{{ ai_gen_id }}__arrow" type="button" data-direction="-1" aria-label="Scroll reviews left"><span aria-hidden="true">&#8592;</span></button>
+      <button class="ai-review-carousel-{{ ai_gen_id }}__arrow" type="button" data-direction="1" aria-label="Scroll reviews right"><span aria-hidden="true">&#8594;</span></button>
+    </div>
+  {% endif %}
+  <div class="ai-review-carousel-{{ ai_gen_id }}__track" tabindex="0" aria-label="Customer reviews">
+    {% for i in (1..5) %}
+      {% liquid
+        assign photo_key = 'review_' | append: i | append: '_photo'
+        assign name_key = 'review_' | append: i | append: '_name'
+        assign rating_key = 'review_' | append: i | append: '_rating'
+        assign title_key = 'review_' | append: i | append: '_title'
+        assign text_key = 'review_' | append: i | append: '_text'
+        assign review_photo = block.settings[photo_key]
+        assign review_name = block.settings[name_key]
+        assign review_rating = block.settings[rating_key] | plus: 0
+        assign review_title = block.settings[title_key]
+        assign review_text = block.settings[text_key]
+      %}
+      <article class="ai-review-carousel-{{ ai_gen_id }}__card">
+        {% if review_photo != blank %}
+          <img class="ai-review-carousel-{{ ai_gen_id }}__photo" src="{{ review_photo | image_url: width: 900 }}" alt="{{ review_photo.alt | default: 'Customer review photo' | escape }}" loading="lazy" width="{{ review_photo.width }}" height="{{ review_photo.height }}">
+        {% else %}
+          <div class="ai-review-carousel-{{ ai_gen_id }}__placeholder">
+            {{ 'image' | placeholder_svg_tag }}
+            <span class="ai-review-carousel-{{ ai_gen_id }}__placeholder-text">Add a customer photo</span>
+          </div>
+        {% endif %}
+        <div class="ai-review-carousel-{{ ai_gen_id }}__body">
+          <p class="ai-review-carousel-{{ ai_gen_id }}__customer"><span class="ai-review-carousel-{{ ai_gen_id }}__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"></path></svg></span>{{ review_name | escape }}</p>
+          <div class="ai-review-carousel-{{ ai_gen_id }}__stars" role="img" aria-label="{{ review_rating }} out of 5 stars">
+            {% for star in (1..5) %}{% if star <= review_rating %}<span aria-hidden="true">&#9733;</span>{% else %}<span aria-hidden="true" style="color:#d8d8d8">&#9733;</span>{% endif %}{% endfor %}
+          </div>
+          <h3 class="ai-review-carousel-{{ ai_gen_id }}__title">{{ review_title | escape }}</h3>
+          <p class="ai-review-carousel-{{ ai_gen_id }}__text">{{ review_text | escape | newline_to_br }}</p>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  <script>
+    (function() {
+      const element = document.currentScript && document.currentScript.closest('review-photo-carousel-{{ ai_gen_id }}');
+      if (!element || element.dataset.ready === 'true') return;
+      element.dataset.ready = 'true';
+      const track = element.querySelector('.ai-review-carousel-{{ ai_gen_id }}__track');
+      element.querySelectorAll('.ai-review-carousel-{{ ai_gen_id }}__arrow').forEach((button) => {
+        button.addEventListener('click', () => {
+          const card = track.querySelector('.ai-review-carousel-{{ ai_gen_id }}__card');
+          if (!card) return;
+          const amount = card.getBoundingClientRect().width + 14;
+          track.scrollBy({ left: amount * Number(button.dataset.direction), behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
+</review-photo-carousel-{{ ai_gen_id }}>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Review photo carousel",
+  "settings": [
+    {"type":"text","id":"heading","label":"Heading","default":"Customer reviews"},
+    {"type":"range","id":"heading_size","label":"Heading size","min":18,"max":40,"step":2,"unit":"px","default":28},
+    {"type":"select","id":"desktop_cards","label":"Cards visible on desktop","options":[{"value":"3","label":"3"},{"value":"4","label":"4"},{"value":"5","label":"5"}],"default":"5"},
+    {"type":"select","id":"mobile_cards","label":"Cards visible on mobile","options":[{"value":"1.2","label":"1.2"},{"value":"1.5","label":"1.5"}],"default":"1.2"},
+    {"type":"color","id":"card_background","label":"Card background","default":"#ffffff"},
+    {"type":"color","id":"border_color","label":"Border color","default":"#ececec"},
+    {"type":"range","id":"corner_radius","label":"Corner radius","min":0,"max":32,"step":2,"unit":"px","default":14},
+    {"type":"color","id":"star_color","label":"Star color","default":"#c9a26d"},
+    {"type":"checkbox","id":"show_arrows","label":"Show arrows","default":true},
+    {"type":"range","id":"desktop_width_percent","label":"Desktop width","min":50,"max":100,"step":5,"unit":"%","default":100},
+    {"type":"header","content":"Review card 1"},
+    {"type":"image_picker","id":"review_1_photo","label":"Photo"},
+    {"type":"text","id":"review_1_name","label":"Customer name","default":"Customer name"},
+    {"type":"select","id":"review_1_rating","label":"Rating","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"},{"value":"5","label":"5"}],"default":"5"},
+    {"type":"text","id":"review_1_title","label":"Review title","default":"Review title"},
+    {"type":"textarea","id":"review_1_text","label":"Review text","default":"Write a real customer review here."},
+    {"type":"header","content":"Review card 2"},
+    {"type":"image_picker","id":"review_2_photo","label":"Photo"},
+    {"type":"text","id":"review_2_name","label":"Customer name","default":"Customer name"},
+    {"type":"select","id":"review_2_rating","label":"Rating","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"},{"value":"5","label":"5"}],"default":"5"},
+    {"type":"text","id":"review_2_title","label":"Review title","default":"Review title"},
+    {"type":"textarea","id":"review_2_text","label":"Review text","default":"Write a real customer review here."},
+    {"type":"header","content":"Review card 3"},
+    {"type":"image_picker","id":"review_3_photo","label":"Photo"},
+    {"type":"text","id":"review_3_name","label":"Customer name","default":"Customer name"},
+    {"type":"select","id":"review_3_rating","label":"Rating","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"},{"value":"5","label":"5"}],"default":"5"},
+    {"type":"text","id":"review_3_title","label":"Review title","default":"Review title"},
+    {"type":"textarea","id":"review_3_text","label":"Review text","default":"Write a real customer review here."},
+    {"type":"header","content":"Review card 4"},
+    {"type":"image_picker","id":"review_4_photo","label":"Photo"},
+    {"type":"text","id":"review_4_name","label":"Customer name","default":"Customer name"},
+    {"type":"select","id":"review_4_rating","label":"Rating","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"},{"value":"5","label":"5"}],"default":"5"},
+    {"type":"text","id":"review_4_title","label":"Review title","default":"Review title"},
+    {"type":"textarea","id":"review_4_text","label":"Review text","default":"Write a real customer review here."},
+    {"type":"header","content":"Review card 5"},
+    {"type":"image_picker","id":"review_5_photo","label":"Photo"},
+    {"type":"text","id":"review_5_name","label":"Customer name","default":"Customer name"},
+    {"type":"select","id":"review_5_rating","label":"Rating","options":[{"value":"1","label":"1"},{"value":"2","label":"2"},{"value":"3","label":"3"},{"value":"4","label":"4"},{"value":"5","label":"5"}],"default":"5"},
+    {"type":"text","id":"review_5_title","label":"Review title","default":"Review title"},
+    {"type":"textarea","id":"review_5_text","label":"Review text","default":"Write a real customer review here."}
+  ],
+  "presets": [{"name":"Review photo carousel"}],
+  "tag": null,
+  "class": "review-photo-carousel-block"
+}
 {% endschema %}
