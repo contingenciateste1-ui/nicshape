@@ -87,6 +87,22 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "ai_gen_block_9bd7ced_9k9h4p": {
+              "type": "ai_gen_block_9bd7ced",
+              "settings": {
+                "rating_value": "4.8",
+                "review_count": "(4705)...",
+                "show_review_count": true,
+                "alignment": "left",
+                "desktop_width_percent": 100,
+                "star_size": 18,
+                "star_color": "#C9A26D",
+                "empty_star_color": "#E4DCD6",
+                "text_size": 15,
+                "text_color": "#2B2224"
+              },
+              "blocks": {}
+            },
             "group_icgrde": {
               "type": "group",
               "name": "t:names.header",
@@ -187,12 +203,26 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
+                },
+                "ai_gen_block_1f4a528_g4iCR3": {
+                  "type": "ai_gen_block_1f4a528",
+                  "settings": {
+                    "items": "Swimsuit and cover-up in one piece.\nFully lined. High waist that stays put.\nForget about it. Wet looks the same as dry.\nFor real women, not for models.",
+                    "text_size": 15,
+                    "text_color": "#111111",
+                    "icon_color": "#111111",
+                    "check_color": "#ffffff",
+                    "line_spacing": 6,
+                    "desktop_width_percent": 100
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
                 "text_xrnftG",
                 "review_rcgVxY",
-                "price_tVjtKg"
+                "price_tVjtKg",
+                "ai_gen_block_1f4a528_g4iCR3"
               ]
             },
             "divider_VJhene": {
@@ -290,6 +320,42 @@
               },
               "block_order": []
             },
+            "ai_gen_block_5277fbd_TU4A3L": {
+              "type": "ai_gen_block_5277fbd",
+              "settings": {
+                "text_before": "Bought",
+                "number": "1655",
+                "text_after": "times this week",
+                "show_icon": true,
+                "text_size": 16,
+                "text_color": "#111111",
+                "number_color": "#9a7b5a",
+                "icon_color": "#111111",
+                "desktop_width_percent": 100
+              },
+              "blocks": {}
+            },
+            "ai_gen_block_2b22373_BDkXiy": {
+              "type": "ai_gen_block_2b22373",
+              "settings": {
+                "title": "Worldwide Delivery within 5-7 Days",
+                "countdown_label": "Order within",
+                "date_label": "Receive",
+                "note": "Delivery dates are forecasts and might delay in some cases",
+                "cutoff_hour": 18,
+                "minimum_days": 5,
+                "maximum_days": 7,
+                "business_days_only": false,
+                "accent_color": "#d28a62",
+                "text_color": "#111111",
+                "muted_color": "#9a8f88",
+                "border_color": "#e9e1da",
+                "corner_radius": 20,
+                "show_card": true,
+                "desktop_width_percent": 100
+              },
+              "blocks": {}
+            },
             "text_aEtTtq": {
               "type": "text",
               "name": "t:names.product_description",
@@ -318,10 +384,13 @@
             }
           },
           "block_order": [
+            "ai_gen_block_9bd7ced_9k9h4p",
             "group_icgrde",
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "ai_gen_block_5277fbd_TU4A3L",
+            "ai_gen_block_2b22373_BDkXiy",
             "text_aEtTtq"
           ]
         }
