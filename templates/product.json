@@ -369,6 +369,36 @@
               },
               "blocks": {}
             },
+            "nic_promo_card_MWiFRa": {
+              "type": "nic-promo-card",
+              "name": "Nicshape promo card",
+              "settings": {
+                "image": "shopify://shop_images/11_890830ca-c66e-4c1b-bdc0-6cd71994fa46.webp",
+                "image_side": "left",
+                "image_width": 40,
+                "ratio": "2.2 / 1",
+                "arc_text": "Ends soon",
+                "title": "Halloween",
+                "ribbon": "Buy 2 · Get 1 Free",
+                "sub": "Sale",
+                "show_countdown": true,
+                "end_date": "",
+                "end_text": "",
+                "label_days": "DAYS",
+                "label_hours": "HRS",
+                "label_minutes": "MIN",
+                "label_seconds": "SEC",
+                "accent_color": "#e8903d",
+                "panel_bg": "#161212",
+                "glow_color": "#6b4318",
+                "text_color": "#ffffff",
+                "ribbon_text_color": "#161212",
+                "box_bg": "#241c18",
+                "box_border": "#6b4a2c",
+                "radius": 24
+              },
+              "blocks": {}
+            },
             "text_aEtTtq": {
               "type": "text",
               "name": "t:names.product_description",
@@ -404,6 +434,7 @@
             "buy_buttons_eYQEYi",
             "ai_gen_block_5277fbd_TU4A3L",
             "ai_gen_block_2b22373_BDkXiy",
+            "nic_promo_card_MWiFRa",
             "text_aEtTtq"
           ]
         }
