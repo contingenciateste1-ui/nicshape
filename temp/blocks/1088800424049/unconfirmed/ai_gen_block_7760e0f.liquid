@@ -1,6 +1,168 @@
+{% doc %}
+  @prompt
+    Create a theme block called "Promo countdown card".
+    
+    Layout: one wide rounded card (corner radius 24px, overflow hidden), split in two halves on desktop: image on the left (about 40% width, fills the full height with object-fit cover), text panel on the right (about 60%). On mobile, stack them: image on top, text panel below.
+    
+    Right panel (dark): background is a very dark brown/black (#161212) with a soft warm glow (radial gradient, orange #6b4318 at 25% opacity) coming from the top. All content is centered:
+    1. Small label "ENDS SOON": white, size 14px, letter spacing 0.2em, uppercase, slightly curved upward (an arc) if possible, or just straight.
+    2. Large headline "HALLOWEEN": orange (#e8903d), bold, size 56px, uppercase, wide letter spacing.
+    3. A ribbon banner below the headline with text "BUY 2 · GET 1 FREE": orange (#e8903d) background, dark text (#161212), bold, uppercase, 20px, with V-notched (swallowtail) ends on left and right using clip-path.
+    4. A large word "SALE": white, bold, size 44px, letter spacing 0.15em.
+    5. A countdown with three boxes: HRS, MIN, SEC. Each box has a dark background (#241c18), a thin brown border (#6b4a2c), radius 12px, the two-digit number in white (size 32px, bold) and a small orange label under it (HRS / MIN / SEC, size 11px). Between boxes put an orange colon.
+    
+    Behavior: the countdown goes down every second until the end date and time chosen by the merchant. When it reaches zero, hide the three boxes (and optionally show a text). Use plain JavaScript with no external libraries.
+    
+    Editable settings:
+    1. Image (image picker)
+    2. Small label (text, default "Ends soon")
+    3. Headline (text, default "Halloween")
+    4. Ribbon text (text, default "Buy 2 · Get 1 Free")
+    5. Big word (text, default "Sale")
+    6. End date and time (text, format YYYY-MM-DD HH:MM). If empty, hide the countdown.
+    7. Accent color (color, default #e8903d)
+    8. Panel background color (color, default #161212)
+    9. Text color (color, default #ffffff)
+    10. Corner radius (range 0 to 40, default 24)
+    11. Show countdown (checkbox, default on)
+    12. Image position: left or right
+    
+    Keep the code short, use CSS variables for the colors, and make the text scale down on small screens so nothing overflows.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .promo-countdown-{{ ai_gen_id }} {
+    --promo-accent: {{ block.settings.accent_color }};
+    --promo-panel: {{ block.settings.panel_color }};
+    --promo-text: {{ block.settings.text_color }};
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+  }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__card {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 390px;
+    overflow: hidden;
+    border-radius: {{ block.settings.corner_radius }}px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(107,67,24,.25), transparent 62%), var(--promo-panel);
+  }
+  .promo-countdown-{{ ai_gen_id }}[data-image-position="right"] .promo-countdown__card { flex-direction: row-reverse; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__media { flex: 0 0 40%; min-width: 0; position: relative; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__media img,
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__media svg { display: block; width: 100%; height: 100%; min-height: 390px; object-fit: cover; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__media svg { background: #30251f; color: #b2a49b; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__content { flex: 1 1 60%; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: clamp(24px, 4vw, 52px); text-align: center; color: var(--promo-text); }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__label { margin: 0; font-size: 14px; letter-spacing: .2em; line-height: 1.3; text-transform: uppercase; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__headline { margin: 0; color: var(--promo-accent); font-size: clamp(34px, 4.2vw, 56px); line-height: 1; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; overflow-wrap: anywhere; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__ribbon { max-width: 100%; margin: 3px 0; padding: 10px 24px; background: var(--promo-accent); color: #161212; clip-path: polygon(0 0,100% 0,95% 50%,100% 100%,0 100%,5% 50%); font-size: clamp(14px, 1.6vw, 20px); line-height: 1.2; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; overflow-wrap: anywhere; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__word { margin: 0; color: var(--promo-text); font-size: clamp(32px, 3.5vw, 44px); line-height: 1; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__timer { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 4px; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__unit { min-width: 76px; padding: 9px 12px 8px; border: 1px solid #6b4a2c; border-radius: 12px; background: #241c18; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__number { display: block; color: var(--promo-text); font-size: 32px; line-height: 1.1; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__unit-label { display: block; margin-top: 3px; color: var(--promo-accent); font-size: 11px; line-height: 1.2; letter-spacing: .08em; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__colon { color: var(--promo-accent); font-size: 24px; font-weight: 700; }
+  .promo-countdown-{{ ai_gen_id }} .promo-countdown__expired { margin: 0; color: var(--promo-text); }
+  @media (max-width: 749px) {
+    .promo-countdown-{{ ai_gen_id }} { width: 100%; }
+    .promo-countdown-{{ ai_gen_id }} .promo-countdown__card,
+    .promo-countdown-{{ ai_gen_id }}[data-image-position="right"] .promo-countdown__card { flex-direction: column; }
+    .promo-countdown-{{ ai_gen_id }} .promo-countdown__media { flex: none; width: 100%; height: clamp(190px, 58vw, 320px); }
+    .promo-countdown-{{ ai_gen_id }} .promo-countdown__media img,
+    .promo-countdown-{{ ai_gen_id }} .promo-countdown__media svg { min-height: 0; height: 100%; }
+    .promo-countdown-{{ ai_gen_id }} .promo-countdown__content { padding: 28px 16px 32px; gap: 12px; }
+    .promo-countdown-{{ ai_gen_id }} .promo-countdown__timer { gap: 6px; }
+    .promo-countdown-{{ ai_gen_id }} .promo-countdown__unit { min-width: 64px; padding: 8px 8px 6px; }
+    .promo-countdown-{{ ai_gen_id }} .promo-countdown__number { font-size: 27px; }
+  }
+  @media (max-width: 360px) {
+    .promo-countdown-{{ ai_gen_id }} .promo-countdown__unit { min-width: 56px; }
+    .promo-countdown-{{ ai_gen_id }} .promo-countdown__number { font-size: 24px; }
+    .promo-countdown-{{ ai_gen_id }} .promo-countdown__colon { font-size: 19px; }
+  }
+{% endstyle %}
+
+<promo-countdown-{{ ai_gen_id }} class="promo-countdown-{{ ai_gen_id }}" data-image-position="{{ block.settings.image_position }}" data-end="{{ block.settings.end_datetime | escape }}" data-enabled="{{ block.settings.show_countdown }}" {{ block.shopify_attributes }}>
+  <div class="promo-countdown__card">
+    <div class="promo-countdown__media">
+      {% if block.settings.image != blank %}
+        <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.image.alt | escape }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" loading="lazy">
+      {% else %}
+        {{ 'image' | placeholder_svg_tag }}
+      {% endif %}
+    </div>
+    <div class="promo-countdown__content">
+      {% if block.settings.small_label != blank %}<p class="promo-countdown__label">{{ block.settings.small_label | escape }}</p>{% endif %}
+      {% if block.settings.headline != blank %}<h2 class="promo-countdown__headline">{{ block.settings.headline | escape }}</h2>{% endif %}
+      {% if block.settings.ribbon_text != blank %}<div class="promo-countdown__ribbon">{{ block.settings.ribbon_text | escape }}</div>{% endif %}
+      {% if block.settings.big_word != blank %}<p class="promo-countdown__word">{{ block.settings.big_word | escape }}</p>{% endif %}
+      {% if block.settings.show_countdown and block.settings.end_datetime != blank %}
+        <div class="promo-countdown__timer" role="timer" aria-label="Countdown" aria-live="off">
+          <div class="promo-countdown__unit"><span class="promo-countdown__number" data-hours>00</span><span class="promo-countdown__unit-label">HRS</span></div>
+          <span class="promo-countdown__colon" aria-hidden="true">:</span>
+          <div class="promo-countdown__unit"><span class="promo-countdown__number" data-minutes>00</span><span class="promo-countdown__unit-label">MIN</span></div>
+          <span class="promo-countdown__colon" aria-hidden="true">:</span>
+          <div class="promo-countdown__unit"><span class="promo-countdown__number" data-seconds>00</span><span class="promo-countdown__unit-label">SEC</span></div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</promo-countdown-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    const tagName = 'promo-countdown-{{ ai_gen_id }}';
+    if (customElements.get(tagName)) return;
+    class PromoCountdown extends HTMLElement {
+      connectedCallback() {
+        if (this.dataset.enabled !== 'true' || !this.dataset.end) return;
+        const match = this.dataset.end.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})$/);
+        const timer = this.querySelector('.promo-countdown__timer');
+        if (!match || !timer) { if (timer) timer.hidden = true; return; }
+        const end = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]), Number(match[4]), Number(match[5])).getTime();
+        const hours = this.querySelector('[data-hours]');
+        const minutes = this.querySelector('[data-minutes]');
+        const seconds = this.querySelector('[data-seconds]');
+        const update = () => {
+          const remaining = Math.max(0, Math.floor((end - Date.now()) / 1000));
+          if (remaining <= 0) { timer.hidden = true; clearInterval(this.countdownInterval); return; }
+          hours.textContent = String(Math.floor(remaining / 3600)).padStart(2, '0');
+          minutes.textContent = String(Math.floor((remaining % 3600) / 60)).padStart(2, '0');
+          seconds.textContent = String(remaining % 60).padStart(2, '0');
+        };
+        update();
+        this.countdownInterval = window.setInterval(update, 1000);
+      }
+      disconnectedCallback() { if (this.countdownInterval) clearInterval(this.countdownInterval); }
+    }
+    customElements.define(tagName, PromoCountdown);
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Promo countdown card",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "small_label", "label": "Small label", "default": "Ends soon" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Halloween" },
+    { "type": "text", "id": "ribbon_text", "label": "Ribbon text", "default": "Buy 2 · Get 1 Free" },
+    { "type": "text", "id": "big_word", "label": "Big word", "default": "Sale" },
+    { "type": "text", "id": "end_datetime", "label": "End date and time", "info": "Use YYYY-MM-DD HH:MM. Time is interpreted in the visitor's local timezone." },
+    { "type": "checkbox", "id": "show_countdown", "label": "Show countdown", "default": true },
+    { "type": "select", "id": "image_position", "label": "Image position", "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }], "default": "left" },
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#e8903d" },
+    { "type": "color", "id": "panel_color", "label": "Panel background color", "default": "#161212" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#ffffff" },
+    { "type": "range", "id": "corner_radius", "label": "Corner radius", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 24 }
+  ],
+  "presets": [{ "name": "Promo countdown card" }],
+  "tag": null,
+  "class": "promo-countdown-block"
+}
 {% endschema %}
