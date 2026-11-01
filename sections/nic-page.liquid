@@ -9,6 +9,7 @@
     --pg-w: {{ section.settings.width }}px;
     --pg-align: {{ section.settings.align }};
     --pg-title: {{ section.settings.title_size }}px;
+    --pg-title-weight: {{ section.settings.title_weight }};
     --pg-body: {{ section.settings.text_size }}px;
     --pg-pt: {{ section.settings.padding_top }}px;
     --pg-pb: {{ section.settings.padding_bottom }}px;
@@ -44,6 +45,14 @@
           {%- endif -%}
         {%- when 'divider' -%}
           <hr class="nic-page__hr" {{ block.shopify_attributes }}>
+        {%- when 'callout' -%}
+          <div class="nic-page__callout" style="--co-bg: {{ block.settings.bg_color }}; --co-btn: {{ block.settings.button_color }}; --co-btn-text: {{ block.settings.button_text_color }};" {{ block.shopify_attributes }}>
+            {%- if block.settings.title != blank -%}<h3>{{ block.settings.title }}</h3>{%- endif -%}
+            {%- if block.settings.text != blank -%}<p>{{ block.settings.text }}</p>{%- endif -%}
+            {%- if block.settings.button_label != blank and block.settings.link != blank -%}
+              <a class="nic-page__callout-btn" href="{{ block.settings.link }}">{{ block.settings.button_label }}</a>
+            {%- endif -%}
+          </div>
         {%- when '@app' -%}
           <div class="nic-page__app">{% render block %}</div>
       {%- endcase -%}
@@ -65,10 +74,16 @@
     text-align: var(--pg-align);
   }
 
+  .nic-page__title,
+  .nic-page__intro {
+    text-align: var(--pg-align);
+  }
+
   .nic-page__title {
     margin: 0 0 20px;
     font-family: var(--font-heading--family);
     font-size: min(var(--pg-title), 9vw);
+    font-weight: var(--pg-title-weight);
     line-height: 1.15;
   }
 
@@ -166,6 +181,40 @@
     text-transform: uppercase;
   }
 
+  .nic-page__callout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    padding: 28px 20px;
+    border-radius: 14px;
+    background: var(--co-bg);
+    text-align: center;
+  }
+
+  .nic-page__callout h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .nic-page__callout p {
+    margin: 0;
+    color: var(--pg-muted);
+    font-size: 0.875rem;
+  }
+
+  .nic-page__callout-btn {
+    margin-top: 8px;
+    padding: 0.8em 2em;
+    border-radius: 999px;
+    background: var(--co-btn);
+    color: var(--co-btn-text);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
   .nic-page__app {
     margin: 24px 0;
   }
@@ -180,6 +229,18 @@
     { "type": "text", "id": "title", "label": "Title", "info": "Empty uses the page title." },
     { "type": "richtext", "id": "intro", "label": "Intro text" },
     { "type": "range", "id": "title_size", "label": "Title size", "min": 24, "max": 64, "step": 2, "unit": "px", "default": 40 },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra bold" }
+      ],
+      "default": "700"
+    },
     { "type": "range", "id": "text_size", "label": "Text size", "min": 13, "max": 22, "step": 1, "unit": "px", "default": 16 },
     { "type": "range", "id": "width", "label": "Content width", "min": 480, "max": 1100, "step": 20, "unit": "px", "default": 760 },
     {
@@ -221,6 +282,19 @@
       ]
     },
     { "type": "divider", "name": "Divider", "settings": [] },
+    {
+      "type": "callout",
+      "name": "Callout box",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Still have questions?" },
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "text", "id": "button_label", "label": "Button text", "default": "Message us on WhatsApp" },
+        { "type": "url", "id": "link", "label": "Button link", "info": "For WhatsApp use https://wa.me/ followed by your number with country code." },
+        { "type": "color", "id": "bg_color", "label": "Box background", "default": "#f6f6f6" },
+        { "type": "color", "id": "button_color", "label": "Button color", "default": "#5fd069" },
+        { "type": "color", "id": "button_text_color", "label": "Button text color", "default": "#ffffff" }
+      ]
+    },
     { "type": "@app" }
   ],
   "presets": [{ "name": "Nicshape page content" }]
