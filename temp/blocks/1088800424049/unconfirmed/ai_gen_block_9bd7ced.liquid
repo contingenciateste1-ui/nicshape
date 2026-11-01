@@ -1,0 +1,183 @@
+{% doc %}
+  @prompt
+    Create a theme block called "Rating stars" for the product page.
+    
+    Layout: one horizontal row, vertically centered. On the left, 5 star icons side by side with a small gap. On the right, a text with the rating value and the review count, like: 4.78 (3705).
+    
+    Stars:
+    - Gold/beige color #c9a26d. Size 18px. Gap between stars 3px.
+    - The number of filled stars follows the rating value (rounded). Remaining stars use the lighter color #e4dcd6.
+    
+    Text:
+    - Color #2b2224, size 15px, placed 12px to the right of the stars.
+    
+    Editable settings:
+    1. Rating value (text, default 4.8)
+    2. Review count (text, default (120))
+    3. Star size (range 12 to 32, default 18)
+    4. Star color (color)
+    5. Empty star color (color)
+    6. Text size (range 12 to 24, default 15)
+    7. Text color (color)
+    8. Alignment: left or center
+    9. Show review count (checkbox)
+    
+    Use only the merchant's own numbers. Do not invent any default review data.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign rating_value = block.settings.rating_value | plus: 0 %}
+{% assign filled_stars = rating_value | round | at_least: 0 | at_most: 5 %}
+
+{% style %}
+  .ai-rating-stars-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+  }
+
+  .ai-rating-stars-{{ ai_gen_id }}__row {
+    display: flex;
+    align-items: center;
+    justify-content: {% if block.settings.alignment == 'center' %}center{% else %}flex-start{% endif %};
+    gap: 12px;
+    width: 100%;
+  }
+
+  .ai-rating-stars-{{ ai_gen_id }}__icons {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    flex: 0 0 auto;
+    line-height: 0;
+  }
+
+  .ai-rating-stars-{{ ai_gen_id }}__star {
+    display: block;
+    width: {{ block.settings.star_size }}px;
+    height: {{ block.settings.star_size }}px;
+  }
+
+  .ai-rating-stars-{{ ai_gen_id }}__text {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.25;
+  }
+{% endstyle %}
+
+<div class="ai-rating-stars-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-rating-stars-{{ ai_gen_id }}__row">
+    <span class="ai-rating-stars-{{ ai_gen_id }}__icons" role="img" aria-label="{{ rating_value }} out of 5 stars">
+      {% for star_index in (1..5) %}
+        {% if star_index <= filled_stars %}
+          {% assign star_color = block.settings.star_color %}
+        {% else %}
+          {% assign star_color = block.settings.empty_star_color %}
+        {% endif %}
+        <svg class="ai-rating-stars-{{ ai_gen_id }}__star" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="{{ star_color }}" d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.31l-5.8 3.05 1.11-6.46-4.7-4.58 6.49-.94L12 2.5z"/>
+        </svg>
+      {% endfor %}
+    </span>
+    <span class="ai-rating-stars-{{ ai_gen_id }}__text">
+      {{ block.settings.rating_value | escape }}{% if block.settings.show_review_count and block.settings.review_count != blank %} {{ block.settings.review_count | escape }}{% endif %}
+    </span>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Rating stars",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Rating"
+    },
+    {
+      "type": "text",
+      "id": "rating_value",
+      "label": "Rating value",
+      "default": "4.8"
+    },
+    {
+      "type": "text",
+      "id": "review_count",
+      "label": "Review count"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_review_count",
+      "label": "Show review count",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Star size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star color",
+      "default": "#C9A26D"
+    },
+    {
+      "type": "color",
+      "id": "empty_star_color",
+      "label": "Empty star color",
+      "default": "#E4DCD6"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#2B2224"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rating stars"
+    }
+  ],
+  "tag": null,
+  "class": "rating-stars-block"
+}
+{% endschema %}
