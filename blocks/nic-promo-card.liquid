@@ -1,0 +1,351 @@
+{%- assign has_date = false -%}
+{%- if block.settings.end_date != blank -%}{%- assign has_date = true -%}{%- endif -%}
+<div
+  class="nic-hwo-wrap"
+  style="
+    --hw-accent: {{ block.settings.accent_color }};
+    --hw-bg: {{ block.settings.panel_bg }};
+    --hw-glow: {{ block.settings.glow_color }};
+    --hw-text: {{ block.settings.text_color }};
+    --hw-ribbon-text: {{ block.settings.ribbon_text_color }};
+    --hw-box-bg: {{ block.settings.box_bg }};
+    --hw-box-border: {{ block.settings.box_border }};
+    --hw-radius: {{ block.settings.radius }}px;
+    --hw-ratio: {{ block.settings.ratio }};
+    --hw-img-w: {{ block.settings.image_width }}%;
+  "
+  {{ block.shopify_attributes }}
+>
+  <div
+    class="nic-hwo{% if block.settings.image_side == 'right' %} nic-hwo--right{% endif %}"
+    role="region"
+    aria-label="{{ block.settings.title | escape }}"
+    data-nic-hwo
+    data-end="{{ block.settings.end_date | escape }}"
+    data-end-text="{{ block.settings.end_text | escape }}"
+    data-design="{{ request.design_mode }}"
+  >
+    <div class="nic-hwo__img">
+      {%- if block.settings.image != blank -%}
+        {{
+          block.settings.image
+          | image_url: width: 1000
+          | image_tag: loading: 'lazy', widths: '400, 600, 800, 1000', sizes: '(min-width: 750px) 40vw, 90vw', alt: ''
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'nic-hwo__ph' }}
+      {%- endif -%}
+    </div>
+    <div class="nic-hwo__body">
+      {%- if block.settings.arc_text != blank -%}
+        <svg class="nic-hwo__arc" viewBox="0 0 150 30" aria-hidden="true" focusable="false">
+          <path id="nic-hwo-arc-{{ block.id }}" d="M8,28 Q75,-4 142,28" fill="none"/>
+          <text><textPath href="#nic-hwo-arc-{{ block.id }}" startOffset="50%" text-anchor="middle">{{ block.settings.arc_text | upcase }}</textPath></text>
+        </svg>
+      {%- endif -%}
+      {%- if block.settings.title != blank -%}<p class="nic-hwo__title">{{ block.settings.title }}</p>{%- endif -%}
+      {%- if block.settings.ribbon != blank -%}<p class="nic-hwo__deal">{{ block.settings.ribbon }}</p>{%- endif -%}
+      {%- if block.settings.sub != blank -%}<p class="nic-hwo__sub">{{ block.settings.sub }}</p>{%- endif -%}
+      {%- if block.settings.show_countdown -%}
+        <div class="nic-hwo__clock" role="timer" aria-live="off"{% unless has_date or request.design_mode %} hidden{% endunless %}>
+          <span class="nic-hwo__unit" data-unit-box="d" hidden><b data-unit="d">00</b><small>{{ block.settings.label_days }}</small></span>
+          <span class="nic-hwo__unit"><b data-unit="h">00</b><small>{{ block.settings.label_hours }}</small></span>
+          <span class="nic-hwo__colon" aria-hidden="true">:</span>
+          <span class="nic-hwo__unit"><b data-unit="m">00</b><small>{{ block.settings.label_minutes }}</small></span>
+          <span class="nic-hwo__colon" aria-hidden="true">:</span>
+          <span class="nic-hwo__unit"><b data-unit="s">00</b><small>{{ block.settings.label_seconds }}</small></span>
+        </div>
+        <p class="nic-hwo__ended" hidden></p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    document.querySelectorAll('[data-nic-hwo]').forEach(function (root) {
+      if (root.dataset.ready) return;
+      root.dataset.ready = '1';
+      var raw = (root.dataset.end || '').trim();
+      var clock = root.querySelector('.nic-hwo__clock');
+      var endedEl = root.querySelector('.nic-hwo__ended');
+      if (!raw || !clock) return;
+      var m = raw.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/);
+      if (!m) return;
+      var end = new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], 0).getTime();
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function set(k, v) {
+        var el = clock.querySelector('[data-unit="' + k + '"]');
+        if (el) el.textContent = pad(v);
+      }
+      function tick() {
+        var left = Math.floor((end - Date.now()) / 1000);
+        if (left <= 0) {
+          clearInterval(timer);
+          clock.hidden = true;
+          if (endedEl && root.dataset.endText) {
+            endedEl.textContent = root.dataset.endText;
+            endedEl.hidden = false;
+          }
+          return;
+        }
+        clock.hidden = false;
+        var d = Math.floor(left / 86400);
+        var h = Math.floor((left % 86400) / 3600);
+        var mi = Math.floor((left % 3600) / 60);
+        var s = left % 60;
+        var dBox = clock.querySelector('[data-unit-box="d"]');
+        if (dBox) dBox.hidden = d < 1;
+        set('d', d); set('h', h); set('m', mi); set('s', s);
+      }
+      var timer = setInterval(tick, 1000);
+      tick();
+    });
+  })();
+</script>
+
+{% stylesheet %}
+  .nic-hwo-wrap {
+    container-type: inline-size;
+    width: 100%;
+  }
+
+  .nic-hwo {
+    display: grid;
+    grid-template-columns: var(--hw-img-w) 1fr;
+    aspect-ratio: var(--hw-ratio);
+    overflow: hidden;
+    border-radius: var(--hw-radius);
+    background: var(--hw-bg);
+    color: var(--hw-text);
+    font-family: var(--font-body--family);
+  }
+
+  .nic-hwo--right {
+    grid-template-columns: 1fr var(--hw-img-w);
+  }
+
+  .nic-hwo--right .nic-hwo__img {
+    order: 2;
+  }
+
+  .nic-hwo__img {
+    position: relative;
+    min-height: 0;
+    overflow: hidden;
+    background: #2d2520;
+  }
+
+  .nic-hwo__img img,
+  .nic-hwo__img svg {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .nic-hwo__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(4px, 1.3cqw, 14px);
+    min-width: 0;
+    padding: clamp(10px, 2.4cqw, 28px) clamp(8px, 2cqw, 24px);
+    background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--hw-glow) 45%, transparent), transparent 65%), var(--hw-bg);
+    text-align: center;
+  }
+
+  .nic-hwo__body p {
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .nic-hwo__arc {
+    width: clamp(90px, 26cqw, 220px);
+    height: auto;
+    overflow: visible;
+  }
+
+  .nic-hwo__arc text {
+    fill: var(--hw-text);
+    font-family: var(--font-body--family);
+    font-size: 11px;
+    letter-spacing: 2.2px;
+  }
+
+  .nic-hwo__title {
+    color: var(--hw-accent);
+    font-family: var(--font-heading--family);
+    font-size: clamp(22px, 7cqw, 64px);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .nic-hwo__deal {
+    padding: 0.45em 2.2em;
+    background: var(--hw-accent);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 0.9em) 50%, 100% 100%, 0 100%, 0.9em 50%);
+    color: var(--hw-ribbon-text);
+    font-size: clamp(10px, 2.6cqw, 24px);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .nic-hwo__sub {
+    font-size: clamp(20px, 5.8cqw, 54px);
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .nic-hwo__clock {
+    display: flex;
+    align-items: center;
+    gap: clamp(3px, 0.9cqw, 10px);
+    margin-top: clamp(2px, 0.8cqw, 8px);
+  }
+
+  .nic-hwo__clock[hidden],
+  .nic-hwo__ended[hidden],
+  .nic-hwo__unit[hidden] {
+    display: none;
+  }
+
+  .nic-hwo__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: clamp(40px, 8.6cqw, 80px);
+    padding: clamp(4px, 0.9cqw, 10px) 0;
+    border: 1px solid var(--hw-box-border);
+    border-radius: clamp(8px, 1.5cqw, 14px);
+    background: var(--hw-box-bg);
+  }
+
+  .nic-hwo__unit b {
+    color: var(--hw-text);
+    font-size: clamp(16px, 4.2cqw, 38px);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  .nic-hwo__unit small {
+    color: var(--hw-accent);
+    font-size: clamp(8px, 1.5cqw, 12px);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .nic-hwo__colon {
+    color: var(--hw-accent);
+    font-size: clamp(14px, 3cqw, 28px);
+    font-weight: 700;
+  }
+
+  .nic-hwo__ended {
+    color: var(--hw-accent);
+    font-weight: 700;
+  }
+
+  @container (max-width: 520px) {
+    .nic-hwo,
+    .nic-hwo--right {
+      grid-template-columns: 1fr;
+      aspect-ratio: auto;
+    }
+
+    .nic-hwo__img {
+      order: 0;
+      aspect-ratio: 16 / 9;
+    }
+
+    .nic-hwo__body {
+      gap: 10px;
+      padding: 20px 12px 24px;
+    }
+
+    .nic-hwo__arc {
+      width: 130px;
+    }
+
+    .nic-hwo__title {
+      font-size: clamp(30px, 11cqw, 52px);
+    }
+
+    .nic-hwo__deal {
+      font-size: clamp(13px, 4cqw, 18px);
+    }
+
+    .nic-hwo__sub {
+      font-size: clamp(26px, 9cqw, 42px);
+    }
+
+    .nic-hwo__unit {
+      width: clamp(52px, 17cqw, 76px);
+    }
+
+    .nic-hwo__unit b {
+      font-size: clamp(22px, 7cqw, 32px);
+    }
+
+    .nic-hwo__unit small {
+      font-size: 10px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape promo countdown card",
+  "tag": null,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "select", "id": "image_side", "label": "Image position (desktop)", "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }], "default": "left" },
+    { "type": "range", "id": "image_width", "label": "Image width (desktop)", "min": 30, "max": 55, "step": 5, "unit": "%", "default": 40 },
+    {
+      "type": "select",
+      "id": "ratio",
+      "label": "Card shape (desktop)",
+      "options": [
+        { "value": "2.4 / 1", "label": "Wide" },
+        { "value": "2.2 / 1", "label": "Standard" },
+        { "value": "2 / 1", "label": "Taller" },
+        { "value": "16 / 9", "label": "Tallest" }
+      ],
+      "default": "2.2 / 1"
+    },
+    { "type": "header", "content": "Texts" },
+    { "type": "text", "id": "arc_text", "label": "Curved small text", "default": "Ends soon" },
+    { "type": "text", "id": "title", "label": "Headline", "default": "Halloween" },
+    { "type": "text", "id": "ribbon", "label": "Ribbon", "default": "Buy 2 · Get 1 Free" },
+    { "type": "text", "id": "sub", "label": "Big word", "default": "Sale" },
+    { "type": "header", "content": "Countdown" },
+    { "type": "checkbox", "id": "show_countdown", "label": "Show countdown", "default": true },
+    { "type": "text", "id": "end_date", "label": "End date and time", "info": "Format: 2026-11-10 23:59 (visitor's local time). Empty hides the countdown on the store." },
+    { "type": "text", "id": "end_text", "label": "Text after it ends", "info": "Empty shows nothing." },
+    { "type": "text", "id": "label_days", "label": "Days label", "default": "DAYS" },
+    { "type": "text", "id": "label_hours", "label": "Hours label", "default": "HRS" },
+    { "type": "text", "id": "label_minutes", "label": "Minutes label", "default": "MIN" },
+    { "type": "text", "id": "label_seconds", "label": "Seconds label", "default": "SEC" },
+    { "type": "header", "content": "Colors and shape" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#e8903d" },
+    { "type": "color", "id": "panel_bg", "label": "Panel background", "default": "#161212" },
+    { "type": "color", "id": "glow_color", "label": "Top glow", "default": "#6b4318" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" },
+    { "type": "color", "id": "ribbon_text_color", "label": "Ribbon text", "default": "#161212" },
+    { "type": "color", "id": "box_bg", "label": "Countdown box background", "default": "#241c18" },
+    { "type": "color", "id": "box_border", "label": "Countdown box border", "default": "#6b4a2c" },
+    { "type": "range", "id": "radius", "label": "Corner roundness", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 24 }
+  ],
+  "presets": [{ "name": "Nicshape promo countdown card" }]
+}
+{% endschema %}
