@@ -195,7 +195,7 @@
           "type": "look",
           "settings": {
             "video": "shopify://files/videos/vid1.mp4",
-            "product": "jelly-sculpt-bra",
+            "product": "jelly-sculpt-full-cover-bra",
             "label": "",
             "badge": ""
           }
@@ -204,7 +204,7 @@
           "type": "look",
           "settings": {
             "video": "shopify://files/videos/vid2.mp4",
-            "product": "",
+            "product": "sculpting-swim-dress",
             "label": "",
             "badge": ""
           }
@@ -213,7 +213,7 @@
           "type": "look",
           "settings": {
             "video": "shopify://files/videos/vid3.mp4",
-            "product": "",
+            "product": "jelly-sculpt-comfort-invisible-bra",
             "label": "",
             "badge": ""
           }
@@ -222,7 +222,7 @@
           "type": "look",
           "settings": {
             "video": "shopify://files/videos/vid4.mp4",
-            "product": "",
+            "product": "bbl-wide-leg-jeans-mid-rise",
             "label": "",
             "badge": ""
           }
@@ -231,7 +231,7 @@
           "type": "look",
           "settings": {
             "video": "shopify://files/videos/vid5.mp4",
-            "product": "",
+            "product": "fajas-lift-shape-control-body",
             "label": "",
             "badge": ""
           }
@@ -240,7 +240,7 @@
           "type": "look",
           "settings": {
             "video": "shopify://files/videos/vid6.mp4",
-            "product": "",
+            "product": "easyglide™-full-sculpt-bodysuit",
             "label": "",
             "badge": ""
           }
@@ -249,7 +249,7 @@
           "type": "look",
           "settings": {
             "video": "shopify://files/videos/vid7.mp4",
-            "product": "",
+            "product": "zoneshape-full-sculpt-bodysuit",
             "label": "",
             "badge": ""
           }
@@ -258,7 +258,7 @@
           "type": "look",
           "settings": {
             "video": "shopify://files/videos/vid8.mp4",
-            "product": "",
+            "product": "baresculpt™-strapless-invisible-bra",
             "label": "",
             "badge": ""
           }
