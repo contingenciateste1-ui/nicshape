@@ -5,7 +5,7 @@
 {%- if product != blank -%}
 <nic-price
   class="nic-price"
-  style="--np-size: {{ block.settings.price_size }}px; --np-color: {{ block.settings.price_color }}; --np-old-size: {{ block.settings.old_size }}px; --np-old: {{ block.settings.old_color }}; --np-pill-bg: {{ block.settings.pill_bg }}; --np-pill-text: {{ block.settings.pill_text }};"
+  style="--np-size: {{ block.settings.price_size }}px; --np-color: {{ block.settings.price_color }}; --np-old-size: {{ block.settings.old_size }}px; --np-old: {{ block.settings.old_color }}; --np-pill-bg: {{ block.settings.pill_bg }}; --np-pill-text: {{ block.settings.pill_text }}; --np-pill-radius: {{ block.settings.pill_radius }}px; --np-pill-size: {{ block.settings.pill_size }}px; --np-weight: {{ block.settings.price_weight }}; --np-old-weight: {{ block.settings.old_weight }};"
   data-currency="{{ cart.currency.iso_code }}"
   data-locale="{{ request.locale.iso_code }}"
   data-pill="{{ block.settings.pill_label | escape }}"
@@ -84,21 +84,21 @@
   .nic-price__old {
     color: var(--np-old);
     font-size: var(--np-old-size);
-    font-weight: 500;
+    font-weight: var(--np-old-weight);
   }
 
   .nic-price__now {
     color: var(--np-color);
     font-size: var(--np-size);
-    font-weight: 700;
+    font-weight: var(--np-weight);
   }
 
   .nic-price__pill {
     padding: 4px 8px;
-    border-radius: 4px;
+    border-radius: var(--np-pill-radius);
     background: var(--np-pill-bg);
     color: var(--np-pill-text);
-    font-size: 13px;
+    font-size: var(--np-pill-size);
     font-weight: 700;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -117,10 +117,14 @@
     { "type": "range", "id": "price_size", "label": "Price size", "min": 16, "max": 40, "step": 1, "unit": "px", "default": 22 },
     { "type": "color", "id": "price_color", "label": "Price color", "default": "#111111" },
     { "type": "range", "id": "old_size", "label": "Old price size", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 18 },
+    { "type": "select", "id": "price_weight", "label": "Price weight", "options": [{ "value": "500", "label": "Medium" }, { "value": "600", "label": "Semibold" }, { "value": "700", "label": "Bold" }, { "value": "800", "label": "Extra bold" }], "default": "700" },
+    { "type": "select", "id": "old_weight", "label": "Old price weight", "options": [{ "value": "400", "label": "Regular" }, { "value": "500", "label": "Medium" }, { "value": "700", "label": "Bold" }], "default": "500" },
+    { "type": "range", "id": "pill_size", "label": "Pill text size", "min": 10, "max": 20, "step": 1, "unit": "px", "default": 13 },
+    { "type": "range", "id": "pill_radius", "label": "Pill roundness", "min": 0, "max": 20, "step": 2, "unit": "px", "default": 4 },
     { "type": "color", "id": "old_color", "label": "Old price color", "default": "#b23a32" },
     { "type": "checkbox", "id": "show_pill", "label": "Show discount pill", "default": true },
     { "type": "text", "id": "pill_label", "label": "Pill text", "info": "Use {percent} for the calculated discount.", "default": "{percent}% OFF" },
-    { "type": "color", "id": "pill_bg", "label": "Pill background", "default": "#c98e72" },
+    { "type": "color", "id": "pill_bg", "label": "Pill background", "default": "#b97a65" },
     { "type": "color", "id": "pill_text", "label": "Pill text color", "default": "#ffffff" }
   ],
   "presets": [{ "name": "Nicshape price" }]

@@ -88,62 +88,16 @@
           },
           "blocks": {
             "rating": {
-              "type": "review",
-              "settings": {
-                "stars_style": "shaded",
-                "show_number": true,
-                "type_preset": "paragraph",
-                "width": "fit-content",
-                "alignment": "left"
-              },
-              "blocks": {}
+              "type": "nic-rating",
+              "settings": {}
             },
             "vendor": {
-              "type": "text",
-              "settings": {
-                "text": "<p>{{ closest.product.vendor }}</p>",
-                "width": "100%",
-                "max_width": "none",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "0.75rem",
-                "line_height": "normal",
-                "letter_spacing": "loose",
-                "case": "uppercase",
-                "wrap": "pretty",
-                "background": false,
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0,
-                "text_color": "#777777"
-              },
-              "blocks": {}
+              "type": "nic-brand",
+              "settings": {}
             },
             "title": {
-              "type": "text",
-              "settings": {
-                "text": "<h1>{{ closest.product.title }}</h1>",
-                "width": "100%",
-                "max_width": "none",
-                "alignment": "left",
-                "type_preset": "h3",
-                "font": "var(--font-heading--family)",
-                "font_size": "1.75rem",
-                "line_height": "tight",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
+              "type": "nic-title",
+              "settings": {}
             },
             "variants": {
               "type": "variant-picker",

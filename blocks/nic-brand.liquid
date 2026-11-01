@@ -1,0 +1,47 @@
+{%- assign brand = block.settings.text | default: closest.product.vendor -%}
+{%- if brand != blank -%}
+  <p
+    class="nic-brand"
+    style="--nb-size: {{ block.settings.size }}px; --nb-color: {{ block.settings.color }}; --nb-weight: {{ block.settings.weight }}; --nb-spacing: {{ block.settings.spacing | divided_by: 100.0 }}em;"
+    {{ block.shopify_attributes }}
+  >
+    {{- brand -}}
+  </p>
+{%- endif -%}
+
+{% stylesheet %}
+  .nic-brand {
+    margin: 0;
+    color: var(--nb-color);
+    font-family: var(--font-body--family);
+    font-size: var(--nb-size);
+    font-weight: var(--nb-weight);
+    letter-spacing: var(--nb-spacing);
+    text-transform: uppercase;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape brand name",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "text", "label": "Brand name", "info": "Empty uses the product's vendor.", "default": "Nicshape™" },
+    { "type": "range", "id": "size", "label": "Size", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 16 },
+    {
+      "type": "select",
+      "id": "weight",
+      "label": "Weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "500"
+    },
+    { "type": "range", "id": "spacing", "label": "Letter spacing", "min": 0, "max": 20, "step": 2, "unit": "%", "default": 4 },
+    { "type": "color", "id": "color", "label": "Color", "default": "#9a9a9a" }
+  ],
+  "presets": [{ "name": "Nicshape brand name" }]
+}
+{% endschema %}

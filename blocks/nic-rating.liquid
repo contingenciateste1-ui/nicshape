@@ -1,0 +1,72 @@
+{%- liquid
+  assign product = closest.product
+  assign rating_text = block.settings.rating_text
+  assign count_text = block.settings.count_text
+  assign rating_num = 0
+  if block.settings.use_metafield and product.metafields.reviews.rating.value != blank
+    assign rating_num = product.metafields.reviews.rating.value.rating | plus: 0
+    assign rating_text = rating_num | round: 2
+    assign count_text = product.metafields.reviews.rating_count | prepend: '(' | append: ')'
+  endif
+  if rating_num == 0
+    assign rating_num = rating_text | plus: 0
+  endif
+  assign full = rating_num | round
+-%}
+{%- if rating_text != blank or count_text != blank -%}
+  <div
+    class="nic-rating"
+    style="--nr-star: {{ block.settings.star_color }}; --nr-off: {{ block.settings.star_empty_color }}; --nr-size: {{ block.settings.star_size }}px; --nr-text: {{ block.settings.text_color }}; --nr-text-size: {{ block.settings.text_size }}px;"
+    {{ block.shopify_attributes }}
+  >
+    <span class="nic-rating__stars" role="img" aria-label="{{ rating_text }} / 5">
+      {%- for i in (1..5) -%}<span class="{% if i > full %}is-off{% endif %}">★</span>{%- endfor -%}
+    </span>
+    <span class="nic-rating__text">{{ rating_text }}{% if count_text != blank %} {{ count_text }}{% endif %}</span>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .nic-rating {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-body--family);
+  }
+
+  .nic-rating__stars {
+    display: inline-flex;
+    gap: 3px;
+    color: var(--nr-star);
+    font-size: var(--nr-size);
+    line-height: 1;
+  }
+
+  .nic-rating__stars .is-off {
+    color: var(--nr-off);
+  }
+
+  .nic-rating__text {
+    color: var(--nr-text);
+    font-size: var(--nr-text-size);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape rating",
+  "tag": null,
+  "settings": [
+    { "type": "paragraph", "content": "Only enter numbers that match your real reviews." },
+    { "type": "text", "id": "rating_text", "label": "Rating", "info": "Example: 4.8" },
+    { "type": "text", "id": "count_text", "label": "Review count", "info": "Example: (120)" },
+    { "type": "checkbox", "id": "use_metafield", "label": "Use the product's review data when it exists", "info": "Reads the standard product rating (reviews.rating) set by a reviews app. If present, it replaces the two fields above.", "default": true },
+    { "type": "range", "id": "star_size", "label": "Star size", "min": 12, "max": 32, "step": 1, "unit": "px", "default": 18 },
+    { "type": "range", "id": "text_size", "label": "Text size", "min": 12, "max": 24, "step": 1, "unit": "px", "default": 15 },
+    { "type": "color", "id": "star_color", "label": "Star color", "default": "#c9a26d" },
+    { "type": "color", "id": "star_empty_color", "label": "Empty star color", "default": "#e4dcd6" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#2b2224" }
+  ],
+  "presets": [{ "name": "Nicshape rating" }]
+}
+{% endschema %}

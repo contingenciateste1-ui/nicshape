@@ -1,0 +1,75 @@
+{%- assign title = block.settings.text | default: closest.product.title -%}
+<h1
+  class="nic-title"
+  style="--nt-size: {{ block.settings.size }}px; --nt-size-m: {{ block.settings.size_mobile }}px; --nt-color: {{ block.settings.color }}; --nt-weight: {{ block.settings.weight }}; --nt-lh: {{ block.settings.line_height }}; --nt-spacing: {{ block.settings.spacing | divided_by: 100.0 }}em; --nt-align: {{ block.settings.align }};"
+  {{ block.shopify_attributes }}
+>
+  {{- title -}}
+</h1>
+
+{% stylesheet %}
+  .nic-title {
+    margin: 0;
+    color: var(--nt-color);
+    font-family: var(--font-heading--family);
+    font-size: var(--nt-size-m);
+    font-weight: var(--nt-weight);
+    letter-spacing: var(--nt-spacing);
+    line-height: var(--nt-lh);
+    text-align: var(--nt-align);
+  }
+
+  @media screen and (min-width: 750px) {
+    .nic-title {
+      font-size: var(--nt-size);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape product title",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "text", "label": "Custom title", "info": "Empty uses the product's own title." },
+    { "type": "range", "id": "size", "label": "Size (desktop)", "min": 18, "max": 64, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "size_mobile", "label": "Size (mobile)", "min": 16, "max": 48, "step": 2, "unit": "px", "default": 26 },
+    {
+      "type": "select",
+      "id": "weight",
+      "label": "Weight",
+      "options": [
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "select",
+      "id": "line_height",
+      "label": "Line height",
+      "options": [
+        { "value": "1.1", "label": "Tight" },
+        { "value": "1.25", "label": "Normal" },
+        { "value": "1.4", "label": "Relaxed" }
+      ],
+      "default": "1.25"
+    },
+    { "type": "range", "id": "spacing", "label": "Letter spacing", "min": -4, "max": 10, "step": 1, "unit": "%", "default": 0 },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    { "type": "color", "id": "color", "label": "Color", "default": "#111111" }
+  ],
+  "presets": [{ "name": "Nicshape product title" }]
+}
+{% endschema %}
