@@ -182,6 +182,18 @@
                   },
                   "blocks": {}
                 },
+                "nic_brand_4gyWXQ": {
+                  "type": "nic-brand",
+                  "name": "Nicshape brand name",
+                  "settings": {
+                    "text": "Nicshape™",
+                    "size": 16,
+                    "weight": "500",
+                    "spacing": 4,
+                    "color": "#9a9a9a"
+                  },
+                  "blocks": {}
+                },
                 "price_tVjtKg": {
                   "type": "price",
                   "settings": {
@@ -221,6 +233,7 @@
               "block_order": [
                 "text_xrnftG",
                 "review_rcgVxY",
+                "nic_brand_4gyWXQ",
                 "price_tVjtKg",
                 "ai_gen_block_1f4a528_g4iCR3"
               ]
@@ -323,7 +336,7 @@
             "ai_gen_block_5277fbd_TU4A3L": {
               "type": "ai_gen_block_5277fbd",
               "settings": {
-                "text_before": "Bought",
+                "text_before": "Bought....",
                 "number": "1655",
                 "text_after": "times this week",
                 "show_icon": true,
