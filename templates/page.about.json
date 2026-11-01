@@ -3,39 +3,62 @@
     "main": {
       "type": "nic-page",
       "settings": {
-        "title": "About Nicshape",
-        "intro": "<p>Comfortable shapewear, bras and swimwear designed to make you feel confident every day.</p>"
+        "title": "About Us",
+        "intro": ""
       },
       "blocks": {
         "b1": {
-          "type": "heading",
+          "type": "text",
           "settings": {
-            "text": "Our story"
+            "text": "<p>Nicshape is an online store for women’s shapewear, bras, swimwear and comfortable everyday intimates. We design pieces that balance style, comfort and lasting quality.</p>"
           }
         },
         "b2": {
-          "type": "text",
+          "type": "heading",
           "settings": {
-            "text": "<p>Nicshape was created to make everyday essentials that feel as good as they look. We focus on soft fabrics, invisible finishes and fits that move with you.</p>"
+            "text": "Who we are"
           }
         },
         "b3": {
-          "type": "heading",
+          "type": "text",
           "settings": {
-            "text": "What we care about"
+            "text": "<p>Nicshape is operated by [YOUR COMPANY LEGAL NAME], a company registered in [COUNTRY]. We sell directly to customers in [REGIONS YOU SHIP TO] through our official website, nicshape.com.</p>"
           }
         },
         "b4": {
-          "type": "text",
+          "type": "heading",
           "settings": {
-            "text": "<ul><li>Comfort you can wear all day</li><li>Honest sizing and easy size exchanges</li><li>Support from a real team: <a href=\"mailto:info@nicshape.com\">info@nicshape.com</a></li></ul>"
+            "text": "Our mission"
           }
         },
         "b5": {
-          "type": "button",
+          "type": "text",
           "settings": {
-            "label": "Shop best sellers",
-            "link": "/collections/best-sellers"
+            "text": "<p>We create everyday essentials for real women. Each piece is made with quality materials, checked for durability and designed to feel comfortable from morning to night.</p>"
+          }
+        },
+        "b6": {
+          "type": "heading",
+          "settings": {
+            "text": "Business information"
+          }
+        },
+        "b7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Company: [YOUR COMPANY LEGAL NAME]<br>Address: [YOUR REGISTERED ADDRESS]<br>Email: <a href=\"mailto:info@nicshape.com\">info@nicshape.com</a><br>Phone: [YOUR PHONE NUMBER]<br>Website: nicshape.com</p>"
+          }
+        },
+        "b8": {
+          "type": "heading",
+          "settings": {
+            "text": "Customer policies"
+          }
+        },
+        "b9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>For information about delivery, returns and refunds, see our <a href=\"/policies/shipping-policy\">Shipping Policy</a> and <a href=\"/policies/refund-policy\">Refund Policy</a>. To learn how we handle your data, read our <a href=\"/policies/privacy-policy\">Privacy Policy</a>.</p>"
           }
         }
       },
@@ -44,7 +67,11 @@
         "b2",
         "b3",
         "b4",
-        "b5"
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9"
       ]
     }
   },
