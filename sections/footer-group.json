@@ -48,6 +48,27 @@
           },
           "blocks": {}
         },
+        "social_links_JBFx6V": {
+          "type": "social-links",
+          "name": "t:names.social_media_links",
+          "settings": {
+            "icon_color": "",
+            "facebook_url": "https://facebook.com/nicshape",
+            "instagram_url": "https://instagram.com/nicshape",
+            "youtube_url": "",
+            "tiktok_url": "https://tiktok.com/nikshape",
+            "twitter_url": "",
+            "threads_url": "",
+            "linkedin_url": "",
+            "bluesky_url": "",
+            "snapchat_url": "",
+            "pinterest_url": "",
+            "tumblr_url": "",
+            "vimeo_url": "",
+            "custom_url": ""
+          },
+          "blocks": {}
+        },
         "top_row": {
           "type": "group",
           "settings": {
@@ -149,7 +170,7 @@
                 "menu_collections": {
                   "type": "menu",
                   "settings": {
-                    "menu": "",
+                    "menu": "collections",
                     "heading": "Collections",
                     "menu_spacing": 10,
                     "show_as_accordion": false,
@@ -320,6 +341,7 @@
       },
       "block_order": [
         "logo_6mndR8",
+        "social_links_JBFx6V",
         "top_row",
         "bottom_row"
       ],
