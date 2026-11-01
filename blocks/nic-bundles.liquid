@@ -8,6 +8,10 @@
 
 {%- if product != blank -%}
 {% style %}
+  .product-information__grid {
+    --sidebar-width: {{ block.settings.details_width }}px;
+  }
+
   .product-form-buttons .add-to-cart-button,
   .product-form-buttons .add-to-cart-button.button {
     --button-background-color: {{ block.settings.button_color }};
@@ -464,6 +468,8 @@
     { "type": "text", "id": "proof_before", "label": "Text before number", "default": "Bought" },
     { "type": "text", "id": "proof_count", "label": "Number", "info": "Leave empty to hide the line. Only use a real number from your store." },
     { "type": "text", "id": "proof_after", "label": "Text after number", "default": "times this week" },
+    { "type": "header", "content": "Product page layout" },
+    { "type": "range", "id": "details_width", "label": "Info column width (desktop)", "info": "Width of the column with title, price and buy button. The gallery uses the rest.", "min": 360, "max": 640, "step": 10, "unit": "px", "default": 440 },
     { "type": "header", "content": "Add to cart button" },
     { "type": "color", "id": "button_color", "label": "Button color", "default": "#5a4a42" },
     { "type": "color", "id": "button_text_color", "label": "Button text color", "default": "#ffffff" },

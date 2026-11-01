@@ -1,3 +1,17 @@
+{%- assign opt = block.settings.option_name | strip | escape -%}
+{%- if opt != blank -%}
+{% style %}
+  .variant-option--buttons:has(input[data-option-name="{{ opt }}" i]) .variant-option__button-label,
+  .variant-option--buttons:has(input[data-option-name="{{ opt }}" i]) .variant-option__button-label__pill {
+    border-radius: {{ block.settings.size_radius }}px;
+  }
+
+  .variant-option--buttons:has(input[data-option-name="{{ opt }}" i]) .variant-option__button-label {
+    min-width: 44px;
+    justify-content: center;
+  }
+{% endstyle %}
+{%- endif -%}
 <div class="nic-sizechart" data-nic-sizechart data-match="{{ block.settings.option_name | downcase | escape }}" style="--sc-bg: {{ block.settings.button_bg }}; --sc-text: {{ block.settings.button_text }};" {{ block.shopify_attributes }}>
   <button class="nic-sizechart__btn" type="button" data-sc-open>{{ block.settings.button_label }}</button>
   <dialog class="nic-sizechart__dialog" data-sc-dialog>
@@ -135,6 +149,7 @@
   "settings": [
     { "type": "text", "id": "button_label", "label": "Button text", "default": "Size chart" },
     { "type": "text", "id": "option_name", "label": "Move button next to option named", "info": "Example: Size. The button moves to the right of that option title. Empty keeps it where this block is.", "default": "Size" },
+    { "type": "range", "id": "size_radius", "label": "Size buttons roundness", "info": "0 gives square buttons like the reference. Applies to the option named above.", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 2 },
     { "type": "text", "id": "heading", "label": "Popup title", "default": "Size chart" },
     { "type": "image_picker", "id": "image", "label": "Popup image (your size table)" },
     { "type": "richtext", "id": "content", "label": "Popup text (optional)" },
