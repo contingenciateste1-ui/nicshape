@@ -140,7 +140,7 @@
       "settings": {
         "heading": "Our best sellers",
         "subheading": "",
-        "collection": "",
+        "collection": "best-sellers",
         "products_to_show": 4,
         "columns_desktop": 4,
         "columns_mobile": "2",
@@ -316,7 +316,7 @@
       "settings": {
         "heading": "Great Deals of the Week 🔥",
         "subheading": "",
-        "collection": "",
+        "collection": "great-deals",
         "products_to_show": 4,
         "columns_desktop": 4,
         "columns_mobile": "2",
