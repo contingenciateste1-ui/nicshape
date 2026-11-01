@@ -16,24 +16,25 @@
           "type": "text",
           "name": "t:names.title",
           "settings": {
-            "text": "<h1>{{ closest.collection.title }}</h1>",
+            "text": "<h1>Best sellers&nbsp;<br/></h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "h2",
             "font": "var(--font-heading--family)",
+            "font_size": "1rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
+            "text_color": "#e3a89f",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "text_color": "#E3A89F"
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -41,25 +42,25 @@
           "type": "text",
           "name": "t:names.description",
           "settings": {
-            "text": "{{ closest.collection.description }}",
+            "text": "<p>Trick or treat? Buy 2 Get 1 Free + a free Halloween gift bag over €109.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
+            "font_size": "0.875rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
+            "text_color": "#ffffff",
             "background": false,
             "background_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "text_color": "#FFFFFF",
-            "font_size": "0.875rem"
+            "padding-inline-end": 0
           },
           "blocks": {}
         }
@@ -79,21 +80,101 @@
         "vertical_alignment_flex_direction_column": "center",
         "gap": 8,
         "section_width": "page-width",
+        "section_height": "",
         "section_height_custom": 50,
         "background_media": "none",
-        "background_color": "#1E1819",
+        "background_color": "#1e1819",
         "video_position": "cover",
         "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
         "toggle_overlay": false,
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
         "padding-block-start": 44,
         "padding-block-end": 44
+      }
+    },
+    "nic_collection_strip": {
+      "type": "nic-collection-strip",
+      "blocks": {
+        "c1": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/7ShapeZone_Body_PDP.webp",
+            "title": "All",
+            "link": "/collections/all"
+          }
+        },
+        "c2": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/Bras.avif",
+            "title": "Bras",
+            "link": "/collections/bras"
+          }
+        },
+        "c3": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/Shapers.webp",
+            "title": "Shapewear",
+            "link": "/collections/shapewear"
+          }
+        },
+        "c4": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/Swimwears.webp",
+            "title": "Swimwear",
+            "link": "/collections/swimwear"
+          }
+        },
+        "c5": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/Leggings.webp",
+            "title": "Leggings",
+            "link": "/collections/leggings"
+          }
+        },
+        "c6": {
+          "type": "collection_card",
+          "settings": {
+            "image": "shopify://shop_images/15.webp",
+            "title": "New",
+            "link": "/collections/new"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "heading": "",
+        "cards_desktop": "10.4",
+        "cards_mobile": "4.2",
+        "card_radius": 10,
+        "title_weight": "700",
+        "highlight_active": true,
+        "active_color": "#c0504d",
+        "gap_desktop": 20,
+        "padding_top_desktop": 28,
+        "padding_bottom_desktop": 8,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 8,
+        "bg_color": "#ffffff",
+        "heading_color": "#2b2224",
+        "title_color": "#2b2224"
       }
     },
     "main": {
@@ -111,6 +192,8 @@
             "show_filter_label": false,
             "enable_sorting": true,
             "enable_grid_density": true,
+            "background_color": "",
+            "text_color": "",
             "padding-block-start": 8,
             "padding-block-end": 8,
             "padding-inline-start": 0,
@@ -125,9 +208,11 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
+            "background_color": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -142,6 +227,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
+                "border_color": "",
                 "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -164,6 +250,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -188,6 +275,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
+                "text_color": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -207,6 +295,8 @@
         "layout_type": "grid",
         "product_card_size": "medium",
         "mobile_product_card_size": "small",
+        "enable_infinite_scroll": true,
+        "products_per_page": 24,
         "product_grid_width": "full-width",
         "full_width_on_mobile": true,
         "columns_gap_horizontal": 12,
@@ -216,74 +306,6 @@
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 16,
         "padding-block-end": 32
-      }
-    },
-    "nic_collection_strip": {
-      "type": "nic-collection-strip",
-      "blocks": {
-        "c1": {
-          "type": "collection_card",
-          "settings": {
-            "title": "All",
-            "link": "/collections/all"
-          }
-        },
-        "c2": {
-          "type": "collection_card",
-          "settings": {
-            "title": "Bras",
-            "link": "/collections/bras"
-          }
-        },
-        "c3": {
-          "type": "collection_card",
-          "settings": {
-            "title": "Shapewear",
-            "link": "/collections/shapewear"
-          }
-        },
-        "c4": {
-          "type": "collection_card",
-          "settings": {
-            "title": "Swimwear",
-            "link": "/collections/swimwear"
-          }
-        },
-        "c5": {
-          "type": "collection_card",
-          "settings": {
-            "title": "Leggings",
-            "link": "/collections/leggings"
-          }
-        },
-        "c6": {
-          "type": "collection_card",
-          "settings": {
-            "title": "New",
-            "link": "/collections/new"
-          }
-        }
-      },
-      "block_order": [
-        "c1",
-        "c2",
-        "c3",
-        "c4",
-        "c5",
-        "c6"
-      ],
-      "settings": {
-        "heading": "",
-        "cards_desktop": "10.4",
-        "cards_mobile": "4.2",
-        "padding_top_desktop": 28,
-        "padding_bottom_desktop": 8,
-        "padding_top_mobile": 24,
-        "padding_bottom_mobile": 8,
-        "card_radius": 10,
-        "title_weight": "700",
-        "highlight_active": true,
-        "gap_desktop": 20
       }
     }
   },
