@@ -1,6 +1,339 @@
+{% doc %}
+  @prompt
+    Create a theme block called "Image and text card".
+    
+    Layout: one wide card with a thin light border (1px solid #ece6e2), rounded corners 20px, overflow hidden, white background. Split in two equal columns (50% / 50%) on desktop: a large image fills the entire left half (full height, object-fit cover, no gap, no padding), and the right half holds the text, vertically centered, with inner padding 48px. On mobile, stack: image on top (aspect ratio 4 / 5), text below with padding 24px.
+    
+    Right column, top to bottom:
+    1. A bold heading (size 32px, line height 1.15, font weight 700). The heading has TWO colors: the first part in dark brown (#3b2f2a) and the second part in a lighter taupe (#7a6a5c). The merchant writes the heading in two fields: "Heading part 1" and "Heading part 2", shown one after the other on the same text flow (part 2 can continue on the next line).
+    2. A bulleted list (regular round bullets), 20px gap from the heading, text size 16px, line height 1.5, color #111111, 8px space between items. The merchant writes the bullets in one multi-line field, one bullet per line.
+    3. A bold closing line below the list (size 16px, color #111111), 16px gap above.
+    
+    Editable settings:
+    1. Image (image picker)
+    2. Image position: left or right
+    3. Heading part 1 (text)
+    4. Heading part 2 (text)
+    5. Bullet list (multi-line text, one bullet per line)
+    6. Closing line (text)
+    7. Heading size (range 20 to 56, default 32)
+    8. Text size (range 12 to 22, default 16)
+    9. Heading color 1 (color, default #3b2f2a)
+    10. Heading color 2 (color, default #7a6a5c)
+    11. Text color (color, default #111111)
+    12. Card background (color, default #ffffff)
+    13. Border color (color, default #ece6e2)
+    14. Corner radius (range 0 to 40, default 20)
+    15. Inner padding (range 16 to 80, default 48)
+    16. Card height on desktop (range 320 to 720, default 520)
+    
+    Leave all texts empty or with neutral placeholders. Do not write any marketing claims.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign bullet_lines = block.settings.bullet_list | newline_to_br | split: '<br />' %}
+{% if block.settings.image_position == 'right' %}
+  {% assign image_order = '2' %}
+  {% assign content_order = '1' %}
+{% else %}
+  {% assign image_order = '1' %}
+  {% assign content_order = '2' %}
+{% endif %}
+
+{% style %}
+  .ai-image-text-card-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__layout {
+    display: flex;
+    width: 100%;
+    height: {{ block.settings.card_height }}px;
+    overflow: hidden;
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.corner_radius }}px;
+    background: {{ block.settings.card_background }};
+    box-sizing: border-box;
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__media,
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__content {
+    width: 50%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__media {
+    order: {{ image_order }};
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__placeholder {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: #f4f1ef;
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__placeholder svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__content {
+    order: {{ content_order }};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: {{ block.settings.inner_padding }}px;
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__heading {
+    margin: 0;
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.15;
+    font-weight: 700;
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__heading-part-one {
+    color: {{ block.settings.heading_color_one }};
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__heading-part-two {
+    color: {{ block.settings.heading_color_two }};
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__bullets {
+    margin: 20px 0 0;
+    padding-left: 1.25em;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.5;
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__bullets li + li {
+    margin-top: 8px;
+  }
+
+  .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__closing {
+    margin: 16px 0 0;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.5;
+    font-weight: 700;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-image-text-card-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__layout {
+      height: auto;
+      flex-direction: column;
+    }
+
+    .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__media,
+    .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__content {
+      width: 100%;
+      order: initial;
+    }
+
+    .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__media {
+      height: auto;
+      aspect-ratio: 4 / 5;
+    }
+
+    .ai-image-text-card-{{ ai_gen_id }} .ai-image-text-card__content {
+      padding: 24px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-image-text-card-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-image-text-card__layout">
+    <div class="ai-image-text-card__media">
+      {% if block.settings.image != blank %}
+        <img src="{{ block.settings.image | image_url: width: 1600 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+      {% else %}
+        <div class="ai-image-text-card__placeholder">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="ai-image-text-card__content">
+      {% if block.settings.heading_part_one != blank or block.settings.heading_part_two != blank %}
+        <h2 class="ai-image-text-card__heading"><span class="ai-image-text-card__heading-part-one">{{ block.settings.heading_part_one | escape }}</span>{% if block.settings.heading_part_one != blank and block.settings.heading_part_two != blank %} {% endif %}<span class="ai-image-text-card__heading-part-two">{{ block.settings.heading_part_two | escape }}</span></h2>
+      {% endif %}
+      {% assign has_bullets = false %}
+      {% for bullet in bullet_lines %}
+        {% assign bullet_text = bullet | strip_html | strip %}
+        {% if bullet_text != blank %}{% assign has_bullets = true %}{% endif %}
+      {% endfor %}
+      {% if has_bullets %}
+        <ul class="ai-image-text-card__bullets">
+          {% for bullet in bullet_lines %}
+            {% assign bullet_text = bullet | strip_html | strip %}
+            {% if bullet_text != blank %}<li>{{ bullet_text | escape }}</li>{% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% if block.settings.closing_line != blank %}
+        <p class="ai-image-text-card__closing">{{ block.settings.closing_line | escape }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Image and text card",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "heading_part_one",
+      "label": "Heading part 1"
+    },
+    {
+      "type": "text",
+      "id": "heading_part_two",
+      "label": "Heading part 2"
+    },
+    {
+      "type": "textarea",
+      "id": "bullet_list",
+      "label": "Bullet list"
+    },
+    {
+      "type": "text",
+      "id": "closing_line",
+      "label": "Closing line"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "heading_color_one",
+      "label": "Heading color 1",
+      "default": "#3b2f2a"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_two",
+      "label": "Heading color 2",
+      "default": "#7a6a5c"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#ece6e2"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "inner_padding",
+      "label": "Inner padding",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "card_height",
+      "label": "Card height on desktop",
+      "min": 320,
+      "max": 720,
+      "step": 40,
+      "unit": "px",
+      "default": 520
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image and text card"
+    }
+  ],
+  "tag": null,
+  "class": "image-text-card-block"
+}
 {% endschema %}
