@@ -1,6 +1,150 @@
+{% doc %}
+  @prompt
+    Create a theme block called "Delivery estimate" for the product page.
+    
+    Layout: a card with a thin light-beige border (#e9e1da), rounded corners 20px, white background, inner padding 24px.
+    
+    Inside the card, top to bottom:
+    1. A bold title: "Worldwide Delivery within 5-7 Days" (size 18px, color #111111).
+    2. A row with two columns separated by a thin vertical line (#e3dcd6):
+       - Left column: a clock icon in orange-brown (#d28a62) on the left. Next to it, a small gray label "Order within" and below it a bold countdown in orange-brown (#d28a62) in format HH:MM:SS, for example 01:41:15.
+       - Right column: a delivery truck icon in dark (#2b2224) on the left. Next to it, a small gray label "Receive" and below it a bold date range in dark, for example "Nov 6 - Nov 10".
+    3. A small gray note at the bottom (size 14px, color #9a8f88): "Delivery dates are forecasts and might delay in some cases".
+    
+    Behavior (JavaScript):
+    - The countdown goes down every second until the daily cutoff time (the merchant chooses the cutoff hour, default 18:00 in the visitor's local time). When it reaches zero, it restarts for the next day's cutoff.
+    - The delivery range is calculated from today: start = today + minimum days, end = today + maximum days (defaults: 5 and 7). Format as "Nov 6 - Nov 10". Skip Saturdays and Sundays when counting if the merchant turns on "Business days only".
+    
+    Editable settings:
+    1. Title (text)
+    2. Label for the countdown (text, default "Order within")
+    3. Label for the date (text, default "Receive")
+    4. Note text (text)
+    5. Cutoff hour (range 0 to 23, default 18)
+    6. Minimum days (range 1 to 20, default 5)
+    7. Maximum days (range 1 to 30, default 7)
+    8. Business days only (checkbox, default off)
+    9. Accent color (color, default #d28a62)
+    10. Text color (color, default #111111)
+    11. Muted text color (color, default #9a8f88)
+    12. Border color (color, default #e9e1da)
+    13. Corner radius (range 0 to 32, default 20)
+    14. Show the card (checkbox)
+    
+    Keep the code short and avoid external libraries.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-delivery-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 24px;
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.corner_radius }}px;
+    background: #ffffff;
+    color: {{ block.settings.text_color }};
+    font-family: inherit;
+  }
+  .ai-delivery-{{ ai_gen_id }}[hidden] { display: none; }
+  .ai-delivery-{{ ai_gen_id }}__title { margin: 0 0 20px; font-size: 18px; line-height: 1.35; font-weight: 700; color: {{ block.settings.text_color }}; }
+  .ai-delivery-{{ ai_gen_id }}__row { display: grid; grid-template-columns: 1fr 1fr; }
+  .ai-delivery-{{ ai_gen_id }}__item { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .ai-delivery-{{ ai_gen_id }}__item + .ai-delivery-{{ ai_gen_id }}__item { border-left: 1px solid #e3dcd6; padding-left: 20px; margin-left: 20px; }
+  .ai-delivery-{{ ai_gen_id }}__icon { width: 24px; height: 24px; flex: 0 0 24px; }
+  .ai-delivery-{{ ai_gen_id }}__copy { min-width: 0; }
+  .ai-delivery-{{ ai_gen_id }}__label { display: block; margin-bottom: 3px; color: {{ block.settings.muted_color }}; font-size: 13px; line-height: 1.3; }
+  .ai-delivery-{{ ai_gen_id }}__value { display: block; color: {{ block.settings.text_color }}; font-size: 16px; line-height: 1.35; font-weight: 700; white-space: nowrap; }
+  .ai-delivery-{{ ai_gen_id }}__countdown { color: {{ block.settings.accent_color }}; font-variant-numeric: tabular-nums; }
+  .ai-delivery-{{ ai_gen_id }}__note { margin: 18px 0 0; color: {{ block.settings.muted_color }}; font-size: 14px; line-height: 1.45; }
+  @media screen and (max-width: 520px) {
+    .ai-delivery-{{ ai_gen_id }} { padding: 18px; }
+    .ai-delivery-{{ ai_gen_id }}__item { gap: 8px; }
+    .ai-delivery-{{ ai_gen_id }}__item + .ai-delivery-{{ ai_gen_id }}__item { padding-left: 12px; margin-left: 12px; }
+    .ai-delivery-{{ ai_gen_id }}__icon { width: 20px; height: 20px; flex-basis: 20px; }
+    .ai-delivery-{{ ai_gen_id }}__value { font-size: 14px; }
+  }
+{% endstyle %}
+
+<delivery-estimate-{{ ai_gen_id }} class="ai-delivery-{{ ai_gen_id }}" {{ block.shopify_attributes }} {% unless block.settings.show_card %}hidden{% endunless %} data-cutoff="{{ block.settings.cutoff_hour }}" data-min-days="{{ block.settings.minimum_days }}" data-max-days="{{ block.settings.maximum_days }}" data-business-days="{{ block.settings.business_days_only }}">
+  <h2 class="ai-delivery-{{ ai_gen_id }}__title">{{ block.settings.title | escape }}</h2>
+  <div class="ai-delivery-{{ ai_gen_id }}__row">
+    <div class="ai-delivery-{{ ai_gen_id }}__item">
+      <svg class="ai-delivery-{{ ai_gen_id }}__icon" viewBox="0 0 24 24" fill="none" stroke="{{ block.settings.accent_color }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+      <div class="ai-delivery-{{ ai_gen_id }}__copy"><span class="ai-delivery-{{ ai_gen_id }}__label">{{ block.settings.countdown_label | escape }}</span><span class="ai-delivery-{{ ai_gen_id }}__value ai-delivery-{{ ai_gen_id }}__countdown" data-countdown aria-live="off">--:--:--</span></div>
+    </div>
+    <div class="ai-delivery-{{ ai_gen_id }}__item">
+      <svg class="ai-delivery-{{ ai_gen_id }}__icon" viewBox="0 0 24 24" fill="none" stroke="#2b2224" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v12H3zM14 10h4l3 3v5h-7z"></path><circle cx="7.5" cy="18" r="1.5"></circle><circle cx="18" cy="18" r="1.5"></circle></svg>
+      <div class="ai-delivery-{{ ai_gen_id }}__copy"><span class="ai-delivery-{{ ai_gen_id }}__label">{{ block.settings.date_label | escape }}</span><span class="ai-delivery-{{ ai_gen_id }}__value" data-daterange></span></div>
+    </div>
+  </div>
+  {% if block.settings.note != blank %}<p class="ai-delivery-{{ ai_gen_id }}__note">{{ block.settings.note | escape }}</p>{% endif %}
+</delivery-estimate-{{ ai_gen_id }}>
+
+<script>
+  (() => {
+    const tag = 'delivery-estimate-{{ ai_gen_id }}';
+    if (customElements.get(tag)) return;
+    class DeliveryEstimate extends HTMLElement {
+      connectedCallback() {
+        this.countdown = this.querySelector('[data-countdown]');
+        this.range = this.querySelector('[data-daterange]');
+        this.update = this.update.bind(this);
+        this.update();
+        this.timer = window.setInterval(this.update, 1000);
+      }
+      disconnectedCallback() { window.clearInterval(this.timer); }
+      update() {
+        const now = new Date();
+        const cutoff = new Date(now);
+        cutoff.setHours(Number(this.dataset.cutoff), 0, 0, 0);
+        if (now >= cutoff) cutoff.setDate(cutoff.getDate() + 1);
+        const seconds = Math.max(0, Math.floor((cutoff - now) / 1000));
+        const pad = value => String(value).padStart(2, '0');
+        this.countdown.textContent = `${pad(Math.floor(seconds / 3600))}:${pad(Math.floor(seconds % 3600 / 60))}:${pad(seconds % 60)}`;
+        const addDays = days => {
+          const date = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          let added = 0;
+          while (added < days) {
+            date.setDate(date.getDate() + 1);
+            if (this.dataset.businessDays !== 'true' || (date.getDay() !== 0 && date.getDay() !== 6)) added++;
+          }
+          return date;
+        };
+        const start = addDays(Number(this.dataset.minDays));
+        const end = addDays(Number(this.dataset.maxDays));
+        const fmt = date => new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(date);
+        this.range.textContent = `${fmt(start)} - ${fmt(end)}`;
+      }
+    }
+    customElements.define(tag, DeliveryEstimate);
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Delivery estimate",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Worldwide Delivery within 5-7 Days" },
+    { "type": "text", "id": "countdown_label", "label": "Countdown label", "default": "Order within" },
+    { "type": "text", "id": "date_label", "label": "Date label", "default": "Receive" },
+    { "type": "text", "id": "note", "label": "Note", "default": "Delivery dates are forecasts and might delay in some cases" },
+    { "type": "range", "id": "cutoff_hour", "label": "Cutoff hour", "min": 0, "max": 23, "step": 1, "default": 18 },
+    { "type": "range", "id": "minimum_days", "label": "Minimum days", "min": 1, "max": 20, "step": 1, "default": 5 },
+    { "type": "range", "id": "maximum_days", "label": "Maximum days", "min": 1, "max": 30, "step": 1, "default": 7 },
+    { "type": "checkbox", "id": "business_days_only", "label": "Business days only", "default": false },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#d28a62" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#111111" },
+    { "type": "color", "id": "muted_color", "label": "Muted text color", "default": "#9a8f88" },
+    { "type": "color", "id": "border_color", "label": "Border color", "default": "#e9e1da" },
+    { "type": "range", "id": "corner_radius", "label": "Corner radius", "min": 0, "max": 32, "step": 1, "unit": "px", "default": 20 },
+    { "type": "checkbox", "id": "show_card", "label": "Show the card", "default": true },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 }
+  ],
+  "presets": [{ "name": "Delivery estimate" }],
+  "tag": null,
+  "class": "delivery-estimate-block"
+}
 {% endschema %}
