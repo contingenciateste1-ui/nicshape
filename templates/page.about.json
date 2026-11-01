@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "main": {
+      "type": "nic-page",
+      "settings": {
+        "title": "About Nicshape",
+        "intro": "<p>Comfortable shapewear, bras and swimwear designed to make you feel confident every day.</p>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "heading",
+          "settings": {
+            "text": "Our story"
+          }
+        },
+        "b2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nicshape was created to make everyday essentials that feel as good as they look. We focus on soft fabrics, invisible finishes and fits that move with you.</p>"
+          }
+        },
+        "b3": {
+          "type": "heading",
+          "settings": {
+            "text": "What we care about"
+          }
+        },
+        "b4": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>Comfort you can wear all day</li><li>Honest sizing and easy size exchanges</li><li>Support from a real team: <a href=\"mailto:info@nicshape.com\">info@nicshape.com</a></li></ul>"
+          }
+        },
+        "b5": {
+          "type": "button",
+          "settings": {
+            "label": "Shop best sellers",
+            "link": "/collections/best-sellers"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

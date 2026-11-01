@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "nic-reviews",
+      "settings": {
+        "heading": "Customer reviews"
+      },
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

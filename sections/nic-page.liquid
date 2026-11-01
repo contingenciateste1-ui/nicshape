@@ -1,0 +1,228 @@
+<section
+  class="nic-page"
+  style="
+    --pg-bg: {{ section.settings.bg_color }};
+    --pg-text: {{ section.settings.text_color }};
+    --pg-muted: {{ section.settings.muted_color }};
+    --pg-line: {{ section.settings.line_color }};
+    --pg-accent: {{ section.settings.accent_color }};
+    --pg-w: {{ section.settings.width }}px;
+    --pg-align: {{ section.settings.align }};
+    --pg-title: {{ section.settings.title_size }}px;
+    --pg-body: {{ section.settings.text_size }}px;
+    --pg-pt: {{ section.settings.padding_top }}px;
+    --pg-pb: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="nic-page__inner">
+    {%- if section.settings.show_title -%}
+      <h1 class="nic-page__title">{{ section.settings.title | default: page.title }}</h1>
+    {%- endif -%}
+    {%- if section.settings.intro != blank -%}
+      <div class="nic-page__intro">{{ section.settings.intro }}</div>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          <h2 class="nic-page__heading" {{ block.shopify_attributes }}>{{ block.settings.text }}</h2>
+        {%- when 'text' -%}
+          <div class="nic-page__text rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+        {%- when 'faq' -%}
+          <details class="nic-page__faq" {{ block.shopify_attributes }}{% if block.settings.open %} open{% endif %}>
+            <summary>
+              <span>{{ block.settings.question }}</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg>
+            </summary>
+            <div class="nic-page__answer rte">{{ block.settings.answer }}</div>
+          </details>
+        {%- when 'button' -%}
+          {%- if block.settings.label != blank -%}
+            <p class="nic-page__btn-wrap" {{ block.shopify_attributes }}>
+              <a class="nic-page__btn" href="{{ block.settings.link | default: '#' }}">{{ block.settings.label }}</a>
+            </p>
+          {%- endif -%}
+        {%- when 'divider' -%}
+          <hr class="nic-page__hr" {{ block.shopify_attributes }}>
+        {%- when '@app' -%}
+          <div class="nic-page__app">{% render block %}</div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .nic-page {
+    padding: var(--pg-pt) 20px var(--pg-pb);
+    background: var(--pg-bg);
+    color: var(--pg-text);
+    font-family: var(--font-body--family);
+  }
+
+  .nic-page__inner {
+    max-width: var(--pg-w);
+    margin: 0 auto;
+    text-align: var(--pg-align);
+  }
+
+  .nic-page__title {
+    margin: 0 0 20px;
+    font-family: var(--font-heading--family);
+    font-size: min(var(--pg-title), 9vw);
+    line-height: 1.15;
+  }
+
+  .nic-page__intro,
+  .nic-page__text,
+  .nic-page__answer {
+    color: var(--pg-text);
+    font-size: var(--pg-body);
+    line-height: 1.7;
+  }
+
+  .nic-page__intro {
+    margin-bottom: 32px;
+    color: var(--pg-muted);
+  }
+
+  .nic-page__heading {
+    margin: 36px 0 12px;
+    font-family: var(--font-heading--family);
+    font-size: 1.375rem;
+  }
+
+  .nic-page__text {
+    margin-bottom: 16px;
+  }
+
+  .nic-page__text p,
+  .nic-page__answer p,
+  .nic-page__intro p {
+    margin: 0 0 12px;
+  }
+
+  .nic-page__text a,
+  .nic-page__answer a,
+  .nic-page__intro a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .nic-page__text ul,
+  .nic-page__answer ul {
+    padding-left: 1.2em;
+    text-align: left;
+  }
+
+  .nic-page__faq {
+    border-bottom: 1px solid var(--pg-line);
+    text-align: left;
+  }
+
+  .nic-page__faq:first-of-type {
+    border-top: 1px solid var(--pg-line);
+  }
+
+  .nic-page__faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 0;
+    font-size: calc(var(--pg-body) + 2px);
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .nic-page__faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nic-page__faq[open] .v {
+    display: none;
+  }
+
+  .nic-page__answer {
+    padding: 0 0 20px;
+    color: var(--pg-muted);
+  }
+
+  .nic-page__hr {
+    margin: 28px 0;
+    border: 0;
+    border-top: 1px solid var(--pg-line);
+  }
+
+  .nic-page__btn {
+    display: inline-block;
+    padding: 0.95em 2em;
+    border-radius: 999px;
+    background: var(--pg-accent);
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nic-page__app {
+    margin: 24px 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape page content",
+  "tag": "div",
+  "settings": [
+    { "type": "checkbox", "id": "show_title", "label": "Show title", "default": true },
+    { "type": "text", "id": "title", "label": "Title", "info": "Empty uses the page title." },
+    { "type": "richtext", "id": "intro", "label": "Intro text" },
+    { "type": "range", "id": "title_size", "label": "Title size", "min": 24, "max": 64, "step": 2, "unit": "px", "default": 40 },
+    { "type": "range", "id": "text_size", "label": "Text size", "min": 13, "max": 22, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "width", "label": "Content width", "min": 480, "max": 1100, "step": 20, "unit": "px", "default": 760 },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#2b2224" },
+    { "type": "color", "id": "muted_color", "label": "Secondary text", "default": "#5f5557" },
+    { "type": "color", "id": "line_color", "label": "Lines", "default": "#e3e0de" },
+    { "type": "color", "id": "accent_color", "label": "Button color", "default": "#2b2224" },
+    { "type": "range", "id": "padding_top", "label": "Space above", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "label": "Space below", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 }
+  ],
+  "blocks": [
+    { "type": "heading", "name": "Heading", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Heading" }] },
+    { "type": "text", "name": "Text", "settings": [{ "type": "richtext", "id": "text", "label": "Text", "default": "<p>Write here.</p>" }] },
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer.</p>" },
+        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Contact us" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    },
+    { "type": "divider", "name": "Divider", "settings": [] },
+    { "type": "@app" }
+  ],
+  "presets": [{ "name": "Nicshape page content" }]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "main": {
+      "type": "nic-page",
+      "settings": {
+        "title": "Do not sell or share my personal information",
+        "intro": "<p>You can ask us not to sell or share your personal information, or to access or delete it.</p>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nicshape does not sell your personal information for money. To make a privacy request, email <a href=\"mailto:info@nicshape.com\">info@nicshape.com</a> with the subject “Privacy request” and tell us what you would like us to do. We may need to confirm your identity before acting on your request.</p>"
+          }
+        },
+        "b2": {
+          "type": "button",
+          "settings": {
+            "label": "Email a privacy request",
+            "link": "mailto:info@nicshape.com?subject=Privacy%20request"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "sections": {
+    "main": {
+      "type": "nic-page",
+      "settings": {
+        "title": "Track your order",
+        "intro": "<p>Use the tracking link from your shipping confirmation email, or sign in to see your orders.</p>"
+      },
+      "blocks": {
+        "b1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Your tracking link is in the email we send when your order ships. If you can’t find it, check your spam folder or write to <a href=\"mailto:info@nicshape.com\">info@nicshape.com</a> with your order number.</p>"
+          }
+        },
+        "b2": {
+          "type": "button",
+          "settings": {
+            "label": "View my orders",
+            "link": "/account"
+          }
+        },
+        "b3": {
+          "type": "divider",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
