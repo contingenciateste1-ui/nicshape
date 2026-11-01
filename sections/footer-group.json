@@ -15,8 +15,8 @@
       "type": "nic-scroll-top",
       "settings": {
         "label": "Scroll to top",
-        "text_size": 18,
-        "button_size": 40,
+        "text_size": 15,
+        "button_size": 30,
         "text_color": "#2b2224",
         "button_color": "#5a4a42",
         "icon_color": "#ffffff",
