@@ -1,6 +1,128 @@
+{% doc %}
+  @prompt
+    Create a theme block called "Comparison table".
+    
+    Desktop layout: two areas side by side. Left (35%): centered text, vertically centered: a bold heading (32px, line height 1.15, #111111) and a paragraph below (16px, line height 1.5, #111111). Right (65%): a grid with 4 columns and up to 7 rows.
+    
+    Grid:
+    - Column 0: row labels. Light gray cards (#f6f6f6), bold 15px text, left aligned, padding 10px 12px, 1px separators (#ececec). Round the outer corners of the first and last label (12px).
+    - Column 1 (highlighted): a tall dark column, rounded 14px. The header shows the brand name (white, centered, letter-spaced) or a logo image. Cells go from very dark brown (#2b211d) at the top to light taupe (#ac9d8c) at the bottom, one shade lighter per row. Each cell shows a white circle with a small check (22px).
+    - Columns 2 and 3: light gray (#e0e0e0 header, cells fading from #e8e8e8 to #fafafa). Header: competitor name, bold 13px, centered. Each cell shows a black circle with a white X ("no") or a brown (#8c7a62) circle with a white check ("yes").
+    
+    All columns have the same row height (64px), header height 96px, 8px gap between columns. Mobile: stack the text above the grid, row height 56px, text 13px, label column 36% wide, icons 18px.
+    
+    Settings: heading, paragraph, brand name, brand logo (image), competitor 1 name, competitor 2 name, and for each of 7 rows: label (text), brand (checkbox, default on), competitor 1 (Yes/No), competitor 2 (Yes/No). Hide a row if its label is empty. Colors: brand column top/bottom, competitor column, competitor "yes" icon, text, label background. Row height and corner radius.
+    
+    Use CSS grid and inline SVG icons. Keep the code short.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% style %}
+  .ai-compare-{{ ai_gen_id }} { display:block; width:{{ block.settings.desktop_width_percent }}%; max-width:100%; color:{{ block.settings.text_color }}; }
+  .ai-compare-{{ ai_gen_id }}__layout { display:grid; grid-template-columns:35% 65%; align-items:center; gap:24px; }
+  .ai-compare-{{ ai_gen_id }}__copy { text-align:center; padding:16px; }
+  .ai-compare-{{ ai_gen_id }}__copy h2 { color:{{ block.settings.text_color }}; font-size:32px; line-height:1.15; margin:0 0 14px; font-weight:700; }
+  .ai-compare-{{ ai_gen_id }}__copy p { font-size:16px; line-height:1.5; margin:0; }
+  .ai-compare-{{ ai_gen_id }}__grid { display:grid; grid-template-columns:1.08fr 1fr 1fr 1fr; gap:8px; align-items:stretch; }
+  .ai-compare-{{ ai_gen_id }}__column { display:grid; grid-template-rows:96px repeat(var(--row-count), {{ block.settings.row_height }}px); min-width:0; }
+  .ai-compare-{{ ai_gen_id }}__head, .ai-compare-{{ ai_gen_id }}__cell { display:flex; align-items:center; justify-content:center; box-sizing:border-box; text-align:center; }
+  .ai-compare-{{ ai_gen_id }}__head { background:#e0e0e0; color:#111; border-radius:8px 8px 0 0; padding:8px 4px; font-size:13px; font-weight:700; }
+  .ai-compare-{{ ai_gen_id }}__labels .ai-compare-{{ ai_gen_id }}__head { background:transparent; }
+  .ai-compare-{{ ai_gen_id }}__label { justify-content:flex-start; text-align:left; padding:10px 12px; color:#111; background:{{ block.settings.label_background }}; border:1px solid #ececec; border-bottom:0; font-size:15px; font-weight:700; line-height:1.2; }
+  .ai-compare-{{ ai_gen_id }}__labels .ai-compare-{{ ai_gen_id }}__label:last-child { border-bottom:1px solid #ececec; }
+  .ai-compare-{{ ai_gen_id }}__labels .ai-compare-{{ ai_gen_id }}__label:nth-child(2) { border-radius:12px 12px 0 0; }
+  .ai-compare-{{ ai_gen_id }}__labels .ai-compare-{{ ai_gen_id }}__label:last-child { border-radius:0 0 12px 12px; }
+  .ai-compare-{{ ai_gen_id }}__brand { position:relative; overflow:hidden; border-radius:14px; background:{{ block.settings.brand_top }}; box-shadow:0 5px 16px rgba(25,17,13,.18); }
+  .ai-compare-{{ ai_gen_id }}__brand:after { content:''; position:absolute; inset:96px 0 0; z-index:0; background:linear-gradient(to bottom,{{ block.settings.brand_top }},{{ block.settings.brand_bottom }}); pointer-events:none; }
+  .ai-compare-{{ ai_gen_id }}__brand .ai-compare-{{ ai_gen_id }}__head { position:relative; z-index:1; height:96px; border-radius:14px 14px 0 0; background:transparent; color:#fff; letter-spacing:.12em; text-transform:uppercase; }
+  .ai-compare-{{ ai_gen_id }}__brand .ai-compare-{{ ai_gen_id }}__cell { position:relative; z-index:1; }
+  .ai-compare-{{ ai_gen_id }}__brand img { max-width:90%; max-height:70px; object-fit:contain; }
+  .ai-compare-{{ ai_gen_id }}__competitor .ai-compare-{{ ai_gen_id }}__cell { background:linear-gradient(to bottom,#e8e8e8,#fafafa); }
+  .ai-compare-{{ ai_gen_id }}__icon { display:flex; width:22px; height:22px; border-radius:50%; align-items:center; justify-content:center; flex:none; }
+  .ai-compare-{{ ai_gen_id }}__brand .ai-compare-{{ ai_gen_id }}__icon { width:22px; height:22px; background:#fff; color:#2b211d; }
+  .ai-compare-{{ ai_gen_id }}__yes { background:{{ block.settings.yes_color }}; color:#fff; }
+  .ai-compare-{{ ai_gen_id }}__no { background:#111; color:#fff; }
+  .ai-compare-{{ ai_gen_id }}__icon svg { width:12px; height:12px; }
+  @media(max-width:749px) {
+    .ai-compare-{{ ai_gen_id }} { width:100%; }
+    .ai-compare-{{ ai_gen_id }}__layout { grid-template-columns:1fr; gap:18px; }
+    .ai-compare-{{ ai_gen_id }}__copy { padding:0 8px; }
+    .ai-compare-{{ ai_gen_id }}__copy h2 { font-size:26px; }
+    .ai-compare-{{ ai_gen_id }}__copy p { font-size:14px; }
+    .ai-compare-{{ ai_gen_id }}__grid { grid-template-columns:36% repeat(3,minmax(0,1fr)); gap:4px; }
+    .ai-compare-{{ ai_gen_id }}__column { grid-template-rows:72px repeat(var(--row-count),56px); }
+    .ai-compare-{{ ai_gen_id }}__brand:after { inset:72px 0 0; }
+    .ai-compare-{{ ai_gen_id }}__brand .ai-compare-{{ ai_gen_id }}__head { height:72px; }
+    .ai-compare-{{ ai_gen_id }}__head { font-size:11px; overflow-wrap:anywhere; }
+    .ai-compare-{{ ai_gen_id }}__label { font-size:13px; padding:6px; }
+    .ai-compare-{{ ai_gen_id }}__icon, .ai-compare-{{ ai_gen_id }}__brand .ai-compare-{{ ai_gen_id }}__icon { width:18px; height:18px; }
+    .ai-compare-{{ ai_gen_id }}__icon svg { width:10px; height:10px; }
+  }
+{% endstyle %}
+{% capture row_markup %}{% for i in (1..7) %}{% assign label_key = 'row_' | append: i | append: '_label' %}{% assign label_value = block.settings[label_key] %}{% if label_value != blank %}<span class="ai-compare-{{ ai_gen_id }}__label ai-compare-{{ ai_gen_id }}__cell">{{ label_value | escape }}</span>{% endif %}{% endfor %}{% endcapture %}
+{% assign row_total = 0 %}{% for i in (1..7) %}{% assign label_key = 'row_' | append: i | append: '_label' %}{% if block.settings[label_key] != blank %}{% assign row_total = row_total | plus: 1 %}{% endif %}{% endfor %}
+<div class="ai-compare-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-compare-{{ ai_gen_id }}__layout">
+    <div class="ai-compare-{{ ai_gen_id }}__copy"><h2>{{ block.settings.heading | escape }}</h2><p>{{ block.settings.paragraph | escape | newline_to_br }}</p></div>
+    <div class="ai-compare-{{ ai_gen_id }}__grid" style="--row-count:{{ row_total }}">
+      <div class="ai-compare-{{ ai_gen_id }}__column ai-compare-{{ ai_gen_id }}__labels"><div class="ai-compare-{{ ai_gen_id }}__head" aria-hidden="true"></div>{{ row_markup }}</div>
+      <div class="ai-compare-{{ ai_gen_id }}__column ai-compare-{{ ai_gen_id }}__brand"><div class="ai-compare-{{ ai_gen_id }}__head">{% if block.settings.brand_logo %}<img src="{{ block.settings.brand_logo | image_url: width: 300 }}" alt="{{ block.settings.brand_name | escape }}" loading="lazy">{% else %}{{ block.settings.brand_name | escape }}{% endif %}</div>{% for i in (1..7) %}{% assign label_key = 'row_' | append: i | append: '_label' %}{% assign brand_key = 'row_' | append: i | append: '_brand' %}{% if block.settings[label_key] != blank %}<div class="ai-compare-{{ ai_gen_id }}__cell"><span class="ai-compare-{{ ai_gen_id }}__icon" aria-label="Yes"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3.2 3.2L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>{% endif %}{% endfor %}</div>
+      {% for competitor in (1..2) %}{% assign name_key = 'competitor_' | append: competitor | append: '_name' %}<div class="ai-compare-{{ ai_gen_id }}__column ai-compare-{{ ai_gen_id }}__competitor"><div class="ai-compare-{{ ai_gen_id }}__head">{{ block.settings[name_key] | escape }}</div>{% for i in (1..7) %}{% assign label_key = 'row_' | append: i | append: '_label' %}{% assign answer_key = 'row_' | append: i | append: '_competitor_' | append: competitor %}{% if block.settings[label_key] != blank %}{% if block.settings[answer_key] == 'yes' %}<div class="ai-compare-{{ ai_gen_id }}__cell"><span class="ai-compare-{{ ai_gen_id }}__icon ai-compare-{{ ai_gen_id }}__yes" aria-label="Yes"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3.2 3.2L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>{% else %}<div class="ai-compare-{{ ai_gen_id }}__cell"><span class="ai-compare-{{ ai_gen_id }}__icon ai-compare-{{ ai_gen_id }}__no" aria-label="No"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 4 8 8m0-8-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div>{% endif %}{% endif %}{% endfor %}</div>{% endfor %}
+    </div>
+  </div>
+</div>
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Comparison table",
+  "settings": [
+    {"type":"header","content":"Content"},
+    {"type":"text","id":"heading","label":"Heading","default":"Why choose us?"},
+    {"type":"textarea","id":"paragraph","label":"Paragraph","default":"See how we compare on the details that matter."},
+    {"type":"text","id":"brand_name","label":"Brand name","default":"Nicshape"},
+    {"type":"image_picker","id":"brand_logo","label":"Brand logo"},
+    {"type":"text","id":"competitor_1_name","label":"Competitor 1 name","default":"Competitor 1"},
+    {"type":"text","id":"competitor_2_name","label":"Competitor 2 name","default":"Competitor 2"},
+    {"type":"header","content":"Comparison rows"},
+    {"type":"text","id":"row_1_label","label":"Row 1 label","default":"Designed for comfort"},
+    {"type":"checkbox","id":"row_1_brand","label":"Brand includes row 1","default":true},
+    {"type":"select","id":"row_1_competitor_1","label":"Competitor 1 row 1","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"select","id":"row_1_competitor_2","label":"Competitor 2 row 1","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"text","id":"row_2_label","label":"Row 2 label","default":"Sculpting support"},
+    {"type":"checkbox","id":"row_2_brand","label":"Brand includes row 2","default":true},
+    {"type":"select","id":"row_2_competitor_1","label":"Competitor 1 row 2","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"select","id":"row_2_competitor_2","label":"Competitor 2 row 2","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"text","id":"row_3_label","label":"Row 3 label","default":"Premium fabric"},
+    {"type":"checkbox","id":"row_3_brand","label":"Brand includes row 3","default":true},
+    {"type":"select","id":"row_3_competitor_1","label":"Competitor 1 row 3","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"select","id":"row_3_competitor_2","label":"Competitor 2 row 3","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"text","id":"row_4_label","label":"Row 4 label","default":"Chlorine resistant"},
+    {"type":"checkbox","id":"row_4_brand","label":"Brand includes row 4","default":true},
+    {"type":"select","id":"row_4_competitor_1","label":"Competitor 1 row 4","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"select","id":"row_4_competitor_2","label":"Competitor 2 row 4","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"text","id":"row_5_label","label":"Row 5 label","default":"Thoughtful fit"},
+    {"type":"checkbox","id":"row_5_brand","label":"Brand includes row 5","default":true},
+    {"type":"select","id":"row_5_competitor_1","label":"Competitor 1 row 5","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"select","id":"row_5_competitor_2","label":"Competitor 2 row 5","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"text","id":"row_6_label","label":"Row 6 label","default":"Made to last"},
+    {"type":"checkbox","id":"row_6_brand","label":"Brand includes row 6","default":true},
+    {"type":"select","id":"row_6_competitor_1","label":"Competitor 1 row 6","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"select","id":"row_6_competitor_2","label":"Competitor 2 row 6","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"text","id":"row_7_label","label":"Row 7 label","default":"Easy care"},
+    {"type":"checkbox","id":"row_7_brand","label":"Brand includes row 7","default":true},
+    {"type":"select","id":"row_7_competitor_1","label":"Competitor 1 row 7","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"select","id":"row_7_competitor_2","label":"Competitor 2 row 7","options":[{"value":"yes","label":"Yes"},{"value":"no","label":"No"}],"default":"no"},
+    {"type":"header","content":"Colors and sizing"},
+    {"type":"color","id":"brand_top","label":"Brand column top","default":"#2B211D"},
+    {"type":"color","id":"brand_bottom","label":"Brand column bottom","default":"#AC9D8C"},
+    {"type":"color","id":"competitor_color","label":"Competitor column","default":"#E8E8E8"},
+    {"type":"color","id":"yes_color","label":"Competitor yes icon","default":"#8C7A62"},
+    {"type":"color","id":"text_color","label":"Text","default":"#111111"},
+    {"type":"color","id":"label_background","label":"Label background","default":"#F6F6F6"},
+    {"type":"range","id":"row_height","label":"Row height","min":56,"max":80,"step":4,"unit":"px","default":64},
+    {"type":"range","id":"corner_radius","label":"Corner radius","min":8,"max":24,"step":2,"unit":"px","default":14},
+    {"type":"range","id":"desktop_width_percent","label":"Desktop width","min":50,"max":100,"step":5,"unit":"%","default":100}
+  ],
+  "presets": [{"name":"Comparison table"}],
+  "tag": null,
+  "class": "comparison-table-block"
+}
 {% endschema %}
