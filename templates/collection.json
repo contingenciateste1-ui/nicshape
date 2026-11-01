@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "section": {
       "type": "section",
@@ -223,37 +224,43 @@
         "c1": {
           "type": "collection_card",
           "settings": {
-            "title": "All"
+            "title": "All",
+            "link": "/collections/all"
           }
         },
         "c2": {
           "type": "collection_card",
           "settings": {
-            "title": "Bras"
+            "title": "Bras",
+            "link": "/collections/bras"
           }
         },
         "c3": {
           "type": "collection_card",
           "settings": {
-            "title": "Shapewear"
+            "title": "Shapewear",
+            "link": "/collections/shapewear"
           }
         },
         "c4": {
           "type": "collection_card",
           "settings": {
-            "title": "Swimwear"
+            "title": "Swimwear",
+            "link": "/collections/swimwear"
           }
         },
         "c5": {
           "type": "collection_card",
           "settings": {
-            "title": "Leggings"
+            "title": "Leggings",
+            "link": "/collections/leggings"
           }
         },
         "c6": {
           "type": "collection_card",
           "settings": {
-            "title": "New"
+            "title": "New",
+            "link": "/collections/new"
           }
         }
       },
@@ -267,12 +274,16 @@
       ],
       "settings": {
         "heading": "",
-        "cards_desktop": "8.4",
-        "cards_mobile": "3.3",
-        "padding_top_desktop": 32,
+        "cards_desktop": "10.4",
+        "cards_mobile": "4.2",
+        "padding_top_desktop": 28,
         "padding_bottom_desktop": 8,
         "padding_top_mobile": 24,
-        "padding_bottom_mobile": 8
+        "padding_bottom_mobile": 8,
+        "card_radius": 10,
+        "title_weight": "700",
+        "highlight_active": true,
+        "gap_desktop": 20
       }
     }
   },
