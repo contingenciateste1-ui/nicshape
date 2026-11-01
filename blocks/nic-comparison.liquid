@@ -1,0 +1,749 @@
+{%- liquid
+  assign n = 0
+  for i in (1..7)
+    assign k = 'r' | append: i | append: '_label'
+    if block.settings[k] != blank
+      assign n = n | plus: 1
+    endif
+  endfor
+  assign last = n | minus: 1
+-%}
+{%- capture check_ring -%}<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M8 12.4l2.7 2.6L16 9.6" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+{%- capture yes_icon -%}<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="var(--cmp-yes)" stroke="#fff" stroke-width="1.5"/><path d="M8 12.4l2.7 2.6L16 9.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+{%- capture no_icon -%}<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="#000" stroke="#fff" stroke-width="1.5"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>{%- endcapture -%}
+
+<div
+  class="nic-cmp-wrap"
+  style="
+    --cmp-bg: {{ block.settings.bg_color }};
+    --cmp-text: {{ block.settings.text_color }};
+    --cmp-top: {{ block.settings.brand_top }};
+    --cmp-bottom: {{ block.settings.brand_bottom }};
+    --cmp-chead: {{ block.settings.comp_head }};
+    --cmp-ctop: {{ block.settings.comp_top }};
+    --cmp-cbottom: {{ block.settings.comp_bottom }};
+    --cmp-yes: {{ block.settings.yes_color }};
+    --cmp-label: {{ block.settings.label_bg }};
+    --cmp-row: {{ block.settings.row_height }}px;
+    --cmp-r: {{ block.settings.radius }}px;
+    --cmp-pt: {{ block.settings.padding_top }}px;
+    --cmp-pb: {{ block.settings.padding_bottom }}px;
+  "
+  {{ block.shopify_attributes }}
+>
+  <div class="nic-cmp">
+    <div class="nic-cmp__intro">
+      {%- if block.settings.heading != blank -%}<h2>{{ block.settings.heading }}</h2>{%- endif -%}
+      {%- if block.settings.paragraph != blank -%}<p>{{ block.settings.paragraph }}</p>{%- endif -%}
+    </div>
+
+    <div class="nic-cmp__grid" role="table">
+      <div class="nic-cmp__head nic-cmp__blank" role="presentation"></div>
+      <div class="nic-cmp__head nic-cmp__head--brand" role="columnheader">
+        {%- if block.settings.brand_logo != blank -%}
+          {{ block.settings.brand_logo | image_url: width: 300 | image_tag: loading: 'lazy', alt: block.settings.brand_name }}
+        {%- else -%}
+          <span>{{ block.settings.brand_name }}</span>
+        {%- endif -%}
+      </div>
+      <div class="nic-cmp__head nic-cmp__head--comp" role="columnheader"><span>{{ block.settings.c1_name }}</span></div>
+      <div class="nic-cmp__head nic-cmp__head--comp" role="columnheader"><span>{{ block.settings.c2_name }}</span></div>
+
+      {%- assign idx = 0 -%}
+      {%- for i in (1..7) -%}
+        {%- liquid
+          assign lk = 'r' | append: i | append: '_label'
+          assign bk = 'r' | append: i | append: '_brand'
+          assign c1k = 'r' | append: i | append: '_c1'
+          assign c2k = 'r' | append: i | append: '_c2'
+          assign label = block.settings[lk]
+        -%}
+        {%- if label != blank -%}
+          {%- liquid
+            if last > 0
+              assign t = idx | times: 100 | divided_by: last
+            else
+              assign t = 0
+            endif
+            assign inv = 100 | minus: t
+            assign pos = ''
+            if idx == 0
+              assign pos = ' is-first'
+            endif
+            if idx == last
+              assign pos = pos | append: ' is-last'
+            endif
+          -%}
+          <div class="nic-cmp__label{{ pos }}" role="rowheader">{{ label }}</div>
+          <div class="nic-cmp__cell nic-cmp__cell--brand{{ pos }}" style="--p: {{ inv }}%;" role="cell">
+            {%- if block.settings[bk] -%}{{ check_ring }}{%- else -%}{{ no_icon }}{%- endif -%}
+          </div>
+          <div class="nic-cmp__cell nic-cmp__cell--comp{{ pos }}" style="--p: {{ inv }}%;" role="cell">
+            {%- if block.settings[c1k] == 'yes' -%}{{ yes_icon }}{%- else -%}{{ no_icon }}{%- endif -%}
+          </div>
+          <div class="nic-cmp__cell nic-cmp__cell--comp{{ pos }}" style="--p: {{ inv }}%;" role="cell">
+            {%- if block.settings[c2k] == 'yes' -%}{{ yes_icon }}{%- else -%}{{ no_icon }}{%- endif -%}
+          </div>
+          {%- assign idx = idx | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .nic-cmp-wrap {
+    container-type: inline-size;
+    padding: var(--cmp-pt) 16px var(--cmp-pb);
+    background: var(--cmp-bg);
+    color: var(--cmp-text);
+    font-family: var(--font-body--family);
+  }
+
+  .nic-cmp {
+    display: grid;
+    gap: 24px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .nic-cmp__intro {
+    text-align: center;
+  }
+
+  .nic-cmp__intro h2 {
+    margin: 0 0 14px;
+    font-family: var(--font-heading--family);
+    font-size: clamp(22px, 3cqw, 34px);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  .nic-cmp__intro p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .nic-cmp__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+    column-gap: 8px;
+  }
+
+  .nic-cmp__head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(var(--cmp-row) * 1.5);
+    padding: 8px;
+    text-align: center;
+  }
+
+  .nic-cmp__blank {
+    visibility: hidden;
+  }
+
+  .nic-cmp__head--brand {
+    border-radius: var(--cmp-r) var(--cmp-r) 0 0;
+    background: var(--cmp-top);
+    color: #fff;
+    font-size: 1.0625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .nic-cmp__head--brand img {
+    display: block;
+    max-width: 80%;
+    max-height: 48px;
+    object-fit: contain;
+  }
+
+  .nic-cmp__head--comp {
+    border-radius: var(--cmp-r) var(--cmp-r) 0 0;
+    background: var(--cmp-chead);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .nic-cmp__label {
+    display: flex;
+    align-items: center;
+    min-height: var(--cmp-row);
+    padding: 10px 12px;
+    border-bottom: 1px solid #ececec;
+    background: var(--cmp-label);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .nic-cmp__label.is-first {
+    border-radius: var(--cmp-r) 0 0 0;
+  }
+
+  .nic-cmp__label.is-last {
+    border-bottom: 0;
+    border-radius: 0 0 0 var(--cmp-r);
+  }
+
+  .nic-cmp__cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--cmp-row);
+  }
+
+  .nic-cmp__cell--brand {
+    background: color-mix(in srgb, var(--cmp-top) var(--p), var(--cmp-bottom));
+  }
+
+  .nic-cmp__cell--comp {
+    background: color-mix(in srgb, var(--cmp-ctop) var(--p), var(--cmp-cbottom));
+  }
+
+  .nic-cmp__cell.is-last {
+    border-radius: 0 0 var(--cmp-r) var(--cmp-r);
+  }
+
+  @container (min-width: 720px) {
+    .nic-cmp {
+      grid-template-columns: 35% 1fr;
+      gap: 32px;
+    }
+  }
+
+  @container (max-width: 520px) {
+    .nic-cmp__grid {
+      grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr));
+      column-gap: 5px;
+    }
+
+    .nic-cmp__label {
+      min-height: 56px;
+      padding: 8px;
+      font-size: 0.75rem;
+    }
+
+    .nic-cmp__cell {
+      min-height: 56px;
+    }
+
+    .nic-cmp__cell svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .nic-cmp__head {
+      min-height: 72px;
+      padding: 6px 4px;
+    }
+
+    .nic-cmp__head--brand {
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+    }
+
+    .nic-cmp__head--comp {
+      font-size: 0.6875rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape comparison",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Everything you need to step out of the water. In one piece."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragraph",
+      "default": "A swim dress that works as a swimsuit and a cover-up. Lighter to pack, easy to wear."
+    },
+    {
+      "type": "header",
+      "content": "Columns"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Your brand name",
+      "default": "Nicshape"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_logo",
+      "label": "Your logo (optional)"
+    },
+    {
+      "type": "text",
+      "id": "c1_name",
+      "label": "Competitor 1 name",
+      "default": "Regular swimsuit"
+    },
+    {
+      "type": "text",
+      "id": "c2_name",
+      "label": "Competitor 2 name",
+      "default": "Swimsuit + sarong"
+    },
+    {
+      "type": "paragraph",
+      "content": "Rows: write the label, then choose Yes or No for each column. Empty labels hide the row. Only claim what is true for your product."
+    },
+    {
+      "type": "header",
+      "content": "Row 1"
+    },
+    {
+      "type": "text",
+      "id": "r1_label",
+      "label": "Label",
+      "default": "Smooth, flattering fit"
+    },
+    {
+      "type": "checkbox",
+      "id": "r1_brand",
+      "label": "Your product has it",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "r1_c1",
+      "label": "Competitor 1",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "yes"
+    },
+    {
+      "type": "select",
+      "id": "r1_c2",
+      "label": "Competitor 2",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "header",
+      "content": "Row 2"
+    },
+    {
+      "type": "text",
+      "id": "r2_label",
+      "label": "Label",
+      "default": "Built-in bust support"
+    },
+    {
+      "type": "checkbox",
+      "id": "r2_brand",
+      "label": "Your product has it",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "r2_c1",
+      "label": "Competitor 1",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "yes"
+    },
+    {
+      "type": "select",
+      "id": "r2_c2",
+      "label": "Competitor 2",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "header",
+      "content": "Row 3"
+    },
+    {
+      "type": "text",
+      "id": "r3_label",
+      "label": "Label",
+      "default": "Lined, not see-through"
+    },
+    {
+      "type": "checkbox",
+      "id": "r3_brand",
+      "label": "Your product has it",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "r3_c1",
+      "label": "Competitor 1",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "select",
+      "id": "r3_c2",
+      "label": "Competitor 2",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "header",
+      "content": "Row 4"
+    },
+    {
+      "type": "text",
+      "id": "r4_label",
+      "label": "Label",
+      "default": "High waist that stays put"
+    },
+    {
+      "type": "checkbox",
+      "id": "r4_brand",
+      "label": "Your product has it",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "r4_c1",
+      "label": "Competitor 1",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "select",
+      "id": "r4_c2",
+      "label": "Competitor 2",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "header",
+      "content": "Row 5"
+    },
+    {
+      "type": "text",
+      "id": "r5_label",
+      "label": "Label",
+      "default": "No changing after swimming"
+    },
+    {
+      "type": "checkbox",
+      "id": "r5_brand",
+      "label": "Your product has it",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "r5_c1",
+      "label": "Competitor 1",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "select",
+      "id": "r5_c2",
+      "label": "Competitor 2",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "header",
+      "content": "Row 6"
+    },
+    {
+      "type": "text",
+      "id": "r6_label",
+      "label": "Label",
+      "default": "One piece, no second thoughts"
+    },
+    {
+      "type": "checkbox",
+      "id": "r6_brand",
+      "label": "Your product has it",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "r6_c1",
+      "label": "Competitor 1",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "select",
+      "id": "r6_c2",
+      "label": "Competitor 2",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "header",
+      "content": "Row 7"
+    },
+    {
+      "type": "text",
+      "id": "r7_label",
+      "label": "Label",
+      "default": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "r7_brand",
+      "label": "Your product has it",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "r7_c1",
+      "label": "Competitor 1",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "select",
+      "id": "r7_c2",
+      "label": "Competitor 2",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "default": "no"
+    },
+    {
+      "type": "header",
+      "content": "Colors and size"
+    },
+    {
+      "type": "color",
+      "id": "brand_top",
+      "label": "Your column, top",
+      "default": "#2b211d"
+    },
+    {
+      "type": "color",
+      "id": "brand_bottom",
+      "label": "Your column, bottom",
+      "default": "#ac9d8c"
+    },
+    {
+      "type": "color",
+      "id": "comp_head",
+      "label": "Competitor header",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "comp_top",
+      "label": "Competitor cells, top",
+      "default": "#e8e8e8"
+    },
+    {
+      "type": "color",
+      "id": "comp_bottom",
+      "label": "Competitor cells, bottom",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "yes_color",
+      "label": "Competitor 'yes' icon",
+      "default": "#8c7a62"
+    },
+    {
+      "type": "color",
+      "id": "label_bg",
+      "label": "Row label background",
+      "default": "#f6f6f6"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "row_height",
+      "label": "Row height (desktop)",
+      "min": 48,
+      "max": 96,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Space above",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Space below",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nicshape comparison"
+    }
+  ]
+}
+{% endschema %}
