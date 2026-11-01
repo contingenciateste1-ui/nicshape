@@ -1,0 +1,484 @@
+<section
+  class="nic-faq"
+  id="nic-faq-{{ section.id }}"
+  data-one-open="{{ section.settings.one_open }}"
+  style="
+    --fq-mt: {{ section.settings.margin_top }}px;
+    --fq-mb: {{ section.settings.margin_bottom }}px;
+    --fq-mt-m: {{ section.settings.margin_top_mobile }}px;
+    --fq-mb-m: {{ section.settings.margin_bottom_mobile }}px;
+    --fq-py: {{ section.settings.padding_y }}px;
+    --fq-px: {{ section.settings.padding_x }}px;
+    --fq-py-m: {{ section.settings.padding_y_mobile }}px;
+    --fq-px-m: {{ section.settings.padding_x_mobile }}px;
+    --fq-bg: {{ section.settings.bg_color }};
+    --fq-text: {{ section.settings.text_color }};
+    --fq-q: {{ section.settings.question_color }};
+    --fq-line: {{ section.settings.divider_color }};
+    --fq-eyebrow: {{ section.settings.eyebrow_size }}px;
+    --fq-title: {{ section.settings.title_size }}px;
+    --fq-title-m: {{ section.settings.title_size_mobile }}px;
+    --fq-sub: {{ section.settings.subtitle_size }}px;
+    --fq-qs: {{ section.settings.question_size }}px;
+    --fq-as: {{ section.settings.answer_size }}px;
+  "
+>
+  <div class="nic-faq__inner">
+    <div class="nic-faq__heading">
+      {%- if section.settings.eyebrow != blank -%}<p class="nic-faq__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.title != blank -%}<h2 class="nic-faq__title">{{ section.settings.title }}</h2>{%- endif -%}
+      {%- if section.settings.subtitle != blank -%}<p class="nic-faq__sub">{{ section.settings.subtitle }}</p>{%- endif -%}
+    </div>
+
+    <div class="nic-faq__list">
+      {%- for block in section.blocks -%}
+        <details class="nic-faq__item"{% if block.settings.open or section.settings.open_first and forloop.first %} open{% endif %} {{ block.shopify_attributes }}>
+          <summary class="nic-faq__q">
+            <span class="nic-faq__q-text">{{ block.settings.question }}</span>
+            <span class="nic-faq__q-icon" aria-hidden="true">
+              <svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg>
+            </span>
+          </summary>
+          <div class="nic-faq__a rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('nic-faq-{{ section.id }}');
+    if (!root || root.dataset.oneOpen !== 'true') return;
+    root.addEventListener('toggle', function (e) {
+      var el = e.target;
+      if (!el.open) return;
+      root.querySelectorAll('details[open]').forEach(function (d) {
+        if (d !== el) d.open = false;
+      });
+    }, true);
+  })();
+</script>
+
+{% stylesheet %}
+  .nic-faq {
+    margin: var(--fq-mt-m) 0 var(--fq-mb-m);
+    padding: var(--fq-py-m) var(--fq-px-m);
+    background: var(--fq-bg);
+    color: var(--fq-text);
+    font-family: var(--font-body--family);
+  }
+
+  .nic-faq__inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .nic-faq__heading {
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .nic-faq__eyebrow {
+    margin: 0 0 8px;
+    font-size: var(--fq-eyebrow);
+    font-weight: 700;
+  }
+
+  .nic-faq__title {
+    margin: 0 0 10px;
+    color: var(--fq-text);
+    font-family: var(--font-heading--family);
+    font-size: var(--fq-title-m);
+    line-height: 1.15;
+  }
+
+  .nic-faq__sub {
+    margin: 0;
+    font-size: var(--fq-sub);
+  }
+
+  .nic-faq__item {
+    border-bottom: 1px solid var(--fq-line);
+  }
+
+  .nic-faq__item:first-child {
+    border-top: 1px solid var(--fq-line);
+  }
+
+  .nic-faq__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 0;
+    color: var(--fq-q);
+    font-size: var(--fq-qs);
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .nic-faq__q::-webkit-details-marker {
+    display: none;
+  }
+
+  .nic-faq__q-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    transition: transform 0.2s ease;
+  }
+
+  .nic-faq__item[open] .nic-faq__q-icon {
+    transform: rotate(180deg);
+  }
+
+  .nic-faq__a {
+    padding: 0 0 18px;
+    font-size: var(--fq-as);
+    line-height: 1.7;
+  }
+
+  .nic-faq__a p {
+    margin: 0 0 10px;
+  }
+
+  .nic-faq__a a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 750px) {
+    .nic-faq {
+      margin: var(--fq-mt) 0 var(--fq-mb);
+      padding: var(--fq-py) var(--fq-px);
+    }
+
+    .nic-faq__title {
+      font-size: var(--fq-title);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Nicshape FAQ",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "FAQs"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Everything you wanted to know before you click add to cart."
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "label": "Small label size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size (desktop)",
+      "min": 20,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Title size (mobile)",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Subtitle size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Questions"
+    },
+    {
+      "type": "range",
+      "id": "question_size",
+      "label": "Question size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "answer_size",
+      "label": "Answer size",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open the first question",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "one_open",
+      "label": "Keep only one question open at a time",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question",
+      "default": "#303030"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Dividers",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin above (desktop)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin below (desktop)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "label": "Margin above (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "label": "Margin below (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "label": "Inner padding top and bottom (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Inner padding left and right (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_y_mobile",
+      "label": "Inner padding top and bottom (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_x_mobile",
+      "label": "Inner padding left and right (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Answer.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nicshape FAQ",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "Will it actually look good on me? I'm not a size 4, I have a postpartum belly…",
+            "answer": "<p>Yes. It is designed for real bodies, not catalog models. The shaping supports the belly and waist, and the built-in bust support helps if your shape has changed. Check the size chart on the product page to find your size.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Does it go see-through when I come out of the water wet?",
+            "answer": "<p>[CONFIRM FOR YOUR PRODUCT] It is lined across the belly and bust, so it stays opaque when wet.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Does the band compress so hard I can't breathe? Can I breathe and eat?",
+            "answer": "<p>It shapes gently where it matters, around the lower belly and hips, and you should still breathe, sit and eat comfortably. If it feels too tight, you probably need one size up. Write to <strong>info@nicshape.com</strong> and we will help you exchange it.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Can you see the cups, or feel them, when I wear it?",
+            "answer": "<p>[CONFIRM FOR YOUR PRODUCT] The cups are sewn in, so they do not slip, roll up in the wash or twist in the water. They sit under the outer fabric and feel like a lined bra.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How do I pick my size? Do I keep my usual size or go up?",
+            "answer": "<p>Start with your usual size. If you are between two sizes, go up if you have more bust than hips, and go down if you have more hips than bust. The size chart below the product has exact measurements in cm and inches. Measure once and you are set.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Can I breastfeed with this on?",
+            "answer": "<p>[CONFIRM FOR YOUR PRODUCT] This piece does not have a nursing opening. It is a shaping swimsuit, not a nursing piece.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Can I machine-wash it? How does it hold up against chlorine and salt?",
+            "answer": "<p>[CONFIRM WITH YOUR CARE LABEL] Delicate cycle at 30°C / 86°F, in a mesh bag, no fabric softener and no dryer. Rinse it in fresh water after the pool or the sea, lay it flat in the shade and let it dry.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "If I don't like it, can I return it? How easy is it?",
+            "answer": "<p>Yes. You have [30] days from delivery to try it at home and return it if it is not right. Email <strong>info@nicshape.com</strong> and we will send you the return instructions. See our <a href=\"/policies/refund-policy\">Refund Policy</a> for the full conditions.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "When will my order arrive?",
+            "answer": "<p>Delivery takes [5-7] days. Shipping is tracked, and you receive the tracking link by email as soon as your order leaves the warehouse.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What if I don't like it?",
+            "answer": "<p>You can return it within [30] days. Email <strong>info@nicshape.com</strong> and we will guide you through the return and refund.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
