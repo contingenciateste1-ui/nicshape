@@ -15,25 +15,25 @@
         "ai_gen_block_61cc85d_FciFCK": {
           "type": "ai_gen_block_61cc85d",
           "settings": {
-            "heading": "The problem isn't you. It's the swimsuit.",
-            "subheading": "Belly covered, bust up, nothing to change into. All in one piece.",
+            "heading": "Why it has becomeeveryone's favorite",
+            "subheading": "",
             "heading_size": 36,
             "desktop_width_percent": 100,
-            "video": "shopify://files/videos/vidlp1.mp4",
+            "video": "shopify://files/videos/d79638541d9946c0adb5ebb75d4c71e2.mp4",
             "media_position": "right",
             "media_radius": 20,
-            "feature_1_icon": "shopify://shop_images/icon1.webp",
-            "feature_1_title": "Flat belly, high waist",
-            "feature_1_description": "Compressive fabric that shapes without marking. Same effect as a premium shapewear piece. Inside a swimsuit.",
-            "feature_2_icon": "shopify://shop_images/icon2.avif",
-            "feature_2_title": "Sewn-in cups, no slipping",
-            "feature_2_description": "Built-in support band. Dive, come out, they're right where you left them. No pads that roll up in the water.",
-            "feature_3_icon": "shopify://shop_images/icon3.avif",
-            "feature_3_title": "Wet looks like dry",
-            "feature_3_description": "Lined double layer that stays opaque even under direct sun. No see-through. No surprises at the bar.",
-            "feature_4_icon": "shopify://shop_images/icon4.webp",
-            "feature_4_title": "Two pieces sewn into one",
-            "feature_4_description": "Swimsuit and cover-up in one. From beach to lunch. No change bag, no changing room, no second thoughts.",
+            "feature_1_icon": "shopify://shop_images/ls-quality-strapless-bra.png",
+            "feature_1_title": "\"Finally the boobs I deserve\"",
+            "feature_1_description": "Jelly technology gives you instant natural lift. Doesn't look fake, looks beautiful. \"They asked if I got a boob job. No guys, it's just the bra!\"",
+            "feature_2_icon": "shopify://shop_images/ls-quality-time-bra.png",
+            "feature_2_title": "\"Never counting minutes to take it off again\"",
+            "feature_2_description": "You know that end-of-day feeling when you get home and the first thing you do is take off your bra? With this one you forget about it. It's so comfortable you can even sleep in it.",
+            "feature_3_icon": "shopify://shop_images/ls-quality-backroll.png",
+            "feature_3_title": "\"Bye bye back rolls\"",
+            "feature_3_description": "Narrow straps on regular bras create those embarrassing bulges. Our wide straps distribute weight – zero rolls, zero fat spilling out. Perfect smooth lines.",
+            "feature_4_icon": "shopify://shop_images/ls-quality-tshirt.png",
+            "feature_4_title": "\"Passes the white shirt test\"",
+            "feature_4_description": "100% seamless. No visible seams, no edges showing. White shirt? Fitted top? Stretch dress? Passes all tests.",
             "background_color": "#ffffff",
             "text_color": "#2b2224",
             "description_color": "#5f5557",
@@ -47,14 +47,14 @@
         "ai_gen_block_285f89b_8ryqmh": {
           "type": "ai_gen_block_285f89b",
           "settings": {
-            "image": "shopify://shop_images/lpimg2.webp",
+            "image": "shopify://shop_images/ls-jellysculpt-before-after.webp",
             "image_position": "left",
-            "heading_part_one": "You didn't get your figure back. You got yourself back.",
+            "heading_part_one": "The 2-Second Transformation",
             "heading_part_two": "",
-            "bullet_list": "The built-in compression band does the work you thought needed shapewear underneath.\nThe double layer stays opaque even wet.\nYou think about the sea, the pool, the kids, the ice cream from the bar.\nThe swimsuit isn't on your mind anymore.",
-            "closing_line": "That's exactly the point.",
-            "heading_size": 32,
-            "text_size": 16,
+            "bullet_list": "Before: Breasts drop → After: Instant lift\n\nInstant lift, perfect round shape.\n\nIt’s not magic, it’s jelly technology that adapts to your body and supports you where needed. In 2 seconds you go from “meh” to “wow”.\n\nForget about:\n\nPainful underwires poking you all day\nVisible seams under clothes\nEmbarrassing bulges on your back\nStraps that mark your shoulders\nWith Jelly-Sculpt™ Bra:\n\nMove freely without pain\nNo one sees you’re wearing it\nSmooth back even with fitted clothes\nWear it 10+ hours without suffering",
+            "closing_line": "",
+            "heading_size": 28,
+            "text_size": 14,
             "heading_color_one": "#3b2f2a",
             "heading_color_two": "#7a6a5c",
             "text_color": "#111111",
@@ -63,7 +63,7 @@
             "corner_radius": 20,
             "inner_padding": 48,
             "card_height": 520,
-            "desktop_width_percent": 100
+            "desktop_width_percent": 90
           },
           "blocks": {}
         },
@@ -71,12 +71,12 @@
           "type": "ai_gen_block_285f89b",
           "name": "Image and text card",
           "settings": {
-            "image": "shopify://shop_images/img3.webp",
+            "image": "shopify://shop_images/ls-jellysculpt-for-all-women.webp",
             "image_position": "right",
-            "heading_part_one": "Designed for the body you actually have.",
+            "heading_part_one": "For ALL women. Really",
             "heading_part_two": "",
-            "bullet_list": "Postpartum belly.\nFull hips.\nReal thighs.\nA back with a curve.\nA bust that changes every month.",
-            "closing_line": "From XS to 6XL — same band, same double layer, same clean silhouette on every body.You try it on. If the shape gives, we make it right. Lifetime Shape Warranty.",
+            "bullet_list": "Cup A to DD. Band 32 to 44. Small to 3XL.\n\nFrom petite to plus size. Office worker to athlete. Comfort seeker to lift lover.\n\nThis bra was made for YOUR body, not some “average woman” that doesn’t exist.\n\nWhat’s included:\n\nAdjustable straps - wear them normal or crisscross for racerback\nExtender hook - for larger band sizes\n5 colors - Nude, Black, Beige, White, Pink",
+            "closing_line": "Real talk:“When your breasts are properly supported, everything changes. You feel confident, powerful, ready for anything.” — verified customer",
             "heading_size": 32,
             "text_size": 16,
             "heading_color_one": "#3b2f2a",
@@ -87,44 +87,44 @@
             "corner_radius": 20,
             "inner_padding": 48,
             "card_height": 520,
-            "desktop_width_percent": 100
+            "desktop_width_percent": 85
           },
           "blocks": {}
         },
         "ai_gen_block_52d99c7_bHAcX4": {
           "type": "ai_gen_block_52d99c7",
           "settings": {
-            "heading": "Why choose us?",
-            "paragraph": "See how we compare on the details that matter.",
+            "heading": "Not All Bras Are Equal",
+            "paragraph": "This is the only solution that solves EVERY problem. Without compromise.",
             "brand_name": "Nicshape",
             "brand_logo": "shopify://shop_images/nicshape-logo-branca.png",
-            "competitor_1_name": "Competitor 1",
-            "competitor_2_name": "Competitor 2",
-            "row_1_label": "Flat belly from the second one",
+            "competitor_1_name": "Regular Bras",
+            "competitor_2_name": "Sports Bras",
+            "row_1_label": "10+ hours comfort",
             "row_1_brand": true,
             "row_1_competitor_1": "no",
             "row_1_competitor_2": "no",
-            "row_2_label": "Built-in bust support",
+            "row_2_label": "Natural sexy lift",
             "row_2_brand": true,
             "row_2_competitor_1": "no",
             "row_2_competitor_2": "no",
-            "row_3_label": "Stays opaque when wet",
+            "row_3_label": "Invisible under everything",
             "row_3_brand": true,
             "row_3_competitor_1": "no",
             "row_3_competitor_2": "no",
-            "row_4_label": "High waist that doesn't roll",
+            "row_4_label": "Zero back rolls",
             "row_4_brand": true,
             "row_4_competitor_1": "no",
             "row_4_competitor_2": "no",
-            "row_5_label": "No changing after the swim",
+            "row_5_label": "Can sleep in it",
             "row_5_brand": true,
             "row_5_competitor_1": "no",
             "row_5_competitor_2": "no",
-            "row_6_label": "One piece, no second thoughts",
+            "row_6_label": "No underwire",
             "row_6_brand": true,
             "row_6_competitor_1": "no",
             "row_6_competitor_2": "no",
-            "row_7_label": "Lifetime Shape Warranty on the band",
+            "row_7_label": "Lifetime Guarantee",
             "row_7_brand": true,
             "row_7_competitor_1": "no",
             "row_7_competitor_2": "no",
@@ -143,7 +143,7 @@
         "ai_gen_block_41479e3_yyzcqt": {
           "type": "ai_gen_block_41479e3",
           "settings": {
-            "heading": "Customer reviews",
+            "heading": "",
             "heading_size": 28,
             "desktop_cards": "5",
             "mobile_cards": "1.2",
@@ -518,7 +518,7 @@
                 "ai_gen_block_1f4a528_g4iCR3": {
                   "type": "ai_gen_block_1f4a528",
                   "settings": {
-                    "items": "Swimsuit and cover-up in one piece.\nFully lined. High waist that stays put.\nForget about it. Wet looks the same as dry.\nFor real women, not for models.",
+                    "items": "10+ hours comfort, can sleep in it\nWireless natural lift, push-up effect\nInvisible under any outfit, white shirts too\nNo back rolls, 4cm wide straps",
                     "text_size": 15,
                     "text_color": "#111111",
                     "icon_color": "#111111",
@@ -625,6 +625,7 @@
                 },
                 "accelerated-checkout": {
                   "type": "accelerated-checkout",
+                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}
@@ -794,107 +795,6 @@
         "padding-block-end": 0
       }
     },
-    "nic_benefits": {
-      "type": "nic-benefits",
-      "blocks": {
-        "b1": {
-          "type": "benefit",
-          "settings": {
-            "icon": "truck",
-            "title": "Free shipping",
-            "text": ""
-          }
-        },
-        "b2": {
-          "type": "benefit",
-          "settings": {
-            "icon": "return",
-            "title": "Easy returns",
-            "text": ""
-          }
-        },
-        "b3": {
-          "type": "benefit",
-          "settings": {
-            "icon": "swap",
-            "title": "Free size exchange",
-            "text": ""
-          }
-        },
-        "b4": {
-          "type": "benefit",
-          "settings": {
-            "icon": "lock",
-            "title": "Secure payments",
-            "text": ""
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3",
-        "b4"
-      ],
-      "settings": {
-        "card_bg": "#f6f6f6",
-        "card_radius": 24,
-        "card_height_desktop": 160,
-        "card_height_mobile": 130,
-        "gap": 34,
-        "columns_mobile": "2",
-        "icon_size": 36,
-        "accent_color": "#111111",
-        "title_size": 17,
-        "title_weight": "500",
-        "text_color": "#111111",
-        "bg_color": "#ffffff",
-        "padding_top_desktop": 32,
-        "padding_bottom_desktop": 32,
-        "padding_top_mobile": 24,
-        "padding_bottom_mobile": 24
-      }
-    },
-    "17935745283372f9a4": {
-      "type": "_blocks",
-      "blocks": {
-        "klaviyo_reviews_product_reviews_LzMeyP": {
-          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "klaviyo_reviews_product_reviews_LzMeyP"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
     "nic_faq_PNtakM": {
       "type": "nic-faq",
       "blocks": {
@@ -1016,6 +916,107 @@
         "padding_x": 80,
         "padding_y_mobile": 32,
         "padding_x_mobile": 12
+      }
+    },
+    "nic_benefits": {
+      "type": "nic-benefits",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "text": ""
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "return",
+            "title": "Easy returns",
+            "text": ""
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "swap",
+            "title": "Free size exchange",
+            "text": ""
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "lock",
+            "title": "Secure payments",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "card_bg": "#f6f6f6",
+        "card_radius": 24,
+        "card_height_desktop": 160,
+        "card_height_mobile": 130,
+        "gap": 34,
+        "columns_mobile": "2",
+        "icon_size": 36,
+        "accent_color": "#111111",
+        "title_size": 17,
+        "title_weight": "500",
+        "text_color": "#111111",
+        "bg_color": "#ffffff",
+        "padding_top_desktop": 32,
+        "padding_bottom_desktop": 32,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "17935745283372f9a4": {
+      "type": "_blocks",
+      "blocks": {
+        "klaviyo_reviews_product_reviews_LzMeyP": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_LzMeyP"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
