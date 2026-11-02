@@ -569,11 +569,11 @@
                 "label_seconds": "SEC",
                 "accent_color": "#e83d3d",
                 "panel_bg": "#161212",
-                "glow_color": "#6b4318",
+                "glow_color": "{{ settings.color_palette.foreground }}",
                 "text_color": "#ffffff",
                 "ribbon_text_color": "#161212",
                 "box_bg": "#241c18",
-                "box_border": "#6b4a2c",
+                "box_border": "#000000",
                 "radius": 24
               },
               "blocks": {}
