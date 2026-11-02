@@ -672,6 +672,7 @@
             },
             "ai_gen_block_5277fbd_TU4A3L": {
               "type": "ai_gen_block_5277fbd",
+              "disabled": true,
               "settings": {
                 "text_before": "Bought....",
                 "number": "1655",
