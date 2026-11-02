@@ -23,7 +23,7 @@
         "msg_2": {
           "type": "message",
           "settings": {
-            "text": "Free gift on orders over €109"
+            "text": "50,000+ HAPPY CUSTOMERS"
           }
         }
       },
@@ -32,7 +32,7 @@
         "msg_2"
       ],
       "settings": {
-        "headline": "Autumn Sale",
+        "headline": "BLACK FRIDAY",
         "subline": "Buy 2 · Get 1 free",
         "link": "",
         "countdown_end": "",
@@ -40,9 +40,9 @@
         "label_hours": "Hrs",
         "label_minutes": "Min",
         "label_seconds": "Sec",
-        "bg_color": "#1e1819",
-        "text_color": "#ffffff",
-        "accent_color": "#e3a89f"
+        "bg_color": "#000000",
+        "text_color": "{{ settings.color_palette.background }}",
+        "accent_color": "{{ settings.color_palette.background }}"
       }
     },
     "header_section": {
