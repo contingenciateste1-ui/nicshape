@@ -894,10 +894,134 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "nic_faq_PNtakM": {
+      "type": "nic-faq",
+      "blocks": {
+        "question_pT9n9i": {
+          "type": "question",
+          "settings": {
+            "question": "Will it actually look good on me? I'm not a size 4, I have a postpartum belly…",
+            "answer": "<p>Yes. It is designed for real bodies, not catalog models. The shaping supports the belly and waist, and the built-in bust support helps if your shape has changed. Check the size chart on the product page to find your size.</p>",
+            "open": false
+          }
+        },
+        "question_UGzjUG": {
+          "type": "question",
+          "settings": {
+            "question": "Does it go see-through when I come out of the water wet?",
+            "answer": "<p>[CONFIRM FOR YOUR PRODUCT] It is lined across the belly and bust, so it stays opaque when wet.</p>",
+            "open": false
+          }
+        },
+        "question_rGxXCE": {
+          "type": "question",
+          "settings": {
+            "question": "Does the band compress so hard I can't breathe? Can I breathe and eat?",
+            "answer": "<p>It shapes gently where it matters, around the lower belly and hips, and you should still breathe, sit and eat comfortably. If it feels too tight, you probably need one size up. Write to <strong>info@nicshape.com</strong> and we will help you exchange it.</p>",
+            "open": false
+          }
+        },
+        "question_PB6MiJ": {
+          "type": "question",
+          "settings": {
+            "question": "Can you see the cups, or feel them, when I wear it?",
+            "answer": "<p>[CONFIRM FOR YOUR PRODUCT] The cups are sewn in, so they do not slip, roll up in the wash or twist in the water. They sit under the outer fabric and feel like a lined bra.</p>",
+            "open": false
+          }
+        },
+        "question_UPbCRf": {
+          "type": "question",
+          "settings": {
+            "question": "How do I pick my size? Do I keep my usual size or go up?",
+            "answer": "<p>Start with your usual size. If you are between two sizes, go up if you have more bust than hips, and go down if you have more hips than bust. The size chart below the product has exact measurements in cm and inches. Measure once and you are set.</p>",
+            "open": false
+          }
+        },
+        "question_MJyWNV": {
+          "type": "question",
+          "settings": {
+            "question": "Can I breastfeed with this on?",
+            "answer": "<p>[CONFIRM FOR YOUR PRODUCT] This piece does not have a nursing opening. It is a shaping swimsuit, not a nursing piece.</p>",
+            "open": false
+          }
+        },
+        "question_kzMKHY": {
+          "type": "question",
+          "settings": {
+            "question": "Can I machine-wash it? How does it hold up against chlorine and salt?",
+            "answer": "<p>[CONFIRM WITH YOUR CARE LABEL] Delicate cycle at 30°C / 86°F, in a mesh bag, no fabric softener and no dryer. Rinse it in fresh water after the pool or the sea, lay it flat in the shade and let it dry.</p>",
+            "open": false
+          }
+        },
+        "question_9WGVt7": {
+          "type": "question",
+          "settings": {
+            "question": "If I don't like it, can I return it? How easy is it?",
+            "answer": "<p>Yes. You have [30] days from delivery to try it at home and return it if it is not right. Email <strong>info@nicshape.com</strong> and we will send you the return instructions. See our <a href=\"/policies/refund-policy\">Refund Policy</a> for the full conditions.</p>",
+            "open": false
+          }
+        },
+        "question_g3GAGU": {
+          "type": "question",
+          "settings": {
+            "question": "When will my order arrive?",
+            "answer": "<p>Delivery takes [5-7] days. Shipping is tracked, and you receive the tracking link by email as soon as your order leaves the warehouse.</p>",
+            "open": false
+          }
+        },
+        "question_TG7XW8": {
+          "type": "question",
+          "settings": {
+            "question": "What if I don't like it?",
+            "answer": "<p>You can return it within [30] days. Email <strong>info@nicshape.com</strong> and we will guide you through the return and refund.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "question_pT9n9i",
+        "question_UGzjUG",
+        "question_rGxXCE",
+        "question_PB6MiJ",
+        "question_UPbCRf",
+        "question_MJyWNV",
+        "question_kzMKHY",
+        "question_9WGVt7",
+        "question_g3GAGU",
+        "question_TG7XW8"
+      ],
+      "name": "Nicshape FAQ",
+      "settings": {
+        "eyebrow": "FAQs",
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you wanted to know before you click add to cart.",
+        "eyebrow_size": 16,
+        "title_size": 40,
+        "title_size_mobile": 28,
+        "subtitle_size": 16,
+        "question_size": 16,
+        "answer_size": 14,
+        "open_first": false,
+        "one_open": false,
+        "bg_color": "#ffffff",
+        "text_color": "#000000",
+        "question_color": "#303030",
+        "divider_color": "#e5e5e5",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 20,
+        "margin_bottom_mobile": 20,
+        "padding_y": 32,
+        "padding_x": 80,
+        "padding_y_mobile": 32,
+        "padding_x_mobile": 12
+      }
     }
   },
   "order": [
     "main",
+    "nic_faq_PNtakM",
     "nic_benefits",
     "17935745283372f9a4"
   ]
