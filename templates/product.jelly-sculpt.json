@@ -552,6 +552,7 @@
               "type": "nic-promo-card",
               "name": "Nicshape promo card",
               "settings": {
+                "show_image": false,
                 "image_side": "left",
                 "image_width": 30,
                 "ratio": "2 / 1",
@@ -566,7 +567,7 @@
                 "label_hours": "HRS",
                 "label_minutes": "MIN",
                 "label_seconds": "SEC",
-                "accent_color": "#E83D3D",
+                "accent_color": "#e83d3d",
                 "panel_bg": "#161212",
                 "glow_color": "#6b4318",
                 "text_color": "#ffffff",
