@@ -733,14 +733,6 @@
             "open": false
           }
         },
-        "question_zJUnEV": {
-          "type": "question",
-          "settings": {
-            "question": "When will my order arrive?",
-            "answer": "<p>Delivery takes [5-7] days. Shipping is tracked, and you receive the tracking link by email as soon as your order leaves the warehouse.</p>",
-            "open": false
-          }
-        },
         "question_JThYQU": {
           "type": "question",
           "settings": {
@@ -759,7 +751,6 @@
         "question_z4AnwM",
         "question_CHbjGE",
         "question_inHKmn",
-        "question_zJUnEV",
         "question_JThYQU"
       ],
       "name": "Nicshape FAQ",
