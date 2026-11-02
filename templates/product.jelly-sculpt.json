@@ -153,167 +153,33 @@
             "star_color": "#c9a26d",
             "show_arrows": true,
             "desktop_width_percent": 100,
-            "review_1_name": "Customer name",
+            "review_1_photo": "shopify://shop_images/ls-jelly-rev-chiara.webp",
+            "review_1_name": "Chiara L.",
             "review_1_rating": "5",
-            "review_1_title": "Review title",
-            "review_1_text": "Write a real customer review here.",
-            "review_2_name": "Customer name",
+            "review_1_title": "5 stars · Nude",
+            "review_1_text": "So guys, I was TIRED of buying bras every 3 months because the underwire always broke. With this I’ve been using it for almost a month, washed it like 6 times and it’s still perfect. Zero deformations, zero broken underwire.\n\nOh and the wide straps are a bomb, finally no marks on shoulders when I take it off!\n\nOnly thing: the first time I got nude color thinking it was light, but it’s really NUDE (like beige). But I’m rebuying anyway.",
+            "review_2_photo": "shopify://shop_images/ls-jelly-rev-francesca.webp",
+            "review_2_name": "Francesca D.",
             "review_2_rating": "5",
-            "review_2_title": "Review title",
-            "review_2_text": "Write a real customer review here.",
-            "review_3_name": "Customer name",
+            "review_2_title": "5 stars · 3 colors",
+            "review_2_text": "Story time: I went out with this + short skirt, and my boyfriend goes “how do you have such nice boobs?”\n\nGuys. HE DIDN’T KNOW I was wearing a new bra.\n\nThis is proof it works. The gel gives you natural shape, but NO ONE understands there’s something underneath.\n\nI use it 3 times a week at least. Got 3 colors. Cellulite doesn’t show, breasts look perfect.",
+            "review_3_photo": "shopify://shop_images/ls-jelly-rev-laura.webp",
+            "review_3_name": "Laura R.",
             "review_3_rating": "5",
-            "review_3_title": "Review title",
-            "review_3_text": "Write a real customer review here.",
-            "review_4_name": "Customer name",
+            "review_3_title": "5 stars · Size M",
+            "review_3_text": "After breastfeeding I had breasts I really didn’t like. I tried push-up bras with underwires but they were so uncomfortable all day.\n\nThis is like 2 in 1: it supports like a push-up but is comfortable like a sports bra. No one notices it has “gel” inside, looks completely normal.\n\nI got size M (I’m 3rd cup) and it fits perfectly.",
+            "review_4_photo": "shopify://shop_images/ls-jelly-rev-sophie.jpg",
+            "review_4_name": "Sophie M.",
             "review_4_rating": "5",
-            "review_4_title": "Review title",
-            "review_4_text": "Write a real customer review here.",
-            "review_5_name": "Customer name",
+            "review_4_title": "5 stars · 3 colors",
+            "review_4_text": "Ok guys I have to be honest. I bought it only because I was tired of underwires hurting me all day. I didn’t expect it to make my boobs look so good too lol 😂\n\nThat jelly technology really makes a difference, it supports but doesn’t hurt. And the back part is WIDE so zero rolls coming out like with my old bras.\n\nOnly “problem”: now I don’t want to wear regular bras anymore haha. Already got 3 different colors.",
+            "review_5_photo": "shopify://shop_images/ls-jelly-rev-alessia.jpg",
+            "review_5_name": "Alessia T.",
             "review_5_rating": "5",
-            "review_5_title": "Review title",
-            "review_5_text": "Write a real customer review here."
+            "review_5_title": "5 stars · Smooth back",
+            "review_5_text": "This is what stressed me most about regular bras… every time I raised my arms I was afraid people would see back rolls 💀\n\nWith this ZERO problems. I tested it like in every possible way (yes, I even took mirror photos with a tight shirt lol) and you see NOTHING.\n\nAnd girls, it’s super comfortable. Like I even use it to sleep (yes, I know you shouldn’t but it’s so comfortable I forget I’m wearing it)."
           },
           "blocks": {}
-        },
-        "product_recommendations_NHWhEp": {
-          "type": "product-recommendations",
-          "name": "t:names.product_recommendations",
-          "settings": {
-            "recommendation_type": "related",
-            "layout_type": "grid",
-            "carousel_on_mobile": true,
-            "max_products": 4,
-            "columns_gap": 16,
-            "rows_gap": 16,
-            "icons_style": "arrow",
-            "icons_shape": "none",
-            "gap": 12,
-            "border_radius": 0,
-            "background_color": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_MCrrmF": {
-              "type": "text",
-              "settings": {
-                "text": "<h3>THERE'S MORE TO SEE</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "static-product-card": {
-              "type": "_product-card",
-              "static": true,
-              "settings": {
-                "product_card_gap": 4,
-                "background_color": "",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "product_card_gallery_4WB69m": {
-                  "type": "_product-card-gallery",
-                  "settings": {
-                    "image_ratio": "adapt",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_color": "",
-                    "border_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "product_title_e9Bfen": {
-                  "type": "product-title",
-                  "name": "t:names.product_title",
-                  "settings": {
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 4,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "price_gKTBE9": {
-                  "type": "price",
-                  "name": "t:names.product_price",
-                  "settings": {
-                    "show_sale_price_first": true,
-                    "show_installments": false,
-                    "show_tax_info": false,
-                    "type_preset": "h6",
-                    "width": "100%",
-                    "alignment": "left",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "text_color": "",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "product_card_gallery_4WB69m",
-                "product_title_e9Bfen",
-                "price_gKTBE9"
-              ]
-            }
-          },
-          "block_order": [
-            "text_MCrrmF"
-          ]
         },
         "disclosures_g9mWze": {
           "type": "disclosures",
@@ -780,7 +646,6 @@
         "ai_gen_block_285f89b_NU9mWC",
         "ai_gen_block_52d99c7_bHAcX4",
         "ai_gen_block_41479e3_yyzcqt",
-        "product_recommendations_NHWhEp",
         "disclosures_g9mWze"
       ],
       "settings": {
@@ -801,40 +666,48 @@
         "question_pT9n9i": {
           "type": "question",
           "settings": {
-            "question": "Will it actually look good on me? I'm not a size 4, I have a postpartum belly…",
-            "answer": "<p>Yes. It is designed for real bodies, not catalog models. The shaping supports the belly and waist, and the built-in bust support helps if your shape has changed. Check the size chart on the product page to find your size.</p>",
+            "question": "What's special about this bra?",
+            "answer": "<p>It looks like a regular bra, but it’s completely different.</p><p>It has three innovations:</p><ul><li><strong>Jelly-Sculpt™ Technology</strong>: No painful underwire. The gel adapts to your breasts and supports them naturally.</li><li><strong>Wide straps (4cm)</strong>: Don’t mark shoulders and hide back rolls. Your back will be smooth.</li><li><strong>Seamless antibacterial fabric</strong>: Invisible under everything. Even white shirt. Even fitted top. And doesn’t smell even if you wear it all day.</li></ul><p>It’s almost impossible to break. Not like regular bras where the underwire breaks after 3 months.</p>",
             "open": false
           }
         },
         "question_UGzjUG": {
           "type": "question",
           "settings": {
-            "question": "Does it go see-through when I come out of the water wet?",
-            "answer": "<p>[CONFIRM FOR YOUR PRODUCT] It is lined across the belly and bust, so it stays opaque when wet.</p>",
+            "question": "Will it tear easily?",
+            "answer": "<p><strong>NO! It’s indestructible.</strong></p><p>You can:</p><ul><li>Pull it hard when putting it on</li><li>Wash it in machine 200+ times</li><li>Use it every day</li><li>Move freely</li></ul><p>And it WON’T break.</p><p>We also have <strong>LIFETIME GUARANTEE</strong>: if it breaks, we replace it for free. Forever.</p><p>Stop wasting $30 every 3 months on bras where the underwire breaks!</p>",
             "open": false
           }
         },
         "question_rGxXCE": {
           "type": "question",
           "settings": {
-            "question": "Does the band compress so hard I can't breathe? Can I breathe and eat?",
-            "answer": "<p>It shapes gently where it matters, around the lower belly and hips, and you should still breathe, sit and eat comfortably. If it feels too tight, you probably need one size up. Write to <strong>info@nicshape.com</strong> and we will help you exchange it.</p>",
+            "question": "Does it really support or is it just comfortable?",
+            "answer": "<p><strong>YES! It supports A LOT.</strong></p><p>Jelly-Sculpt™ gel gives you the same support as an underwire bra, but without pain.</p><p>You can use it for:</p><ul><li>Work all day</li><li>Gym (supports during sports)</li><li>Evening outings</li><li>Even sleeping (so comfortable)</li></ul><p>A customer wrote: “I can’t believe it can be so comfortable AND support so well!”</p><p>Another customer: “I’ve taken naps in this thing, which is crazy because I have sensory issues”</p>",
             "open": false
           }
         },
         "question_PB6MiJ": {
           "type": "question",
           "settings": {
-            "question": "Can you see the cups, or feel them, when I wear it?",
-            "answer": "<p>[CONFIRM FOR YOUR PRODUCT] The cups are sewn in, so they do not slip, roll up in the wash or twist in the water. They sit under the outer fabric and feel like a lined bra.</p>",
+            "question": "Will it show under clothes?",
+            "answer": "<p><strong>NO! It’s completely invisible.</strong></p><p>The white shirt test: seamless fabric (no seams) that disappears under:</p><ul><li>White shirts</li><li>Fitted tops</li><li>Stretch dresses</li><li>Transparent blouses</li></ul><p>Also hides back rolls thanks to wide straps.</p><p><em>“And tell me how it stays so incredibly seamless underneath a white top. Like I am so crazy impressed.” — real review from viral video</em></p>",
             "open": false
           }
         },
         "question_UPbCRf": {
           "type": "question",
           "settings": {
-            "question": "How do I pick my size? Do I keep my usual size or go up?",
-            "answer": "<p>Start with your usual size. If you are between two sizes, go up if you have more bust than hips, and go down if you have more hips than bust. The size chart below the product has exact measurements in cm and inches. Measure once and you are set.</p>",
+            "question": "Does it really work for larger breasts?",
+            "answer": "<p>Yes, it’s specifically designed to support larger breasts too.</p><p>Here’s how it works:</p><ul><li>Gel bands distribute weight evenly across your chest</li><li>Wide straps (4cm) reduce pressure on shoulders</li><li>Wide back band (8cm) provides support without digging in</li></ul><p>What customers with D-DD cups say:</p><ul><li>“First wireless bra that actually supports me”</li><li>“No more shoulder pain”</li><li>“Supports like an underwire but without the pain”</li></ul>",
+            "open": false
+          }
+        },
+        "question_dypXmn": {
+          "type": "question",
+          "settings": {
+            "question": "Does it roll up during the day?",
+            "answer": "<p>No, it stays in position all day.</p><p>Why other bras roll up:</p><ul><li>Band too tight</li><li>Fabric doesn’t grip properly</li><li>Wrong design</li></ul><p>Ours:</p><ul><li>Wide band that grips naturally</li><li>Elastic but not compressive fabric</li><li>Design tested to stay put 10+ hours</li></ul><p>Hundreds of customers confirm: “No more constant adjusting throughout the day.”</p>",
             "open": false
           }
         },
@@ -849,8 +722,8 @@
         "question_kzMKHY": {
           "type": "question",
           "settings": {
-            "question": "Can I machine-wash it? How does it hold up against chlorine and salt?",
-            "answer": "<p>[CONFIRM WITH YOUR CARE LABEL] Delicate cycle at 30°C / 86°F, in a mesh bag, no fabric softener and no dryer. Rinse it in fresh water after the pool or the sea, lay it flat in the shade and let it dry.</p>",
+            "question": "Can I machine-wash it? How does it hold up against chlorine How do I wash it?  and salt?",
+            "answer": "<p>Machine wash or hand wash — both work fine.</p><p><strong>Washing:</strong></p><ul><li>Wash at 30°C (cold water)</li><li>Use delicate cycle if machine washing</li><li>Regular detergent is fine</li><li>NO bleach, NO fabric softener (damages the gel)</li></ul><p><strong>Drying:</strong></p><ul><li>Lay flat or hang to dry</li><li>NEVER use dryer (ruins the gel technology)</li><li>Avoid direct sunlight (colors fade)</li></ul><p><strong>Storage:</strong></p><ul><li>Store flat or hanging</li><li>Don’t fold the gel bands (they’ll deform)</li></ul><p><strong>Tip:</strong> Get 2-3 and rotate them during the week — they’ll last twice as long.</p>",
             "open": false
           }
         },
@@ -885,6 +758,7 @@
         "question_rGxXCE",
         "question_PB6MiJ",
         "question_UPbCRf",
+        "question_dypXmn",
         "question_MJyWNV",
         "question_kzMKHY",
         "question_9WGVt7",
