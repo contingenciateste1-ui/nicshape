@@ -500,7 +500,7 @@
                 "price_tVjtKg": {
                   "type": "nic-price",
                   "settings": {
-                    "price_size": 28,
+                    "price_size": 22,
                     "price_color": "#111111",
                     "old_size": 20,
                     "price_weight": "700",
