@@ -1,0 +1,921 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-information",
+      "blocks": {
+        "ai_gen_block_61cc85d_FciFCK": {
+          "type": "ai_gen_block_61cc85d",
+          "settings": {
+            "heading": "Snatched, not squeezed.",
+            "subheading": "",
+            "heading_size": 30,
+            "desktop_width_percent": 100,
+            "video": "shopify://files/videos/d8abf229c65443e8abee90bd1a2206cd.HD-1080p-2.5Mbps-94484529.mp4",
+            "media_position": "right",
+            "media_radius": 20,
+            "feature_1_icon": "shopify://shop_images/ls-sculptshorts-icon-v2-1-tape.avif",
+            "feature_1_title": "It does not roll",
+            "feature_1_description": "Built in bones keep the band flat, and anti slip silicone grips from the inside. Two things doing one job.",
+            "feature_2_icon": "shopify://shop_images/ls-sculptshorts-icon-v2-2-sparkle.avif",
+            "feature_2_title": "Lifted, not padded",
+            "feature_2_description": "3D tailoring shapes the back so it lifts and rounds. Nothing is added, it is your own shape.",
+            "feature_3_icon": "shopify://shop_images/ls-sculptshorts-icon-v2-3-diamond.avif",
+            "feature_3_title": "Invisible under everything",
+            "feature_3_description": "Seamless knit with clean edges. No lines under a dress, no bulk under jeans.",
+            "feature_4_icon": "shopify://shop_images/ls-sculptshorts-icon-v2-4-allday.avif",
+            "feature_4_title": "Made for all day",
+            "feature_4_description": "Breathable, moisture wicking and light. A layer, not a wetsuit.",
+            "background_color": "#ffffff",
+            "text_color": "#2b2224",
+            "description_color": "#5f5557",
+            "padding_vertical_desktop": 32,
+            "padding_horizontal_desktop": 80,
+            "padding_vertical_mobile": 8,
+            "padding_horizontal_mobile": 0
+          },
+          "blocks": {}
+        },
+        "custom_liquid_WpKrcL": {
+          "type": "custom-liquid",
+          "name": "img/text 1",
+          "settings": {
+            "custom_liquid": "{% comment %}\n  Seção imagem + texto para Custom Liquid no Shopify Horizon.\n  Antes de usar: envie o arquivo sculpting-story-photo.png em Conteúdo > Arquivos.\n  Caso renomeie a imagem, atualize o nome dentro de file_url abaixo.\n{% endcomment %}\n\n<section class=\"vr-story-sculpt-left\" aria-labelledby=\"vr-story-sculpt-left-title\">\n  <div class=\"vr-story-sculpt-left__image\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0791/0994/7505/files/ls-sculptshorts-ic1-home.webp?v=1793651731\"\n      alt=\"Woman wearing a beige top and black sculpting shorts, holding a cup beside a sofa\"\n      width=\"519\"\n      height=\"650\"\n      loading=\"lazy\"\n    >\n  </div>\n\n  <div class=\"vr-story-sculpt-left__text\">\n    <h2 id=\"vr-story-sculpt-left-title\">The woman who dresses around her stomach.</h2>\n\n    <p>You have a system. The long cardigan that covers. The looser dress. The top you pull down all day without even noticing you are doing it.</p>\n\n    <p>You are not unhappy with your body. You are tired of dressing around it.</p>\n\n    <p>This is the layer that takes that job off you. You put it on first, and then you just get dressed.</p>\n  </div>\n</section>\n\n<style>\n  .vr-story-sculpt-left,\n  .vr-story-sculpt-left * {\n    box-sizing: border-box;\n  }\n\n  .vr-story-sculpt-left {\n    display: grid;\n    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);\n    align-items: stretch;\n    width: 100%;\n    max-width: 1040px;\n    min-height: 650px;\n    margin: 0 auto;\n    overflow: hidden;\n    border: 1px solid #e9e9e9;\n    border-radius: 15px;\n    background: #fff;\n    color: #171717;\n    font-family: inherit;\n  }\n\n  .vr-story-sculpt-left__image {\n    width: 100%;\n    min-width: 0;\n    min-height: 0;\n    overflow: hidden;\n  }\n\n  .vr-story-sculpt-left__image img {\n    display: block;\n    width: 100%;\n    height: 100%;\n    min-height: 650px;\n    object-fit: cover;\n    object-position: center center;\n  }\n\n  .vr-story-sculpt-left__text {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: flex-start;\n    min-width: 0;\n    padding: 48px 40px;\n    text-align: left;\n  }\n\n  .vr-story-sculpt-left__text h2 {\n    margin: 0 0 20px;\n    color: #584c43;\n    font-family: inherit !important;\n    font-size: clamp(26px, 2.65vw, 30px);\n    font-style: normal;\n    font-weight: 700;\n    line-height: 1.2;\n    letter-spacing: 0;\n    text-transform: none;\n  }\n\n  .vr-story-sculpt-left__text p {\n    margin: 0 0 12px;\n    color: #171717;\n    font-family: inherit !important;\n    font-size: 15.5px;\n    font-weight: 400;\n    line-height: 1.54;\n    letter-spacing: 0;\n    text-transform: none;\n  }\n\n  .vr-story-sculpt-left__text p:last-child {\n    margin-bottom: 0;\n  }\n\n  /* Desktop: amplia a secao mesmo dentro de um bloco central estreito do Horizon. */\n  @media screen and (min-width: 990px) {\n    .vr-story-sculpt-left {\n      position: relative;\n      left: 50%;\n      transform: translateX(-50%);\n      width: min(1320px, calc(100vw - 56px));\n      max-width: none;\n      min-height: 740px;\n      grid-template-columns: minmax(0, 47fr) minmax(0, 53fr);\n      margin: 0;\n    }\n\n    .vr-story-sculpt-left__image img {\n      min-height: 740px;\n    }\n\n    .vr-story-sculpt-left__text {\n      padding: 60px clamp(44px, 5vw, 86px);\n    }\n\n    .vr-story-sculpt-left__text h2 {\n      font-size: clamp(32px, 2.7vw, 38px);\n    }\n\n    .vr-story-sculpt-left__text p {\n      font-size: 17px;\n      line-height: 1.6;\n    }\n  }\n\n  @media (max-width: 749px) {\n    .vr-story-sculpt-left {\n      display: flex;\n      flex-direction: column;\n      min-height: 0;\n      border-radius: 14px;\n    }\n\n    .vr-story-sculpt-left__image {\n      aspect-ratio: 519 / 650;\n    }\n\n    .vr-story-sculpt-left__image img {\n      width: 100%;\n      height: 100%;\n      min-height: 0;\n    }\n\n    .vr-story-sculpt-left__text {\n      padding: 28px 24px 32px;\n    }\n\n    .vr-story-sculpt-left__text h2 {\n      margin-bottom: 18px;\n      font-size: clamp(24px, 6vw, 29px);\n      line-height: 1.23;\n    }\n\n    .vr-story-sculpt-left__text p {\n      font-size: 15px;\n      line-height: 1.55;\n      margin-bottom: 12px;\n    }\n  }\n</style>"
+          },
+          "blocks": {}
+        },
+        "custom_liquid_Pmt9Wn": {
+          "type": "custom-liquid",
+          "name": "img/text 2",
+          "settings": {
+            "custom_liquid": "{% comment %}\n  Seção imagem + texto para Custom Liquid no Shopify Horizon.\n  Antes de usar: envie o arquivo sculpting-story-photo.png em Conteúdo > Arquivos.\n  Caso renomeie a imagem, atualize o nome dentro de file_url abaixo.\n{% endcomment %}\n\n<section class=\"vr-story-sculpt\" aria-labelledby=\"vr-story-sculpt-title\">\n  <div class=\"vr-story-sculpt__image\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0791/0994/7505/files/ls-sculptshorts-ic2-bodies-v2.webp?v=1793651732\"\n      alt=\"Woman wearing a beige top and black sculpting shorts, holding a cup beside a sofa\"\n      width=\"519\"\n      height=\"650\"\n      loading=\"lazy\"\n    >\n  </div>\n\n  <div class=\"vr-story-sculpt__text\">\n    <h2 id=\"vr-story-sculpt-title\">The woman who dresses around her stomach.</h2>\n\n    <p>You have a system. The long cardigan that covers. The looser dress. The top you pull down all day without even noticing you are doing it.</p>\n\n    <p>You are not unhappy with your body. You are tired of dressing around it.</p>\n\n    <p>This is the layer that takes that job off you. You put it on first, and then you just get dressed.</p>\n  </div>\n</section>\n\n<style>\n  .vr-story-sculpt,\n  .vr-story-sculpt * {\n    box-sizing: border-box;\n  }\n\n  .vr-story-sculpt {\n    display: grid;\n    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);\n    align-items: stretch;\n    width: 100%;\n    max-width: 1040px;\n    min-height: 650px;\n    margin: 0 auto;\n    overflow: hidden;\n    border: 1px solid #e9e9e9;\n    border-radius: 15px;\n    background: #fff;\n    color: #171717;\n    font-family: inherit;\n  }\n\n  .vr-story-sculpt__image {\n    width: 100%;\n    min-width: 0;\n    min-height: 0;\n    overflow: hidden;\n  }\n\n  .vr-story-sculpt__image img {\n    display: block;\n    width: 100%;\n    height: 100%;\n    min-height: 650px;\n    object-fit: cover;\n    object-position: center center;\n  }\n\n  .vr-story-sculpt__text {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: flex-start;\n    min-width: 0;\n    padding: 48px 40px;\n    text-align: left;\n  }\n\n  .vr-story-sculpt__text h2 {\n    margin: 0 0 20px;\n    color: #584c43;\n    font-family: inherit !important;\n    font-size: clamp(26px, 2.65vw, 30px);\n    font-style: normal;\n    font-weight: 700;\n    line-height: 1.2;\n    letter-spacing: 0;\n    text-transform: none;\n  }\n\n  .vr-story-sculpt__text p {\n    margin: 0 0 12px;\n    color: #171717;\n    font-family: inherit !important;\n    font-size: 15.5px;\n    font-weight: 400;\n    line-height: 1.54;\n    letter-spacing: 0;\n    text-transform: none;\n  }\n\n  .vr-story-sculpt__text p:last-child {\n    margin-bottom: 0;\n  }\n\n  /* Em telas lado a lado, imagem a direita e texto a esquerda.\n     No celular permanece a imagem acima do texto. */\n  @media screen and (min-width: 750px) {\n    .vr-story-sculpt__image {\n      grid-column: 2;\n      grid-row: 1;\n    }\n\n    .vr-story-sculpt__text {\n      grid-column: 1;\n      grid-row: 1;\n    }\n  }\n\n  /* Desktop: amplia a secao mesmo dentro de um bloco central estreito do Horizon. */\n  @media screen and (min-width: 990px) {\n    .vr-story-sculpt {\n      position: relative;\n      left: 50%;\n      transform: translateX(-50%);\n      width: min(1320px, calc(100vw - 56px));\n      max-width: none;\n      min-height: 740px;\n      grid-template-columns: minmax(0, 47fr) minmax(0, 53fr);\n      margin: 0;\n    }\n\n    .vr-story-sculpt__image img {\n      min-height: 740px;\n    }\n\n    .vr-story-sculpt__text {\n      padding: 60px clamp(44px, 5vw, 86px);\n    }\n\n    .vr-story-sculpt__text h2 {\n      font-size: clamp(32px, 2.7vw, 38px);\n    }\n\n    .vr-story-sculpt__text p {\n      font-size: 17px;\n      line-height: 1.6;\n    }\n  }\n\n  @media (max-width: 749px) {\n    .vr-story-sculpt {\n      display: flex;\n      flex-direction: column;\n      min-height: 0;\n      border-radius: 14px;\n    }\n\n    .vr-story-sculpt__image {\n      aspect-ratio: 519 / 650;\n    }\n\n    .vr-story-sculpt__image img {\n      width: 100%;\n      height: 100%;\n      min-height: 0;\n    }\n\n    .vr-story-sculpt__text {\n      padding: 28px 24px 32px;\n    }\n\n    .vr-story-sculpt__text h2 {\n      margin-bottom: 18px;\n      font-size: clamp(24px, 6vw, 29px);\n      line-height: 1.23;\n    }\n\n    .vr-story-sculpt__text p {\n      font-size: 15px;\n      line-height: 1.55;\n      margin-bottom: 12px;\n    }\n  }\n</style>"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_52d99c7_bHAcX4": {
+          "type": "ai_gen_block_52d99c7",
+          "settings": {
+            "heading": "Not All Shaper Shorts Are the Same",
+            "paragraph": "Firm hold, real lift, and you can still breathe. Without compromising.",
+            "brand_name": "Nicshape",
+            "brand_logo": "shopify://shop_images/nicshape-logo-branca.png",
+            "competitor_1_name": "Regular Shapewear",
+            "competitor_2_name": "Cheap shaper shorts",
+            "row_1_label": "Built in bones so the band stays flat",
+            "row_1_brand": true,
+            "row_1_competitor_1": "no",
+            "row_1_competitor_2": "no",
+            "row_2_label": "Anti slip silicone inside",
+            "row_2_brand": true,
+            "row_2_competitor_1": "no",
+            "row_2_competitor_2": "no",
+            "row_3_label": "3D tailored lift, no padding",
+            "row_3_brand": true,
+            "row_3_competitor_1": "no",
+            "row_3_competitor_2": "no",
+            "row_4_label": "Seamless and invisible under clothes",
+            "row_4_brand": true,
+            "row_4_competitor_1": "no",
+            "row_4_competitor_2": "no",
+            "row_5_label": "Sizes EU 32 to 50",
+            "row_5_brand": true,
+            "row_5_competitor_1": "no",
+            "row_5_competitor_2": "no",
+            "row_6_label": "",
+            "row_6_brand": false,
+            "row_6_competitor_1": "no",
+            "row_6_competitor_2": "no",
+            "row_7_label": "Lifetime guarantee",
+            "row_7_brand": false,
+            "row_7_competitor_1": "no",
+            "row_7_competitor_2": "no",
+            "brand_top": "#2b211d",
+            "brand_bottom": "#ac9d8c",
+            "competitor_color": "#e8e8e8",
+            "yes_color": "#8c7a62",
+            "text_color": "#111111",
+            "label_background": "#f6f6f6",
+            "row_height": 64,
+            "corner_radius": 14,
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_41479e3_yyzcqt": {
+          "type": "ai_gen_block_41479e3",
+          "settings": {
+            "heading": "",
+            "heading_size": 28,
+            "desktop_cards": "5",
+            "mobile_cards": "1.2",
+            "card_background": "#ffffff",
+            "border_color": "#ececec",
+            "corner_radius": 14,
+            "star_color": "#c9a26d",
+            "show_arrows": false,
+            "desktop_width_percent": 100,
+            "review_1_photo": "shopify://shop_images/ls-sculptshorts-review_4.webp",
+            "review_1_name": "Sara K.",
+            "review_1_rating": "5",
+            "review_1_title": "",
+            "review_1_text": "Wore it under a satin dress. Not one line, not one edge. Nobody could tell.",
+            "review_2_photo": "shopify://shop_images/ls-sculptshorts-review_5.webp",
+            "review_2_name": "Chiara L.",
+            "review_2_rating": "5",
+            "review_2_title": "",
+            "review_2_text": "It's super comfortable, compresses my waist so good, it's seamless. I don't feel suffocated or hot in this shapewear. I definitely recommend!",
+            "review_3_photo": "shopify://shop_images/ls-sculptshorts-review_6.webp",
+            "review_3_name": "Elena T.",
+            "review_3_rating": "5",
+            "review_3_title": "",
+            "review_3_text": "I forget I have it on. That has never happened to me with shapewear. Light, breathable, no rubbing between the thighs.",
+            "review_4_photo": "shopify://shop_images/ls-sculptshorts-review_1.webp",
+            "review_4_name": "Jessica M.",
+            "review_4_rating": "5",
+            "review_4_title": "",
+            "review_4_text": "Does it roll down? No. That was my only question and the answer is no. Sat through a whole wedding dinner, stood, danced, and the band stayed exactly where I put it. The silicone inside actually works.",
+            "review_5_photo": "shopify://shop_images/ls-sculptshorts-review_2.webp",
+            "review_5_name": "Laura B.",
+            "review_5_rating": "5",
+            "review_5_title": "",
+            "review_5_text": "Two kids later I always looked a bit pregnant in fitted dresses. Not any more. Flat, held, and I can still breathe and eat."
+          },
+          "blocks": {}
+        },
+        "custom_liquid_Tgzmyi": {
+          "type": "custom-liquid",
+          "name": "FAQ",
+          "settings": {
+            "custom_liquid": "<section class=\"vr-faq-section\">\n\n  <div class=\"vr-faq-header\">\n    <span class=\"vr-faq-label\">FAQs</span>\n\n    <h2>HAVE QUESTIONS? WE'RE HERE TO HELP!</h2>\n\n    <p>\n      Need help? Write to us at\n      <a href=\"mailto:info@nichsape.com\">\n        info@nicshape.com\n      </a>\n    </p>\n  </div>\n\n  <div class=\"vr-faq-list\">\n\n    <details class=\"vr-faq-item\">\n      <summary>\n        <span>Does it roll down?</span>\n        <svg viewBox=\"0 0 24 24\">\n          <path d=\"m6 9 6 6 6-6\"/>\n        </svg>\n      </summary>\n      <div class=\"vr-faq-answer\">\n        No. There are built in bones that stop the band from folding over, and anti slip silicone strips on the inside that grip your skin. It is the part we would not cut.\n      </div>\n    </details>\n\n    <details class=\"vr-faq-item\">\n      <summary>\n        <span>Will it push my back fat over the top?</span>\n        <svg viewBox=\"0 0 24 24\">\n          <path d=\"m6 9 6 6 6-6\"/>\n        </svg>\n      </summary>\n      <div class=\"vr-faq-answer\">\n        This is why the waist is high and the band is wide. A narrow band digs in and creates a line. A wide, boned band spreads the hold, so nothing spills over the edge.\n      </div>\n    </details>\n\n    <details class=\"vr-faq-item\">\n      <summary>\n        <span>Will I be too hot in it?</span>\n        <svg viewBox=\"0 0 24 24\">\n          <path d=\"m6 9 6 6 6-6\"/>\n        </svg>\n      </summary>\n      <div class=\"vr-faq-answer\">\n        The knit is breathable and moisture wicking, and it is light. It works in summer too. It is a layer, not a wetsuit.\n      </div>\n    </details>\n\n    <details class=\"vr-faq-item\">\n      <summary>\n        <span>Can I breathe and eat in it?</span>\n        <svg viewBox=\"0 0 24 24\">\n          <path d=\"m6 9 6 6 6-6\"/>\n        </svg>\n      </summary>\n      <div class=\"vr-faq-answer\">\n        Yes. It is high control, which means firm, not punishing. If you feel squeezed, you are in the wrong size. Go up one.\n      </div>\n    </details>\n\n    <details class=\"vr-faq-item\">\n      <summary>\n        <span>Does it add padding?</span>\n        <svg viewBox=\"0 0 24 24\">\n          <path d=\"m6 9 6 6 6-6\"/>\n        </svg>\n      </summary>\n      <div class=\"vr-faq-answer\">\n        No. The lift comes from 3D tailoring in the back panels. It shapes what is already yours.\n      </div>\n    </details>\n\n    <details class=\"vr-faq-item\">\n      <summary>\n        <span>What size should I get?</span>\n        <svg viewBox=\"0 0 24 24\">\n          <path d=\"m6 9 6 6 6-6\"/>\n        </svg>\n      </summary>\n      <div class=\"vr-faq-answer\">\n        Measure your waist and hips and use the chart.\n\nEU 32-34: waist 60-66 cm, hips 86-100\nEU 36-38: waist 67-82, hips 101-113\nEU 40-42: waist 83-99, hips 114-127\nEU 44-46: waist 100-114, hips 128-137\nEU 48-50: waist 115-127, hips 138-147\n\nBetween two sizes, go up. If waist and hips land in different sizes, follow your hips. Still unsure, message us with your measurements and we will tell you.\n      </div>\n    </details>\n\n    <details class=\"vr-faq-item\">\n      <summary>\n        <span>How do I wash it?</span>\n        <svg viewBox=\"0 0 24 24\">\n          <path d=\"m6 9 6 6 6-6\"/>\n        </svg>\n      </summary>\n      <div class=\"vr-faq-answer\">\n        Hand wash cold, do not bleach, line dry, do not iron. The silicone and the bones last longer that way.\n      </div>\n    </details>\n\n    <details class=\"vr-faq-item\">\n      <summary>\n        <span>When will my order arrive?</span>\n        <svg viewBox=\"0 0 24 24\">\n          <path d=\"m6 9 6 6 6-6\"/>\n        </svg>\n      </summary>\n      <div class=\"vr-faq-answer\">\n        SHIPPING TIMES:\n\nArrives in 5-7 days\n\nWHAT YOU RECEIVE:\n\n📦 Tracking number to follow the package\n📞 Assistance always available if you have questions\n\nWARNING: We are in winter season. The most requested sizes sell out quickly!\n      </div>\n    </details>\n\n    <details class=\"vr-faq-item\">\n      <summary>\n        <span>Can I wear it every day?</span>\n        <svg viewBox=\"0 0 24 24\">\n          <path d=\"m6 9 6 6 6-6\"/>\n        </svg>\n      </summary>\n      <div class=\"vr-faq-answer\">\n        That is what it is for.\n      </div>\n    </details>\n\n  </div>\n</section>\n\n<style>\n  .vr-faq-section {\n    width: 100%;\n    max-width: 1200px;\n    margin: 0 auto;\n    padding: 35px 30px 45px;\n    color: #111;\n    font-family: inherit;\n  }\n\n  .vr-faq-section *,\n  .vr-faq-section *::before,\n  .vr-faq-section *::after {\n    box-sizing: border-box;\n  }\n\n  /* CABEÇALHO */\n\n  .vr-faq-header {\n    text-align: center;\n    margin-bottom: 32px;\n  }\n\n  .vr-faq-label {\n    display: block;\n    font-size: 15px;\n    font-weight: 600;\n    line-height: 1.4;\n    margin-bottom: 8px;\n  }\n\n  .vr-faq-header h2 {\n    font-family: inherit;\n    font-size: clamp(26px, 3.6vw, 40px);\n    font-weight: 700;\n    line-height: 1.2;\n    letter-spacing: -0.025em;\n    color: #000;\n    margin: 0 0 10px;\n    text-transform: uppercase;\n  }\n\n  .vr-faq-header p {\n    font-family: inherit;\n    font-size: 15px;\n    font-weight: 400;\n    line-height: 1.5;\n    margin: 0;\n  }\n\n  .vr-faq-header a {\n    color: #333;\n    text-decoration: underline;\n    text-underline-offset: 2px;\n  }\n\n  /* LISTA DE PERGUNTAS */\n\n  .vr-faq-list {\n    width: 100%;\n  }\n\n  .vr-faq-item {\n    display: block;\n    margin: 0;\n    padding: 0;\n    border: 0;\n    border-bottom: 1px solid #e0e0e0;\n    background: transparent;\n  }\n\n  .vr-faq-item:first-child {\n    border-top: 1px solid #e0e0e0;\n  }\n\n  .vr-faq-item summary {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    gap: 20px;\n    width: 100%;\n    min-height: 57px;\n    padding: 16px 5px;\n    margin: 0;\n    background: transparent;\n    color: #383838;\n    font-family: inherit;\n    font-size: 15px;\n    font-weight: 600;\n    line-height: 1.5;\n    text-align: left;\n    cursor: pointer;\n    list-style: none;\n    text-transform: none;\n    letter-spacing: normal;\n  }\n\n  .vr-faq-item summary::-webkit-details-marker {\n    display: none;\n  }\n\n  .vr-faq-item summary::marker {\n    content: '';\n  }\n\n  .vr-faq-item summary::before,\n  .vr-faq-item summary::after {\n    content: none !important;\n    display: none !important;\n  }\n\n  .vr-faq-item summary:focus-visible {\n    outline: 2px solid currentColor;\n    outline-offset: -2px;\n  }\n\n  /* SETAS */\n\n  .vr-faq-item summary svg {\n    width: 18px;\n    height: 18px;\n    flex-shrink: 0;\n    fill: none;\n    stroke: currentColor;\n    stroke-width: 1.5;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n    transition: transform .2s ease;\n  }\n\n  .vr-faq-item[open] summary svg {\n    transform: rotate(180deg);\n  }\n\n  /* RESPOSTAS */\n\n  .vr-faq-answer {\n    padding: 0 5px 22px;\n    color: #333;\n    font-family: inherit;\n    font-size: 15px;\n    font-weight: 400;\n    line-height: 1.8;\n    text-align: left;\n    overflow-wrap: break-word;\n  }\n\n  .vr-faq-answer p {\n    margin: 0 0 12px;\n  }\n\n  .vr-faq-answer p:last-child {\n    margin-bottom: 0;\n  }\n\n  /* MOBILE */\n\n  @media screen and (max-width: 749px) {\n    .vr-faq-section {\n      padding: 30px 15px 40px;\n    }\n\n    .vr-faq-header {\n      margin-bottom: 28px;\n    }\n\n    .vr-faq-header h2 {\n      font-size: 27px;\n      line-height: 1.2;\n    }\n\n    .vr-faq-header p {\n      font-size: 13px;\n    }\n\n    .vr-faq-item summary {\n      min-height: 57px;\n      font-size: 14px;\n      padding: 16px 4px;\n    }\n\n    .vr-faq-answer {\n      font-size: 14px;\n      padding: 0 4px 20px;\n    }\n  }\n\n  @media (prefers-reduced-motion: reduce) {\n    .vr-faq-item summary svg {\n      transition: none;\n    }\n  }\n</style>"
+          },
+          "blocks": {}
+        },
+        "product_recommendations_NHWhEp": {
+          "type": "product-recommendations",
+          "name": "t:names.product_recommendations",
+          "settings": {
+            "recommendation_type": "related",
+            "layout_type": "grid",
+            "carousel_on_mobile": true,
+            "max_products": 4,
+            "columns_gap": 16,
+            "rows_gap": 16,
+            "icons_style": "arrow",
+            "icons_shape": "none",
+            "gap": 12,
+            "border_radius": 0,
+            "background_color": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_MCrrmF": {
+              "type": "text",
+              "settings": {
+                "text": "<h3>THERE'S MORE TO SEE</h3>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "static-product-card": {
+              "type": "_product-card",
+              "static": true,
+              "settings": {
+                "product_card_gap": 4,
+                "background_color": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "product_card_gallery_4WB69m": {
+                  "type": "_product-card-gallery",
+                  "settings": {
+                    "image_ratio": "adapt",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_color": "",
+                    "border_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "product_title_e9Bfen": {
+                  "type": "product-title",
+                  "name": "t:names.product_title",
+                  "settings": {
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "paragraph",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 4,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "price_gKTBE9": {
+                  "type": "price",
+                  "name": "t:names.product_price",
+                  "settings": {
+                    "show_sale_price_first": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
+                    "type_preset": "h6",
+                    "width": "100%",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "text_color": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "product_card_gallery_4WB69m",
+                "product_title_e9Bfen",
+                "price_gKTBE9"
+              ]
+            }
+          },
+          "block_order": [
+            "text_MCrrmF"
+          ]
+        },
+        "disclosures_g9mWze": {
+          "type": "disclosures",
+          "name": "t:names.disclosures",
+          "settings": {
+            "heading": "Disclosures",
+            "heading_preset": "h5",
+            "open_by_default": false,
+            "icon": "caret",
+            "disclosure_heading_preset": "h6",
+            "text_color": "",
+            "dividers": true,
+            "divider_color": "{{ settings.color_palette.color2 }}",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "static": true,
+          "settings": {
+            "media_presentation": "carousel",
+            "media_columns": "two",
+            "image_gap": 4,
+            "large_first_image": false,
+            "icons_style": "chevron",
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "thumbnails",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 0,
+            "extend_media": false,
+            "zoom": true,
+            "video_loop": false,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "center",
+            "gap": 28,
+            "sticky_details_desktop": true,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "ai_gen_block_9bd7ced_9k9h4p": {
+              "type": "ai_gen_block_9bd7ced",
+              "settings": {
+                "rating_value": "4.8",
+                "review_count": "(4705)",
+                "show_review_count": true,
+                "alignment": "left",
+                "desktop_width_percent": 100,
+                "star_size": 18,
+                "star_color": "#c9a26d",
+                "empty_star_color": "#e4dcd6",
+                "text_size": 15,
+                "text_color": "#2b2224"
+              },
+              "blocks": {}
+            },
+            "group_icgrde": {
+              "type": "group",
+              "name": "t:names.header",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_xrnftG": {
+                  "type": "text",
+                  "name": "t:names.product_title",
+                  "settings": {
+                    "text": "<h1>{{ closest.product.title }}</h1>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h3",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "review_rcgVxY": {
+                  "type": "review",
+                  "name": "t:names.product_review_stars",
+                  "settings": {
+                    "stars_style": "shaded",
+                    "show_number": true,
+                    "text_color": "#000000",
+                    "type_preset": "paragraph",
+                    "width": "100%",
+                    "alignment": "left"
+                  },
+                  "blocks": {}
+                },
+                "nic_brand_4gyWXQ": {
+                  "type": "nic-brand",
+                  "name": "Nicshape brand name",
+                  "settings": {
+                    "text": "Nicshape™",
+                    "size": 16,
+                    "weight": "500",
+                    "spacing": 4,
+                    "color": "#9a9a9a"
+                  },
+                  "blocks": {}
+                },
+                "price_tVjtKg": {
+                  "type": "nic-price",
+                  "settings": {
+                    "price_size": 28,
+                    "price_color": "#111111",
+                    "old_size": 20,
+                    "price_weight": "700",
+                    "old_weight": "400",
+                    "pill_size": 15,
+                    "pill_radius": 6,
+                    "old_color": "#b23a32",
+                    "show_pill": true,
+                    "pill_label": "{percent}% OFF",
+                    "pill_bg": "#b97a65",
+                    "pill_text": "#ffffff"
+                  },
+                  "blocks": {}
+                },
+                "ai_gen_block_1f4a528_g4iCR3": {
+                  "type": "ai_gen_block_1f4a528",
+                  "settings": {
+                    "items": "Stays flat, never rolls down\nLifts without any padding\nInvisible under everything\nLight enough to forget it",
+                    "text_size": 15,
+                    "text_color": "#111111",
+                    "icon_color": "#111111",
+                    "check_color": "#ffffff",
+                    "line_spacing": 6,
+                    "desktop_width_percent": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_xrnftG",
+                "review_rcgVxY",
+                "nic_brand_4gyWXQ",
+                "price_tVjtKg",
+                "ai_gen_block_1f4a528_g4iCR3"
+              ]
+            },
+            "divider_VJhene": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "divider_color": "{{ settings.color_palette.color2 }}",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "custom_liquid_JWHNMP": {
+              "type": "custom-liquid",
+              "name": "Selecionador de Variantes",
+              "settings": {
+                "custom_liquid": "{% comment %}\n  HORIZON — SELETOR VISUAL UNICO | Color + Size\n  1. Colocar no bloco \"Custom Liquid\" em Product details.\n  2. MANTER o bloco nativo \"Variant picker\" ATIVO no mesmo Product details.\n  3. Preferencialmente, configurar o picker nativo como \"Buttons\".\n  4. Apagar os antigos codigos CSS/Custom Liquid das tentativas anteriores.\n  O seletor nativo e ocultado somente depois de confirmar a conexao.\n{% endcomment %}\n\n{% assign hvs_product = closest.product | default: product %}\n{% if hvs_product != blank and hvs_product.has_only_default_variant == false %}\n\n<style>\n  /* Esconde APENAS o componente original ligado a este produto, apos ativar a integracao. */\n  .product-details.hvs2-connected-{{ hvs_product.id }} variant-picker[data-product-id=\"{{ hvs_product.id }}\"] {\n    position: absolute !important;\n    left: -10000px !important;\n    top: auto !important;\n    width: 1px !important;\n    min-width: 0 !important;\n    max-width: 1px !important;\n    height: 1px !important;\n    min-height: 0 !important;\n    margin: 0 !important;\n    padding: 0 !important;\n    border: 0 !important;\n    overflow: hidden !important;\n    clip-path: inset(50%) !important;\n    opacity: 0 !important;\n    pointer-events: none !important;\n  }\n\n  .hvs2-picker {\n    display: block !important;\n    width: 100%;\n    color: #111;\n    font-family: Arial, Helvetica, sans-serif;\n    line-height: 1.4;\n  }\n  .hvs2-picker *, .hvs2-picker *::before, .hvs2-picker *::after { box-sizing: border-box; }\n  .hvs2-picker__group { margin: 0 0 36px; }\n  .hvs2-picker__group:last-child { margin-bottom: 0; }\n  .hvs2-picker__title { font: 400 13px/1.45 Arial, Helvetica, sans-serif; margin: 0 0 13px; }\n  .hvs2-picker__title strong { font-weight: 700; }\n  .hvs2-picker__choices { display: flex; align-items: center; flex-wrap: wrap; }\n  .hvs2-picker__choices--color { gap: 12px; padding: 4px 5px 5px; }\n  .hvs2-picker__color {\n    position: relative;\n    display: inline-flex;\n    width: 32px;\n    height: 32px;\n    min-width: 32px;\n    min-height: 32px;\n    flex: 0 0 32px;\n    align-items: center;\n    justify-content: center;\n    padding: 0;\n    margin: 0;\n    border: 0;\n    border-radius: 50%;\n    appearance: none;\n    -webkit-appearance: none;\n    background: transparent;\n    cursor: pointer;\n  }\n  .hvs2-picker__dot {\n    display: block;\n    width: 32px;\n    height: 32px;\n    border-radius: 50%;\n    border: 1px solid rgba(0,0,0,.12);\n    background-color: var(--hvs2-color, #d0d0d0);\n    background-image: var(--hvs2-swatch-image, none);\n    background-position: center;\n    background-size: cover;\n  }\n  .hvs2-picker__color[aria-pressed=\"true\"]::after {\n    position: absolute;\n    content: \"\";\n    inset: -5px;\n    border: 3px solid #080808;\n    border-radius: 50%;\n    pointer-events: none;\n  }\n  .hvs2-picker__choices--size { gap: 8px; }\n  .hvs2-picker__size {\n    display: inline-flex;\n    min-height: 40px;\n    min-width: 52px;\n    align-items: center;\n    justify-content: center;\n    padding: 0 12px;\n    border: 1px solid #e7e7e7;\n    border-radius: 4px;\n    background: #fff;\n    color: #111;\n    font: 400 13px/1.25 Arial, Helvetica, sans-serif;\n    text-align: center;\n    cursor: pointer;\n    appearance: none;\n    -webkit-appearance: none;\n  }\n  .hvs2-picker__size:hover { border-color: #777; }\n  .hvs2-picker__size[aria-pressed=\"true\"] { background: #292929; color: #fff; border-color: #292929; font-weight: 700; }\n  .hvs2-picker button:focus-visible { outline: 2px solid #4076ba; outline-offset: 5px; }\n  .hvs2-picker button[aria-disabled=\"true\"] { opacity: .55; }\n  .hvs2-picker__message { color: #9b2525; font-size: 12px; margin: 12px 0 0; }\n  .hvs2-picker [hidden] { display: none !important; }\n  @media (max-width: 749px) {\n    .hvs2-picker__choices--size { gap: 7px; }\n    .hvs2-picker__size { min-width: 48px; padding: 0 10px; }\n  }\n</style>\n\n<div class=\"hvs2-picker\" id=\"hvs2-{{ section.id }}-{{ block.id }}\" data-hvs2-product-id=\"{{ hvs_product.id }}\" aria-label=\"Product variants\">\n  {% for hvs_option in hvs_product.options_with_values %}\n    {% assign hvs_name_lower = hvs_option.name | downcase | strip %}\n    {% assign hvs_is_color = false %}\n    {% if hvs_name_lower contains 'color' or hvs_name_lower contains 'colour' or hvs_name_lower contains 'cor' or hvs_name_lower contains 'couleur' or hvs_name_lower contains 'colore' %}\n      {% assign hvs_is_color = true %}\n    {% endif %}\n    <div class=\"hvs2-picker__group\" data-hvs2-option=\"{{ hvs_option.name | escape }}\">\n      <p class=\"hvs2-picker__title\">{{ hvs_option.name | escape }}: <strong data-hvs2-selected>{{ hvs_option.selected_value | escape }}</strong></p>\n      <div class=\"hvs2-picker__choices {% if hvs_is_color %}hvs2-picker__choices--color{% else %}hvs2-picker__choices--size{% endif %}\">\n        {% for hvs_value in hvs_option.values %}\n          {% assign hvs_value_name = hvs_value.name | default: hvs_value %}\n          {% if hvs_is_color %}\n            {% assign hvs_color_name = hvs_value_name | downcase | strip %}\n            {% assign hvs_color_hex = '#cccccc' %}\n            {% case hvs_color_name %}\n              {% when 'black' or 'preto' or 'negro' or 'noir' %}{% assign hvs_color_hex = '#050505' %}\n              {% when 'brown' or 'marrom' or 'marrón' or 'marron' or 'chocolate' %}{% assign hvs_color_hex = '#593b31' %}\n              {% when 'coffee' or 'coffe' %}{% assign hvs_color_hex = '#6F4E37' %}\n              {% when 'beige' or 'nude' or 'sand' or 'arena' or 'areia' %}{% assign hvs_color_hex = '#d4b997' %}\n              {% when 'white' or 'branco' or 'blanco' or 'blanc' %}{% assign hvs_color_hex = '#ffffff' %}\n              {% when 'grey' or 'gray' or 'cinza' or 'gris' %}{% assign hvs_color_hex = '#868686' %}\n              {% when 'navy' or 'navy blue' or 'azul marinho' %}{% assign hvs_color_hex = '#24324e' %}\n              {% when 'blue' or 'azul' or 'bleu' %}{% assign hvs_color_hex = '#416f9d' %}\n              {% when 'green' or 'verde' or 'vert' %}{% assign hvs_color_hex = '#526d50' %}\n              {% when 'red' or 'rojo' or 'vermelho' or 'rouge' %}{% assign hvs_color_hex = '#b33535' %}\n              {% when 'pink' or 'rosa' or 'rose' %}{% assign hvs_color_hex = '#dba7b5' %}\n              {% when 'burgundy' or 'wine' or 'vinho' or 'vino' %}{% assign hvs_color_hex = '#622b3b' %}\n              {% when 'cream' or 'crema' or 'creme' or 'ivory' %}{% assign hvs_color_hex = '#f0e6d3' %}\n              {% when 'olive' or 'oliva' %}{% assign hvs_color_hex = '#74744a' %}\n              {% when 'camel' %}{% assign hvs_color_hex = '#b89161' %}\n              {% when 'khaki' or 'caqui' %}{% assign hvs_color_hex = '#afa381' %}\n            {% endcase %}\n            {% if hvs_value.swatch.color != blank %}{% assign hvs_color_hex = hvs_value.swatch.color %}{% endif %}\n            {% if hvs_color_name == 'chocolate' %}{% assign hvs_color_hex = '#895947' %}{% endif %}\n            <button type=\"button\" class=\"hvs2-picker__color\" data-hvs2-value=\"{{ hvs_value_name | escape }}\"\n              title=\"{{ hvs_value_name | escape }}\" aria-label=\"{{ hvs_option.name | escape }}: {{ hvs_value_name | escape }}\"\n              aria-pressed=\"{% if hvs_value.selected %}true{% else %}false{% endif %}\"\n              style=\"--hvs2-color:{{ hvs_color_hex }};{% if hvs_value.swatch.image != blank %}--hvs2-swatch-image:url('{{ hvs_value.swatch.image | image_url: width: 80 }}');{% endif %}\">\n              <span class=\"hvs2-picker__dot\" aria-hidden=\"true\"></span>\n            </button>\n          {% else %}\n            <button type=\"button\" class=\"hvs2-picker__size\" data-hvs2-value=\"{{ hvs_value_name | escape }}\"\n              aria-pressed=\"{% if hvs_value.selected %}true{% else %}false{% endif %}\">{{ hvs_value_name | escape }}</button>\n          {% endif %}\n        {% endfor %}\n      </div>\n    </div>\n  {% endfor %}\n  <p class=\"hvs2-picker__message\" data-hvs2-message role=\"status\" hidden></p>\n</div>\n\n<script>\n(function () {\n  const root = document.getElementById('hvs2-{{ section.id }}-{{ block.id }}');\n  if (!root || root.dataset.hvs2Bound === 'true') return;\n  root.dataset.hvs2Bound = 'true';\n  const productId = root.dataset.hvs2ProductId;\n  const details = root.closest('.product-details');\n  const message = root.querySelector('[data-hvs2-message]');\n  if (!details) return;\n\n  let picker = null;\n  let queued = false;\n  let pickerObserver = null;\n\n  function locatePicker() {\n    const candidates = Array.from(details.querySelectorAll('variant-picker'));\n    return candidates.find(el => el.dataset.productId === productId) || null;\n  }\n  function nativeOption(name, value) {\n    if (!picker) return null;\n    const radio = Array.from(picker.querySelectorAll('input[type=\"radio\"][data-option-name]'))\n      .find(el => el.dataset.optionName === name && el.value === value);\n    if (radio) return { kind: 'radio', el: radio };\n    const select = Array.from(picker.querySelectorAll('select'))\n      .find(el => Array.from(el.options).some(o => o.dataset.optionName === name && o.value === value));\n    return select ? { kind: 'select', el: select } : null;\n  }\n  function selectedValue(name) {\n    if (!picker) return null;\n    const checked = Array.from(picker.querySelectorAll('input[type=\"radio\"][data-option-name]:checked'))\n      .find(el => el.dataset.optionName === name);\n    if (checked) return checked.value;\n    const selects = Array.from(picker.querySelectorAll('select'));\n    const select = selects.find(el => Array.from(el.options).some(o => o.dataset.optionName === name));\n    return select ? select.value : null;\n  }\n  function sync() {\n    queued = false;\n    if (!root.isConnected) return;\n    if (!picker || !picker.isConnected) {\n      if (!connect()) return;\n    }\n    root.querySelectorAll('[data-hvs2-option]').forEach(group => {\n      const name = group.dataset.hvs2Option;\n      const chosen = selectedValue(name);\n      if (chosen == null) return;\n      const heading = group.querySelector('[data-hvs2-selected]');\n      if (heading && heading.textContent !== chosen) heading.textContent = chosen;\n      group.querySelectorAll('button[data-hvs2-value]').forEach(button => {\n        const nextPressed = String(button.dataset.hvs2Value === chosen);\n        if (button.getAttribute('aria-pressed') !== nextPressed) button.setAttribute('aria-pressed', nextPressed);\n        const target = nativeOption(name, button.dataset.hvs2Value);\n        if (target && target.kind === 'radio') {\n          const nextDisabled = String(target.el.getAttribute('aria-disabled') === 'true');\n          if (button.getAttribute('aria-disabled') !== nextDisabled) button.setAttribute('aria-disabled', nextDisabled);\n        } else if (target) {\n          const option = Array.from(target.el.options).find(o => o.value === button.dataset.hvs2Value);\n          const nextDisabled = String(Boolean(option && option.disabled));\n          if (button.getAttribute('aria-disabled') !== nextDisabled) button.setAttribute('aria-disabled', nextDisabled);\n        }\n      });\n    });\n  }\n  function scheduleSync() {\n    if (queued) return;\n    queued = true;\n    requestAnimationFrame(sync);\n  }\n  function connect() {\n    const found = locatePicker();\n    if (!found) {\n      details.classList.remove('hvs2-connected-' + productId);\n      picker = null;\n      return false;\n    }\n    if (picker !== found) {\n      pickerObserver?.disconnect();\n      picker = found;\n      pickerObserver = new MutationObserver(scheduleSync);\n      pickerObserver.observe(picker, {\n        childList: true, subtree: true, attributes: true,\n        attributeFilter: ['checked', 'selected', 'data-current-checked', 'aria-disabled', 'data-option-available']\n      });\n    }\n    details.classList.add('hvs2-connected-' + productId);\n    return true;\n  }\n\n  root.addEventListener('click', function(event) {\n    const button = event.target.closest('button[data-hvs2-value]');\n    if (!button || !root.contains(button)) return;\n    if (!connect()) {\n      message.textContent = 'Variant picker do Horizon não encontrado. Mantenha o bloco nativo ativo.';\n      message.hidden = false;\n      return;\n    }\n    const group = button.closest('[data-hvs2-option]');\n    const name = group?.dataset.hvs2Option;\n    const value = button.dataset.hvs2Value;\n    const target = nativeOption(name, value);\n    if (!target && group.querySelectorAll('button[data-hvs2-value]').length === 1) {\n      // Horizon renderiza opcoes com valor unico como texto, sem input.\n      message.hidden = true;\n      return;\n    }\n    if (!target) {\n      message.textContent = 'Esta opção não está disponível no seletor nativo: ' + value;\n      message.hidden = false;\n      return;\n    }\n    message.hidden = true;\n    if (target.kind === 'radio') {\n      if (!target.el.checked) {\n        target.el.checked = true;\n        target.el.dispatchEvent(new Event('change', { bubbles: true }));\n      }\n    } else if (target.el.value !== value) {\n      target.el.value = value;\n      target.el.dispatchEvent(new Event('change', { bubbles: true }));\n    }\n    // Atualiza visual imediatamente, depois sincroniza quando o Horizon atualizar o picker.\n    const currentLabel = group.querySelector('[data-hvs2-selected]');\n    if (currentLabel && currentLabel.textContent !== value) currentLabel.textContent = value;\n    group.querySelectorAll('button[data-hvs2-value]').forEach(b =>\n      b.setAttribute('aria-pressed', String(b.dataset.hvs2Value === value))\n    );\n    scheduleSync();\n  });\n\n  details.addEventListener('change', function (event) {\n    if (event.target.closest('variant-picker')) scheduleSync();\n  });\n  document.addEventListener('variant:update', scheduleSync);\n  document.addEventListener('shopify:section:load', scheduleSync);\n\n  // O Horizon substitui inputs por AJAX apos alterar uma variante.\n  // Observa a substituicao para manter o picker original oculto e atualizado.\n  const detailsObserver = new MutationObserver(function () {\n    if (locatePicker() !== picker) connect();\n    scheduleSync();\n  });\n  detailsObserver.observe(details, { childList: true, subtree: true });\n\n  if (connect()) sync();\n  else {\n    // Se o bloco nativo vier depois no DOM, tenta novamente quando a pagina terminar de carregar.\n    document.addEventListener('DOMContentLoaded', function () { connect(); sync(); }, { once: true });\n  }\n})();\n</script>\n{% endif %}"
+              },
+              "blocks": {}
+            },
+            "variant_picker_R3rGDr": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "buy_buttons_eYQEYi": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "custom",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1.5,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "disabled": true,
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button-custom",
+                    "custom_button_background": "#ac7b6f",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "disabled": true,
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "payment_icons_MBtjrw": {
+              "type": "payment-icons",
+              "name": "t:names.payment_icons",
+              "settings": {
+                "horizontal_alignment": "center",
+                "gap": 10,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "custom_liquid_nLYmjX": {
+              "type": "custom-liquid",
+              "name": "Tempo de entrega",
+              "settings": {
+                "custom_liquid": "<div class=\"vr-delivery-bar\" data-vr-delivery-bar>\n\n  <div class=\"vr-delivery-order\">\n    <span class=\"vr-delivery-dot\"></span>\n    <span>\n      Order in\n      <strong class=\"vr-delivery-countdown\" data-vr-countdown>\n        59m 00s\n      </strong>\n    </span>\n  </div>\n\n  <div class=\"vr-delivery-shipping\">\n\n    <svg\n      class=\"vr-delivery-truck\"\n      width=\"19\"\n      height=\"19\"\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      aria-hidden=\"true\"\n    >\n      <path d=\"M2 5H15V17H2V5Z\" fill=\"currentColor\"/>\n      <path d=\"M15 9H19L22 12V17H15V9Z\" fill=\"currentColor\"/>\n      <circle cx=\"6.5\" cy=\"18\" r=\"2.5\" fill=\"currentColor\"/>\n      <circle cx=\"18.5\" cy=\"18\" r=\"2.5\" fill=\"currentColor\"/>\n      <circle cx=\"6.5\" cy=\"18\" r=\"1\" fill=\"#FFFFFF\"/>\n      <circle cx=\"18.5\" cy=\"18\" r=\"1\" fill=\"#FFFFFF\"/>\n      <path d=\"M4 9H10M3 12H8\" stroke=\"#FFFFFF\" stroke-width=\"1.3\"/>\n    </svg>\n\n    <span>\n      Ships today\n      <span class=\"vr-delivery-separator\">·</span>\n      Arrives\n      <strong data-vr-arrival>--</strong>\n    </span>\n\n  </div>\n\n</div>\n\n<style>\n  .vr-delivery-bar,\n  .vr-delivery-bar * {\n    box-sizing: border-box;\n  }\n\n  /* BARRA PRINCIPAL CENTRALIZADA */\n\n  .vr-delivery-bar {\n    width: 100%;\n    max-width: 430px;\n    min-height: 45px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n\n    gap: 8px 23px;\n\n    padding: 11px 13px;\n\n    border: 1px solid #eadbd1;\n    border-radius: 15px;\n\n    background: #ffffff;\n    color: #161616;\n\n    font-family: inherit;\n    font-size: 13px;\n    font-weight: 400;\n    line-height: 1.45;\n\n    /* CENTRALIZAÇÃO DESKTOP E MOBILE */\n    margin-left: auto !important;\n    margin-right: auto !important;\n    margin-top: 0;\n    margin-bottom: 0;\n  }\n\n  /* CONTADOR */\n\n  .vr-delivery-order {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 7px;\n    white-space: nowrap;\n  }\n\n  .vr-delivery-dot {\n    display: inline-block;\n    width: 8px;\n    height: 8px;\n    min-width: 8px;\n    border-radius: 50%;\n    background: #f28b5b;\n  }\n\n  .vr-delivery-countdown {\n    color: #f26b48;\n    font-weight: 700;\n    font-family: inherit;\n    font-variant-numeric: tabular-nums;\n  }\n\n  /* ENVIO */\n\n  .vr-delivery-shipping {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 7px;\n    white-space: nowrap;\n  }\n\n  .vr-delivery-truck {\n    width: 19px;\n    height: 19px;\n    flex-shrink: 0;\n    color: #594a43;\n  }\n\n  .vr-delivery-separator {\n    margin: 0 2px;\n    color: #333333;\n  }\n\n  .vr-delivery-shipping strong {\n    color: #111111;\n    font-weight: 700;\n    font-family: inherit;\n  }\n\n  /* TABLET E MOBILE */\n\n  @media screen and (max-width: 749px) {\n    .vr-delivery-bar {\n      width: 100%;\n      max-width: 430px;\n      min-height: 45px;\n      padding: 11px 10px;\n      gap: 7px 14px;\n      font-size: 12px;\n\n      margin-left: auto !important;\n      margin-right: auto !important;\n    }\n\n    .vr-delivery-order {\n      gap: 6px;\n    }\n\n    .vr-delivery-shipping {\n      gap: 5px;\n    }\n\n    .vr-delivery-truck {\n      width: 17px;\n      height: 17px;\n    }\n  }\n\n  @media screen and (max-width: 350px) {\n    .vr-delivery-bar {\n      font-size: 11px;\n      padding: 10px 8px;\n      gap: 7px 10px;\n    }\n  }\n</style>\n\n<script>\n(function() {\n\n  const STORAGE_KEY = 'vr-delivery-countdown-59m-v1';\n  const DURATION = 59 * 60 * 1000;\n\n  function getDeadline() {\n    let saved = null;\n\n    try {\n      saved = Number(sessionStorage.getItem(STORAGE_KEY));\n    } catch (error) {}\n\n    if (saved && Number.isFinite(saved)) {\n      return saved;\n    }\n\n    const deadline = Date.now() + DURATION;\n\n    try {\n      sessionStorage.setItem(STORAGE_KEY, String(deadline));\n    } catch (error) {}\n\n    return deadline;\n  }\n\n  const deadline = getDeadline();\n\n  function formatArrival() {\n    const today = new Date();\n\n    const arrival = new Date(\n      today.getFullYear(),\n      today.getMonth(),\n      today.getDate() + 6,\n      12, 0, 0\n    );\n\n    return new Intl.DateTimeFormat('en-US', {\n      month: 'short',\n      day: 'numeric'\n    }).format(arrival);\n  }\n\n  function initDeliveryBars() {\n\n    document.querySelectorAll(\n      '[data-vr-delivery-bar]:not([data-vr-ready])'\n    ).forEach(function(bar) {\n\n      bar.dataset.vrReady = 'true';\n\n      const countdown = bar.querySelector(\n        '[data-vr-countdown]'\n      );\n\n      const arrivalText = bar.querySelector(\n        '[data-vr-arrival]'\n      );\n\n      let interval;\n\n      function update() {\n\n        if (!bar.isConnected) {\n          clearInterval(interval);\n          return;\n        }\n\n        const remaining = Math.max(\n          0,\n          deadline - Date.now()\n        );\n\n        const totalSeconds = Math.ceil(\n          remaining / 1000\n        );\n\n        const minutes = Math.floor(\n          totalSeconds / 60\n        );\n\n        const seconds = totalSeconds % 60;\n\n        if (countdown) {\n          countdown.textContent =\n            minutes + 'm ' +\n            String(seconds).padStart(2, '0') + 's';\n        }\n\n        if (arrivalText) {\n          const newDate = formatArrival();\n\n          if (arrivalText.textContent !== newDate) {\n            arrivalText.textContent = newDate;\n          }\n        }\n\n        if (remaining <= 0) {\n          clearInterval(interval);\n        }\n      }\n\n      interval = setInterval(update, 1000);\n\n      update();\n\n    });\n  }\n\n  if (document.readyState === 'loading') {\n    document.addEventListener(\n      'DOMContentLoaded',\n      initDeliveryBars\n    );\n  } else {\n    initDeliveryBars();\n  }\n\n  document.addEventListener(\n    'shopify:section:load',\n    initDeliveryBars\n  );\n\n})();\n</script>"
+              },
+              "blocks": {}
+            },
+            "ai_gen_block_5277fbd_TU4A3L": {
+              "type": "ai_gen_block_5277fbd",
+              "disabled": true,
+              "settings": {
+                "text_before": "Bought....",
+                "number": "1655",
+                "text_after": "times this week",
+                "show_icon": true,
+                "text_size": 16,
+                "text_color": "#111111",
+                "number_color": "#9a7b5a",
+                "icon_color": "#111111",
+                "desktop_width_percent": 100
+              },
+              "blocks": {}
+            },
+            "ai_gen_block_2b22373_BDkXiy": {
+              "type": "ai_gen_block_2b22373",
+              "disabled": true,
+              "settings": {
+                "title": "Worldwide Delivery within 5-7 Days",
+                "countdown_label": "Order within",
+                "date_label": "Receive",
+                "note": "Delivery dates are forecasts and might delay in some cases",
+                "cutoff_hour": 18,
+                "minimum_days": 5,
+                "maximum_days": 7,
+                "business_days_only": false,
+                "accent_color": "#d28a62",
+                "text_color": "#111111",
+                "muted_color": "#9a8f88",
+                "border_color": "#e9e1da",
+                "corner_radius": 20,
+                "show_card": true,
+                "desktop_width_percent": 100
+              },
+              "blocks": {}
+            },
+            "nic_promo_card_MWiFRa": {
+              "type": "nic-promo-card",
+              "name": "Nicshape promo card",
+              "disabled": true,
+              "settings": {
+                "show_image": true,
+                "image": "shopify://shop_images/11_890830ca-c66e-4c1b-bdc0-6cd71994fa46.webp",
+                "image_side": "left",
+                "image_width": 40,
+                "ratio": "2.2 / 1",
+                "arc_text": "Ends soon",
+                "title": "Halloween",
+                "ribbon": "Buy 2 · Get 1 Free",
+                "sub": "Sale",
+                "show_countdown": true,
+                "end_date": "",
+                "end_text": "",
+                "label_days": "DAYS",
+                "label_hours": "HRS",
+                "label_minutes": "MIN",
+                "label_seconds": "SEC",
+                "accent_color": "#e8903d",
+                "panel_bg": "#161212",
+                "glow_color": "#6b4318",
+                "text_color": "#ffffff",
+                "ribbon_text_color": "#161212",
+                "box_bg": "#241c18",
+                "box_border": "#6b4a2c",
+                "radius": 24
+              },
+              "blocks": {}
+            },
+            "ai_gen_block_9a0f6cd_DpDGtR": {
+              "type": "ai_gen_block_9a0f6cd",
+              "settings": {
+                "row_1_text": "Free 30-day returns",
+                "show_row_1": true,
+                "row_2_text": "Tracked shipping 5-7 days",
+                "show_row_2": true,
+                "row_3_text": "Lifetime Shape Warranty",
+                "show_row_3": true,
+                "desktop_width_percent": 100,
+                "text_size": 17,
+                "text_color": "#111111",
+                "icon_color": "#0b0b0b",
+                "card_background": "#ffffff",
+                "container_background": "#f6f6f6",
+                "corner_radius": 14,
+                "card_gap": 12
+              },
+              "blocks": {}
+            },
+            "text_aEtTtq": {
+              "type": "text",
+              "name": "t:names.product_description",
+              "disabled": true,
+              "settings": {
+                "text": "{{ closest.product.description }}",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "custom_liquid_8ifdB7": {
+              "type": "custom-liquid",
+              "name": "Accordeon",
+              "settings": {
+                "custom_liquid": "<div class=\"vr-accordion\">\n\n  <!-- DESCRIPTION -->\n  <details class=\"vr-accordion__item\">\n    <summary class=\"vr-accordion__heading\">\n      <span>Description</span>\n      <svg class=\"vr-accordion__chevron\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n        <path d=\"m6 9 6 6 6-6\"/>\n      </svg>\n    </summary>\n    <div class=\"vr-accordion__content vr-accordion__rte\">\n      {{ product.description }}\n    </div>\n  </details>\n\n  <!-- SHIPPING -->\n  <details class=\"vr-accordion__item\">\n    <summary class=\"vr-accordion__heading\">\n      <span>Shipping</span>\n      <svg class=\"vr-accordion__chevron\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n        <path d=\"m6 9 6 6 6-6\"/>\n      </svg>\n    </summary>\n    <div class=\"vr-accordion__content\">\n      <p><strong>Free tracked shipping on all orders.</strong></p>\n      <p>The estimated delivery time is <strong>5–7 days</strong>. If your country appears at checkout, shipping is available for your area.</p>\n    </div>\n  </details>\n\n  <!-- MATERIALS & CARE -->\n  <details class=\"vr-accordion__item\">\n    <summary class=\"vr-accordion__heading\">\n      <span>Care</span>\n      <svg class=\"vr-accordion__chevron\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n        <path d=\"m6 9 6 6 6-6\"/>\n      </svg>\n    </summary>\n    <div class=\"vr-accordion__content\">\n      <p><strong>Materials:</strong> Premium blend: Hand wash cold. The silicone strips and the bones last longer that way.\n\nDo not bleach, do not use softener.\n\nLine dry. Do not iron. Do not tumble dry.</p>\n    </div>\n  </details>\n\n  <!-- SIZE -->\n  <details class=\"vr-accordion__item\">\n    <summary class=\"vr-accordion__heading\">\n      <span>Sizing</span>\n      <svg class=\"vr-accordion__chevron\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n        <path d=\"m6 9 6 6 6-6\"/>\n      </svg>\n    </summary>\n    <div class=\"vr-accordion__content vr-accordion__content--size\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0791/0994/7505/files/sculptshorts-sizechart-eu-v3.webp?v=1793649852\"\n        alt=\"Size guide with chest, waist, hips, front length and back length measurements\"\n        width=\"406\"\n        height=\"503\"\n        loading=\"lazy\"\n      >\n    </div>\n  </details>\n</div>\n\n<style>\n  /* Herda a fonte do tema Horizon sem carregar fontes externas. */\n  .vr-accordion,\n  .vr-accordion * {\n    box-sizing: border-box;\n    font-family: inherit !important;\n  }\n\n  .vr-accordion {\n    width: 100%;\n    max-width: 100%;\n    color: #080808;\n    background: transparent;\n    font-size: 15px;\n    line-height: 1.65;\n  }\n\n  .vr-accordion__item {\n    margin: 0 !important;\n    padding: 0 !important;\n    border: 0 !important;\n    border-bottom: 1px solid #e0e2e8 !important;\n    background: transparent !important;\n  }\n\n  .vr-accordion__heading {\n    display: flex !important;\n    align-items: center;\n    justify-content: space-between;\n    gap: 16px;\n    padding: 17px 10px !important;\n    margin: 0 !important;\n    list-style: none !important;\n    background: transparent !important;\n    color: #080808 !important;\n    font-size: 16px !important;\n    font-weight: 600 !important;\n    line-height: 1.4 !important;\n    cursor: pointer;\n    text-transform: none !important;\n    letter-spacing: normal !important;\n  }\n\n  .vr-accordion__heading::-webkit-details-marker {\n    display: none;\n  }\n\n  .vr-accordion__heading::marker {\n    content: '';\n  }\n\n  .vr-accordion__heading::before,\n  .vr-accordion__heading::after {\n    content: none !important;\n    display: none !important;\n  }\n\n  .vr-accordion__chevron {\n    flex: none;\n    display: block;\n    color: #080808;\n    transition: transform .2s ease;\n  }\n\n  .vr-accordion__item[open] .vr-accordion__chevron {\n    transform: rotate(180deg);\n  }\n\n  .vr-accordion__content {\n    padding: 0 10px 22px !important;\n    margin: 0 !important;\n    color: #080808;\n    font-size: 15px;\n    font-weight: 400;\n    line-height: 1.65;\n    overflow-wrap: break-word;\n  }\n\n  .vr-accordion__content p {\n    margin: 0 0 14px !important;\n    padding: 0 !important;\n    color: inherit;\n    font-size: inherit;\n    line-height: inherit;\n  }\n\n  .vr-accordion__content p:last-child {\n    margin-bottom: 0 !important;\n  }\n\n  .vr-accordion__content strong,\n  .vr-accordion__content b {\n    font-weight: 600 !important;\n  }\n\n  .vr-accordion__rte img,\n  .vr-accordion__rte video,\n  .vr-accordion__rte iframe {\n    max-width: 100%;\n  }\n\n  .vr-accordion__content--size {\n    padding: 10px 10px 18px !important;\n  }\n\n  .vr-accordion__content--size img {\n    display: block;\n    width: 100%;\n    max-width: 406px;\n    height: auto;\n    margin: 0;\n  }\n\n  @media (prefers-reduced-motion: reduce) {\n    .vr-accordion__chevron {\n      transition: none;\n    }\n  }\n</style>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "ai_gen_block_9bd7ced_9k9h4p",
+            "group_icgrde",
+            "divider_VJhene",
+            "custom_liquid_JWHNMP",
+            "variant_picker_R3rGDr",
+            "buy_buttons_eYQEYi",
+            "payment_icons_MBtjrw",
+            "custom_liquid_nLYmjX",
+            "ai_gen_block_5277fbd_TU4A3L",
+            "ai_gen_block_2b22373_BDkXiy",
+            "nic_promo_card_MWiFRa",
+            "ai_gen_block_9a0f6cd_DpDGtR",
+            "text_aEtTtq",
+            "custom_liquid_8ifdB7"
+          ]
+        }
+      },
+      "block_order": [
+        "ai_gen_block_61cc85d_FciFCK",
+        "custom_liquid_WpKrcL",
+        "custom_liquid_Pmt9Wn",
+        "ai_gen_block_52d99c7_bHAcX4",
+        "ai_gen_block_41479e3_yyzcqt",
+        "custom_liquid_Tgzmyi",
+        "product_recommendations_NHWhEp",
+        "disclosures_g9mWze"
+      ],
+      "settings": {
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": false,
+        "limit_details_width": false,
+        "gap": 32,
+        "enable_sticky_add_to_cart": true,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "nic_benefits": {
+      "type": "nic-benefits",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "text": ""
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "return",
+            "title": "Easy returns",
+            "text": ""
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "swap",
+            "title": "Free size exchange",
+            "text": ""
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "lock",
+            "title": "Secure payments",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "card_bg": "#f6f6f6",
+        "card_radius": 24,
+        "card_height_desktop": 160,
+        "card_height_mobile": 130,
+        "gap": 34,
+        "columns_mobile": "2",
+        "icon_size": 36,
+        "accent_color": "#111111",
+        "title_size": 17,
+        "title_weight": "500",
+        "text_color": "#111111",
+        "bg_color": "#ffffff",
+        "padding_top_desktop": 32,
+        "padding_bottom_desktop": 32,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "17935745283372f9a4": {
+      "type": "_blocks",
+      "blocks": {
+        "klaviyo_reviews_product_reviews_LzMeyP": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_LzMeyP"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "nic_benefits",
+    "17935745283372f9a4"
+  ]
+}
