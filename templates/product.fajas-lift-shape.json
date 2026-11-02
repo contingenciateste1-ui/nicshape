@@ -63,7 +63,7 @@
             "corner_radius": 20,
             "inner_padding": 48,
             "card_height": 520,
-            "desktop_width_percent": 100
+            "desktop_width_percent": 75
           },
           "blocks": {}
         },
