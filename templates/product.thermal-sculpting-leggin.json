@@ -529,6 +529,7 @@
             },
             "ai_gen_block_5277fbd_TU4A3L": {
               "type": "ai_gen_block_5277fbd",
+              "disabled": true,
               "settings": {
                 "text_before": "Bought....",
                 "number": "1655",
@@ -544,6 +545,7 @@
             },
             "ai_gen_block_2b22373_BDkXiy": {
               "type": "ai_gen_block_2b22373",
+              "disabled": true,
               "settings": {
                 "title": "Worldwide Delivery within 5-7 Days",
                 "countdown_label": "Order within",
@@ -560,6 +562,14 @@
                 "corner_radius": 20,
                 "show_card": true,
                 "desktop_width_percent": 100
+              },
+              "blocks": {}
+            },
+            "custom_liquid_jnN8cM": {
+              "type": "custom-liquid",
+              "name": "Tempo de entrega",
+              "settings": {
+                "custom_liquid": "<div class=\"vr-delivery-bar\" data-vr-delivery-bar>\n\n  <div class=\"vr-delivery-order\">\n    <span class=\"vr-delivery-dot\"></span>\n    <span>\n      Order in\n      <strong class=\"vr-delivery-countdown\" data-vr-countdown>\n        59m 00s\n      </strong>\n    </span>\n  </div>\n\n  <div class=\"vr-delivery-shipping\">\n\n    <svg\n      class=\"vr-delivery-truck\"\n      width=\"19\"\n      height=\"19\"\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      aria-hidden=\"true\"\n    >\n      <path d=\"M2 5H15V17H2V5Z\" fill=\"currentColor\"/>\n      <path d=\"M15 9H19L22 12V17H15V9Z\" fill=\"currentColor\"/>\n      <circle cx=\"6.5\" cy=\"18\" r=\"2.5\" fill=\"currentColor\"/>\n      <circle cx=\"18.5\" cy=\"18\" r=\"2.5\" fill=\"currentColor\"/>\n      <circle cx=\"6.5\" cy=\"18\" r=\"1\" fill=\"#FFFFFF\"/>\n      <circle cx=\"18.5\" cy=\"18\" r=\"1\" fill=\"#FFFFFF\"/>\n      <path d=\"M4 9H10M3 12H8\" stroke=\"#FFFFFF\" stroke-width=\"1.3\"/>\n    </svg>\n\n    <span>\n      Ships today\n      <span class=\"vr-delivery-separator\">·</span>\n      Arrives\n      <strong data-vr-arrival>--</strong>\n    </span>\n\n  </div>\n\n</div>\n\n<style>\n  .vr-delivery-bar,\n  .vr-delivery-bar * {\n    box-sizing: border-box;\n  }\n\n  /* BARRA PRINCIPAL CENTRALIZADA */\n\n  .vr-delivery-bar {\n    width: 100%;\n    max-width: 430px;\n    min-height: 45px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n\n    gap: 8px 23px;\n\n    padding: 11px 13px;\n\n    border: 1px solid #eadbd1;\n    border-radius: 15px;\n\n    background: #ffffff;\n    color: #161616;\n\n    font-family: inherit;\n    font-size: 13px;\n    font-weight: 400;\n    line-height: 1.45;\n\n    /* CENTRALIZAÇÃO DESKTOP E MOBILE */\n    margin-left: auto !important;\n    margin-right: auto !important;\n    margin-top: 0;\n    margin-bottom: 0;\n  }\n\n  /* CONTADOR */\n\n  .vr-delivery-order {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 7px;\n    white-space: nowrap;\n  }\n\n  .vr-delivery-dot {\n    display: inline-block;\n    width: 8px;\n    height: 8px;\n    min-width: 8px;\n    border-radius: 50%;\n    background: #f28b5b;\n  }\n\n  .vr-delivery-countdown {\n    color: #f26b48;\n    font-weight: 700;\n    font-family: inherit;\n    font-variant-numeric: tabular-nums;\n  }\n\n  /* ENVIO */\n\n  .vr-delivery-shipping {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 7px;\n    white-space: nowrap;\n  }\n\n  .vr-delivery-truck {\n    width: 19px;\n    height: 19px;\n    flex-shrink: 0;\n    color: #594a43;\n  }\n\n  .vr-delivery-separator {\n    margin: 0 2px;\n    color: #333333;\n  }\n\n  .vr-delivery-shipping strong {\n    color: #111111;\n    font-weight: 700;\n    font-family: inherit;\n  }\n\n  /* TABLET E MOBILE */\n\n  @media screen and (max-width: 749px) {\n    .vr-delivery-bar {\n      width: 100%;\n      max-width: 430px;\n      min-height: 45px;\n      padding: 11px 10px;\n      gap: 7px 14px;\n      font-size: 12px;\n\n      margin-left: auto !important;\n      margin-right: auto !important;\n    }\n\n    .vr-delivery-order {\n      gap: 6px;\n    }\n\n    .vr-delivery-shipping {\n      gap: 5px;\n    }\n\n    .vr-delivery-truck {\n      width: 17px;\n      height: 17px;\n    }\n  }\n\n  @media screen and (max-width: 350px) {\n    .vr-delivery-bar {\n      font-size: 11px;\n      padding: 10px 8px;\n      gap: 7px 10px;\n    }\n  }\n</style>\n\n<script>\n(function() {\n\n  const STORAGE_KEY = 'vr-delivery-countdown-59m-v1';\n  const DURATION = 59 * 60 * 1000;\n\n  function getDeadline() {\n    let saved = null;\n\n    try {\n      saved = Number(sessionStorage.getItem(STORAGE_KEY));\n    } catch (error) {}\n\n    if (saved && Number.isFinite(saved)) {\n      return saved;\n    }\n\n    const deadline = Date.now() + DURATION;\n\n    try {\n      sessionStorage.setItem(STORAGE_KEY, String(deadline));\n    } catch (error) {}\n\n    return deadline;\n  }\n\n  const deadline = getDeadline();\n\n  function formatArrival() {\n    const today = new Date();\n\n    const arrival = new Date(\n      today.getFullYear(),\n      today.getMonth(),\n      today.getDate() + 6,\n      12, 0, 0\n    );\n\n    return new Intl.DateTimeFormat('en-US', {\n      month: 'short',\n      day: 'numeric'\n    }).format(arrival);\n  }\n\n  function initDeliveryBars() {\n\n    document.querySelectorAll(\n      '[data-vr-delivery-bar]:not([data-vr-ready])'\n    ).forEach(function(bar) {\n\n      bar.dataset.vrReady = 'true';\n\n      const countdown = bar.querySelector(\n        '[data-vr-countdown]'\n      );\n\n      const arrivalText = bar.querySelector(\n        '[data-vr-arrival]'\n      );\n\n      let interval;\n\n      function update() {\n\n        if (!bar.isConnected) {\n          clearInterval(interval);\n          return;\n        }\n\n        const remaining = Math.max(\n          0,\n          deadline - Date.now()\n        );\n\n        const totalSeconds = Math.ceil(\n          remaining / 1000\n        );\n\n        const minutes = Math.floor(\n          totalSeconds / 60\n        );\n\n        const seconds = totalSeconds % 60;\n\n        if (countdown) {\n          countdown.textContent =\n            minutes + 'm ' +\n            String(seconds).padStart(2, '0') + 's';\n        }\n\n        if (arrivalText) {\n          const newDate = formatArrival();\n\n          if (arrivalText.textContent !== newDate) {\n            arrivalText.textContent = newDate;\n          }\n        }\n\n        if (remaining <= 0) {\n          clearInterval(interval);\n        }\n      }\n\n      interval = setInterval(update, 1000);\n\n      update();\n\n    });\n  }\n\n  if (document.readyState === 'loading') {\n    document.addEventListener(\n      'DOMContentLoaded',\n      initDeliveryBars\n    );\n  } else {\n    initDeliveryBars();\n  }\n\n  document.addEventListener(\n    'shopify:section:load',\n    initDeliveryBars\n  );\n\n})();\n</script>"
               },
               "blocks": {}
             },
@@ -651,6 +661,7 @@
             "payment_icons_MBtjrw",
             "ai_gen_block_5277fbd_TU4A3L",
             "ai_gen_block_2b22373_BDkXiy",
+            "custom_liquid_jnN8cM",
             "nic_promo_card_MWiFRa",
             "ai_gen_block_9a0f6cd_DpDGtR",
             "text_aEtTtq"
