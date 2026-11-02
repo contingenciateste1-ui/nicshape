@@ -482,24 +482,14 @@
                   "blocks": {}
                 },
                 "price_tVjtKg": {
-                  "type": "price",
+                  "type": "nic-price",
                   "settings": {
-                    "show_sale_price_first": true,
-                    "show_installments": false,
-                    "show_tax_info": false,
-                    "type_preset": "paragraph",
-                    "width": "100%",
-                    "alignment": "left",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "text_color": "",
-                    "padding-block-start": 4,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "price_size": 28,
+                    "old_size": 20,
+                    "price_weight": "700",
+                    "old_weight": "400",
+                    "pill_size": 15,
+                    "pill_radius": 6
                   },
                   "blocks": {}
                 },
