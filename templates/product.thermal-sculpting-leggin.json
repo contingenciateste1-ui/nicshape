@@ -186,145 +186,6 @@
           },
           "blocks": {}
         },
-        "product_recommendations_NHWhEp": {
-          "type": "product-recommendations",
-          "name": "t:names.product_recommendations",
-          "settings": {
-            "recommendation_type": "related",
-            "layout_type": "grid",
-            "carousel_on_mobile": true,
-            "max_products": 4,
-            "columns_gap": 16,
-            "rows_gap": 16,
-            "icons_style": "arrow",
-            "icons_shape": "none",
-            "gap": 12,
-            "border_radius": 0,
-            "background_color": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_MCrrmF": {
-              "type": "text",
-              "settings": {
-                "text": "<h3>THERE'S MORE TO SEE</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "static-product-card": {
-              "type": "_product-card",
-              "static": true,
-              "settings": {
-                "product_card_gap": 4,
-                "background_color": "",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "product_card_gallery_4WB69m": {
-                  "type": "_product-card-gallery",
-                  "settings": {
-                    "image_ratio": "adapt",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_color": "",
-                    "border_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "product_title_e9Bfen": {
-                  "type": "product-title",
-                  "name": "t:names.product_title",
-                  "settings": {
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "text_color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 4,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "price_gKTBE9": {
-                  "type": "price",
-                  "name": "t:names.product_price",
-                  "settings": {
-                    "show_sale_price_first": true,
-                    "show_installments": false,
-                    "show_tax_info": false,
-                    "type_preset": "h6",
-                    "width": "100%",
-                    "alignment": "left",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "text_color": "",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "product_card_gallery_4WB69m",
-                "product_title_e9Bfen",
-                "price_gKTBE9"
-              ]
-            }
-          },
-          "block_order": [
-            "text_MCrrmF"
-          ]
-        },
         "disclosures_g9mWze": {
           "type": "disclosures",
           "name": "t:names.disclosures",
@@ -791,7 +652,6 @@
         "ai_gen_block_285f89b_NU9mWC",
         "ai_gen_block_52d99c7_bHAcX4",
         "ai_gen_block_41479e3_yyzcqt",
-        "product_recommendations_NHWhEp",
         "disclosures_g9mWze"
       ],
       "settings": {
@@ -804,6 +664,272 @@
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 0
+      }
+    },
+    "nic_faq_kxwhNh": {
+      "type": "nic-faq",
+      "blocks": {
+        "question_XijPwD": {
+          "type": "question",
+          "settings": {
+            "question": "What is special about these leggings?",
+            "answer": "<p>They look like regular tights, but they are super warm inside.</p><p>They have two layers: outside they look like your real skin, inside they have soft fleece that keeps you warm.</p><p>The best part? They have only one seam in the back (not two like the old tights). This means no diaper effect on the butt.</p><p>The waistband is firm and flattens your tummy, while your butt stays round and lifted.</p><p>They're very hard to tear, unlike regular tights that rip right away.</p>",
+            "open": false
+          }
+        },
+        "question_RW49JC": {
+          "type": "question",
+          "settings": {
+            "question": "What size should I take?",
+            "answer": "<p>Check your weight:</p><p><strong>XS/S</strong>: 40 to 63 kg<br/><strong>M/L</strong>: 59 to 84 kg<br/><strong>L/XL</strong>: 79 to 100 kg<br/><strong>2XL/3XL</strong>: 98 to 136 kg</p><p>If you are between two sizes, take the larger one. You will be more comfortable.</p><p>Example: do you weigh 86 kg and are 168 cm tall? Take M/L and it will fit perfectly.</p>",
+            "open": false
+          }
+        },
+        "question_NWDUHK": {
+          "type": "question",
+          "settings": {
+            "question": "How do I determine my shade?",
+            "answer": "<p>We have 4 colors that look like real skin:</p><p><strong>Vanilla/Light</strong>: very fair skin<br/><strong>Tan</strong>: tanned skin<br/><strong>Bronze</strong>: darker skin<br/><strong>Espresso</strong>: very dark skin</p><p><strong>IMPORTANT</strong>: Choose the color of YOUR real skin. Not the color you wish you had!</p><p>Many girls make a mistake. They think \"Light is too light for me\" and choose Tan. Then they have to change it because Tan is really TAN.</p><p>If you are unsure between two colors, always choose the lighter one.</p><p>Look at the photos on our page where all the legs are side by side. It helps you understand.</p>",
+            "open": false
+          }
+        },
+        "question_DKwgxf": {
+          "type": "question",
+          "settings": {
+            "question": "Will they tear easily?",
+            "answer": "<p>These leggings are designed for everyday wear. Follow the care instructions to help preserve the fabric and avoid damage from sharp objects or rough surfaces.</p><p>Our lifetime warranty covers structural manufacturing defects during the product’s useful life under normal use and proper care. It does not cover normal wear, accidental damage or improper washing.</p><p>If you notice a possible manufacturing defect, contact <a href=\"mailto:info@leishape.com\">info@leishape.com</a> with your order number and photos. If the defect is covered, LeiShape will replace the product free of charge and cover the necessary shipping costs.</p><p>See our <a href=\"https://leishape.com/policies/refund-policy\" title=\"Refund Policy\">Returns & Refunds</a> Policy for full warranty conditions. Your statutory consumer rights remain unaffected.</p>",
+            "open": false
+          }
+        },
+        "question_AYRg6y": {
+          "type": "question",
+          "settings": {
+            "question": "Are they really warm?",
+            "answer": "<p><strong>YES!</strong> Super warm.</p><p>You can wear them down to -10°C. Even when it's freezing cold.</p><p>The fleece inside keeps you warm as if you were wearing pants. But from the outside, it looks like you have bare legs.</p><p>You can finally wear skirts and short dresses even in winter!</p><p>The fleece goes down to the ankle. The feet are normal (so you don't sweat inside the boots).</p>",
+            "open": false
+          }
+        },
+        "question_z4AnwM": {
+          "type": "question",
+          "settings": {
+            "question": "Can I breastfeed with this on?",
+            "answer": "<p>[CONFIRM FOR YOUR PRODUCT] This piece does not have a nursing opening. It is a shaping swimsuit, not a nursing piece.</p>",
+            "open": false
+          }
+        },
+        "question_CHbjGE": {
+          "type": "question",
+          "settings": {
+            "question": "Can I machine-wash it? How does it hold up against chlorine and salt?",
+            "answer": "<p>[CONFIRM WITH YOUR CARE LABEL] Delicate cycle at 30°C / 86°F, in a mesh bag, no fabric softener and no dryer. Rinse it in fresh water after the pool or the sea, lay it flat in the shade and let it dry.</p>",
+            "open": false
+          }
+        },
+        "question_inHKmn": {
+          "type": "question",
+          "settings": {
+            "question": "If I don't like it, can I return it? How easy is it?",
+            "answer": "<p>Yes. You have [30] days from delivery to try it at home and return it if it is not right. Email <strong>info@nicshape.com</strong> and we will send you the return instructions. See our <a href=\"/policies/refund-policy\">Refund Policy</a> for the full conditions.</p>",
+            "open": false
+          }
+        },
+        "question_zJUnEV": {
+          "type": "question",
+          "settings": {
+            "question": "When will my order arrive?",
+            "answer": "<p>Delivery takes [5-7] days. Shipping is tracked, and you receive the tracking link by email as soon as your order leaves the warehouse.</p>",
+            "open": false
+          }
+        },
+        "question_JThYQU": {
+          "type": "question",
+          "settings": {
+            "question": "What if I don't like it?",
+            "answer": "<p>You can return it within [30] days. Email <strong>info@nicshape.com</strong> and we will guide you through the return and refund.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "question_XijPwD",
+        "question_RW49JC",
+        "question_NWDUHK",
+        "question_DKwgxf",
+        "question_AYRg6y",
+        "question_z4AnwM",
+        "question_CHbjGE",
+        "question_inHKmn",
+        "question_zJUnEV",
+        "question_JThYQU"
+      ],
+      "name": "Nicshape FAQ",
+      "settings": {
+        "eyebrow": "FAQs",
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you wanted to know before you click add to cart.",
+        "eyebrow_size": 16,
+        "title_size": 40,
+        "title_size_mobile": 28,
+        "subtitle_size": 16,
+        "question_size": 16,
+        "answer_size": 14,
+        "open_first": false,
+        "one_open": false,
+        "bg_color": "#ffffff",
+        "text_color": "#000000",
+        "question_color": "#303030",
+        "divider_color": "#e5e5e5",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 20,
+        "margin_bottom_mobile": 20,
+        "padding_y": 32,
+        "padding_x": 80,
+        "padding_y_mobile": 32,
+        "padding_x_mobile": 12
+      }
+    },
+    "product_recommendations_3Cd6gt": {
+      "type": "product-recommendations",
+      "blocks": {
+        "text_J8J8Tw": {
+          "type": "text",
+          "name": "t:names.header",
+          "settings": {
+            "text": "<h2>Related products</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "background_color": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "product_card_gallery_Gh7Q7F": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_XnEiCg": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_BXeAC3": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "product_card_gallery_Gh7Q7F",
+            "product_title_XnEiCg",
+            "price_BXeAC3"
+          ]
+        }
+      },
+      "block_order": [
+        "text_J8J8Tw"
+      ],
+      "name": "t:names.product_recommendations",
+      "settings": {
+        "product": "{{ closest.product }}",
+        "recommendation_type": "related",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 4,
+        "columns": 4,
+        "mobile_columns": "2",
+        "columns_gap": 12,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 28,
+        "background_color": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "nic_benefits": {
@@ -910,6 +1036,8 @@
   },
   "order": [
     "main",
+    "nic_faq_kxwhNh",
+    "product_recommendations_3Cd6gt",
     "nic_benefits",
     "17935745283372f9a4"
   ]
