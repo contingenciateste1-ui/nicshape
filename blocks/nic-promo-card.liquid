@@ -17,7 +17,7 @@
   {{ block.shopify_attributes }}
 >
   <div
-    class="nic-hwo{% if block.settings.image_side == 'right' %} nic-hwo--right{% endif %}"
+    class="nic-hwo{% if block.settings.image_side == 'right' %} nic-hwo--right{% endif %}{% unless block.settings.show_image %} nic-hwo--no-img{% endunless %}"
     role="region"
     aria-label="{{ block.settings.title | escape }}"
     data-nic-hwo
@@ -25,6 +25,7 @@
     data-end-text="{{ block.settings.end_text | escape }}"
     data-design="{{ request.design_mode }}"
   >
+    {%- if block.settings.show_image -%}
     <div class="nic-hwo__img">
       {%- if block.settings.image != blank -%}
         {{
@@ -36,6 +37,7 @@
         {{ 'lifestyle-1' | placeholder_svg_tag: 'nic-hwo__ph' }}
       {%- endif -%}
     </div>
+    {%- endif -%}
     <div class="nic-hwo__body">
       {%- if block.settings.arc_text != blank -%}
         <svg class="nic-hwo__arc" viewBox="0 0 150 30" aria-hidden="true" focusable="false">
@@ -110,6 +112,7 @@
     width: 100%;
   }
 
+  .nic-hwo--no-img { grid-template-columns: 1fr !important; }
   .nic-hwo {
     display: grid;
     grid-template-columns: var(--hw-img-w) 1fr;
@@ -308,6 +311,7 @@
   "name": "Nicshape promo card",
   "tag": null,
   "settings": [
+    { "type": "checkbox", "id": "show_image", "label": "Show image", "info": "Turn off to show only the card with text and countdown.", "default": true },
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "select", "id": "image_side", "label": "Image position (desktop)", "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }], "default": "left" },
     { "type": "range", "id": "image_width", "label": "Image width (desktop)", "min": 30, "max": 55, "step": 5, "unit": "%", "default": 40 },
