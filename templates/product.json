@@ -501,11 +501,17 @@
                   "type": "nic-price",
                   "settings": {
                     "price_size": 28,
+                    "price_color": "#111111",
                     "old_size": 20,
                     "price_weight": "700",
                     "old_weight": "400",
                     "pill_size": 15,
-                    "pill_radius": 6
+                    "pill_radius": 6,
+                    "old_color": "#b23a32",
+                    "show_pill": true,
+                    "pill_label": "{percent}% OFF",
+                    "pill_bg": "#b97a65",
+                    "pill_text": "#ffffff"
                   },
                   "blocks": {}
                 },
