@@ -712,24 +712,24 @@
         "question_z4AnwM": {
           "type": "question",
           "settings": {
-            "question": "Can I breastfeed with this on?",
-            "answer": "<p>[CONFIRM FOR YOUR PRODUCT] This piece does not have a nursing opening. It is a shaping swimsuit, not a nursing piece.</p>",
+            "question": "Will it show that they're not my real legs?",
+            "answer": "<p><strong>NO!</strong> They really look like your skin.</p><p>They hide everything:</p><p>• Cellulite<br/>• Marks<br/>• Veins<br/>• Imperfections</p><p>A girl on TikTok said: \"You can't convince me that these aren't my real legs!\"</p><p>You can bend, sit, move. They always remain opaque. No one will see anything embarrassing.</p><p>Your legs will look perfect and smooth.</p>",
             "open": false
           }
         },
         "question_CHbjGE": {
           "type": "question",
           "settings": {
-            "question": "Can I machine-wash it? How does it hold up against chlorine and salt?",
-            "answer": "<p>[CONFIRM WITH YOUR CARE LABEL] Delicate cycle at 30°C / 86°F, in a mesh bag, no fabric softener and no dryer. Rinse it in fresh water after the pool or the sea, lay it flat in the shade and let it dry.</p>",
+            "question": "How are they washed?",
+            "answer": "<p>• Wash by hand or in the washing machine at 30 degrees<br/>• Use the delicate program<br/>• Do not use bleach<br/>• Do not iron them<br/>• Avoid the dryer (or use low temperature)</p><p>They remain like new even after many washes.</p><p><strong>Tip:</strong> If you have 2-3 pairs, you can alternate them. This way, you wash them less often and they last longer.</p>",
             "open": false
           }
         },
         "question_inHKmn": {
           "type": "question",
           "settings": {
-            "question": "If I don't like it, can I return it? How easy is it?",
-            "answer": "<p>Yes. You have [30] days from delivery to try it at home and return it if it is not right. Email <strong>info@nicshape.com</strong> and we will send you the return instructions. See our <a href=\"/policies/refund-policy\">Refund Policy</a> for the full conditions.</p>",
+            "question": "When will my order arrive?",
+            "answer": "<p><strong>SHIPPING TIMES:</strong></p><p>Arrives in 5-7 days</p><p><strong>WHAT YOU RECEIVE:</strong></p><p>📦 Tracking number to follow the package<br/>📞 Assistance always available if you have questions</p><p><strong>WARNING:</strong> We are in winter season. The most requested sizes sell out quickly!</p>",
             "open": false
           }
         },
