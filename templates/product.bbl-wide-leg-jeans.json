@@ -1,0 +1,903 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-information",
+      "blocks": {
+        "ai_gen_block_61cc85d_FciFCK": {
+          "type": "ai_gen_block_61cc85d",
+          "settings": {
+            "heading": "Why it has becomeeveryone's favorite",
+            "subheading": "",
+            "heading_size": 36,
+            "desktop_width_percent": 100,
+            "video": "shopify://files/videos/d79638541d9946c0adb5ebb75d4c71e2.mp4",
+            "media_position": "right",
+            "media_radius": 20,
+            "feature_1_icon": "shopify://shop_images/ls-quality-strapless-bra.png",
+            "feature_1_title": "\"Finally the boobs I deserve\"",
+            "feature_1_description": "Jelly technology gives you instant natural lift. Doesn't look fake, looks beautiful. \"They asked if I got a boob job. No guys, it's just the bra!\"",
+            "feature_2_icon": "shopify://shop_images/ls-quality-time-bra.png",
+            "feature_2_title": "\"Never counting minutes to take it off again\"",
+            "feature_2_description": "You know that end-of-day feeling when you get home and the first thing you do is take off your bra? With this one you forget about it. It's so comfortable you can even sleep in it.",
+            "feature_3_icon": "shopify://shop_images/ls-quality-backroll.png",
+            "feature_3_title": "\"Bye bye back rolls\"",
+            "feature_3_description": "Narrow straps on regular bras create those embarrassing bulges. Our wide straps distribute weight – zero rolls, zero fat spilling out. Perfect smooth lines.",
+            "feature_4_icon": "shopify://shop_images/ls-quality-tshirt.png",
+            "feature_4_title": "\"Passes the white shirt test\"",
+            "feature_4_description": "100% seamless. No visible seams, no edges showing. White shirt? Fitted top? Stretch dress? Passes all tests.",
+            "background_color": "#ffffff",
+            "text_color": "#2b2224",
+            "description_color": "#5f5557",
+            "padding_vertical_desktop": 32,
+            "padding_horizontal_desktop": 80,
+            "padding_vertical_mobile": 8,
+            "padding_horizontal_mobile": 16
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_285f89b_8ryqmh": {
+          "type": "ai_gen_block_285f89b",
+          "settings": {
+            "image": "shopify://shop_images/ls-jellysculpt-before-after.webp",
+            "image_position": "left",
+            "heading_part_one": "The 2-Second Transformation",
+            "heading_part_two": "",
+            "bullet_list": "Before: Breasts drop → After: Instant lift\n\nInstant lift, perfect round shape.\n\nIt’s not magic, it’s jelly technology that adapts to your body and supports you where needed. In 2 seconds you go from “meh” to “wow”.\n\nForget about:\n\nPainful underwires poking you all day\nVisible seams under clothes\nEmbarrassing bulges on your back\nStraps that mark your shoulders\nWith Jelly-Sculpt™ Bra:\n\nMove freely without pain\nNo one sees you’re wearing it\nSmooth back even with fitted clothes\nWear it 10+ hours without suffering",
+            "closing_line": "",
+            "heading_size": 28,
+            "text_size": 14,
+            "heading_color_one": "#3b2f2a",
+            "heading_color_two": "#7a6a5c",
+            "text_color": "#111111",
+            "card_background": "#ffffff",
+            "border_color": "#ece6e2",
+            "corner_radius": 20,
+            "inner_padding": 48,
+            "card_height": 520,
+            "desktop_width_percent": 90
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_285f89b_NU9mWC": {
+          "type": "ai_gen_block_285f89b",
+          "name": "Image and text card",
+          "settings": {
+            "image": "shopify://shop_images/ls-jellysculpt-for-all-women.webp",
+            "image_position": "right",
+            "heading_part_one": "For ALL women. Really",
+            "heading_part_two": "",
+            "bullet_list": "Cup A to DD. Band 32 to 44. Small to 3XL.\n\nFrom petite to plus size. Office worker to athlete. Comfort seeker to lift lover.\n\nThis bra was made for YOUR body, not some “average woman” that doesn’t exist.\n\nWhat’s included:\n\nAdjustable straps - wear them normal or crisscross for racerback\nExtender hook - for larger band sizes\n5 colors - Nude, Black, Beige, White, Pink",
+            "closing_line": "Real talk:“When your breasts are properly supported, everything changes. You feel confident, powerful, ready for anything.” — verified customer",
+            "heading_size": 32,
+            "text_size": 16,
+            "heading_color_one": "#3b2f2a",
+            "heading_color_two": "#7a6a5c",
+            "text_color": "#111111",
+            "card_background": "#ffffff",
+            "border_color": "#ece6e2",
+            "corner_radius": 20,
+            "inner_padding": 48,
+            "card_height": 520,
+            "desktop_width_percent": 85
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_52d99c7_bHAcX4": {
+          "type": "ai_gen_block_52d99c7",
+          "settings": {
+            "heading": "Not All Bras Are Equal",
+            "paragraph": "This is the only solution that solves EVERY problem. Without compromise.",
+            "brand_name": "Nicshape",
+            "brand_logo": "shopify://shop_images/nicshape-logo-branca.png",
+            "competitor_1_name": "Regular Bras",
+            "competitor_2_name": "Sports Bras",
+            "row_1_label": "10+ hours comfort",
+            "row_1_brand": true,
+            "row_1_competitor_1": "no",
+            "row_1_competitor_2": "no",
+            "row_2_label": "Natural sexy lift",
+            "row_2_brand": true,
+            "row_2_competitor_1": "no",
+            "row_2_competitor_2": "no",
+            "row_3_label": "Invisible under everything",
+            "row_3_brand": true,
+            "row_3_competitor_1": "no",
+            "row_3_competitor_2": "no",
+            "row_4_label": "Zero back rolls",
+            "row_4_brand": true,
+            "row_4_competitor_1": "no",
+            "row_4_competitor_2": "no",
+            "row_5_label": "Can sleep in it",
+            "row_5_brand": true,
+            "row_5_competitor_1": "no",
+            "row_5_competitor_2": "no",
+            "row_6_label": "No underwire",
+            "row_6_brand": true,
+            "row_6_competitor_1": "no",
+            "row_6_competitor_2": "no",
+            "row_7_label": "Lifetime Guarantee",
+            "row_7_brand": true,
+            "row_7_competitor_1": "no",
+            "row_7_competitor_2": "no",
+            "brand_top": "#2b211d",
+            "brand_bottom": "#ac9d8c",
+            "competitor_color": "#e8e8e8",
+            "yes_color": "#8c7a62",
+            "text_color": "#111111",
+            "label_background": "#f6f6f6",
+            "row_height": 64,
+            "corner_radius": 14,
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_41479e3_yyzcqt": {
+          "type": "ai_gen_block_41479e3",
+          "settings": {
+            "heading": "",
+            "heading_size": 28,
+            "desktop_cards": "5",
+            "mobile_cards": "1.2",
+            "card_background": "#ffffff",
+            "border_color": "#ececec",
+            "corner_radius": 14,
+            "star_color": "#c9a26d",
+            "show_arrows": true,
+            "desktop_width_percent": 100,
+            "review_1_photo": "shopify://shop_images/ls-jelly-rev-chiara.webp",
+            "review_1_name": "Chiara L.",
+            "review_1_rating": "5",
+            "review_1_title": "5 stars · Nude",
+            "review_1_text": "So guys, I was TIRED of buying bras every 3 months because the underwire always broke. With this I’ve been using it for almost a month, washed it like 6 times and it’s still perfect. Zero deformations, zero broken underwire.\n\nOh and the wide straps are a bomb, finally no marks on shoulders when I take it off!\n\nOnly thing: the first time I got nude color thinking it was light, but it’s really NUDE (like beige). But I’m rebuying anyway.",
+            "review_2_photo": "shopify://shop_images/ls-jelly-rev-francesca.webp",
+            "review_2_name": "Francesca D.",
+            "review_2_rating": "5",
+            "review_2_title": "5 stars · 3 colors",
+            "review_2_text": "Story time: I went out with this + short skirt, and my boyfriend goes “how do you have such nice boobs?”\n\nGuys. HE DIDN’T KNOW I was wearing a new bra.\n\nThis is proof it works. The gel gives you natural shape, but NO ONE understands there’s something underneath.\n\nI use it 3 times a week at least. Got 3 colors. Cellulite doesn’t show, breasts look perfect.",
+            "review_3_photo": "shopify://shop_images/ls-jelly-rev-laura.webp",
+            "review_3_name": "Laura R.",
+            "review_3_rating": "5",
+            "review_3_title": "5 stars · Size M",
+            "review_3_text": "After breastfeeding I had breasts I really didn’t like. I tried push-up bras with underwires but they were so uncomfortable all day.\n\nThis is like 2 in 1: it supports like a push-up but is comfortable like a sports bra. No one notices it has “gel” inside, looks completely normal.\n\nI got size M (I’m 3rd cup) and it fits perfectly.",
+            "review_4_photo": "shopify://shop_images/ls-jelly-rev-sophie.jpg",
+            "review_4_name": "Sophie M.",
+            "review_4_rating": "5",
+            "review_4_title": "5 stars · 3 colors",
+            "review_4_text": "Ok guys I have to be honest. I bought it only because I was tired of underwires hurting me all day. I didn’t expect it to make my boobs look so good too lol 😂\n\nThat jelly technology really makes a difference, it supports but doesn’t hurt. And the back part is WIDE so zero rolls coming out like with my old bras.\n\nOnly “problem”: now I don’t want to wear regular bras anymore haha. Already got 3 different colors.",
+            "review_5_photo": "shopify://shop_images/ls-jelly-rev-alessia.jpg",
+            "review_5_name": "Alessia T.",
+            "review_5_rating": "5",
+            "review_5_title": "5 stars · Smooth back",
+            "review_5_text": "This is what stressed me most about regular bras… every time I raised my arms I was afraid people would see back rolls 💀\n\nWith this ZERO problems. I tested it like in every possible way (yes, I even took mirror photos with a tight shirt lol) and you see NOTHING.\n\nAnd girls, it’s super comfortable. Like I even use it to sleep (yes, I know you shouldn’t but it’s so comfortable I forget I’m wearing it)."
+          },
+          "blocks": {}
+        },
+        "disclosures_g9mWze": {
+          "type": "disclosures",
+          "name": "t:names.disclosures",
+          "settings": {
+            "heading": "Disclosures",
+            "heading_preset": "h5",
+            "open_by_default": false,
+            "icon": "caret",
+            "disclosure_heading_preset": "h6",
+            "text_color": "",
+            "dividers": true,
+            "divider_color": "{{ settings.color_palette.color2 }}",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "static": true,
+          "settings": {
+            "media_presentation": "carousel",
+            "media_columns": "two",
+            "image_gap": 4,
+            "large_first_image": false,
+            "icons_style": "chevron",
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "thumbnails",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 0,
+            "extend_media": false,
+            "zoom": true,
+            "video_loop": false,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 28,
+            "sticky_details_desktop": true,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "ai_gen_block_9bd7ced_9k9h4p": {
+              "type": "ai_gen_block_9bd7ced",
+              "settings": {
+                "rating_value": "4.8",
+                "review_count": "(4705)",
+                "show_review_count": true,
+                "alignment": "left",
+                "desktop_width_percent": 100,
+                "star_size": 18,
+                "star_color": "#c9a26d",
+                "empty_star_color": "#e4dcd6",
+                "text_size": 15,
+                "text_color": "#2b2224"
+              },
+              "blocks": {}
+            },
+            "group_icgrde": {
+              "type": "group",
+              "name": "t:names.header",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_xrnftG": {
+                  "type": "text",
+                  "name": "t:names.product_title",
+                  "settings": {
+                    "text": "<h1>{{ closest.product.title }}</h1>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h3",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "text_color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "review_rcgVxY": {
+                  "type": "review",
+                  "name": "t:names.product_review_stars",
+                  "settings": {
+                    "stars_style": "shaded",
+                    "show_number": true,
+                    "text_color": "#000000",
+                    "type_preset": "paragraph",
+                    "width": "100%",
+                    "alignment": "left"
+                  },
+                  "blocks": {}
+                },
+                "nic_brand_4gyWXQ": {
+                  "type": "nic-brand",
+                  "name": "Nicshape brand name",
+                  "settings": {
+                    "text": "Nicshape™",
+                    "size": 16,
+                    "weight": "500",
+                    "spacing": 4,
+                    "color": "#9a9a9a"
+                  },
+                  "blocks": {}
+                },
+                "price_tVjtKg": {
+                  "type": "nic-price",
+                  "settings": {
+                    "price_size": 22,
+                    "price_color": "#111111",
+                    "old_size": 20,
+                    "price_weight": "700",
+                    "old_weight": "400",
+                    "pill_size": 15,
+                    "pill_radius": 6,
+                    "old_color": "#b23a32",
+                    "show_pill": true,
+                    "pill_label": "{percent}% OFF",
+                    "pill_bg": "#b97a65",
+                    "pill_text": "#ffffff"
+                  },
+                  "blocks": {}
+                },
+                "ai_gen_block_1f4a528_g4iCR3": {
+                  "type": "ai_gen_block_1f4a528",
+                  "settings": {
+                    "items": "10+ hours comfort, can sleep in it\nWireless natural lift, push-up effect\nInvisible under any outfit, white shirts too\nNo back rolls, 4cm wide straps",
+                    "text_size": 15,
+                    "text_color": "#111111",
+                    "icon_color": "#111111",
+                    "check_color": "#ffffff",
+                    "line_spacing": 6,
+                    "desktop_width_percent": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_xrnftG",
+                "review_rcgVxY",
+                "nic_brand_4gyWXQ",
+                "price_tVjtKg",
+                "ai_gen_block_1f4a528_g4iCR3"
+              ]
+            },
+            "divider_VJhene": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "divider_color": "{{ settings.color_palette.color2 }}",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "variant_picker_R3rGDr": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "buy_buttons_eYQEYi": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "disabled": true,
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "payment_icons_MBtjrw": {
+              "type": "payment-icons",
+              "name": "t:names.payment_icons",
+              "settings": {
+                "horizontal_alignment": "center",
+                "gap": 10,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "ai_gen_block_5277fbd_TU4A3L": {
+              "type": "ai_gen_block_5277fbd",
+              "settings": {
+                "text_before": "Bought....",
+                "number": "1655",
+                "text_after": "times this week",
+                "show_icon": true,
+                "text_size": 16,
+                "text_color": "#111111",
+                "number_color": "#9a7b5a",
+                "icon_color": "#111111",
+                "desktop_width_percent": 100
+              },
+              "blocks": {}
+            },
+            "ai_gen_block_2b22373_BDkXiy": {
+              "type": "ai_gen_block_2b22373",
+              "settings": {
+                "title": "Worldwide Delivery within 5-7 Days",
+                "countdown_label": "Order within",
+                "date_label": "Receive",
+                "note": "Delivery dates are forecasts and might delay in some cases",
+                "cutoff_hour": 18,
+                "minimum_days": 5,
+                "maximum_days": 7,
+                "business_days_only": false,
+                "accent_color": "#d28a62",
+                "text_color": "#111111",
+                "muted_color": "#9a8f88",
+                "border_color": "#e9e1da",
+                "corner_radius": 20,
+                "show_card": true,
+                "desktop_width_percent": 100
+              },
+              "blocks": {}
+            },
+            "nic_promo_card_MWiFRa": {
+              "type": "nic-promo-card",
+              "name": "Nicshape promo card",
+              "settings": {
+                "show_image": false,
+                "image_side": "left",
+                "image_width": 30,
+                "ratio": "2 / 1",
+                "arc_text": "NOVEMBER",
+                "title": "BLACK FRIDAY",
+                "ribbon": "Buy 2 · Get 1 Free",
+                "sub": "Sale",
+                "show_countdown": true,
+                "end_date": "2026-11-30 23:59",
+                "end_text": "",
+                "label_days": "DAYS",
+                "label_hours": "HRS",
+                "label_minutes": "MIN",
+                "label_seconds": "SEC",
+                "accent_color": "#e83d3d",
+                "panel_bg": "#161212",
+                "glow_color": "{{ settings.color_palette.foreground }}",
+                "text_color": "#ffffff",
+                "ribbon_text_color": "#161212",
+                "box_bg": "#241c18",
+                "box_border": "#000000",
+                "radius": 24
+              },
+              "blocks": {}
+            },
+            "ai_gen_block_9a0f6cd_DpDGtR": {
+              "type": "ai_gen_block_9a0f6cd",
+              "settings": {
+                "row_1_text": "Free 30-day returns",
+                "show_row_1": true,
+                "row_2_text": "Tracked shipping 5-7 days",
+                "show_row_2": true,
+                "row_3_text": "Lifetime Shape Warranty",
+                "show_row_3": true,
+                "desktop_width_percent": 100,
+                "text_size": 17,
+                "text_color": "#111111",
+                "icon_color": "#0b0b0b",
+                "card_background": "#ffffff",
+                "container_background": "#f6f6f6",
+                "corner_radius": 14,
+                "card_gap": 12
+              },
+              "blocks": {}
+            },
+            "text_aEtTtq": {
+              "type": "text",
+              "name": "t:names.product_description",
+              "settings": {
+                "text": "{{ closest.product.description }}",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "ai_gen_block_9bd7ced_9k9h4p",
+            "group_icgrde",
+            "divider_VJhene",
+            "variant_picker_R3rGDr",
+            "buy_buttons_eYQEYi",
+            "payment_icons_MBtjrw",
+            "ai_gen_block_5277fbd_TU4A3L",
+            "ai_gen_block_2b22373_BDkXiy",
+            "nic_promo_card_MWiFRa",
+            "ai_gen_block_9a0f6cd_DpDGtR",
+            "text_aEtTtq"
+          ]
+        }
+      },
+      "block_order": [
+        "ai_gen_block_61cc85d_FciFCK",
+        "ai_gen_block_285f89b_8ryqmh",
+        "ai_gen_block_285f89b_NU9mWC",
+        "ai_gen_block_52d99c7_bHAcX4",
+        "ai_gen_block_41479e3_yyzcqt",
+        "disclosures_g9mWze"
+      ],
+      "settings": {
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": false,
+        "limit_details_width": false,
+        "gap": 48,
+        "enable_sticky_add_to_cart": true,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "nic_faq_PNtakM": {
+      "type": "nic-faq",
+      "blocks": {
+        "question_pT9n9i": {
+          "type": "question",
+          "settings": {
+            "question": "What's special about this bra?",
+            "answer": "<p>It looks like a regular bra, but it’s completely different.</p><p>It has three innovations:</p><ul><li><strong>Jelly-Sculpt™ Technology</strong>: No painful underwire. The gel adapts to your breasts and supports them naturally.</li><li><strong>Wide straps (4cm)</strong>: Don’t mark shoulders and hide back rolls. Your back will be smooth.</li><li><strong>Seamless antibacterial fabric</strong>: Invisible under everything. Even white shirt. Even fitted top. And doesn’t smell even if you wear it all day.</li></ul><p>It’s almost impossible to break. Not like regular bras where the underwire breaks after 3 months.</p>",
+            "open": false
+          }
+        },
+        "question_UGzjUG": {
+          "type": "question",
+          "settings": {
+            "question": "Will it tear easily?",
+            "answer": "<p><strong>NO! It’s indestructible.</strong></p><p>You can:</p><ul><li>Pull it hard when putting it on</li><li>Wash it in machine 200+ times</li><li>Use it every day</li><li>Move freely</li></ul><p>And it WON’T break.</p><p>We also have <strong>LIFETIME GUARANTEE</strong>: if it breaks, we replace it for free. Forever.</p><p>Stop wasting $30 every 3 months on bras where the underwire breaks!</p>",
+            "open": false
+          }
+        },
+        "question_rGxXCE": {
+          "type": "question",
+          "settings": {
+            "question": "Does it really support or is it just comfortable?",
+            "answer": "<p><strong>YES! It supports A LOT.</strong></p><p>Jelly-Sculpt™ gel gives you the same support as an underwire bra, but without pain.</p><p>You can use it for:</p><ul><li>Work all day</li><li>Gym (supports during sports)</li><li>Evening outings</li><li>Even sleeping (so comfortable)</li></ul><p>A customer wrote: “I can’t believe it can be so comfortable AND support so well!”</p><p>Another customer: “I’ve taken naps in this thing, which is crazy because I have sensory issues”</p>",
+            "open": false
+          }
+        },
+        "question_PB6MiJ": {
+          "type": "question",
+          "settings": {
+            "question": "Will it show under clothes?",
+            "answer": "<p><strong>NO! It’s completely invisible.</strong></p><p>The white shirt test: seamless fabric (no seams) that disappears under:</p><ul><li>White shirts</li><li>Fitted tops</li><li>Stretch dresses</li><li>Transparent blouses</li></ul><p>Also hides back rolls thanks to wide straps.</p><p><em>“And tell me how it stays so incredibly seamless underneath a white top. Like I am so crazy impressed.” — real review from viral video</em></p>",
+            "open": false
+          }
+        },
+        "question_UPbCRf": {
+          "type": "question",
+          "settings": {
+            "question": "Does it really work for larger breasts?",
+            "answer": "<p>Yes, it’s specifically designed to support larger breasts too.</p><p>Here’s how it works:</p><ul><li>Gel bands distribute weight evenly across your chest</li><li>Wide straps (4cm) reduce pressure on shoulders</li><li>Wide back band (8cm) provides support without digging in</li></ul><p>What customers with D-DD cups say:</p><ul><li>“First wireless bra that actually supports me”</li><li>“No more shoulder pain”</li><li>“Supports like an underwire but without the pain”</li></ul>",
+            "open": false
+          }
+        },
+        "question_dypXmn": {
+          "type": "question",
+          "settings": {
+            "question": "Does it roll up during the day?",
+            "answer": "<p>No, it stays in position all day.</p><p>Why other bras roll up:</p><ul><li>Band too tight</li><li>Fabric doesn’t grip properly</li><li>Wrong design</li></ul><p>Ours:</p><ul><li>Wide band that grips naturally</li><li>Elastic but not compressive fabric</li><li>Design tested to stay put 10+ hours</li></ul><p>Hundreds of customers confirm: “No more constant adjusting throughout the day.”</p>",
+            "open": false
+          }
+        },
+        "question_MJyWNV": {
+          "type": "question",
+          "settings": {
+            "question": "Can I breastfeed with this on?",
+            "answer": "<p>[CONFIRM FOR YOUR PRODUCT] This piece does not have a nursing opening. It is a shaping swimsuit, not a nursing piece.</p>",
+            "open": false
+          }
+        },
+        "question_kzMKHY": {
+          "type": "question",
+          "settings": {
+            "question": "Can I machine-wash it? How does it hold up against chlorine How do I wash it?  and salt?",
+            "answer": "<p>Machine wash or hand wash — both work fine.</p><p><strong>Washing:</strong></p><ul><li>Wash at 30°C (cold water)</li><li>Use delicate cycle if machine washing</li><li>Regular detergent is fine</li><li>NO bleach, NO fabric softener (damages the gel)</li></ul><p><strong>Drying:</strong></p><ul><li>Lay flat or hang to dry</li><li>NEVER use dryer (ruins the gel technology)</li><li>Avoid direct sunlight (colors fade)</li></ul><p><strong>Storage:</strong></p><ul><li>Store flat or hanging</li><li>Don’t fold the gel bands (they’ll deform)</li></ul><p><strong>Tip:</strong> Get 2-3 and rotate them during the week — they’ll last twice as long.</p>",
+            "open": false
+          }
+        },
+        "question_9WGVt7": {
+          "type": "question",
+          "settings": {
+            "question": "If I don't like it, can I return it? How easy is it?",
+            "answer": "<p>Yes. You have [30] days from delivery to try it at home and return it if it is not right. Email <strong>info@nicshape.com</strong> and we will send you the return instructions. See our <a href=\"/policies/refund-policy\">Refund Policy</a> for the full conditions.</p>",
+            "open": false
+          }
+        },
+        "question_g3GAGU": {
+          "type": "question",
+          "settings": {
+            "question": "When will my order arrive?",
+            "answer": "<p>Delivery takes [5-7] days. Shipping is tracked, and you receive the tracking link by email as soon as your order leaves the warehouse.</p>",
+            "open": false
+          }
+        },
+        "question_TG7XW8": {
+          "type": "question",
+          "settings": {
+            "question": "What if I don't like it?",
+            "answer": "<p>You can return it within [30] days. Email <strong>info@nicshape.com</strong> and we will guide you through the return and refund.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "question_pT9n9i",
+        "question_UGzjUG",
+        "question_rGxXCE",
+        "question_PB6MiJ",
+        "question_UPbCRf",
+        "question_dypXmn",
+        "question_MJyWNV",
+        "question_kzMKHY",
+        "question_9WGVt7",
+        "question_g3GAGU",
+        "question_TG7XW8"
+      ],
+      "name": "Nicshape FAQ",
+      "settings": {
+        "eyebrow": "FAQs",
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you wanted to know before you click add to cart.",
+        "eyebrow_size": 16,
+        "title_size": 40,
+        "title_size_mobile": 28,
+        "subtitle_size": 16,
+        "question_size": 16,
+        "answer_size": 14,
+        "open_first": false,
+        "one_open": false,
+        "bg_color": "#ffffff",
+        "text_color": "#000000",
+        "question_color": "#303030",
+        "divider_color": "#e5e5e5",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_top_mobile": 20,
+        "margin_bottom_mobile": 20,
+        "padding_y": 32,
+        "padding_x": 80,
+        "padding_y_mobile": 32,
+        "padding_x_mobile": 12
+      }
+    },
+    "nic_benefits": {
+      "type": "nic-benefits",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "text": ""
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "return",
+            "title": "Easy returns",
+            "text": ""
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "swap",
+            "title": "Free size exchange",
+            "text": ""
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "lock",
+            "title": "Secure payments",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "card_bg": "#f6f6f6",
+        "card_radius": 24,
+        "card_height_desktop": 160,
+        "card_height_mobile": 130,
+        "gap": 34,
+        "columns_mobile": "2",
+        "icon_size": 36,
+        "accent_color": "#111111",
+        "title_size": 17,
+        "title_weight": "500",
+        "text_color": "#111111",
+        "bg_color": "#ffffff",
+        "padding_top_desktop": 32,
+        "padding_bottom_desktop": 32,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24
+      }
+    },
+    "17935745283372f9a4": {
+      "type": "_blocks",
+      "blocks": {
+        "klaviyo_reviews_product_reviews_LzMeyP": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_LzMeyP"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "nic_faq_PNtakM",
+    "nic_benefits",
+    "17935745283372f9a4"
+  ]
+}
