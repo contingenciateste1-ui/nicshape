@@ -13,6 +13,7 @@
   "sections": {
     "nic_scroll_top": {
       "type": "nic-scroll-top",
+      "disabled": true,
       "settings": {
         "label": "Scroll to top",
         "text_size": 15,

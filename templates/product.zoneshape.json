@@ -143,7 +143,7 @@
         "ai_gen_block_41479e3_yyzcqt": {
           "type": "ai_gen_block_41479e3",
           "settings": {
-            "heading": "Customer reviews",
+            "heading": "",
             "heading_size": 28,
             "desktop_cards": "5",
             "mobile_cards": "1.2",
@@ -151,7 +151,7 @@
             "border_color": "#ececec",
             "corner_radius": 14,
             "star_color": "#c9a26d",
-            "show_arrows": true,
+            "show_arrows": false,
             "desktop_width_percent": 100,
             "review_1_photo": "shopify://shop_images/4_243d4fc5-f209-4d68-b9bf-461eb434b57d.webp",
             "review_1_name": "Charlotte",
