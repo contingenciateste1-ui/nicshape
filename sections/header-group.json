@@ -32,8 +32,8 @@
         "msg_2"
       ],
       "settings": {
-        "headline": "BLACK FRIDAY",
-        "subline": "Buy 2 · Get 1 free",
+        "headline": "",
+        "subline": "BLACK FRIDAY SALE",
         "link": "",
         "countdown_end": "",
         "label_days": "Days",
