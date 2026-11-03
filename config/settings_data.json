@@ -120,6 +120,11 @@
         "type": "shopify://apps/bk-reviews/blocks/bk-reviews-embed/592f39b6-a0c6-4829-a095-8e5558e58026",
         "disabled": false,
         "settings": {}
+      },
+      "9752555012629308362": {
+        "type": "shopify://apps/parkour-facebook-pixel/blocks/threasury_pixel/f23b2ffe-4c53-446e-ad3a-7976ffbee5c2",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_palette": {
