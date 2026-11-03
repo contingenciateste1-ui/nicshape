@@ -805,7 +805,7 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 32,
-        "enable_sticky_add_to_cart": true,
+        "enable_sticky_add_to_cart": false,
         "background_color": "{{ settings.color_palette.background }}",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -874,15 +874,6 @@
     },
     "17935745283372f9a4": {
       "type": "_blocks",
-      "blocks": {
-        "klaviyo_reviews_product_reviews_LzMeyP": {
-          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "klaviyo_reviews_product_reviews_LzMeyP"
-      ],
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
