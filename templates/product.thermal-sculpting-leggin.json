@@ -157,7 +157,7 @@
             "border_color": "#ececec",
             "corner_radius": 14,
             "star_color": "#c9a26d",
-            "show_arrows": true,
+            "show_arrows": false,
             "desktop_width_percent": 100,
             "review_1_photo": "shopify://shop_images/5leg.webp",
             "review_1_name": "Elena B.",
