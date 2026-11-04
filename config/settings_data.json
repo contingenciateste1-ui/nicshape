@@ -137,6 +137,11 @@
         "settings": {
           "fast_load": false
         }
+      },
+      "12168986436008309812": {
+        "type": "shopify://apps/parkour-tiktok-pixel/blocks/threasury_pixel/6c589340-c893-4a7c-ad89-703f18722d60",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_palette": {
